@@ -1,0 +1,13 @@
+# Godot 4+ specific ignores
+.godot/
+.history/
+.vscode/
+.gemini/
+.cursor/
+.cursorrules
+.cursorignore
+.cursorignorerules
+.cursorignorerules
+GEMINI.md
+.geminiignore
+android/
