@@ -19,6 +19,7 @@ config/icon="uid://dhwlmcglmf0kw"
 [autoload]
 
 GUIDE="*res://addons/guide/guide.gd"
+SoundManager="*res://addons/sound_manager/module/SoundManager.tscn"
 
 [debug]
 
@@ -34,7 +35,7 @@ movie_writer/node_name_casing=0
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/guide/plugin.cfg")
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/guide/plugin.cfg", "res://addons/sound_manager/plugin.cfg")
 
 [rendering]
 
