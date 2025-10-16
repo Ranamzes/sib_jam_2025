@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://vqnqvndpsftt"]
 
-[ext_resource type="Script" uid="uid://dd7kg0lid1c2g" path="res://addons/sound_manager/module/internal_scripts/SoundManager.gd" id="1"]
-[ext_resource type="Script" uid="uid://duf6bl6mcp3sq" path="res://addons/sound_manager/module/internal_scripts/directions_canvas.gd" id="2_amowm"]
+[ext_resource type="Script" uid="uid://dsnqo80baf2qi" path="res://addons/sound_manager/module/internal_scripts/SoundManager.gd" id="1"]
+[ext_resource type="Script" uid="uid://did6tn4135vuf" path="res://addons/sound_manager/module/internal_scripts/directions_canvas.gd" id="2_amowm"]
 
 [node name="SoundManager" type="Node"]
 script = ExtResource("1")
