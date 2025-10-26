@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://x662pd3helg5"]
+[gd_scene load_steps=3 format=3 uid="uid://x662pd3helg5"]
 
 [ext_resource type="Script" uid="uid://d3fxmu3j08id3" path="res://systems/fmod_system/fmod_logic_system.gd" id="1_fmod_system"]
+[ext_resource type="PackedScene" uid="uid://bgrwxmc03jfth" path="res://player/Player.tscn" id="2_0xm2m"]
 
 [node name="Main" type="Node"]
 
 [node name="FmodLogicSystem" type="Node" parent="."]
 script = ExtResource("1_fmod_system")
+
+[node name="Player" parent="." instance=ExtResource("2_0xm2m")]
