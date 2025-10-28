@@ -14,3 +14,6 @@ android/
 plan.md
 # Snyk Security Extension - AI Rules (auto-generated)
 .cursor\rules\snyk_rules.mdc
+addons/godot-mcp
+SignalFlow*
+image.png

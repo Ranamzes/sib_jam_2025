@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dix1h36p73j1c"]
+
+[ext_resource type="Script" path="res://addons/signal_flow/attach_script_panel.gd" id="1_abcde"]
+
+[node name="AttachScriptPanel" type="VBoxContainer"]
+script = ExtResource("1_abcde")
+
+[node name="AttachButton" type="Button" parent="."]
+layout_mode = 2
+text = "Create and Attach Script"
+
+[node name="BottomSeparator" type="HSeparator" parent="."]
+layout_mode = 2

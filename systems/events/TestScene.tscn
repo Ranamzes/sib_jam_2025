@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbfvxarlu2ib3"]
+
+[ext_resource type="Script" uid="uid://duib74lc5ogog" path="res://systems/events/test_scene.gd" id="1_e5tlu"]
+[ext_resource type="Resource" uid="uid://b5g5pwv4s33qj" path="res://systems/events/events/player_died.tres" id="2_xtii1"]
+[ext_resource type="Script" uid="uid://dfj4lunl8dq2s" path="res://systems/events/test.gd" id="3_7wn8q"]
+
+[node name="TestScene" type="Node2D"]
+script = ExtResource("1_e5tlu")
+player_died_event = ExtResource("2_xtii1")
+
+[node name="test" type="Node" parent="."]
+script = ExtResource("3_7wn8q")

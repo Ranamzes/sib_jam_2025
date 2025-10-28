@@ -6,3 +6,5 @@
 
 [node name="FmodLogicSystem" type="Node" parent="."]
 script = ExtResource("1_fmod_system")
+
+[node name="Node" type="Node" parent="."]
