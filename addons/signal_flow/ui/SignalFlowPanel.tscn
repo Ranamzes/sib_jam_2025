@@ -1,34 +1,28 @@
 [gd_scene load_steps=2 format=3 uid="uid://c4gq4w2xlegyv"]
 
-[ext_resource type="Script" path="res://addons/signal_flow/signal_flow_panel.gd" id="1_w8d1c"]
+[ext_resource type="Script" uid="uid://dnl3dfcxrxe35" path="res://addons/signal_flow/ui/SignalFlowPanel.gd" id="1_w8d1c"]
 
 [node name="SignalFlowPanel" type="VBoxContainer"]
 script = ExtResource("1_w8d1c")
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 2
-text = "SignalFlow"
-horizontal_alignment = 1
-
-[node name="HSeparator" type="HSeparator" parent="."]
-layout_mode = 2
-
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
+theme_override_constants/separation = 14
 alignment = 1
 
 [node name="EmitButton" type="Button" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "+ Emit"
+text = "Emit"
 
 [node name="SubscribeButton" type="Button" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "+ Subscribe"
+text = "Subscribe"
 
 [node name="FileDialog" type="FileDialog" parent="."]
-title = "Select an Event Resource"
+oversampling_override = 1.0
+title = "Open a File"
 initial_position = 2
 size = Vector2i(500, 500)
 ok_button_text = "Select"
@@ -36,19 +30,19 @@ file_mode = 0
 access = 2
 root_subfolder = "events"
 filters = PackedStringArray("*.tres ; Event Resource")
-show_hidden_files = false
 
 [node name="NewEventDialog" type="ConfirmationDialog" parent="."]
+oversampling_override = 1.0
 title = "Create New Event"
 initial_position = 2
-size = Vector2i(300, 100)
+size = Vector2i(300, 114)
 ok_button_text = "Create"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="NewEventDialog"]
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 292.0
-offset_bottom = 68.0
+offset_bottom = 65.0
 
 [node name="Label" type="Label" parent="NewEventDialog/VBoxContainer"]
 layout_mode = 2
@@ -59,4 +53,5 @@ layout_mode = 2
 placeholder_text = "PlayerDied"
 
 [node name="BottomSeparator" type="HSeparator" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2

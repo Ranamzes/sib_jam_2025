@@ -10,6 +10,14 @@ var main_plugin: EditorPlugin # Reference to the main EditorPlugin
 func _ready():
 	attach_button.pressed.connect(self._on_attach_pressed)
 
+	# Set the icon for the button
+	if editor_interface:
+		var editor_theme = editor_interface.get_editor_theme()
+		if editor_theme:
+			var script_create_icon = editor_theme.get_icon("ScriptCreate", "EditorIcons")
+			if script_create_icon:
+				attach_button.icon = script_create_icon
+
 func set_inspected_node(node: Node):
 	inspected_node = node
 

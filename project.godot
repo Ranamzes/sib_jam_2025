@@ -38,6 +38,10 @@ movie_writer/node_name_casing=0
 
 enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/fmod/plugin.cfg", "res://addons/godot_mcp/plugin.cfg", "res://addons/guide/plugin.cfg", "res://addons/signal_flow/plugin.cfg")
 
+[gui]
+
+theme/default_font_multichannel_signed_distance_field=true
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
