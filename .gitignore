@@ -1,3 +1,18 @@
 # Godot 4+ specific ignores
 .godot/
-/android/
+.history/
+.vscode/
+.gemini/
+.cursor/
+.cursorrules
+.cursorignore
+.cursorignorerules
+.cursorignorerules
+GEMINI.md
+.geminiignore
+android/
+plan.md
+# Snyk Security Extension - AI Rules (auto-generated)
+.cursor\rules\snyk_rules.mdc
+
+.idea
