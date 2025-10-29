@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://new_create_event_resource_dialog"]
+
+[ext_resource type="Script" path="res://addons/signal_flow/editor/ui/create_event_resource_dialog.gd" id="1_create_event_resource_dialog_script"]
+
+[node name="CreateEventResourceDialog" type="ConfirmationDialog"]
+script = ExtResource("1_create_event_resource_dialog_script")
+title = "Create New Event Resource"
+size = Vector2i(300, 150)
+ok_button_text = "Create"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EventNameLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Event Name (e.g. PlayerDied):"
+
+[node name="EventNameEdit" type="LineEdit" parent="VBoxContainer"]
+layout_mode = 2
+placeholder_text = "PlayerDied"
+
+[node name="DomainLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Domain (e.g. player):"
+
+[node name="DomainEdit" type="LineEdit" parent="VBoxContainer"]
+layout_mode = 2
+placeholder_text = "player"

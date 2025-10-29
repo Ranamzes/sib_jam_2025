@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://new_emit_event_dialog_with_script"]
+
+[ext_resource type="Script" path="res://addons/signal_flow/ui/emit_event_dialog.gd" id="1_emit_dialog_script"]
+
+[node name="EmitEventDialog" type="Window"]
+script = ExtResource("1_emit_dialog_script")
+title = "Emit Event"
+size = Vector2i(400, 300)
+
+[node name="TabContainer" type="TabContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="From New Emitter" type="VBoxContainer" parent="TabContainer"]
+layout_mode = 2
+
+[node name="EventResourcePicker" type="EditorResourcePicker" parent="TabContainer/From New Emitter"]
+layout_mode = 2
+toggle_mode = false
+flat = false
+editable = true
+resource_type = "EventResource"
+
+[node name="From Built-in Signal" type="VBoxContainer" parent="TabContainer"]
+layout_mode = 2
+
+[node name="SearchLineEdit" type="LineEdit" parent="TabContainer/From Built-in Signal"]
+layout_mode = 2
+placeholder_text = "Search signals..."
+
+[node name="SignalList" type="ItemList" parent="TabContainer/From Built-in Signal"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CreateFromSignalButton" type="Button" parent="TabContainer/From Built-in Signal"]
+layout_mode = 2
+text = "Create Event from Signal"

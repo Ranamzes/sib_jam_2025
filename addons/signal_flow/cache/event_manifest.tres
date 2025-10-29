@@ -1,0 +1,4 @@
+[gd_resource type="EventManifest" format=3 uid="uid://placeholder_event_manifest_uid"]
+
+[resource]
+events = {}
