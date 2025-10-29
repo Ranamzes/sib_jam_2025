@@ -5,6 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c6b2517f-4267-42d9-ac76-432e5c25b1e6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/UI/main_menu/main_menu.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Logo.png.import" beforeDir="false" afterPath="$PROJECT_DIR$/Logo.png.import" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/addons/guide/editor/action_slot/action_value_type_axis1d.svg.import" beforeDir="false" afterPath="$PROJECT_DIR$/addons/guide/editor/action_slot/action_value_type_axis1d.svg.import" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/addons/guide/editor/action_slot/action_value_type_axis2d.svg.import" beforeDir="false" afterPath="$PROJECT_DIR$/addons/guide/editor/action_slot/action_value_type_axis2d.svg.import" afterDir="false" />
@@ -132,17 +135,6 @@
       <change beforePath="$PROJECT_DIR$/addons/guide_examples/touch/background.svg.import" beforeDir="false" afterPath="$PROJECT_DIR$/addons/guide_examples/touch/background.svg.import" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/addons/guide_examples/touch/placement_indicator/radial_progress.png.import" beforeDir="false" afterPath="$PROJECT_DIR$/addons/guide_examples/touch/placement_indicator/radial_progress.png.import" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/addons/guide_examples/virtual_cursor/pointer.svg.import" beforeDir="false" afterPath="$PROJECT_DIR$/addons/guide_examples/virtual_cursor/pointer.svg.import" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addons/sound_manager/dock/SoundManagerDock.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/addons/sound_manager/dock/SoundManagerDock.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addons/sound_manager/dock/assets/add_icon.svg.import" beforeDir="false" afterPath="$PROJECT_DIR$/addons/sound_manager/dock/assets/add_icon.svg.import" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addons/sound_manager/dock/assets/folder_icon.svg.import" beforeDir="false" afterPath="$PROJECT_DIR$/addons/sound_manager/dock/assets/folder_icon.svg.import" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addons/sound_manager/dock/assets/remove_icon.svg.import" beforeDir="false" afterPath="$PROJECT_DIR$/addons/sound_manager/dock/assets/remove_icon.svg.import" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addons/sound_manager/dock/assets/restore.svg.import" beforeDir="false" afterPath="$PROJECT_DIR$/addons/sound_manager/dock/assets/restore.svg.import" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addons/sound_manager/dock/assets/save_icon.svg.import" beforeDir="false" afterPath="$PROJECT_DIR$/addons/sound_manager/dock/assets/save_icon.svg.import" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addons/sound_manager/dock/assets/slider_grabber.svg.import" beforeDir="false" afterPath="$PROJECT_DIR$/addons/sound_manager/dock/assets/slider_grabber.svg.import" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addons/sound_manager/dock/assets/slider_grabber_highlighted.svg.import" beforeDir="false" afterPath="$PROJECT_DIR$/addons/sound_manager/dock/assets/slider_grabber_highlighted.svg.import" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addons/sound_manager/icon.png.import" beforeDir="false" afterPath="$PROJECT_DIR$/addons/sound_manager/icon.png.import" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addons/sound_manager/module/SoundManager.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/addons/sound_manager/module/SoundManager.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/main.tscn" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project.godot" beforeDir="false" afterPath="$PROJECT_DIR$/project.godot" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -150,31 +142,49 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DpaMonitoringSettings">
+    <option name="firstShow" value="false" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Dehedero&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Ranamzes/sib_jam_2025.git&quot;,
+    &quot;accountId&quot;: &quot;eab8e9a9-7b46-4a05-87f8-d44d0b56a459&quot;
+  }
+}</component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="34Qdg5xcybxyfBGXPybipESXup7" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;GdScript Start and Debug.Player GDScript.executor&quot;: &quot;Debug&quot;,
+    &quot;Native Executable.Editor.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;menus&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="GdScript Start and Debug.Player GDScript">
     <configuration name="Player GDScript" type="GDSCRIPT_DEBUG_RUN_CONFIGURATION" factoryName="GdScriptRunFactory" show_console_on_std_err="false" show_console_on_std_out="false" port="6006">
       <option name="address" value="127.0.0.1" />
@@ -187,13 +197,20 @@
       <method v="2" />
     </configuration>
     <configuration name="Editor" type="RunNativeExe" factoryName="Native Executable">
-      <option name="EXE_PATH" value="$PROJECT_DIR$/../Godot_v4.5.1-stable_win64.exe" />
+      <option name="EXE_PATH" value="$USER_HOME$/Documents/GoDot/Godot_v4.5.1-stable_win64.exe" />
       <option name="PROGRAM_PARAMETERS" value="--path &quot;./&quot; --editor" />
-      <option name="WORKING_DIRECTORY" value="C:\Users\Nikol\Documents\GoDot\sib_jam_2025" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\Nikol\RiderProjects\sib_jam_2025" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="PTY_MODE" value="Auto" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="GdScript Start and Debug.Player GDScript" />
+      <item itemvalue="Native Executable.Editor" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -210,8 +227,13 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

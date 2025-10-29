@@ -12,7 +12,7 @@ config_version=5
 
 config/name="SibJam2025"
 config/tags=PackedStringArray("2d", "platformer")
-run/main_scene="res://main.tscn"
+run/main_scene="uid://cc5okob6io75o"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="uid://dhwlmcglmf0kw"
 
@@ -24,6 +24,13 @@ FmodManager="*res://addons/fmod/FmodManager.gd"
 [debug]
 
 settings/gdscript/always_track_call_stacks=true
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=4
+window/stretch/mode="canvas_items"
 
 [dotnet]
 
