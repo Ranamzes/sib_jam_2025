@@ -1,6 +1,8 @@
 @tool
 extends VBoxContainer
 
+@export var attach_icon: Texture2D
+
 @onready var attach_button = $AttachButton
 
 var inspected_node: Node
@@ -10,6 +12,12 @@ var main_plugin: EditorPlugin # Reference to the main EditorPlugin
 func _ready():
 	attach_button.pressed.connect(self._on_attach_pressed)
 
+	if attach_icon:
+		attach_button.icon = attach_icon
+	else:
+		_set_default_icon()
+
+func _set_default_icon():
 	# Set the icon for the button
 	if editor_interface:
 		var editor_theme = editor_interface.get_editor_theme()
@@ -23,6 +31,9 @@ func set_inspected_node(node: Node):
 
 func set_editor_interface(interface: EditorInterface):
 	editor_interface = interface
+	if is_inside_tree() and attach_button:
+		if not attach_icon:
+			_set_default_icon()
 
 func set_main_plugin(plugin: EditorPlugin):
 	main_plugin = plugin

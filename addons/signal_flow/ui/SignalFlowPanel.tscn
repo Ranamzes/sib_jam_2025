@@ -1,6 +1,54 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=6 format=3 uid="uid://bc8da6dciliv7"]
 
-[ext_resource type="Script" path="res://addons/signal_flow/signal_flow_panel.gd" id="1_w8d1c"]
+[ext_resource type="Script" uid="uid://ol8itnywq6ir" path="res://addons/signal_flow/signal_flow_panel.gd" id="1_w8d1c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ecpyc"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nrnb6"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_07g0j"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.225, 0.225, 0.225, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uhv8r"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
 
 [node name="SignalFlowPanel" type="VBoxContainer"]
 script = ExtResource("1_w8d1c")
@@ -10,15 +58,46 @@ layout_mode = 2
 theme_override_constants/separation = 14
 alignment = 1
 
-[node name="EmitButton" type="Button" parent="HBoxContainer"]
+[node name="EmitButton" type="MenuButton" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_ecpyc")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_nrnb6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_07g0j")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_uhv8r")
 text = "Emit"
+flat = false
+switch_on_hover = true
+item_count = 2
+popup/item_0/text = "New Event..."
+popup/item_0/id = 0
+popup/item_1/text = "Existing Event..."
+popup/item_1/id = 1
 
 [node name="SubscribeButton" type="Button" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Subscribe"
+
+[node name="SelectExistingEventDialog" type="ConfirmationDialog" parent="."]
+oversampling_override = 1.0
+title = "Select Existing Event Resource"
+initial_position = 2
+size = Vector2i(400, 150)
+ok_button_text = "Select"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SelectExistingEventDialog"]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 392.0
+offset_bottom = 109.0
+
+[node name="Label" type="Label" parent="SelectExistingEventDialog/VBoxContainer"]
+layout_mode = 2
+text = "Select an EventResource:"
+
+[node name="EventResourcePicker" type="EditorResourcePicker" parent="SelectExistingEventDialog/VBoxContainer"]
+layout_mode = 2
 
 [node name="FileDialog" type="FileDialog" parent="."]
 oversampling_override = 1.0

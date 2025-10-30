@@ -44,7 +44,7 @@ func _parse_begin(object):
 		panel_instance = AttachScriptPanel.instantiate()
 
 	# Pass necessary references to the panel
-	panel_instance.set_inspected_node(object)
+	panel_instance.set("inspected_node", object)
 	if panel_instance.has_method("set_editor_interface"):
 		panel_instance.set_editor_interface(editor_interface)
 	if panel_instance.has_method("set_main_plugin"):
