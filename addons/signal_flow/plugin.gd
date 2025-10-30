@@ -6,12 +6,13 @@ const AUTOLOADS := {
 }
 
 const EventGenerator = preload("res://addons/signal_flow/editor/event_generator.gd")
-const SignalFlowStudioDock = preload("res://addons/signal_flow/editor/ui/SignalFlowStudioDock.tscn")
+#const SignalFlowStudioDock = preload("res://addons/signal_flow/editor/ui/SignalFlowStudioDock.tscn")
 const CreateEventResourceDialog = preload("res://addons/signal_flow/editor/ui/CreateEventResourceDialog.tscn")
+#const ContextMenuPlugin = preload("res://addons/signal_flow/editor/context_menu_plugin.gd")
 
 var inspector_plugin = preload("res://addons/signal_flow/signal_flow_inspector_plugin.gd").new()
 var event_generator: EventGenerator
-var signal_flow_dock: Control
+#var context_menu_plugin
 var _editor_interface: EditorInterface
 
 func _enter_tree():
@@ -26,29 +27,24 @@ func _enter_tree():
 	event_generator.generate_event_manifest()
 	_editor_interface.get_resource_filesystem().filesystem_changed.connect(event_generator.generate_event_manifest)
 
-	# Initialize and add SignalFlowStudioDock
-	signal_flow_dock = SignalFlowStudioDock.instantiate()
-	add_control_to_dock(EditorPlugin.DOCK_SLOT_LEFT_UL, signal_flow_dock)
-
-	# Add "Create New EventResource" to FileSystem dock context menu
-	_editor_interface.add_filesystem_plugin_item("Create New EventResource", Callable(self, "_on_create_event_resource_selected"))
+	# Initialize and add Context Menu Plugin
+	#context_menu_plugin = ContextMenuPlugin.new()
+	#context_menu_plugin.main_plugin = self
+	#add_context_menu_plugin(context_menu_plugin, "FileSystemDock")
 
 func _exit_tree():
 	remove_inspector_plugin(inspector_plugin)
 	_manage_autoloads(false)
+	
 	# Disconnect from filesystem_changed
 	if _editor_interface and _editor_interface.get_resource_filesystem().filesystem_changed.is_connected(event_generator.generate_event_manifest):
 		_editor_interface.get_resource_filesystem().filesystem_changed.disconnect(event_generator.generate_event_manifest)
 	event_generator = null
 
-	# Remove SignalFlowStudioDock
-	if signal_flow_dock:
-		remove_control_from_dock(signal_flow_dock)
-		signal_flow_dock.queue_free()
-		signal_flow_dock = null
-
-	# Remove "Create New EventResource" from FileSystem dock context menu
-	_editor_interface.remove_filesystem_plugin_item("Create New EventResource")
+	# Remove Context Menu Plugin
+	#if context_menu_plugin:
+	#	remove_context_menu_plugin(context_menu_plugin)
+	#	context_menu_plugin = null
 
 # Adds or removes the required singletons from the Autoload configuration using ProjectSettings.
 func _manage_autoloads(should_add: bool):

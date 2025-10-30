@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://c4gq4w2xlegyv"]
+[gd_scene load_steps=2 format=3]
 
-[ext_resource type="Script" uid="uid://dnl3dfcxrxe35" path="res://addons/signal_flow/ui/SignalFlowPanel.gd" id="1_w8d1c"]
+[ext_resource type="Script" path="res://addons/signal_flow/signal_flow_panel.gd" id="1_w8d1c"]
 
 [node name="SignalFlowPanel" type="VBoxContainer"]
 script = ExtResource("1_w8d1c")
@@ -28,7 +28,6 @@ size = Vector2i(500, 500)
 ok_button_text = "Select"
 file_mode = 0
 access = 2
-root_subfolder = "events"
 filters = PackedStringArray("*.tres ; Event Resource")
 
 [node name="NewEventDialog" type="ConfirmationDialog" parent="."]

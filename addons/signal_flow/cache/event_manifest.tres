@@ -1,4 +1,10 @@
-[gd_resource type="EventManifest" format=3 uid="uid://placeholder_event_manifest_uid"]
+[gd_resource type="Resource" script_class="EventManifest" load_steps=3 format=3 uid="uid://2fvrsgn6r751"]
+
+[ext_resource type="Resource" uid="uid://b5g5pwv4s33qj" path="res://systems/events/events/player_died.tres" id="1_ionpw"]
+[ext_resource type="Script" uid="uid://dy04ilbofkn8l" path="res://addons/signal_flow/cache/EventManifest.gd" id="2_o3o7t"]
 
 [resource]
-events = {}
+script = ExtResource("2_o3o7t")
+events = {
+"events_player_died": ExtResource("1_ionpw")
+}

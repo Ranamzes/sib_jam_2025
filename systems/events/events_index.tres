@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EventsIndex" load_steps=4 format=3 uid="uid://d2th1brd7rwdt"]
+
+[ext_resource type="Script" uid="uid://ddq58l482d057" path="res://addons/signal_flow/core/event_resource.gd" id="1_ebfhk"]
+[ext_resource type="Resource" uid="uid://b5g5pwv4s33qj" path="res://systems/events/events/player_died.tres" id="2_ha4ss"]
+[ext_resource type="Script" uid="uid://dafp50laykxsm" path="res://addons/signal_flow/core/events_index.gd" id="3_nb7yc"]
+
+[resource]
+script = ExtResource("3_nb7yc")
+provides = Array[ExtResource("1_ebfhk")]([ExtResource("2_ha4ss")])

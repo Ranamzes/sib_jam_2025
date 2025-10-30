@@ -20,6 +20,7 @@ config/icon="uid://dhwlmcglmf0kw"
 
 GUIDE="*res://addons/guide/guide.gd"
 FmodManager="*res://addons/fmod/FmodManager.gd"
+EventHub="*res://addons/signal_flow/core/event_hub.gd"
 
 [debug]
 
