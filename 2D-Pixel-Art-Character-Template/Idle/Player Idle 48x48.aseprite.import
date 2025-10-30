@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://clivrahtjphqc"
+path="res://.godot/imported/Player Idle 48x48.aseprite-bb2d2458dee76d1db00096348b91bb45.res"
+
+[deps]
+
+source_file="res://2D-Pixel-Art-Character-Template/Idle/Player Idle 48x48.aseprite"
+dest_files=["res://.godot/imported/Player Idle 48x48.aseprite-bb2d2458dee76d1db00096348b91bb45.res"]
+
+[params]
+

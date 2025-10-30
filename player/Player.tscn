@@ -1,18 +1,250 @@
-[gd_scene load_steps=4 format=3 uid="uid://bgrwxmc03jfth"]
+[gd_scene load_steps=44 format=3 uid="uid://bgrwxmc03jfth"]
 
-[ext_resource type="Script" uid="uid://bv2ba54ctxqgo" path="res://systems/UltimatePlatformerController.gd" id="1_3c3w1"]
-[ext_resource type="Texture2D" uid="uid://dhwlmcglmf0kw" path="res://Logo.png" id="1_ulp21"]
+[ext_resource type="Texture2D" uid="uid://b3pj4qb62wavg" path="res://2D-Pixel-Art-Character-Template/Idle/Player Idle 48x48.png" id="1_2m0d2"]
+[ext_resource type="Script" uid="uid://chbr6mrhj0l4h" path="res://player/components/player_input_component.gd" id="1_5p1j2"]
+[ext_resource type="Script" uid="uid://cc2hfjtrqrxyt" path="res://player/components/stats_component.gd" id="2_fwm3j"]
+[ext_resource type="Resource" uid="uid://m6k6p2jv0yfa" path="res://player/player_mapping_context.tres" id="2_v4f8b"]
+[ext_resource type="Script" uid="uid://dpepr0ylg6wlu" path="res://player/components/state_component.gd" id="3_48vxt"]
+[ext_resource type="Resource" uid="uid://dqicdbc6nfv7e" path="res://player/actions/move.tres" id="3_t8epa"]
+[ext_resource type="Script" uid="uid://bk8fxjug56eke" path="res://player/components/velocity_component.gd" id="4_15d8v"]
+[ext_resource type="Resource" path="res://player/actions/jump.tres" id="4_w24id"]
+[ext_resource type="Resource" path="res://player/actions/dash.tres" id="5_uewl2"]
+[ext_resource type="Script" uid="uid://do4aaxaceajyc" path="res://systems/movement_system.gd" id="5_wpsk1"]
+[ext_resource type="Resource" path="res://player/actions/crouch.tres" id="6_ofhxi"]
+[ext_resource type="Script" uid="uid://l5j61nbvrr77" path="res://systems/gravity_system.gd" id="6_q1xkv"]
+[ext_resource type="Script" uid="uid://byabmo4wpt7db" path="res://systems/jump_system.gd" id="7_rq2a3"]
+[ext_resource type="Resource" path="res://player/actions/latch.tres" id="7_yu5hk"]
+[ext_resource type="Script" uid="uid://4hcakwlm1h5y" path="res://systems/dash_system.gd" id="8_m8d1c"]
+[ext_resource type="Script" uid="uid://c4c7a116tmbm4" path="res://systems/animation_system.gd" id="9_h5g2s"]
+[ext_resource type="Script" uid="uid://bln6wd364xxht" path="res://player/stats/movement_stats.gd" id="9_yu5hk"]
+[ext_resource type="Script" uid="uid://sui2aet7dpfb" path="res://player/stats/jump_stats.gd" id="10_q6miu"]
+[ext_resource type="Script" uid="uid://4xcpj0x4w4cj" path="res://player/stats/dash_stats.gd" id="11_mlfor"]
+[ext_resource type="Script" uid="uid://cmait6jdhgxn3" path="res://player/stats/wall_interaction_stats.gd" id="12_2m0d2"]
+[ext_resource type="Script" uid="uid://kcklui0uao1d" path="res://player/animation_profile.gd" id="13_8nth8"]
+[ext_resource type="Script" uid="uid://7w4jww1v0oqm" path="res://systems/physics_integration_system.gd" id="14_abcde"]
+[ext_resource type="Script" uid="uid://chtg2tk7ch28l" path="res://systems/wall_system.gd" id="15_fghij"]
+[ext_resource type="Script" uid="uid://grixmeduiqnt" path="res://player/components/action_input_component.gd" id="16_new_script_uid"]
+[ext_resource type="Script" uid="uid://sgyr4yrwqfbe" path="res://systems/crouch_system.gd" id="20_stbqk"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_3c3w1"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y617q"]
+size = Vector2(24, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8eyfg"]
+atlas = ExtResource("1_2m0d2")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76mgg"]
+atlas = ExtResource("1_2m0d2")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddnt4"]
+atlas = ExtResource("1_2m0d2")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0lmo"]
+atlas = ExtResource("1_2m0d2")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_234y4"]
+atlas = ExtResource("1_2m0d2")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8vxv"]
+atlas = ExtResource("1_2m0d2")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhjxl"]
+atlas = ExtResource("1_2m0d2")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2u3w"]
+atlas = ExtResource("1_2m0d2")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uyl0s"]
+atlas = ExtResource("1_2m0d2")
+region = Rect2(384, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vud74"]
+atlas = ExtResource("1_2m0d2")
+region = Rect2(432, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8cy8x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8eyfg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76mgg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ddnt4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a0lmo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_234y4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u8vxv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhjxl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y2u3w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uyl0s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vud74")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_610ub"]
+
+[sub_resource type="Resource" id="Resource_ayguc"]
+script = ExtResource("9_yu5hk")
+metadata/_custom_type_script = "uid://bln6wd364xxht"
+
+[sub_resource type="Resource" id="Resource_t7u8x"]
+script = ExtResource("10_q6miu")
+jump_height = 3.286
+metadata/_custom_type_script = "uid://sui2aet7dpfb"
+
+[sub_resource type="Resource" id="Resource_lnwue"]
+script = ExtResource("11_mlfor")
+dash_type = 1
+metadata/_custom_type_script = "uid://4xcpj0x4w4cj"
+
+[sub_resource type="Resource" id="Resource_7tnb4"]
+script = ExtResource("12_2m0d2")
+can_wall_jump = true
+can_wall_latch = true
+metadata/_custom_type_script = "uid://cmait6jdhgxn3"
+
+[sub_resource type="Resource" id="Resource_2q4k2"]
+script = ExtResource("13_8nth8")
+metadata/_custom_type_script = "uid://kcklui0uao1d"
 
 [node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_3c3w1")
-metadata/_custom_type_script = "uid://bv2ba54ctxqgo"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_3c3w1")
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_y617q")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 1.9999981)
-scale = Vector2(0.21935484, 0.21129031)
-texture = ExtResource("1_ulp21")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8cy8x")
+autoplay = "default"
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_610ub")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Components" type="Node" parent="."]
+
+[node name="ActionInputComponent" type="Node" parent="Components"]
+script = ExtResource("16_new_script_uid")
+
+[node name="PlayerInputComponent" type="Node" parent="Components" node_paths=PackedStringArray("_action_input_component")]
+script = ExtResource("1_5p1j2")
+_action_input_component = NodePath("../ActionInputComponent")
+mapping_context = ExtResource("2_v4f8b")
+move_action = ExtResource("3_t8epa")
+jump_action = ExtResource("4_w24id")
+dash_action = ExtResource("5_uewl2")
+crouch_action = ExtResource("6_ofhxi")
+latch_action = ExtResource("7_yu5hk")
+metadata/_custom_type_script = "uid://chbr6mrhj0l4h"
+
+[node name="StatsComponent" type="Node" parent="Components"]
+script = ExtResource("2_fwm3j")
+movement = SubResource("Resource_ayguc")
+jump = SubResource("Resource_t7u8x")
+dash = SubResource("Resource_lnwue")
+wall = SubResource("Resource_7tnb4")
+animation = SubResource("Resource_2q4k2")
+metadata/_custom_type_script = "uid://cc2hfjtrqrxyt"
+
+[node name="VelocityComponent" type="Node" parent="Components"]
+script = ExtResource("4_15d8v")
+metadata/_custom_type_script = "uid://bk8fxjug56eke"
+
+[node name="StateComponent" type="Node" parent="Components"]
+script = ExtResource("3_48vxt")
+metadata/_custom_type_script = "uid://dpepr0ylg6wlu"
+
+[node name="Systems" type="Node" parent="."]
+
+[node name="AnimationSystem" type="Node" parent="Systems" node_paths=PackedStringArray("animation_tree", "player_character", "player_sprite", "state_comp", "velocity_comp")]
+script = ExtResource("9_h5g2s")
+animation_tree = NodePath("../../AnimationTree")
+player_character = NodePath("../..")
+player_sprite = NodePath("../../AnimatedSprite2D")
+state_comp = NodePath("../../Components/StateComponent")
+velocity_comp = NodePath("../../Components/VelocityComponent")
+metadata/_custom_type_script = "uid://c4c7a116tmbm4"
+
+[node name="CrouchSystem" type="Node" parent="Systems" node_paths=PackedStringArray("_action_input_comp", "_state_comp", "_collider")]
+script = ExtResource("20_stbqk")
+_action_input_comp = NodePath("../../Components/ActionInputComponent")
+_state_comp = NodePath("../../Components/StateComponent")
+_collider = NodePath("../../CollisionShape2D")
+
+[node name="DashSystem" type="Node" parent="Systems" node_paths=PackedStringArray("player_character", "_velocity_comp", "_state_comp", "_stats_comp", "_action_input_comp")]
+script = ExtResource("8_m8d1c")
+player_character = NodePath("../..")
+_velocity_comp = NodePath("../../Components/VelocityComponent")
+_state_comp = NodePath("../../Components/StateComponent")
+_stats_comp = NodePath("../../Components/StatsComponent")
+_action_input_comp = NodePath("../../Components/ActionInputComponent")
+metadata/_custom_type_script = "uid://4hcakwlm1h5y"
+
+[node name="GravitySystem" type="Node" parent="Systems" node_paths=PackedStringArray("_velocity_component", "_state_component", "_stats_component")]
+script = ExtResource("6_q1xkv")
+_velocity_component = NodePath("../../Components/VelocityComponent")
+_state_component = NodePath("../../Components/StateComponent")
+_stats_component = NodePath("../../Components/StatsComponent")
+metadata/_custom_type_script = "uid://l5j61nbvrr77"
+
+[node name="JumpSystem" type="Node" parent="Systems" node_paths=PackedStringArray("player_character", "_velocity_comp", "_state_comp", "_stats_comp", "_action_input_comp")]
+script = ExtResource("7_rq2a3")
+player_character = NodePath("../..")
+_velocity_comp = NodePath("../../Components/VelocityComponent")
+_state_comp = NodePath("../../Components/StateComponent")
+_stats_comp = NodePath("../../Components/StatsComponent")
+_action_input_comp = NodePath("../../Components/ActionInputComponent")
+metadata/_custom_type_script = "uid://byabmo4wpt7db"
+
+[node name="MovementSystem" type="Node" parent="Systems" node_paths=PackedStringArray("player_character", "_velocity_component", "_stats_component", "_action_input_component", "_state_component")]
+script = ExtResource("5_wpsk1")
+player_character = NodePath("../..")
+_velocity_component = NodePath("../../Components/VelocityComponent")
+_stats_component = NodePath("../../Components/StatsComponent")
+_action_input_component = NodePath("../../Components/ActionInputComponent")
+_state_component = NodePath("../../Components/StateComponent")
+metadata/_custom_type_script = "uid://do4aaxaceajyc"
+
+[node name="WallSystem" type="Node" parent="Systems" node_paths=PackedStringArray("player_character", "_velocity_comp", "_state_comp", "_stats_comp", "_action_input_comp")]
+script = ExtResource("15_fghij")
+player_character = NodePath("../..")
+_velocity_comp = NodePath("../../Components/VelocityComponent")
+_state_comp = NodePath("../../Components/StateComponent")
+_stats_comp = NodePath("../../Components/StatsComponent")
+_action_input_comp = NodePath("../../Components/ActionInputComponent")
+metadata/_custom_type_script = "uid://chtg2tk7ch28l"
+
+[node name="PhysicsIntegrationSystem" type="Node" parent="Systems" node_paths=PackedStringArray("player_character", "_velocity_comp", "_state_comp")]
+script = ExtResource("14_abcde")
+player_character = NodePath("../..")
+_velocity_comp = NodePath("../../Components/VelocityComponent")
+_state_comp = NodePath("../../Components/StateComponent")
+metadata/_custom_type_script = "uid://7w4jww1v0oqm"

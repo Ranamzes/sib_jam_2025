@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://pxnl5voqic54"
+path="res://.godot/imported/player ledge climb 48x48.aseprite-340eb386824bf4bca212d22ad3aae34f.res"
+
+[deps]
+
+source_file="res://docs/2D-Pixel-Art-Character-Template/Ledge Grab-Climb/player ledge climb 48x48.aseprite"
+dest_files=["res://.godot/imported/player ledge climb 48x48.aseprite-340eb386824bf4bca212d22ad3aae34f.res"]
+
+[params]
+

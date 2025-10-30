@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cfly4acyilrsi"
+path="res://.godot/imported/player climb-back 48x48.aseprite-380cd43ad01c01859a746b6da33c1f6a.res"
+
+[deps]
+
+source_file="res://docs/2D-Pixel-Art-Character-Template/Climb (facing back of player)/player climb-back 48x48.aseprite"
+dest_files=["res://.godot/imported/player climb-back 48x48.aseprite-380cd43ad01c01859a746b6da33c1f6a.res"]
+
+[params]
+

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://c4yquhcq70uyl"
+path="res://.godot/imported/katana walk.aseprite-a0f40f0ced58bb182d1442b458b6fc81.res"
+
+[deps]
+
+source_file="res://2D-Pixel-Art-Character-Template/Katana walk/katana walk.aseprite"
+dest_files=["res://.godot/imported/katana walk.aseprite-a0f40f0ced58bb182d1442b458b6fc81.res"]
+
+[params]
+

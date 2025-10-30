@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cevslnx7e663i"
+path="res://.godot/imported/player sword atk 64x64.aseprite-ca7e466aa928a485fa71cd27ecb82b59.res"
+
+[deps]
+
+source_file="res://docs/2D-Pixel-Art-Character-Template/Sword Attack/player sword atk 64x64.aseprite"
+dest_files=["res://.godot/imported/player sword atk 64x64.aseprite-ca7e466aa928a485fa71cd27ecb82b59.res"]
+
+[params]
+

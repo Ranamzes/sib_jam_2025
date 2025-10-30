@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://2jt7yyyyaytd"
+path="res://.godot/imported/dash.aseprite-a7b8e483ddfdda1d5a50407e118e532f.res"
+
+[deps]
+
+source_file="res://2D-Pixel-Art-Character-Template/Dash/dash.aseprite"
+dest_files=["res://.godot/imported/dash.aseprite-a7b8e483ddfdda1d5a50407e118e532f.res"]
+
+[params]
+

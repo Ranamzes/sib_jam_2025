@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://ctnaask680x0t"
+path="res://.godot/imported/player jump 48x48.aseprite-4da4faedf292ab803a5fb046bb9b980b.res"
+
+[deps]
+
+source_file="res://2D-Pixel-Art-Character-Template/Jump/player jump 48x48.aseprite"
+dest_files=["res://.godot/imported/player jump 48x48.aseprite-4da4faedf292ab803a5fb046bb9b980b.res"]
+
+[params]
+

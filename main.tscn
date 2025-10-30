@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://x662pd3helg5"]
+[gd_scene load_steps=3 format=4 uid="uid://x662pd3helg5"]
 
-[ext_resource type="Script" uid="uid://d3fxmu3j08id3" path="res://systems/fmod_system/fmod_logic_system.gd" id="1_fmod_system"]
-[ext_resource type="PackedScene" uid="uid://bgrwxmc03jfth" path="res://player/Player.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://b2w4yqj1v2x0k" path="res://player/Player.tscn" id="2_0xm2m"]
+[ext_resource type="TileSet" uid="uid://mpn3hiboo4y7" path="res://tilesets/test_tileset.tres" id="3_h2yge"]
 
 [node name="Main" type="Node"]
 
-[node name="FmodLogicSystem" type="Node" parent="."]
-script = ExtResource("1_fmod_system")
-
 [node name="Player" parent="." instance=ExtResource("2_0xm2m")]
+position = Vector2(232, 147)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAALAAwAAAAQAAwAAAAMAAwAAAAQAAwAAAANAAwAAAAQAAwAAAAOAAwAAAAQAAwAAAAPAAwAAAAQAAwAAAAQAAwAAAAQAAwAAAARAAwAAAAQAAwAAAASAAwAAAAQAAwAAAATAAwAAAAQAAwAAAAbAAwAAAAQAAwAAAAcAAwAAAAQAAwAAAAdAAwAAAAQAAwAAAAeAAwAAAAQAAwAAAAfAAwAAAAQAAwAAAAgAAwAAAAQAAwAAAAhAAwAAAAQAAwAAAAiAAwAAAAQAAwAAAAaAAwAAAAQAAwAAAAZAAwAAAAQAAwAAAAjAAwAAAAQAAwAAAAkAAwAAAAQAAwAAAAlAAwAAAAQAAwAAAAlAAsAAAAQAAwAAAAlAAoAAAAQAAwAAAAlAAkAAAAQAAwAAAAlAAgAAAAQAAwAAAAlAAcAAAAQAAwAAAAlAAYAAAAQAAwAAAAdAAkAAAAQAAwAAAAeAAkAAAAQAAwAAAAfAAkAAAAQAAwAAAAgAAkAAAAQAAwAAAAhAAkAAAAQAAwAAAAiAAkAAAAQAAwAAAALAAsAAAAQAAwAAAALAAoAAAAQAAwAAAALAAkAAAAQAAwAAAALAAgAAAAQAAwAAAALAAcAAAAQAAwAAAALAAYAAAAQAAwAAAALAAUAAAAQAAwAAAA=")
+tile_set = ExtResource("3_h2yge")
