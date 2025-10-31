@@ -1,12 +1,13 @@
-[gd_scene format=3 uid="uid://new_create_event_resource_dialog"]
+[gd_scene load_steps=2 format=3 uid="uid://dwfsc58lmpve8"]
 
-[ext_resource type="Script" path="res://addons/signal_flow/editor/ui/create_event_resource_dialog.gd" id="1_create_event_resource_dialog_script"]
+[ext_resource type="Script" uid="uid://ctxavaukpec3" path="res://addons/signal_flow/editor/ui/create_event_resource_dialog.gd" id="1_create_event_resource_dialog_script"]
 
 [node name="CreateEventResourceDialog" type="ConfirmationDialog"]
-script = ExtResource("1_create_event_resource_dialog_script")
+oversampling_override = 1.0
 title = "Create New Event Resource"
-size = Vector2i(300, 150)
+size = Vector2i(300, 175)
 ok_button_text = "Create"
+script = ExtResource("1_create_event_resource_dialog_script")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchors_preset = 15
@@ -15,7 +16,7 @@ anchor_bottom = 1.0
 offset_left = 8.0
 offset_top = 8.0
 offset_right = -8.0
-offset_bottom = -40.0
+offset_bottom = -49.0
 grow_horizontal = 2
 grow_vertical = 2
 

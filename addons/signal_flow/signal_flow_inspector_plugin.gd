@@ -9,6 +9,7 @@ var editor_interface: EditorInterface
 var main_plugin: EditorPlugin
 
 func set_editor_interface(interface: EditorInterface):
+	print("InspectorPlugin: set_editor_interface called with: ", interface)
 	editor_interface = interface
 
 func set_main_plugin(plugin: EditorPlugin):
@@ -46,6 +47,7 @@ func _parse_begin(object):
 	# Pass necessary references to the panel
 	panel_instance.set("inspected_node", object)
 	if panel_instance.has_method("set_editor_interface"):
+		print("InspectorPlugin: Calling set_editor_interface on panel with: ", editor_interface)
 		panel_instance.set_editor_interface(editor_interface)
 	if panel_instance.has_method("set_main_plugin"):
 		panel_instance.set_main_plugin(main_plugin)

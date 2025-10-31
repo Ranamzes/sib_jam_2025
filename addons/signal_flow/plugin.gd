@@ -8,11 +8,11 @@ const AUTOLOADS := {
 const EventGenerator = preload("res://addons/signal_flow/editor/event_generator.gd")
 #const SignalFlowStudioDock = preload("res://addons/signal_flow/editor/ui/SignalFlowStudioDock.tscn")
 const CreateEventResourceDialog = preload("res://addons/signal_flow/editor/ui/CreateEventResourceDialog.tscn")
-#const ContextMenuPlugin = preload("res://addons/signal_flow/editor/context_menu_plugin.gd")
+const ContextMenuPlugin = preload("res://addons/signal_flow/editor/context_menu_plugin.gd")
 
 var inspector_plugin = preload("res://addons/signal_flow/signal_flow_inspector_plugin.gd").new()
 var event_generator: EventGenerator
-#var context_menu_plugin
+var context_menu_plugin
 var _editor_interface: EditorInterface
 
 func _enter_tree():
@@ -28,9 +28,9 @@ func _enter_tree():
 	_editor_interface.get_resource_filesystem().filesystem_changed.connect(event_generator.generate_event_manifest)
 
 	# Initialize and add Context Menu Plugin
-	#context_menu_plugin = ContextMenuPlugin.new()
-	#context_menu_plugin.main_plugin = self
-	#add_context_menu_plugin(context_menu_plugin, "FileSystemDock")
+	context_menu_plugin = ContextMenuPlugin.new()
+	context_menu_plugin.main_plugin = self
+	add_context_menu_plugin(EditorContextMenuPlugin.CONTEXT_SLOT_FILESYSTEM, context_menu_plugin)
 
 func _exit_tree():
 	remove_inspector_plugin(inspector_plugin)
@@ -42,9 +42,9 @@ func _exit_tree():
 	event_generator = null
 
 	# Remove Context Menu Plugin
-	#if context_menu_plugin:
-	#	remove_context_menu_plugin(context_menu_plugin)
-	#	context_menu_plugin = null
+	if context_menu_plugin:
+		remove_context_menu_plugin(context_menu_plugin)
+		context_menu_plugin = null
 
 # Adds or removes the required singletons from the Autoload configuration using ProjectSettings.
 func _manage_autoloads(should_add: bool):

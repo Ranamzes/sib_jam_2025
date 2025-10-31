@@ -2,70 +2,79 @@
 extends VBoxContainer
 
 const EventResource = preload("res://addons/signal_flow/core/event_resource.gd")
+const EmitEventPopupScene = preload("res://addons/signal_flow/ui/EmitEventPopup.tscn")
 
-@onready var emit_button: MenuButton = $HBoxContainer/EmitButton
-@onready var subscribe_button: Button = $HBoxContainer/SubscribeButton
-@onready var new_event_dialog = $NewEventDialog
-@onready var event_name_edit = $NewEventDialog/VBoxContainer/EventNameEdit
-@onready var file_dialog = $FileDialog
-@onready var select_existing_event_dialog = $SelectExistingEventDialog
-@onready var event_resource_picker = $SelectExistingEventDialog/VBoxContainer/EventResourcePicker
+var emit_event_button: Button
+var subscribe_button: Button
+var new_event_dialog: ConfirmationDialog
+var event_name_edit: LineEdit
+var file_dialog: FileDialog
+var select_existing_event_dialog: ConfirmationDialog
+var event_resource_picker: EditorResourcePicker
 
 var inspected_node: Node
 var editor_interface: EditorInterface
 var main_plugin: EditorPlugin
-var _selection_mode = "" # Renamed from _file_dialog_mode
+var _selection_mode: String = ""
+var _emit_event_popup: PopupPanel # We will now instantiate this lazily
 
 func _ready():
-	# Copy style from a real button to make the MenuButton look the same
-	emit_button.add_theme_stylebox_override("normal", subscribe_button.get_theme_stylebox("normal"))
-	emit_button.add_theme_stylebox_override("hover", subscribe_button.get_theme_stylebox("hover"))
-	emit_button.add_theme_stylebox_override("pressed", subscribe_button.get_theme_stylebox("pressed"))
-	emit_button.add_theme_stylebox_override("disabled", subscribe_button.get_theme_stylebox("disabled"))
+	# Get node references manually to make initialization order robust
+	emit_event_button = $HBoxContainer/EmitEventButton
+	subscribe_button = $HBoxContainer/SubscribeButton
+	new_event_dialog = $NewEventDialog
+	event_name_edit = $NewEventDialog/VBoxContainer/EventNameEdit
+	file_dialog = $FileDialog
+	select_existing_event_dialog = $SelectExistingEventDialog
+	event_resource_picker = $SelectExistingEventDialog/VBoxContainer/EventResourcePicker
 
-	_set_default_icon(emit_button)
-	_set_default_icon(subscribe_button)
-
+	# Connect signals synchronously. This is now safe because we removed await.
+	emit_event_button.pressed.connect(Callable(self, "_on_emit_button_pressed"))
 	subscribe_button.pressed.connect(Callable(self, "_on_subscribe_pressed"))
-	# file_dialog.file_selected.connect(_on_file_selected) # No longer used for existing event selection
 	new_event_dialog.confirmed.connect(Callable(self, "_on_new_event_dialog_confirmed"))
-
 	select_existing_event_dialog.confirmed.connect(Callable(self, "_on_select_existing_event_confirmed"))
 
-	var emit_popup_menu = emit_button.get_popup()
-	emit_popup_menu.clear() # Prevent duplication
-	emit_popup_menu.add_item("New Event...", 0)
-	emit_popup_menu.add_item("Existing Event...", 1)
-	emit_popup_menu.id_pressed.connect(Callable(self, "_on_emit_menu_id_pressed"))
-
+	# Set icons if the interface is already available, otherwise it will be set by the setter.
+	_set_default_icon(emit_event_button)
+	_set_default_icon(subscribe_button)
 
 func _on_subscribe_pressed():
 	_selection_mode = "subscribe"
 	select_existing_event_dialog.popup_centered()
 
-func _on_emit_menu_id_pressed(id):
-	match id:
-		0: # New Event...
-			new_event_dialog.popup_centered()
-		1: # Existing Event...
-			_selection_mode = "emit"
-			select_existing_event_dialog.popup_centered()
+func _on_emit_button_pressed():
+	# Lazy initialization: create the popup only if it doesn't exist yet.
+	if not is_instance_valid(_emit_event_popup):
+		_emit_event_popup = EmitEventPopupScene.instantiate()
+		add_child(_emit_event_popup)
+		# We must wait for it to be ready before configuring it.
+		await _emit_event_popup.ready
+		_emit_event_popup.set_editor_interface(editor_interface)
+		_emit_event_popup.set_inspected_node(inspected_node)
+		_emit_event_popup.event_selected.connect(Callable(self, "_on_emit_event_selected"))
+		_emit_event_popup.new_event_requested.connect(Callable(self, "_on_emit_new_event_requested"))
 
-# This function is no longer used for existing event selection via FileDialog
-# func _on_file_selected(path: String):
-# 	if path.is_empty():
-# 		print("File selection canceled.")
-# 		return
+	var popup_panel_instance: PopupPanel = _emit_event_popup as PopupPanel
+	if popup_panel_instance:
+		var button_global_pos: Vector2 = emit_event_button.get_screen_position()
+		var button_size: Vector2 = emit_event_button.size
 
-# 	if _selection_mode == "subscribe":
-# 		print("Selected event resource for subscription: ", path)
-# 		_add_on_event_to_script(_get_script_path_of_inspected_node(), path)
-# 	elif _selection_mode == "emit":
-# 		print("Selected event resource for emit: ", path)
-# 		_add_export_var_to_script(_get_script_path_of_inspected_node(), path.get_file().get_basename().to_snake_case(), path)
+		# Calculate the desired global position for the popup
+		var popup_global_pos = button_global_pos + Vector2(0, button_size.y)
+
+		# Show the popup at the calculated global position
+		popup_panel_instance.popup(Rect2(popup_global_pos, popup_panel_instance.size))
+	else:
+		push_error("SignalFlow: _emit_event_popup is not a PopupPanel instance.")
+
+func _on_emit_event_selected(resource_path: String):
+	_add_export_var_to_script(_get_script_path_of_inspected_node(), resource_path.get_file().get_basename().to_snake_case(), resource_path)
+
+func _on_emit_new_event_requested():
+	new_event_dialog.popup_centered()
 
 func _on_select_existing_event_confirmed():
-	var selected_resource = event_resource_picker.get_edited_resource()
+	var selected_resource: Resource = event_resource_picker.get_edited_resource()
 	if not selected_resource:
 		push_error("SignalFlow: No event resource selected.")
 		return
@@ -74,27 +83,23 @@ func _on_select_existing_event_confirmed():
 		push_error("SignalFlow: Selected resource is not an EventResource.")
 		return
 
-	var resource_path = selected_resource.resource_path
+	var resource_path: String = selected_resource.resource_path
 	if resource_path.is_empty():
 		push_error("SignalFlow: Selected EventResource has no path.")
 		return
 
 	if _selection_mode == "subscribe":
-		print("Selected event resource for subscription: ", resource_path)
 		_add_on_event_to_script(_get_script_path_of_inspected_node(), resource_path)
-	elif _selection_mode == "emit":
-		print("Selected event resource for emit: ", resource_path)
-		_add_export_var_to_script(_get_script_path_of_inspected_node(), resource_path.get_file().get_basename().to_snake_case(), resource_path)
 
 
 func _on_new_event_dialog_confirmed():
-	var event_name = event_name_edit.text
+	var event_name: String = event_name_edit.text
 	if event_name.is_empty():
 		push_error("SignalFlow: Event name cannot be empty.")
 		return
 
-	var resource_dir = "res://events/"
-	var resource_path = resource_dir + event_name.to_snake_case() + ".tres"
+	var resource_dir: String = "res://events/"
+	var resource_path: String = resource_dir + event_name.to_snake_case() + ".tres"
 
 	if FileAccess.file_exists(resource_path):
 		push_error("SignalFlow: Event resource '%s' already exists." % resource_path)
@@ -102,19 +107,18 @@ func _on_new_event_dialog_confirmed():
 
 	# Ensure the directory exists
 	if not DirAccess.dir_exists_absolute(resource_dir):
-		var error = DirAccess.make_dir_absolute(resource_dir)
+		var error: int = DirAccess.make_dir_absolute(resource_dir)
 		if error != OK:
 			push_error("SignalFlow: Failed to create directory '%s': %s" % [resource_dir, error])
 			return
 
-	var new_event = EventResource.new()
+	var new_event: EventResource = EventResource.new()
 	new_event.domain = "default" # Placeholder domain
-	var save_error = ResourceSaver.save(new_event, resource_path)
+	var save_error: int = ResourceSaver.save(new_event, resource_path)
 	if save_error != OK:
 		push_error("SignalFlow: Failed to save new event resource: %s" % save_error)
 		return
 
-	print("SignalFlow: Created new event resource: %s" % resource_path)
 	_add_export_var_to_script(_get_script_path_of_inspected_node(), event_name.to_snake_case(), resource_path)
 
 
@@ -124,29 +128,29 @@ func _add_export_var_to_script(script_path: String, base_var_name: String, resou
 		push_error("SignalFlow: No script attached to the inspected node.")
 		return
 
-	var script_code = ""
-	var script_file = FileAccess.open(script_path, FileAccess.READ)
+	var script_code: String = ""
+	var script_file: FileAccess = FileAccess.open(script_path, FileAccess.READ)
 	if not script_file:
 		push_error("SignalFlow: Failed to open script for modification: %s" % script_path)
 		return
 	script_code = script_file.get_as_text()
 	script_file.close()
 
-	var var_name = base_var_name
-	var counter = 0
+	var var_name: String = base_var_name
+	var counter: int = 0
 	while script_code.find("var %s:" % var_name) != -1: # Check if var name already exists
 		counter += 1
 		var_name = "%s_%d" % [base_var_name, counter]
 
-	var new_line = "\n@export var %s: EventResource = preload(\"%s\") # SignalFlow Generated\n" % [var_name, resource_path]
+	var new_line: String = "\n@export var %s: EventResource = preload(\"%s\") # SignalFlow Generated\n" % [var_name, resource_path]
 
 	# Find insertion point: after extends or at top if no extends, but after class_name
-	var insert_pos = -1
-	var extends_pos = script_code.find("extends")
+	var insert_pos: int = -1
+	var extends_pos: int = script_code.find("extends")
 	if extends_pos != -1:
 		insert_pos = script_code.find("\n", extends_pos) + 1
 	else:
-		var class_name_pos = script_code.find("class_name")
+		var class_name_pos: int = script_code.find("class_name")
 		if class_name_pos != -1:
 			insert_pos = script_code.find("\n", class_name_pos) + 1
 		else:
@@ -163,7 +167,6 @@ func _add_export_var_to_script(script_path: String, base_var_name: String, resou
 		return
 	script_file.store_string(script_code)
 	script_file.close()
-	print("SignalFlow: Added export var '%s' to script '%s'." % [var_name, script_path])
 
 
 # Helper function to add @on_event to the script
@@ -172,23 +175,23 @@ func _add_on_event_to_script(script_path: String, event_resource_path: String):
 		push_error("SignalFlow: No script attached to the inspected node.")
 		return
 
-	var script_code = ""
-	var script_file = FileAccess.open(script_path, FileAccess.READ)
+	var script_code: String = ""
+	var script_file: FileAccess = FileAccess.open(script_path, FileAccess.READ)
 	if not script_file:
 		push_error("SignalFlow: Failed to open script for modification: %s" % script_path)
 		return
 	script_code = script_file.get_as_text()
 	script_file.close()
 
-	var event_id = event_resource_path.get_file().get_basename().to_snake_case() # simplified event ID for now
-	var handler_name = "_on_%s_event" % event_id
+	var event_id: String = event_resource_path.get_file().get_basename().to_snake_case() # simplified event ID for now
+	var handler_name: String = "_on_%s_event" % event_id
 
 	# Check if handler function already exists
 	if script_code.find("func %s(" % handler_name) != -1:
 		push_error("SignalFlow: Function '%s' already exists in script." % handler_name)
 		return
 
-	var new_content_to_add = "\n\n@on_event(\"%s\") # SignalFlow Generated\nfunc %s(event_data: Dictionary):\n\tpass # Event handler for %s\n" % [event_id, handler_name, event_id]
+	var new_content_to_add: String = "\n\n@on_event(\"%s\") # SignalFlow Generated\nfunc %s(event_data: Dictionary):\n\tpass # Event handler for %s\n" % [event_id, handler_name, event_id]
 
 	# Find insertion point: At the end of the script.
 	script_code += new_content_to_add
@@ -199,7 +202,6 @@ func _add_on_event_to_script(script_path: String, event_resource_path: String):
 		return
 	script_file.store_string(script_code)
 	script_file.close()
-	print("SignalFlow: Added @on_event for '%s' to script '%s'." % [event_id, script_path])
 
 
 func _get_script_path_of_inspected_node() -> String:
@@ -209,7 +211,7 @@ func _get_script_path_of_inspected_node() -> String:
 
 
 func _set_default_icon(button: Button):
-	if editor_interface:
+	if editor_interface and button:
 		var editor_theme = editor_interface.get_editor_theme()
 		if editor_theme:
 			var add_icon = editor_theme.get_icon("Add", "EditorIcons")
@@ -218,12 +220,16 @@ func _set_default_icon(button: Button):
 
 func set_inspected_node(node: Node):
 	inspected_node = node
+	if is_instance_valid(_emit_event_popup):
+		_emit_event_popup.set_inspected_node(node)
 
 func set_editor_interface(interface: EditorInterface):
 	editor_interface = interface
+	if is_instance_valid(_emit_event_popup):
+		_emit_event_popup.set_editor_interface(interface)
 	# The panel might be ready before the interface is set.
-	if is_inside_tree() and emit_button:
-		_set_default_icon(emit_button)
+	if is_inside_tree() and emit_event_button:
+		_set_default_icon(emit_event_button)
 		_set_default_icon(subscribe_button)
 
 func set_main_plugin(plugin: EditorPlugin):

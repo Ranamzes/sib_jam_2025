@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnew41cc7m3jh"]
+
+[ext_resource type="Script" uid="uid://k2p8cv6a1vsu" path="res://addons/signal_flow/ui/emit_event_popup.gd" id="1_vprp5"]
+
+[node name="EmitEventPopup" type="PopupPanel"]
+oversampling_override = 1.0
+size = Vector2i(250, 100)
+visible = true
+script = ExtResource("1_vprp5")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="NewEventButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Create New Event..."
+flat = true
+alignment = 0
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LoadEventLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 0
+text = "Load Event:"
+vertical_alignment = 1
+
+[node name="ExistingEventPicker" type="EditorResourcePicker" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
