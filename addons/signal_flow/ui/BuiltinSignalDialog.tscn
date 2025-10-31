@@ -20,6 +20,7 @@ offset_bottom = -40.0
 layout_mode = 2
 placeholder_text = "Search Signals..."
 
-[node name="SignalList" type="ItemList" parent="VBoxContainer"]
+[node name="SignalTree" type="Tree" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+hide_root = true
