@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://dplqj3gq3gq3g"]
+
+[ext_resource type="Script" path="res://addons/signal_flow/ui/builtin_signal_dialog.gd" id="1_dialog_script"]
+
+[node name="BuiltinSignalDialog" type="ConfirmationDialog"]
+initial_position = 2
+size = Vector2i(350, 400)
+script = ExtResource("1_dialog_script")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -40.0
+
+[node name="SearchLineEdit" type="LineEdit" parent="VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Search Signals..."
+
+[node name="SignalList" type="ItemList" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3

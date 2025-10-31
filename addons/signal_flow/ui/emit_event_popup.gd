@@ -8,6 +8,7 @@ const EventResource = preload("res://addons/signal_flow/core/event_resource.gd")
 
 @onready var existing_event_picker: EditorResourcePicker = $MarginContainer/VBoxContainer/HBoxContainer/ExistingEventPicker
 @onready var new_event_button: Button = $MarginContainer/VBoxContainer/NewEventButton
+@onready var builtin_signal_button: Button = $MarginContainer/VBoxContainer/BuiltinSignalButton
 @onready var load_event_label: Label = $MarginContainer/VBoxContainer/HBoxContainer/LoadEventLabel
 
 var editor_interface: EditorInterface
@@ -15,6 +16,7 @@ var inspected_node: Node
 
 signal event_selected(resource: EventResource)
 signal new_event_requested()
+signal builtin_signal_requested()
 
 func _ready():
 	if existing_event_picker:
@@ -27,6 +29,11 @@ func _ready():
 		new_event_button.pressed.connect(_on_new_event_button_pressed)
 	else:
 		push_error("EmitEventPopup: Node not found: NewEventButton")
+
+	if builtin_signal_button:
+		builtin_signal_button.pressed.connect(_on_builtin_signal_button_pressed)
+	else:
+		push_error("EmitEventPopup: Node not found: BuiltinSignalButton")
 
 	if load_event_label:
 		load_event_label.gui_input.connect(_on_load_event_label_gui_input)
@@ -49,6 +56,10 @@ func _on_existing_event_selected(resource: Resource):
 
 func _on_new_event_button_pressed():
 	new_event_requested.emit()
+	hide()
+
+func _on_builtin_signal_button_pressed():
+	builtin_signal_requested.emit()
 	hide()
 
 func _on_load_event_label_gui_input(event: InputEvent):
