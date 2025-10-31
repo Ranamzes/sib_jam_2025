@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=4 uid="uid://x662pd3helg5"]
+[gd_scene load_steps=5 format=4 uid="uid://x662pd3helg5"]
 
-[ext_resource type="PackedScene" uid="uid://b2w4yqj1v2x0k" path="res://player/Player.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://bgrwxmc03jfth" path="res://player/Player.tscn" id="2_0xm2m"]
+[ext_resource type="Script" uid="uid://c0h40pfj0rlnp" path="res://player/components/hitbox_component.gd" id="3_1bvp3"]
 [ext_resource type="TileSet" uid="uid://mpn3hiboo4y7" path="res://tilesets/test_tileset.tres" id="3_h2yge"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
+size = Vector2(676, 74)
 
 [node name="Main" type="Node"]
 
@@ -11,3 +15,17 @@ position = Vector2(232, 147)
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAALAAwAAAAQAAwAAAAMAAwAAAAQAAwAAAANAAwAAAAQAAwAAAAOAAwAAAAQAAwAAAAPAAwAAAAQAAwAAAAQAAwAAAAQAAwAAAARAAwAAAAQAAwAAAASAAwAAAAQAAwAAAATAAwAAAAQAAwAAAAbAAwAAAAQAAwAAAAcAAwAAAAQAAwAAAAdAAwAAAAQAAwAAAAeAAwAAAAQAAwAAAAfAAwAAAAQAAwAAAAgAAwAAAAQAAwAAAAhAAwAAAAQAAwAAAAiAAwAAAAQAAwAAAAaAAwAAAAQAAwAAAAZAAwAAAAQAAwAAAAjAAwAAAAQAAwAAAAkAAwAAAAQAAwAAAAlAAwAAAAQAAwAAAAlAAsAAAAQAAwAAAAlAAoAAAAQAAwAAAAlAAkAAAAQAAwAAAAlAAgAAAAQAAwAAAAlAAcAAAAQAAwAAAAlAAYAAAAQAAwAAAAdAAkAAAAQAAwAAAAeAAkAAAAQAAwAAAAfAAkAAAAQAAwAAAAgAAkAAAAQAAwAAAAhAAkAAAAQAAwAAAAiAAkAAAAQAAwAAAALAAsAAAAQAAwAAAALAAoAAAAQAAwAAAALAAkAAAAQAAwAAAALAAgAAAAQAAwAAAALAAcAAAAQAAwAAAALAAYAAAAQAAwAAAALAAUAAAAQAAwAAAA=")
 tile_set = ExtResource("3_h2yge")
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+script = ExtResource("3_1bvp3")
+damage = 9999
+metadata/_custom_type_script = "uid://c0h40pfj0rlnp"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(370, 300)
+shape = SubResource("RectangleShape2D_lquwl")

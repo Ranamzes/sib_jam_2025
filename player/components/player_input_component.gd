@@ -1,7 +1,7 @@
 class_name PlayerInputComponent
 extends Node
 
-@export var _action_input_component: ActionInputComponent
+
 
 # --- G.U.I.D.E. Resources ---
 @export_group("G.U.I.D.E. Setup")
@@ -13,33 +13,30 @@ extends Node
 @export var dash_action: GUIDEAction
 @export var crouch_action: GUIDEAction
 @export var latch_action: GUIDEAction
-
+@export var physics_system: PhysicsIntegrationSystem
 
 func _ready() -> void:
 	if not mapping_context:
 		push_error("PlayerInputComponent: GUIDEMappingContext is not set!")
 		return
-	if not _action_input_component:
-		push_error("PlayerInputComponent: ActionInputComponent is not assigned!")
-		set_process(false)
-		return
+	
 	
 	# Activate the controls for this player
 	GUIDE.enable_mapping_context(mapping_context)
 
 	# Connect to actions that are single events (like button presses)
 	if jump_action:
-		jump_action.triggered.connect(func(): _action_input_component.request_jump())
-	if dash_action:
-		dash_action.triggered.connect(func(): _action_input_component.request_dash())
+		jump_action.triggered.connect(func(): physics_system.request_jump())
+	#if dash_action:
+	#	dash_action.triggered.connect(func(): _action_input_component.request_dash())
 	
 	# For hold actions, we can check their state change
-	if crouch_action:
-		crouch_action.started.connect(func(): _action_input_component.start_crouch())
-		crouch_action.completed.connect(func(): _action_input_component.stop_crouch())
-	if latch_action:
-		latch_action.started.connect(func(): _action_input_component.toggle_latch(true))
-		latch_action.completed.connect(func(): _action_input_component.toggle_latch(false))
+	##if crouch_action:
+	#	crouch_action.started.connect(func(): _action_input_component.start_crouch())
+	#	crouch_action.completed.connect(func(): _action_input_component.stop_crouch())
+	#if latch_action:
+	#	latch_action.started.connect(func(): _action_input_component.toggle_latch(true))
+	#	latch_action.completed.connect(func(): _action_input_component.toggle_latch(false))
 
 
 func _physics_process(_delta: float) -> void:
@@ -48,4 +45,4 @@ func _physics_process(_delta: float) -> void:
 	
 	# Continuously poll the move action for its vector
 	var current_move_vector: Vector2 = move_action.value_axis_2d
-	_action_input_component.set_move_vector(current_move_vector)
+	physics_system._change_movement_vector(current_move_vector)

@@ -6,7 +6,7 @@ extends Node
 @export var _velocity_component: VelocityComponent
 @export var _stats_component: StatsComponent
 @export var _action_input_component: ActionInputComponent
-@export var _state_component: StateComponent
+@export var _state_component: MovementStateComponent
 
 var _move_input_vector: Vector2 = Vector2.ZERO
 var _acceleration: float
@@ -23,7 +23,7 @@ func _ready() -> void:
 		push_error("MovementSystem: Player is missing required components (Velocity, Stats, ActionInput, or State).")
 		set_physics_process(false)
 		return
-
+	
 	# Pre-calculate acceleration/deceleration
 	var move_stats: MovementStats = _stats_component.movement
 	if move_stats.time_to_reach_max_speed > 0:
