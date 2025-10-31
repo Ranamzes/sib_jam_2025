@@ -18,6 +18,7 @@ signal new_event_requested()
 
 func _ready():
 	if existing_event_picker:
+		existing_event_picker.base_type = "EventResource"
 		existing_event_picker.resource_selected.connect(_on_existing_event_selected)
 	else:
 		push_error("EmitEventPopup: Node not found: ExistingEventPicker")

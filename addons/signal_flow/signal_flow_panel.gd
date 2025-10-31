@@ -27,6 +27,7 @@ func _ready():
 	file_dialog = $FileDialog
 	select_existing_event_dialog = $SelectExistingEventDialog
 	event_resource_picker = $SelectExistingEventDialog/VBoxContainer/EventResourcePicker
+	event_resource_picker.base_type = "EventResource"
 
 	# Connect signals synchronously. This is now safe because we removed await.
 	emit_event_button.pressed.connect(Callable(self, "_on_emit_button_pressed"))
@@ -47,8 +48,7 @@ func _on_emit_button_pressed():
 	if not is_instance_valid(_emit_event_popup):
 		_emit_event_popup = EmitEventPopupScene.instantiate()
 		add_child(_emit_event_popup)
-		# We must wait for it to be ready before configuring it.
-		await _emit_event_popup.ready
+		# Configure immediately after adding. We don't need to wait for ready.
 		_emit_event_popup.set_editor_interface(editor_interface)
 		_emit_event_popup.set_inspected_node(inspected_node)
 		_emit_event_popup.event_selected.connect(Callable(self, "_on_emit_event_selected"))

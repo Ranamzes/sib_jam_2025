@@ -91,6 +91,7 @@ text = "Select an EventResource:"
 
 [node name="EventResourcePicker" type="EditorResourcePicker" parent="SelectExistingEventDialog/VBoxContainer"]
 layout_mode = 2
+base_type = "EventResource"
 
 [node name="FileDialog" type="FileDialog" parent="."]
 oversampling_override = 1.0
