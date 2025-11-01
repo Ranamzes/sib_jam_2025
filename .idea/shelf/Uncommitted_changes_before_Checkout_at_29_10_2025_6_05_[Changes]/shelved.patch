@@ -1,0 +1,16 @@
+Index: .gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># Godot 4+ specific ignores\r\n.godot/\r\n.history/\r\n.vscode/\r\n.gemini/\r\n.cursor/\r\n.cursorrules\r\n.cursorignore\r\n.cursorignorerules\r\n.cursorignorerules\r\nGEMINI.md\r\n.geminiignore\r\nandroid/\r\nplan.md\r\n# Snyk Security Extension - AI Rules (auto-generated)\r\n.cursor\\rules\\snyk_rules.mdc\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.gitignore b/.gitignore
+--- a/.gitignore	(revision 416d82349d98b6c73d4692c9c448ab2e2ba26ea5)
++++ b/.gitignore	(date 1761707120115)
+@@ -14,3 +14,5 @@
+ plan.md
+ # Snyk Security Extension - AI Rules (auto-generated)
+ .cursor\rules\snyk_rules.mdc
++
++.idea
