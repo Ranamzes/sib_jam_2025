@@ -52,6 +52,7 @@ corner_detail = 5
 
 [node name="SignalFlowPanel" type="VBoxContainer"]
 script = ExtResource("1_w8d1c")
+collect_coin = null
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -65,11 +66,13 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ecpyc")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_nrnb6")
 theme_override_styles/hover = SubResource("StyleBoxFlat_07g0j")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_uhv8r")
+toggle_mode = true
 text = "Emit"
 
 [node name="SubscribeButton" type="Button" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+toggle_mode = true
 text = "Subscribe"
 
 [node name="SelectExistingEventDialog" type="ConfirmationDialog" parent="."]

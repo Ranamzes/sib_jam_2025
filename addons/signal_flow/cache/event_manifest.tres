@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="EventManifest" load_steps=4 format=3 uid="uid://2fvrsgn6r751"]
+[gd_resource type="Resource" script_class="EventManifest" load_steps=5 format=3 uid="uid://2fvrsgn6r751"]
 
-[ext_resource type="Resource" uid="uid://cisx7mk5l3t4o" path="res://events/player_died.tres" id="1_o3o7t"]
-[ext_resource type="Resource" uid="uid://b5g5pwv4s33qj" path="res://systems/events/events/player_died.tres" id="2_endqf"]
-[ext_resource type="Script" uid="uid://dy04ilbofkn8l" path="res://addons/signal_flow/cache/EventManifest.gd" id="3_84d6w"]
+[ext_resource type="Resource" uid="uid://ia2qkhd6jrsw" path="res://events/collect_coin.tres" id="1_endqf"]
+[ext_resource type="Resource" uid="uid://cisx7mk5l3t4o" path="res://events/player_died.tres" id="2_84d6w"]
+[ext_resource type="Resource" uid="uid://b5g5pwv4s33qj" path="res://systems/events/events/player_died.tres" id="3_kdrfb"]
+[ext_resource type="Script" uid="uid://dy04ilbofkn8l" path="res://addons/signal_flow/cache/EventManifest.gd" id="4_3gql2"]
 
 [resource]
-script = ExtResource("3_84d6w")
+script = ExtResource("4_3gql2")
 events = {
-"default_player_died": ExtResource("1_o3o7t"),
-"events_player_died": ExtResource("2_endqf")
+"default_collect_coin": ExtResource("1_endqf"),
+"default_player_died": ExtResource("2_84d6w"),
+"events_player_died": ExtResource("3_kdrfb")
 }

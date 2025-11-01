@@ -1,24 +1,21 @@
 class_name SignalDomain
 extends RefCounted
 
-var _hub
+var _eventhub: EventHubClass
 var _domain_name: StringName
-var _proxy_cache := {}
+var _events := {} # { "died": EventProxy, "jumped": EventProxy }
 
-# The EventProxy class needs to be preloaded to be used.
-const EventProxy = preload("res://addons/signal_flow/core/event_proxy.gd")
+func _init(eventhub: EventHubClass, domain: StringName):
+    _eventhub = eventhub
+    _domain_name = domain
+    _preload_domain_events()
 
-func _init(hub, domain_name: StringName):
-	_hub = hub
-	_domain_name = domain_name
+func _preload_domain_events():
+    var manifest = _eventhub._registry._registry
+    for event_name in manifest.keys():
+        if event_name.begins_with(_domain_name + "_"):
+            var short_name = event_name.trim_prefix(_domain_name + "_")
+            _events[short_name] = EventProxy.new(_eventhub, event_name)
 
-func _get(property: StringName):
-	if not _proxy_cache.has(property):
-		var event_name = "%s_%s" % [_domain_name, property]
-		var event_resource = _hub.get_event(event_name)
-		if event_resource:
-			_proxy_cache[property] = EventProxy.new(_hub, event_resource)
-		else:
-			push_error("SignalFlow: Event '" + event_name + "' not found in manifest.")
-			return null
-	return _proxy_cache[property]
+func _get(event_name: StringName):
+    return _events.get(event_name)

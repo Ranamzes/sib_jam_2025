@@ -66,20 +66,23 @@ func _on_attach_pressed():
 	else:
 		suggested_path = "res://" + node_name.to_snake_case() + ".gd"
 
-	print("SignalFlow Debug: Inspected Node: ", inspected_node.name)
-	print("SignalFlow Debug: Base Type: ", base_type)
 	print("SignalFlow Debug: Suggested Path: ", suggested_path)
 
-	dialog.config(base_type, suggested_path, false, false)
+	var file_existed_before_dialog = ResourceLoader.exists(suggested_path)
+	dialog.config(base_type, suggested_path, false, true)
 
-	if not dialog.script_created.is_connected(_on_script_created):
-		dialog.script_created.connect(_on_script_created)
+	var callable = Callable(self, "_on_script_created").bind(suggested_path, file_existed_before_dialog)
+	# Disconnect first to be safe, then connect.
+	if dialog.script_created.is_connected(callable):
+		dialog.script_created.disconnect(callable)
+	dialog.script_created.connect(callable)
 
 	dialog.popup_centered()
 
-func _on_script_created(script: Script):
-	if inspected_node:
-		inspected_node.set_script(script)
-		# This will cause the inspector to refresh, and our other panel will now appear.
-		if editor_interface:
-			editor_interface.inspect_object(inspected_node)
+func _on_script_created(script: Script, suggested_path: String, file_existed_before_dialog: bool):
+	if inspected_node and main_plugin:
+		var actual_path = script.resource_path
+		var was_newly_created = not file_existed_before_dialog and actual_path == suggested_path
+		var previous_script = inspected_node.get_script()
+		
+		main_plugin.call_deferred("register_script_attachment_undo", inspected_node, script, previous_script, was_newly_created)

@@ -10,3 +10,5 @@ player_died_event = ExtResource("2_xtii1")
 
 [node name="test" type="Node" parent="."]
 script = ExtResource("3_7wn8q")
+
+[node name="Node3" type="Node" parent="."]

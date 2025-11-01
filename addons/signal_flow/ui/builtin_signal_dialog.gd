@@ -62,7 +62,7 @@ func _populate_signal_tree(filter_text: String = ""):
 			class_item.set_icon(0, class_icon)
 		
 		class_item.set_selectable(0, false)
-		class_item.set_custom_color(0, theme.get_color("font_color", "EditorHelp"))
+		class_item.set_custom_color(0, theme.get_color("font_color", "Tree"))
 
 		# Add signals as children
 		for signal_info in filtered_signals:

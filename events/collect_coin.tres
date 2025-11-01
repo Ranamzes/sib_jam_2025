@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="EventResource" load_steps=2 format=3 uid="uid://ia2qkhd6jrsw"]
+
+[ext_resource type="Script" uid="uid://ddq58l482d057" path="res://addons/signal_flow/core/event_resource.gd" id="1_jr27b"]
+
+[resource]
+script = ExtResource("1_jr27b")
+domain = &"default"

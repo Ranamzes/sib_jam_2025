@@ -16,6 +16,12 @@ func _init(interface: EditorInterface):
 
 func generate_event_manifest():
 	print("SignalFlow: Generating event manifest...")
+	# Load the existing manifest or create a new one if it doesn't exist
+	if FileAccess.file_exists(EventRegistry.MANIFEST_PATH):
+		_event_manifest = load(EventRegistry.MANIFEST_PATH)
+	else:
+		_event_manifest = EventManifest.new()
+
 	var manifest_data := {}
 	var event_resources := _scan_for_event_resources()
 
@@ -32,10 +38,9 @@ func generate_event_manifest():
 		else:
 			push_error("SignalFlow: Failed to load EventResource at %s" % path)
 
-	var manifest := EventManifest.new()
-	manifest.events = manifest_data
+	_event_manifest.events = manifest_data
 
-	var save_error = ResourceSaver.save(manifest, EventRegistry.MANIFEST_PATH)
+	var save_error = ResourceSaver.save(_event_manifest, EventRegistry.MANIFEST_PATH)
 	if save_error != OK:
 		push_error("SignalFlow: Failed to save event manifest: %s" % save_error)
 	else:
