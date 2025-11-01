@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://6ch0rukuba0x"
+path="res://.godot/imported/player wall slide 48x48.aseprite-255fdfe7e29a29929a790b7fbfe5f541.res"
+
+[deps]
+
+source_file="res://sprites/2D-Pixel-Art-Character-Template/Wall Slide/player wall slide 48x48.aseprite"
+dest_files=["res://.godot/imported/player wall slide 48x48.aseprite-255fdfe7e29a29929a790b7fbfe5f541.res"]
+
+[params]
+

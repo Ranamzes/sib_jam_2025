@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://hcgc1tle3yi"
+path="res://.godot/imported/Player Hurt 48x48.aseprite-d1d407ded4ba30cc3dc10d5c2a6de84c.res"
+
+[deps]
+
+source_file="res://sprites/2D-Pixel-Art-Character-Template/Hurt-Damaged/Player Hurt 48x48.aseprite"
+dest_files=["res://.godot/imported/Player Hurt 48x48.aseprite-d1d407ded4ba30cc3dc10d5c2a6de84c.res"]
+
+[params]
+

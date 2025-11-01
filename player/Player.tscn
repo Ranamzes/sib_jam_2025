@@ -1,28 +1,59 @@
-[gd_scene load_steps=68 format=3 uid="uid://bgrwxmc03jfth"]
+[gd_scene load_steps=87 format=3 uid="uid://bgrwxmc03jfth"]
 
-[ext_resource type="Texture2D" uid="uid://b3pj4qb62wavg" path="res://2D-Pixel-Art-Character-Template/Idle/Player Idle 48x48.png" id="1_2m0d2"]
-[ext_resource type="Script" uid="uid://chbr6mrhj0l4h" path="res://player/components/player_input_component.gd" id="1_5p1j2"]
-[ext_resource type="Texture2D" uid="uid://brjv4ntd8ip6e" path="res://2D-Pixel-Art-Character-Template/Jump/player new jump 48x48.png" id="1_8tqfn"]
-[ext_resource type="Texture2D" uid="uid://u1dvmpiwf15h" path="res://2D-Pixel-Art-Character-Template/Run/player run 48x48.png" id="2_2m0d2"]
-[ext_resource type="Resource" uid="uid://m6k6p2jv0yfa" path="res://player/player_mapping_context.tres" id="2_v4f8b"]
-[ext_resource type="Script" uid="uid://dpepr0ylg6wlu" path="res://player/components/state_component.gd" id="3_48vxt"]
-[ext_resource type="Resource" uid="uid://dqicdbc6nfv7e" path="res://player/actions/move.tres" id="3_t8epa"]
-[ext_resource type="Script" uid="uid://b58pdy82skwid" path="res://player/components/hurtbox_component.gd" id="4_uewl2"]
-[ext_resource type="Resource" path="res://player/actions/jump.tres" id="4_w24id"]
-[ext_resource type="Script" uid="uid://i5x0g3uanlah" path="res://player/components/health_component .gd" id="5_ofhxi"]
-[ext_resource type="Resource" path="res://player/actions/dash.tres" id="5_uewl2"]
-[ext_resource type="Resource" path="res://player/actions/crouch.tres" id="6_ofhxi"]
-[ext_resource type="Resource" path="res://player/actions/latch.tres" id="7_yu5hk"]
-[ext_resource type="Script" uid="uid://c4c7a116tmbm4" path="res://systems/animation_system.gd" id="9_h5g2s"]
-[ext_resource type="Script" uid="uid://bln6wd364xxht" path="res://player/stats/movement_stats.gd" id="9_yu5hk"]
-[ext_resource type="Script" uid="uid://sui2aet7dpfb" path="res://player/stats/jump_stats.gd" id="10_q6miu"]
-[ext_resource type="Script" uid="uid://7w4jww1v0oqm" path="res://systems/physics_integration_system.gd" id="14_abcde"]
+[ext_resource type="Texture2D" uid="uid://b3pj4qb62wavg" path="res://sprites/2D-Pixel-Art-Character-Template/Idle/Player Idle 48x48.png" id="1_2m0d2"]
+[ext_resource type="Script" uid="uid://chbr6mrhj0l4h" path="res://systems/input_system/player_input_component.gd" id="1_5p1j2"]
+[ext_resource type="Texture2D" uid="uid://brjv4ntd8ip6e" path="res://sprites/2D-Pixel-Art-Character-Template/Jump/player new jump 48x48.png" id="1_8tqfn"]
+[ext_resource type="Texture2D" uid="uid://u1dvmpiwf15h" path="res://sprites/2D-Pixel-Art-Character-Template/Run/player run 48x48.png" id="2_2m0d2"]
+[ext_resource type="Resource" uid="uid://m6k6p2jv0yfa" path="res://systems/input_system/player_mapping_context.tres" id="2_v4f8b"]
+[ext_resource type="Texture2D" uid="uid://cu4sejywv8k7w" path="res://sprites/2D-Pixel-Art-Character-Template/Dash/dash.png" id="2_yu5hk"]
+[ext_resource type="Resource" uid="uid://dqicdbc6nfv7e" path="res://systems/input_system/actions/move.tres" id="3_t8epa"]
+[ext_resource type="Script" uid="uid://b58pdy82skwid" path="res://systems/health_system/hurtbox_component.gd" id="4_uewl2"]
+[ext_resource type="Resource" path="res://systems/input_system/actions/jump.tres" id="4_w24id"]
+[ext_resource type="Script" uid="uid://i5x0g3uanlah" path="res://systems/health_system/health_component .gd" id="5_ofhxi"]
+[ext_resource type="Resource" path="res://systems/input_system/actions/dash.tres" id="5_uewl2"]
+[ext_resource type="Script" uid="uid://4hcakwlm1h5y" path="res://systems/movement_system/dash_component.gd" id="5_yu5hk"]
+[ext_resource type="Resource" path="res://systems/input_system/actions/crouch.tres" id="6_ofhxi"]
+[ext_resource type="Resource" path="res://systems/input_system/actions/latch.tres" id="7_yu5hk"]
+[ext_resource type="Script" uid="uid://4xcpj0x4w4cj" path="res://systems/movement_system/stats/dash_stats.gd" id="8_yu5hk"]
+[ext_resource type="Script" uid="uid://c4c7a116tmbm4" path="res://systems/animation_system/animation_system.gd" id="9_h5g2s"]
+[ext_resource type="Script" uid="uid://7w4jww1v0oqm" path="res://systems/movement_system/physics_integration_system.gd" id="14_abcde"]
+[ext_resource type="Script" uid="uid://bln6wd364xxht" path="res://systems/movement_system/stats/movement_stats.gd" id="17_uewl2"]
+[ext_resource type="Script" uid="uid://sui2aet7dpfb" path="res://systems/movement_system/stats/jump_stats.gd" id="18_ofhxi"]
+[ext_resource type="Script" uid="uid://dpepr0ylg6wlu" path="res://systems/movement_system/state_component.gd" id="20_q6miu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yu5hk"]
 size = Vector2(24, 33)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y617q"]
 size = Vector2(24, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mlfor"]
+atlas = ExtResource("2_yu5hk")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2m0d2"]
+atlas = ExtResource("2_yu5hk")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8nth8"]
+atlas = ExtResource("2_yu5hk")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8tqfn"]
+atlas = ExtResource("2_yu5hk")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2q4k2"]
+atlas = ExtResource("2_yu5hk")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w36ex"]
+atlas = ExtResource("2_yu5hk")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7wro5"]
+atlas = ExtResource("2_yu5hk")
+region = Rect2(0, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v4f8b"]
 atlas = ExtResource("1_8tqfn")
@@ -128,6 +159,32 @@ region = Rect2(336, 0, 48, 48)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_mlfor")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2m0d2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8nth8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8tqfn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2q4k2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w36ex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7wro5")
+}],
+"loop": true,
+"name": &"dash",
+"speed": 11.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_v4f8b")
 }],
 "loop": true,
@@ -222,6 +279,9 @@ animations = [{
 "speed": 11.0
 }]
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u3bl4"]
+animation = &"dashing"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mlfor"]
 animation = &"falling"
 
@@ -261,33 +321,34 @@ advance_mode = 0
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lhjxl"]
 advance_mode = 0
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wpul2"]
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pcftw"]
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cayk5"]
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wqfsd"]
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wpo5q"]
+advance_mode = 0
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_610ub"]
 states/Start/position = Vector2(228, 190)
+states/dashing/node = SubResource("AnimationNodeAnimation_u3bl4")
+states/dashing/position = Vector2(708, 257)
 states/falling/node = SubResource("AnimationNodeAnimation_mlfor")
 states/falling/position = Vector2(571, 290)
 states/idle/node = SubResource("AnimationNodeAnimation_2m0d2")
-states/idle/position = Vector2(325, 303)
+states/idle/position = Vector2(303, 321)
 states/jumping/node = SubResource("AnimationNodeAnimation_8nth8")
 states/jumping/position = Vector2(608, 95)
 states/running/node = SubResource("AnimationNodeAnimation_8tqfn")
-states/running/position = Vector2(382, 99)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_stbqk"), "idle", "running", SubResource("AnimationNodeStateMachineTransition_y617q"), "running", "idle", SubResource("AnimationNodeStateMachineTransition_8eyfg"), "running", "falling", SubResource("AnimationNodeStateMachineTransition_76mgg"), "running", "jumping", SubResource("AnimationNodeStateMachineTransition_ddnt4"), "idle", "jumping", SubResource("AnimationNodeStateMachineTransition_a0lmo"), "jumping", "falling", SubResource("AnimationNodeStateMachineTransition_234y4"), "falling", "idle", SubResource("AnimationNodeStateMachineTransition_u8vxv"), "falling", "running", SubResource("AnimationNodeStateMachineTransition_lhjxl")]
-
-[sub_resource type="Animation" id="Animation_pcftw"]
-resource_name = "idle"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"idle"]
-}
+states/running/position = Vector2(371, 105)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_stbqk"), "idle", "running", SubResource("AnimationNodeStateMachineTransition_y617q"), "running", "idle", SubResource("AnimationNodeStateMachineTransition_8eyfg"), "running", "falling", SubResource("AnimationNodeStateMachineTransition_76mgg"), "running", "jumping", SubResource("AnimationNodeStateMachineTransition_ddnt4"), "idle", "jumping", SubResource("AnimationNodeStateMachineTransition_a0lmo"), "jumping", "falling", SubResource("AnimationNodeStateMachineTransition_234y4"), "falling", "idle", SubResource("AnimationNodeStateMachineTransition_u8vxv"), "falling", "running", SubResource("AnimationNodeStateMachineTransition_lhjxl"), "idle", "dashing", SubResource("AnimationNodeStateMachineTransition_wpul2"), "dashing", "idle", SubResource("AnimationNodeStateMachineTransition_pcftw"), "dashing", "falling", SubResource("AnimationNodeStateMachineTransition_cayk5"), "dashing", "running", SubResource("AnimationNodeStateMachineTransition_wqfsd"), "running", "dashing", SubResource("AnimationNodeStateMachineTransition_wpo5q")]
 
 [sub_resource type="Animation" id="Animation_cayk5"]
 length = 0.001
@@ -304,8 +365,8 @@ tracks/0/keys = {
 "values": [&"run"]
 }
 
-[sub_resource type="Animation" id="Animation_wqfsd"]
-resource_name = "run"
+[sub_resource type="Animation" id="Animation_22tms"]
+resource_name = "dashing"
 length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -317,23 +378,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"run"]
-}
-
-[sub_resource type="Animation" id="Animation_y2u3w"]
-resource_name = "jumping"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"jump"]
+"values": [&"dash"]
 }
 
 [sub_resource type="Animation" id="Animation_uyl0s"]
@@ -352,25 +397,82 @@ tracks/0/keys = {
 "values": [&"fall"]
 }
 
+[sub_resource type="Animation" id="Animation_pcftw"]
+resource_name = "idle"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+
+[sub_resource type="Animation" id="Animation_y2u3w"]
+resource_name = "jumping"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"jump"]
+}
+
+[sub_resource type="Animation" id="Animation_wqfsd"]
+resource_name = "run"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"run"]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wpo5q"]
 _data = {
 &"RESET": SubResource("Animation_cayk5"),
+&"dashing": SubResource("Animation_22tms"),
 &"falling": SubResource("Animation_uyl0s"),
 &"idle": SubResource("Animation_pcftw"),
 &"jumping": SubResource("Animation_y2u3w"),
 &"running": SubResource("Animation_wqfsd")
 }
 
-[sub_resource type="Resource" id="Resource_vud74"]
-script = ExtResource("9_yu5hk")
+[sub_resource type="Resource" id="Resource_mlfor"]
+script = ExtResource("8_yu5hk")
+dash_type = 1
+max_dashes = 2
+dash_time = 0.15000000000000002
+metadata/_custom_type_script = "uid://4xcpj0x4w4cj"
+
+[sub_resource type="Resource" id="Resource_2m0d2"]
+script = ExtResource("17_uewl2")
 metadata/_custom_type_script = "uid://bln6wd364xxht"
 
-[sub_resource type="Resource" id="Resource_8cy8x"]
-script = ExtResource("10_q6miu")
-jump_height = 4.5
-max_jumps = 2
-gravity_scale = 15.0
-descending_gravity_factor = 0.9199999999999999
+[sub_resource type="Resource" id="Resource_8nth8"]
+script = ExtResource("17_uewl2")
+metadata/_custom_type_script = "uid://bln6wd364xxht"
+
+[sub_resource type="Resource" id="Resource_8tqfn"]
+script = ExtResource("18_ofhxi")
+jump_height = 4.0
 metadata/_custom_type_script = "uid://sui2aet7dpfb"
 
 [node name="Player" type="CharacterBody2D"]
@@ -411,7 +513,15 @@ libraries = {
 script = ExtResource("5_ofhxi")
 metadata/_custom_type_script = "uid://i5x0g3uanlah"
 
-[node name="PlayerInputComponent" type="Node" parent="Components" node_paths=PackedStringArray("physics_system")]
+[node name="DashComponent" type="Node" parent="Components" node_paths=PackedStringArray("_state_comp", "_physics")]
+script = ExtResource("5_yu5hk")
+_state_comp = NodePath("../../Systems/StateComponent")
+_dash_stats = SubResource("Resource_mlfor")
+_movement_stats = SubResource("Resource_2m0d2")
+_physics = NodePath("../../Systems/PhysicsIntegrationSystem")
+metadata/_custom_type_script = "uid://4hcakwlm1h5y"
+
+[node name="PlayerInputComponent" type="Node" parent="Components" node_paths=PackedStringArray("physics_system", "dash_component")]
 script = ExtResource("1_5p1j2")
 mapping_context = ExtResource("2_v4f8b")
 move_action = ExtResource("3_t8epa")
@@ -420,11 +530,8 @@ dash_action = ExtResource("5_uewl2")
 crouch_action = ExtResource("6_ofhxi")
 latch_action = ExtResource("7_yu5hk")
 physics_system = NodePath("../../Systems/PhysicsIntegrationSystem")
+dash_component = NodePath("../DashComponent")
 metadata/_custom_type_script = "uid://chbr6mrhj0l4h"
-
-[node name="MovementStateComponent" type="Node" parent="Components"]
-script = ExtResource("3_48vxt")
-metadata/_custom_type_script = "uid://dpepr0ylg6wlu"
 
 [node name="Systems" type="Node" parent="."]
 
@@ -432,13 +539,17 @@ metadata/_custom_type_script = "uid://dpepr0ylg6wlu"
 script = ExtResource("9_h5g2s")
 animation_tree = NodePath("../../AnimationTree")
 player_sprite = NodePath("../../AnimatedSprite2D")
-mov_state_comp = NodePath("../../Components/MovementStateComponent")
+mov_state_comp = NodePath("../StateComponent")
 metadata/_custom_type_script = "uid://c4c7a116tmbm4"
 
 [node name="PhysicsIntegrationSystem" type="Node" parent="Systems" node_paths=PackedStringArray("player_character", "_state_comp")]
 script = ExtResource("14_abcde")
 player_character = NodePath("../..")
-_state_comp = NodePath("../../Components/MovementStateComponent")
-_move_stats = SubResource("Resource_vud74")
-_jump_stats = SubResource("Resource_8cy8x")
+_state_comp = NodePath("../StateComponent")
+_move_stats = SubResource("Resource_8nth8")
+_jump_stats = SubResource("Resource_8tqfn")
 metadata/_custom_type_script = "uid://7w4jww1v0oqm"
+
+[node name="StateComponent" type="Node" parent="Systems"]
+script = ExtResource("20_q6miu")
+metadata/_custom_type_script = "uid://dpepr0ylg6wlu"

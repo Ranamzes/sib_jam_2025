@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dryp2ukojhqbt"
+path="res://.godot/imported/player pull 48x48.aseprite-ab3cd73e8c6482a93615c898851464fe.res"
+
+[deps]
+
+source_file="res://sprites/2D-Pixel-Art-Character-Template/Pull/player pull 48x48.aseprite"
+dest_files=["res://.godot/imported/player pull 48x48.aseprite-ab3cd73e8c6482a93615c898851464fe.res"]
+
+[params]
+

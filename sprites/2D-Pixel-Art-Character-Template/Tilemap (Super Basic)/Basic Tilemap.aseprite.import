@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://ceeb38paljvqc"
+path="res://.godot/imported/Basic Tilemap.aseprite-5f367a8a8be63acf9f21702fce9f349e.res"
+
+[deps]
+
+source_file="res://sprites/2D-Pixel-Art-Character-Template/Tilemap (Super Basic)/Basic Tilemap.aseprite"
+dest_files=["res://.godot/imported/Basic Tilemap.aseprite-5f367a8a8be63acf9f21702fce9f349e.res"]
+
+[params]
+

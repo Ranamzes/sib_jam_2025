@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://c1fl725d42mjq"
+path="res://.godot/imported/Player Sword Run 48x48.aseprite-6abb6c021af09925521a5a615302f27c.res"
+
+[deps]
+
+source_file="res://sprites/2D-Pixel-Art-Character-Template/Sword Run/Player Sword Run 48x48.aseprite"
+dest_files=["res://.godot/imported/Player Sword Run 48x48.aseprite-6abb6c021af09925521a5a615302f27c.res"]
+
+[params]
+

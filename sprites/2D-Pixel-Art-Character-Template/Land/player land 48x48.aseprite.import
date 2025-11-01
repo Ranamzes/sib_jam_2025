@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://ddi62fim63kgg"
+path="res://.godot/imported/player land 48x48.aseprite-d718056c49cf737af3133d7e2daca499.res"
+
+[deps]
+
+source_file="res://sprites/2D-Pixel-Art-Character-Template/Land/player land 48x48.aseprite"
+dest_files=["res://.godot/imported/player land 48x48.aseprite-d718056c49cf737af3133d7e2daca499.res"]
+
+[params]
+

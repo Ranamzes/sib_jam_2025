@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bskloklox4t5b"
+path="res://.godot/imported/Player Slide 48x48.aseprite-92fd0746452082d9af587bb4b277edc5.res"
+
+[deps]
+
+source_file="res://sprites/2D-Pixel-Art-Character-Template/Slide/Player Slide 48x48.aseprite"
+dest_files=["res://.godot/imported/Player Slide 48x48.aseprite-92fd0746452082d9af587bb4b277edc5.res"]
+
+[params]
+
