@@ -164,7 +164,7 @@ func _execute_jump() -> void:
 	var jump_velocity = -_jump_stats.jump_height * _jump_stats.gravity_scale * 5.0
 	
 	_velocity.y = jump_velocity
-	
+	_on_jump_echo()
 	_state_comp.change_state(_state_comp.jumping)
 	# Consume timers immediately after use
 	_coyote_timer.stop()
@@ -172,7 +172,10 @@ func _execute_jump() -> void:
 
 func _on_run_echo():
 	EventBus.create_echo.emit(echo_stats.get(&"run"),echo_pointer.global_position)
-	
+
+func _on_jump_echo():
+	EventBus.create_echo.emit(echo_stats.get(&"jump"),echo_pointer.global_position)
+
 #Character controller or ai controller should change movement vector
 func change_movement_vector(_new_movement_vector:Vector2):
 	_move_input_vector = _new_movement_vector
