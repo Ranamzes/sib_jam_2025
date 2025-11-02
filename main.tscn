@@ -73,7 +73,9 @@ position = Vector2(96, 89)
 [node name="FmodBankLoader" type="FmodBankLoader" parent="."]
 bank_paths = ["res://fmod_banks/Desktop/Master.strings.bank", "res://fmod_banks/Desktop/Master.bank"]
 
-[node name="FmodEventEmitter2D" type="FmodEventEmitter2D" parent="."]
+[node name="Audio" type="Node" parent="."]
+
+[node name="BgMusic" type="FmodEventEmitter2D" parent="Audio"]
 event_name = "event:/bg_music/level1"
 event_guid = "{b80eac12-306d-48ae-862e-a38e5f7236c3}"
 attached = false
