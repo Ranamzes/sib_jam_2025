@@ -20,10 +20,19 @@ config/icon="uid://dhwlmcglmf0kw"
 
 GUIDE="*res://addons/guide/guide.gd"
 FmodManager="*res://addons/fmod/FmodManager.gd"
+EventBus="*res://globals/event_bus.gd"
 
 [debug]
 
 settings/gdscript/always_track_call_stacks=true
+
+[display]
+
+window/size/viewport_width=640
+window/size/viewport_height=360
+window/size/window_width_override=1920
+window/size/window_height_override=1080
+window/stretch/mode="canvas_items"
 
 [dotnet]
 

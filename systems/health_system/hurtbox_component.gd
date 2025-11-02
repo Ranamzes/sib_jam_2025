@@ -29,9 +29,9 @@ func on_area_entered(other_area: Area2D):
 	#foreground.add_child(floating_text)
 	#floating_text.global_position = global_position + (Vector2.UP * 16)
 	
-	var format_string = "%0.1f"
+	var _format_string = "%0.1f"
 	if round(hitbox_component.damage) == hitbox_component.damage:
-		format_string = "%0.0f"
+		_format_string = "%0.0f"
 	
 	#floating_text.start(format_string % hitbox_component.damage)
 	

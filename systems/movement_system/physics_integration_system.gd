@@ -2,8 +2,8 @@ class_name PhysicsIntegrationSystem
 extends Node
 
 @export var player_character: CharacterBody2D
-
-
+@export var echo_pointer:Node2D
+@export var echo_stats: Dictionary[String,EchoStats]
 @export var _state_comp: StateComponent
 @export var _move_stats: MovementStats
 @export var _jump_stats: JumpStats
@@ -111,7 +111,11 @@ func _calculate_current_state():
 		if abs(_velocity.x) > 0.1 or abs(_move_input_vector.x) > 0.1 :
 			_state_comp.change_state(_state_comp.running)
 		else:
+			if _state_comp.current_state==_state_comp.running:
+				_on_run_echo()
 			_state_comp.change_state(_state_comp.idle)
+
+			
 	else: # In the air
 		if _velocity.y < 0:
 			# If moving up, it's jumping.
@@ -166,6 +170,9 @@ func _execute_jump() -> void:
 	_coyote_timer.stop()
 	_buffer_timer.stop()
 
+func _on_run_echo():
+	EventBus.create_echo.emit(echo_stats.get(&"run"),echo_pointer.global_position)
+	
 #Character controller or ai controller should change movement vector
 func change_movement_vector(_new_movement_vector:Vector2):
 	_move_input_vector = _new_movement_vector
