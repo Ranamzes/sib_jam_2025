@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctqgfvcsgao7i"]
+
+[ext_resource type="Script" uid="uid://d18ptlwq2jfw3" path="res://puzzle/puzzle_piece.gd" id="1_u1nm0"]
+
+[node name="PuzzlePiece" type="Area2D"]
+script = ExtResource("1_u1nm0")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
