@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=3 uid="uid://bgrwxmc03jfth"]
+[gd_scene load_steps=101 format=3 uid="uid://bgrwxmc03jfth"]
 
 [ext_resource type="Texture2D" uid="uid://b3pj4qb62wavg" path="res://sprites/2D-Pixel-Art-Character-Template/Idle/Player Idle 48x48.png" id="1_2m0d2"]
 [ext_resource type="Script" uid="uid://chbr6mrhj0l4h" path="res://systems/input_system/player_input_component.gd" id="1_5p1j2"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://i5x0g3uanlah" path="res://systems/health_system/health_component .gd" id="5_ofhxi"]
 [ext_resource type="Resource" uid="uid://dajvshmr82re0" path="res://systems/input_system/actions/dash.tres" id="5_uewl2"]
 [ext_resource type="Script" uid="uid://4hcakwlm1h5y" path="res://systems/movement_system/dash_component.gd" id="5_yu5hk"]
+[ext_resource type="Texture2D" uid="uid://brgnfotjhg7c6" path="res://sprites/2D-Pixel-Art-Character-Template/Walk/PlayerWalk 48x48.png" id="6_2m0d2"]
 [ext_resource type="Resource" uid="uid://1cn44ysvggm5" path="res://systems/input_system/actions/crouch.tres" id="6_ofhxi"]
 [ext_resource type="Resource" uid="uid://xlbj12dds6ey" path="res://systems/input_system/actions/latch.tres" id="7_yu5hk"]
 [ext_resource type="Script" uid="uid://4xcpj0x4w4cj" path="res://systems/movement_system/stats/dash_stats.gd" id="8_yu5hk"]
@@ -157,6 +158,38 @@ region = Rect2(288, 0, 48, 48)
 atlas = ExtResource("2_2m0d2")
 region = Rect2(336, 0, 48, 48)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3bl4"]
+atlas = ExtResource("6_2m0d2")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpul2"]
+atlas = ExtResource("6_2m0d2")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcftw"]
+atlas = ExtResource("6_2m0d2")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cayk5"]
+atlas = ExtResource("6_2m0d2")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqfsd"]
+atlas = ExtResource("6_2m0d2")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpo5q"]
+atlas = ExtResource("6_2m0d2")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22tms"]
+atlas = ExtResource("6_2m0d2")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0a0r0"]
+atlas = ExtResource("6_2m0d2")
+region = Rect2(336, 0, 48, 48)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_8cy8x"]
 animations = [{
 "frames": [{
@@ -279,6 +312,35 @@ animations = [{
 "loop": true,
 "name": &"run",
 "speed": 11.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u3bl4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpul2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pcftw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cayk5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqfsd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpo5q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_22tms")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0a0r0")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
 }]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u3bl4"]
@@ -341,17 +403,17 @@ advance_mode = 0
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_610ub"]
 states/Start/position = Vector2(228, 190)
 states/dashing/node = SubResource("AnimationNodeAnimation_u3bl4")
-states/dashing/position = Vector2(708, 257)
+states/dashing/position = Vector2(733.5, 237.5)
 states/falling/node = SubResource("AnimationNodeAnimation_mlfor")
-states/falling/position = Vector2(571, 290)
+states/falling/position = Vector2(573, 372)
 states/idle/node = SubResource("AnimationNodeAnimation_2m0d2")
-states/idle/position = Vector2(303, 321)
+states/idle/position = Vector2(310, 325.5)
 states/jumping/node = SubResource("AnimationNodeAnimation_8nth8")
 states/jumping/position = Vector2(608, 95)
 states/running/node = SubResource("AnimationNodeAnimation_8tqfn")
 states/running/position = Vector2(371, 105)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_stbqk"), "idle", "running", SubResource("AnimationNodeStateMachineTransition_y617q"), "running", "idle", SubResource("AnimationNodeStateMachineTransition_8eyfg"), "running", "falling", SubResource("AnimationNodeStateMachineTransition_76mgg"), "running", "jumping", SubResource("AnimationNodeStateMachineTransition_ddnt4"), "idle", "jumping", SubResource("AnimationNodeStateMachineTransition_a0lmo"), "jumping", "falling", SubResource("AnimationNodeStateMachineTransition_234y4"), "falling", "idle", SubResource("AnimationNodeStateMachineTransition_u8vxv"), "falling", "running", SubResource("AnimationNodeStateMachineTransition_lhjxl"), "idle", "dashing", SubResource("AnimationNodeStateMachineTransition_wpul2"), "dashing", "idle", SubResource("AnimationNodeStateMachineTransition_pcftw"), "dashing", "falling", SubResource("AnimationNodeStateMachineTransition_cayk5"), "dashing", "running", SubResource("AnimationNodeStateMachineTransition_wqfsd"), "running", "dashing", SubResource("AnimationNodeStateMachineTransition_wpo5q")]
-graph_offset = Vector2(129.03964, -27.23996)
+graph_offset = Vector2(-129.95929, -136.49019)
 
 [sub_resource type="Animation" id="Animation_cayk5"]
 length = 0.001
@@ -530,18 +592,18 @@ metadata/_custom_type_script = "uid://bln6wd364xxht"
 
 [sub_resource type="Resource" id="Resource_q6miu"]
 script = ExtResource("19_2m0d2")
-life_time = 1.2
+life_time = 0.8
 speed = 1.2000000000000002
-max_size = 2.0
-decay_rate = 0.30000000000000004
+decay_rate = 0.5
 metadata/_custom_type_script = "uid://pjgmjy1xod72"
 
 [sub_resource type="Resource" id="Resource_stbqk"]
 resource_local_to_scene = true
 script = ExtResource("19_2m0d2")
-life_time = 0.9
-speed = 1.5
-decay_rate = 0.30000000000000004
+life_time = 0.7
+speed = 1.3
+max_size = 0.7999999999999999
+decay_rate = 0.5
 metadata/_custom_type_script = "uid://pjgmjy1xod72"
 
 [sub_resource type="Resource" id="Resource_8nth8"]

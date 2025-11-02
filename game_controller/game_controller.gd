@@ -15,6 +15,6 @@ func _process(delta: float) -> void:
 
 
 func reload_level():
-	var game_scene = preload("res://main.tscn")
+	var game_scene = preload("res://main2.tscn")
 	if game_scene:
 		get_tree().change_scene_to_packed(game_scene)
