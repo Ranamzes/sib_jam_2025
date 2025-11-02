@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://bgrwxmc03jfth"]
+[gd_scene load_steps=92 format=3 uid="uid://bgrwxmc03jfth"]
 
 [ext_resource type="Texture2D" uid="uid://b3pj4qb62wavg" path="res://sprites/2D-Pixel-Art-Character-Template/Idle/Player Idle 48x48.png" id="1_2m0d2"]
 [ext_resource type="Script" uid="uid://chbr6mrhj0l4h" path="res://systems/input_system/player_input_component.gd" id="1_5p1j2"]
@@ -21,6 +21,7 @@
 [ext_resource type="Script" uid="uid://sui2aet7dpfb" path="res://systems/movement_system/stats/jump_stats.gd" id="18_ofhxi"]
 [ext_resource type="Script" uid="uid://pjgmjy1xod72" path="res://echo/echo_stats.gd" id="19_2m0d2"]
 [ext_resource type="Script" uid="uid://dpepr0ylg6wlu" path="res://systems/movement_system/state_component.gd" id="20_q6miu"]
+[ext_resource type="Texture2D" uid="uid://5bbaytwhjqlx" path="res://player/eye.png" id="22_mlfor"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yu5hk"]
 size = Vector2(24, 33)
@@ -350,6 +351,7 @@ states/jumping/position = Vector2(608, 95)
 states/running/node = SubResource("AnimationNodeAnimation_8tqfn")
 states/running/position = Vector2(371, 105)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_stbqk"), "idle", "running", SubResource("AnimationNodeStateMachineTransition_y617q"), "running", "idle", SubResource("AnimationNodeStateMachineTransition_8eyfg"), "running", "falling", SubResource("AnimationNodeStateMachineTransition_76mgg"), "running", "jumping", SubResource("AnimationNodeStateMachineTransition_ddnt4"), "idle", "jumping", SubResource("AnimationNodeStateMachineTransition_a0lmo"), "jumping", "falling", SubResource("AnimationNodeStateMachineTransition_234y4"), "falling", "idle", SubResource("AnimationNodeStateMachineTransition_u8vxv"), "falling", "running", SubResource("AnimationNodeStateMachineTransition_lhjxl"), "idle", "dashing", SubResource("AnimationNodeStateMachineTransition_wpul2"), "dashing", "idle", SubResource("AnimationNodeStateMachineTransition_pcftw"), "dashing", "falling", SubResource("AnimationNodeStateMachineTransition_cayk5"), "dashing", "running", SubResource("AnimationNodeStateMachineTransition_wqfsd"), "running", "dashing", SubResource("AnimationNodeStateMachineTransition_wpo5q")]
+graph_offset = Vector2(129.03964, -27.23996)
 
 [sub_resource type="Animation" id="Animation_cayk5"]
 length = 0.001
@@ -528,19 +530,18 @@ metadata/_custom_type_script = "uid://bln6wd364xxht"
 
 [sub_resource type="Resource" id="Resource_q6miu"]
 script = ExtResource("19_2m0d2")
-life_time = 0.9
+life_time = 1.2
 speed = 1.2000000000000002
-max_size = 1.6
-decay_rate = 0.6
+max_size = 2.0
+decay_rate = 0.30000000000000004
 metadata/_custom_type_script = "uid://pjgmjy1xod72"
 
 [sub_resource type="Resource" id="Resource_stbqk"]
 resource_local_to_scene = true
 script = ExtResource("19_2m0d2")
 life_time = 0.9
-speed = 0.4
-max_size = 0.4
-decay_rate = 0.6
+speed = 1.5
+decay_rate = 0.30000000000000004
 metadata/_custom_type_script = "uid://pjgmjy1xod72"
 
 [sub_resource type="Resource" id="Resource_8nth8"]
@@ -637,3 +638,13 @@ metadata/_custom_type_script = "uid://dpepr0ylg6wlu"
 
 [node name="EchoPointer" type="Node2D" parent="."]
 position = Vector2(4, 17)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(3, -10)
+texture = ExtResource("22_mlfor")
+texture_scale = 0.5
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(0, -10)
+texture = ExtResource("22_mlfor")
+texture_scale = 0.5

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="GUIDEMappingContext" load_steps=39 format=3 uid="uid://m6k6p2jv0yfa"]
+[gd_resource type="Resource" script_class="GUIDEMappingContext" load_steps=41 format=3 uid="uid://m6k6p2jv0yfa"]
 
 [ext_resource type="Script" uid="uid://cpplm41b5bt6m" path="res://addons/guide/guide_action_mapping.gd" id="1_tphwt"]
 [ext_resource type="Resource" uid="uid://dqicdbc6nfv7e" path="res://systems/input_system/actions/move.tres" id="2_njlv3"]
@@ -75,10 +75,18 @@ script = ExtResource("3_4wi1b")
 input = SubResource("Resource_m3vvy")
 triggers = Array[ExtResource("7_edodp")]([SubResource("Resource_f8p15")])
 
+[sub_resource type="Resource" id="Resource_6py3n"]
+script = ExtResource("4_t8rhn")
+key = 4194320
+
+[sub_resource type="Resource" id="Resource_5u0ts"]
+script = ExtResource("3_4wi1b")
+input = SubResource("Resource_6py3n")
+
 [sub_resource type="Resource" id="Resource_qh5ro"]
 script = ExtResource("1_tphwt")
 action = ExtResource("8_4ubko")
-input_mappings = Array[ExtResource("3_4wi1b")]([SubResource("Resource_6xwks")])
+input_mappings = Array[ExtResource("3_4wi1b")]([SubResource("Resource_6xwks"), SubResource("Resource_5u0ts")])
 
 [sub_resource type="Resource" id="Resource_wid2w"]
 script = ExtResource("1_tphwt")

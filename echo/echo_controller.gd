@@ -12,7 +12,7 @@ func _process(_delta: float) -> void:
 	pass
 
 
-func _on_echo_requested(echo_stats:EchoStats,pos:Vector2):
+func _on_echo_requested(echo_stats:EchoStats, pos:Vector2):
 	var new_echo_instance: EchoComponent =  echo_packed_scene.instantiate()
 	new_echo_instance._echo_stats = echo_stats
 	new_echo_instance.global_position = pos

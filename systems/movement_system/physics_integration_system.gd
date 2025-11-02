@@ -79,11 +79,14 @@ func change_velocity(new_velocity:Vector2):
 
 
 func _update_jump_state():
+	if _state_comp.previous_state == _state_comp.falling and player_character.is_on_floor():
+		_on_jump_echo()
+		_state_comp.previous_state = _state_comp.idle
 	if _state_comp.is_grounded and _state_comp.current_state!=_state_comp.jumping:
 		_jump_count = _jump_stats.max_jumps
 		_coyote_timer.stop()
 		_coyote_timer.start(_jump_stats.coyote_time)
-	
+
 
 func _execute_buffering_jump():
 	if not _buffer_timer.is_stopped() and _can_jump():
@@ -97,8 +100,6 @@ func _execute_actions_for_current_state(_delta:float):
 			pass
 		_state_comp.running,_state_comp.falling,_state_comp.crouching_run,_state_comp.idle,_state_comp.crouching_idle:
 			_execute_run(_delta)
-			
-	
 	
 	
 func _calculate_current_state():
@@ -142,7 +143,6 @@ func _apply_gravity():
 	# Clamp to terminal velocity
 	_velocity.y = min(_velocity.y, _jump_stats.terminal_velocity)
 
-
 func _can_jump() -> bool:
 	# Coyote time is only available for single jump configurations
 	var use_coyote = (_jump_stats.max_jumps == 1 and not _coyote_timer.is_stopped())
@@ -150,6 +150,7 @@ func _can_jump() -> bool:
 		print(_jump_count)
 		return _jump_count > 0
 	return(_jump_count > 0 and _state_comp.is_grounded) or use_coyote
+	
 func request_jump() -> void:
 	if _can_jump():
 		_execute_jump()
@@ -164,7 +165,7 @@ func _execute_jump() -> void:
 	var jump_velocity = -_jump_stats.jump_height * _jump_stats.gravity_scale * 5.0
 	
 	_velocity.y = jump_velocity
-	_on_jump_echo()
+	_on_run_echo()
 	_state_comp.change_state(_state_comp.jumping)
 	# Consume timers immediately after use
 	_coyote_timer.stop()
