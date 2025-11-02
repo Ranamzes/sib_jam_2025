@@ -7,10 +7,9 @@ extends Node
 @export var mov_state_comp: StateComponent
 
 func drag() -> void:
-	print_debug("dragging")
-	print_debug(iteraction_ray_cast.is_colliding())
 	if (iteraction_ray_cast.is_colliding() && iteraction_ray_cast.get_collider().is_in_group(GroupNames.druggable)) :
-		iteraction_ray_cast.get_collider().apply_central_impulse(iteraction_ray_cast.get_collision_normal() * drag_impulse)
+		if iteraction_ray_cast.global_position.distance_squared_to(iteraction_ray_cast.get_collision_point()) > 100 :
+			iteraction_ray_cast.get_collider().apply_central_impulse(iteraction_ray_cast.get_collision_normal() * drag_impulse)
 
 func _process(delta: float) -> void:
 	if mov_state_comp == null :

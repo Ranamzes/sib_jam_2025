@@ -18,7 +18,7 @@
 [ext_resource type="Script" uid="uid://jit3rqs1hyh1" path="res://systems/IteractionSystem/drag_component.gd" id="7_8tqfn"]
 [ext_resource type="Resource" uid="uid://vdkh2uoucvy8" path="res://systems/input_system/actions/latch.tres" id="7_yu5hk"]
 [ext_resource type="Script" uid="uid://4xcpj0x4w4cj" path="res://systems/movement_system/stats/dash_stats.gd" id="8_yu5hk"]
-[ext_resource type="Script" uid="uid://c4c7a116tmbm4" path="res://systems/animation_system/animation_system.gd" id="9_h5g2s"]
+[ext_resource type="Script" path="res://systems/animation_system/animation_system.gd" id="9_h5g2s"]
 [ext_resource type="Script" uid="uid://7w4jww1v0oqm" path="res://systems/movement_system/physics_integration_system.gd" id="14_abcde"]
 [ext_resource type="Script" uid="uid://bln6wd364xxht" path="res://systems/movement_system/stats/movement_stats.gd" id="17_uewl2"]
 [ext_resource type="Script" uid="uid://sui2aet7dpfb" path="res://systems/movement_system/stats/jump_stats.gd" id="18_ofhxi"]
@@ -635,15 +635,15 @@ metadata/_custom_type_script = "uid://c4c7a116tmbm4"
 
 [node name="PhysicsIntegrationSystem" type="Node" parent="Systems" node_paths=PackedStringArray("player_character", "echo_pointer", "_state_comp")]
 script = ExtResource("14_abcde")
+player_character = NodePath("../..")
+echo_pointer = NodePath("../../EchoPointer")
 echo_stats = Dictionary[String, ExtResource("19_2m0d2")]({
 "jump": SubResource("Resource_q6miu"),
 "run": SubResource("Resource_stbqk")
 })
+_state_comp = NodePath("../StateComponent")
 _move_stats = SubResource("Resource_8nth8")
 _jump_stats = SubResource("Resource_8tqfn")
-player_character = NodePath("../..")
-echo_pointer = NodePath("../../EchoPointer")
-_state_comp = NodePath("../StateComponent")
 metadata/_custom_type_script = "uid://7w4jww1v0oqm"
 
 [node name="StateComponent" type="Node" parent="Systems"]
