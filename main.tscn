@@ -21,6 +21,7 @@ shader_parameter/colorDivider = 0.1850000087875
 [node name="Main" type="Node"]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -59,7 +60,6 @@ metadata/_custom_type_script = "uid://kaq6at1y3jqw"
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Monocolor" parent="CanvasLayer" instance=ExtResource("4_1bvp3")]
-visible = false
 material = SubResource("ShaderMaterial_kek77")
 
 [node name="StartPosition" type="Marker2D" parent="."]
