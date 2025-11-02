@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=4 uid="uid://x662pd3helg5"]
+[gd_scene load_steps=9 format=4 uid="uid://x662pd3helg5"]
 
 [ext_resource type="PackedScene" uid="uid://bgrwxmc03jfth" path="res://player/Player.tscn" id="2_0xm2m"]
 [ext_resource type="Script" uid="uid://c0h40pfj0rlnp" path="res://systems/health_system/hitbox_component.gd" id="3_1bvp3"]
 [ext_resource type="TileSet" uid="uid://mpn3hiboo4y7" path="res://tilesets/test_tileset.tres" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://0f6ab8y0i26l" path="res://effects/monocolor.tscn" id="4_1bvp3"]
 [ext_resource type="Script" uid="uid://cgv2eq7fgiu03" path="res://echo/echo_controller.gd" id="4_lquwl"]
 [ext_resource type="PackedScene" uid="uid://b32sa4k6nlri2" path="res://echo/echo_component.tscn" id="5_7mycd"]
 [ext_resource type="Script" uid="uid://kaq6at1y3jqw" path="res://camera/main_camera.gd" id="6_7mycd"]
@@ -48,3 +49,8 @@ metadata/_custom_type_script = "uid://cgv2eq7fgiu03"
 [node name="MainCamera" type="Camera2D" parent="."]
 script = ExtResource("6_7mycd")
 metadata/_custom_type_script = "uid://kaq6at1y3jqw"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Monocolor" parent="CanvasLayer" instance=ExtResource("4_1bvp3")]
