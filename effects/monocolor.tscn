@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://0f6ab8y0i26l"]
+[gd_scene load_steps=4 format=3 uid="uid://0f6ab8y0i26l"]
 
-[ext_resource type="Shader" uid="uid://b0v710tat1koj" path="res://effects/monocolor.gdshader" id="1_7iccl"]
+[ext_resource type="Shader" uid="uid://b0v710tat1koj" path="res://effects/monocolor_shader.gdshader" id="1_7iccl"]
+[ext_resource type="Script" uid="uid://cohnkogr6ockt" path="res://effects/monocolor.gd" id="2_74mu6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d571q"]
 shader = ExtResource("1_7iccl")
@@ -15,3 +16,4 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("2_74mu6")

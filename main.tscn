@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://x662pd3helg5"]
+[gd_scene load_steps=11 format=4 uid="uid://x662pd3helg5"]
 
 [ext_resource type="PackedScene" uid="uid://bgrwxmc03jfth" path="res://player/Player.tscn" id="2_0xm2m"]
 [ext_resource type="Script" uid="uid://c0h40pfj0rlnp" path="res://systems/health_system/hitbox_component.gd" id="3_1bvp3"]
@@ -7,14 +7,20 @@
 [ext_resource type="Script" uid="uid://cgv2eq7fgiu03" path="res://echo/echo_controller.gd" id="4_lquwl"]
 [ext_resource type="PackedScene" uid="uid://b32sa4k6nlri2" path="res://echo/echo_component.tscn" id="5_7mycd"]
 [ext_resource type="Script" uid="uid://kaq6at1y3jqw" path="res://camera/main_camera.gd" id="6_7mycd"]
+[ext_resource type="Shader" uid="uid://b0v710tat1koj" path="res://effects/monocolor_shader.gdshader" id="8_5vw27"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
 size = Vector2(676, 74)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kek77"]
+shader = ExtResource("8_5vw27")
+shader_parameter/colorDarkness = Color(0, 0, 0, 1)
+shader_parameter/colorLight = Color(1, 1, 1, 1)
+shader_parameter/colorDivider = 0.1850000087875
+
 [node name="Main" type="Node"]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -52,6 +58,6 @@ script = ExtResource("6_7mycd")
 metadata/_custom_type_script = "uid://kaq6at1y3jqw"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Monocolor" parent="CanvasLayer" instance=ExtResource("4_1bvp3")]
+material = SubResource("ShaderMaterial_kek77")
