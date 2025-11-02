@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://1v4607xsndmu"]
+
+[ext_resource type="Script" uid="uid://cgv2eq7fgiu03" path="res://echo/echo_controller.gd" id="1_pg8np"]
+
+[node name="EchoController" type="Node2D"]
+script = ExtResource("1_pg8np")

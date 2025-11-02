@@ -9,14 +9,21 @@ size = Vector2(676, 74)
 
 [node name="Main" type="Node"]
 
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0, 0, 0, 1)
+
 [node name="Player" parent="." instance=ExtResource("2_0xm2m")]
-position = Vector2(232, 147)
+y_sort_enabled = true
+position = Vector2(58, 42)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(-172, -78)
 tile_map_data = PackedByteArray("AAALAAwAAAAQAAwAAAAMAAwAAAAQAAwAAAANAAwAAAAQAAwAAAAOAAwAAAAQAAwAAAAPAAwAAAAQAAwAAAAQAAwAAAAQAAwAAAARAAwAAAAQAAwAAAASAAwAAAAQAAwAAAATAAwAAAAQAAwAAAAbAAwAAAAQAAwAAAAcAAwAAAAQAAwAAAAdAAwAAAAQAAwAAAAeAAwAAAAQAAwAAAAfAAwAAAAQAAwAAAAgAAwAAAAQAAwAAAAhAAwAAAAQAAwAAAAiAAwAAAAQAAwAAAAaAAwAAAAQAAwAAAAZAAwAAAAQAAwAAAAjAAwAAAAQAAwAAAAkAAwAAAAQAAwAAAAlAAwAAAAQAAwAAAAlAAsAAAAQAAwAAAAlAAoAAAAQAAwAAAAlAAkAAAAQAAwAAAAlAAgAAAAQAAwAAAAlAAcAAAAQAAwAAAAlAAYAAAAQAAwAAAAdAAkAAAAQAAwAAAAeAAkAAAAQAAwAAAAfAAkAAAAQAAwAAAAgAAkAAAAQAAwAAAAhAAkAAAAQAAwAAAAiAAkAAAAQAAwAAAALAAsAAAAQAAwAAAALAAoAAAAQAAwAAAALAAkAAAAQAAwAAAALAAgAAAAQAAwAAAALAAcAAAAQAAwAAAALAAYAAAAQAAwAAAALAAUAAAAQAAwAAAA=")
 tile_set = ExtResource("3_h2yge")
+navigation_visibility_mode = 1
 
 [node name="HitboxComponent" type="Area2D" parent="."]
+position = Vector2(1, 0)
 collision_layer = 4
 collision_mask = 0
 monitoring = false
