@@ -3,7 +3,6 @@ extends Node
 
 @export var player_character: CharacterBody2D
 @export var echo_pointer:Node2D
-@export var echo_controller:EchoController
 @export var echo_stats: Dictionary[String,EchoStats]
 @export var _state_comp: StateComponent
 @export var _move_stats: MovementStats
@@ -112,7 +111,7 @@ func _calculate_current_state():
 		if abs(_velocity.x) > 0.1 or abs(_move_input_vector.x) > 0.1 :
 			_state_comp.change_state(_state_comp.running)
 		else:
-			if _state_comp.current_state!=_state_comp.idle:
+			if _state_comp.current_state==_state_comp.running:
 				_on_run_echo()
 			_state_comp.change_state(_state_comp.idle)
 
@@ -172,7 +171,8 @@ func _execute_jump() -> void:
 	_buffer_timer.stop()
 
 func _on_run_echo():
-	echo_controller._on_echo_requested(echo_stats.get(&"run"),echo_pointer.global_position)
+	EventBus.create_echo.emit(echo_stats.get(&"run"),echo_pointer.global_position)
+	
 #Character controller or ai controller should change movement vector
 func change_movement_vector(_new_movement_vector:Vector2):
 	_move_input_vector = _new_movement_vector
