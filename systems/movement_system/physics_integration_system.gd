@@ -23,7 +23,7 @@ func _ready() -> void:
 		push_error("PhysicsIntegrationSystem: Dependencies are not set.")
 		set_physics_process(false)
 
-	
+
 	# Create and configure timers
 	_coyote_timer = Timer.new()
 	_coyote_timer.name = "CoyoteTimer"
@@ -33,7 +33,7 @@ func _ready() -> void:
 	_buffer_timer = Timer.new()
 	_buffer_timer.name = "BufferTimer"
 	_buffer_timer.one_shot = true
-	add_child(_buffer_timer)  
+	add_child(_buffer_timer)
 	if _move_stats.time_to_reach_max_speed > 0:
 		_acceleration = _move_stats.max_speed / _move_stats.time_to_reach_max_speed
 	else:
@@ -42,7 +42,7 @@ func _ready() -> void:
 	if _move_stats.time_to_reach_zero_speed > 0:
 		_deceleration = _move_stats.max_speed / _move_stats.time_to_reach_zero_speed
 	else:
-		_deceleration = 9999 # Effectively instant  
+		_deceleration = 9999 # Effectively instant
 
 func _physics_process(_delta: float) -> void:
 	# 1. Apply the calculated velocity from systems to the CharacterBody2D
@@ -91,17 +91,17 @@ func _update_jump_state():
 func _execute_buffering_jump():
 	if not _buffer_timer.is_stopped() and _can_jump():
 		_state_comp.change_state(_state_comp.jumping)
-	
+
 
 func _execute_actions_for_current_state(_delta:float):
 	# State priority: The first condition met determines the state.
 	match _state_comp.current_state:
 		_state_comp.dashing:
 			pass
-		_state_comp.running,_state_comp.falling,_state_comp.crouching_run,_state_comp.idle,_state_comp.crouching_idle:
+		_state_comp.walk,_state_comp.falling,_state_comp.crouching_run,_state_comp.idle,_state_comp.crouching_idle:
 			_execute_run(_delta)
-	
-	
+
+
 func _calculate_current_state():
 	_state_comp.is_grounded = player_character.is_on_floor()
 	_state_comp.is_on_wall = player_character.is_on_wall() and not _state_comp.is_grounded
@@ -110,13 +110,13 @@ func _calculate_current_state():
 
 	if _state_comp.is_grounded:
 		if abs(_velocity.x) > 0.1 or abs(_move_input_vector.x) > 0.1 :
-			_state_comp.change_state(_state_comp.running)
+			_state_comp.change_state(_state_comp.walk)
 		else:
-			if _state_comp.current_state==_state_comp.running:
+			if _state_comp.current_state==_state_comp.walk:
 				_on_run_echo()
 			_state_comp.change_state(_state_comp.idle)
 
-			
+
 	else: # In the air
 		if _velocity.y < 0:
 			# If moving up, it's jumping.
@@ -125,12 +125,12 @@ func _calculate_current_state():
 		else:
 			# If moving down, it's falling.
 			_state_comp.change_state(_state_comp.falling)
-			
-			
+
+
 func _apply_gravity():
 	if _state_comp.current_state == _state_comp.dashing:
 		return
-		
+
 	var applied_gravity: float = _jump_stats.gravity_scale
 
 	# Apply descending factor if falling
@@ -139,7 +139,7 @@ func _apply_gravity():
 
 	# Apply gravity
 	_velocity.y += applied_gravity
-	
+
 	# Clamp to terminal velocity
 	_velocity.y = min(_velocity.y, _jump_stats.terminal_velocity)
 
@@ -150,7 +150,7 @@ func _can_jump() -> bool:
 		print(_jump_count)
 		return _jump_count > 0
 	return(_jump_count > 0 and _state_comp.is_grounded) or use_coyote
-	
+
 func request_jump() -> void:
 	if _can_jump():
 		_execute_jump()
@@ -160,10 +160,10 @@ func request_jump() -> void:
 		_buffer_timer.start(_jump_stats.jump_buffering)
 
 func _execute_jump() -> void:
-	# A tunable formula to get a jump velocity. 
+	# A tunable formula to get a jump velocity.
 	# This is not strictly physics-based but provides good game-feel control.
 	var jump_velocity = -_jump_stats.jump_height * _jump_stats.gravity_scale * 5.0
-	
+
 	_velocity.y = jump_velocity
 	_on_run_echo()
 	_state_comp.change_state(_state_comp.jumping)

@@ -8,6 +8,12 @@
 
 config_version=5
 
+[Fmod]
+
+General/banks_path="res://fmod_banks"
+DSP/dsp_buffer_size=1024
+"3D Settings/distance_factor"=64.0
+
 [application]
 
 config/name="SibJam2025"
@@ -22,6 +28,7 @@ GUIDE="*res://addons/guide/guide.gd"
 FmodManager="*res://addons/fmod/FmodManager.gd"
 EventBus="*res://globals/event_bus.gd"
 GroupNames="*res://globals/group_names.gd"
+FmodInitializer="*res://fmod_initializer.gd"
 
 [debug]
 
@@ -29,8 +36,8 @@ settings/gdscript/always_track_call_stacks=true
 
 [display]
 
-window/size/viewport_width=640
-window/size/viewport_height=360
+window/size/viewport_width=1280
+window/size/viewport_height=720
 window/size/window_width_override=1920
 window/size/window_height_override=1080
 window/stretch/mode="canvas_items"
@@ -46,6 +53,23 @@ movie_writer/node_name_casing=0
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/fmod/plugin.cfg", "res://addons/godot_mcp/plugin.cfg", "res://addons/guide/plugin.cfg")
+
+[fmod]
+
+general/auto_initialize=true
+general/channel_count=32
+general/live_update=true
+general/memory_tracking=false
+general/default_listener_count=1
+general/should_load_by_name=false
+software_format/sample_rate=48000
+software_format/speaker_mode=0
+software_format/raw_speaker_count=0
+dsp/dsp_buffer_size=1024
+dsp/dsp_buffer_count=4
+3d_settings/doppler_scale=1.0
+3d_settings/distance_factor=64.0
+3d_settings/rolloff_scale=1.0
 
 [global_group]
 

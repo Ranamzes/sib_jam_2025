@@ -33,7 +33,7 @@ navigation_visibility_mode = 1
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("2_0xm2m")]
 y_sort_enabled = true
-position = Vector2(55, 96)
+position = Vector2(47, 48)
 
 [node name="HitboxComponent" type="Area2D" parent="."]
 position = Vector2(1, 0)
@@ -63,6 +63,8 @@ metadata/_custom_type_script = "uid://kaq6at1y3jqw"
 [node name="Monocolor" parent="CanvasLayer" instance=ExtResource("4_1bvp3")]
 visible = false
 material = SubResource("ShaderMaterial_kek77")
+
+[node name="FmodListener2D" type="FmodListener2D" parent="."]
 
 [node name="StartPosition" type="Marker2D" parent="."]
 position = Vector2(56, 24)
