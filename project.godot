@@ -21,6 +21,7 @@ config/icon="uid://dhwlmcglmf0kw"
 GUIDE="*res://addons/guide/guide.gd"
 FmodManager="*res://addons/fmod/FmodManager.gd"
 EventBus="*res://globals/event_bus.gd"
+GroupNames="*res://globals/group_names.gd"
 
 [debug]
 
@@ -45,6 +46,11 @@ movie_writer/node_name_casing=0
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/fmod/plugin.cfg", "res://addons/godot_mcp/plugin.cfg", "res://addons/guide/plugin.cfg")
+
+[global_group]
+
+environment=""
+druggable=""
 
 [rendering]
 

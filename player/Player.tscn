@@ -1,11 +1,13 @@
-[gd_scene load_steps=92 format=3 uid="uid://bgrwxmc03jfth"]
+[gd_scene load_steps=94 format=3 uid="uid://bgrwxmc03jfth"]
 
 [ext_resource type="Texture2D" uid="uid://b3pj4qb62wavg" path="res://sprites/2D-Pixel-Art-Character-Template/Idle/Player Idle 48x48.png" id="1_2m0d2"]
 [ext_resource type="Script" uid="uid://chbr6mrhj0l4h" path="res://systems/input_system/player_input_component.gd" id="1_5p1j2"]
+[ext_resource type="Script" uid="uid://cg6pvwqc3b5mc" path="res://player/player.gd" id="1_8nth8"]
 [ext_resource type="Texture2D" uid="uid://brjv4ntd8ip6e" path="res://sprites/2D-Pixel-Art-Character-Template/Jump/player new jump 48x48.png" id="1_8tqfn"]
 [ext_resource type="Texture2D" uid="uid://u1dvmpiwf15h" path="res://sprites/2D-Pixel-Art-Character-Template/Run/player run 48x48.png" id="2_2m0d2"]
 [ext_resource type="Resource" uid="uid://m6k6p2jv0yfa" path="res://systems/input_system/player_mapping_context.tres" id="2_v4f8b"]
 [ext_resource type="Texture2D" uid="uid://cu4sejywv8k7w" path="res://sprites/2D-Pixel-Art-Character-Template/Dash/dash.png" id="2_yu5hk"]
+[ext_resource type="Shape2D" uid="uid://c1mx1ld17atye" path="res://player/CapsuleShape.tres" id="3_stbqk"]
 [ext_resource type="Resource" uid="uid://dqicdbc6nfv7e" path="res://systems/input_system/actions/move.tres" id="3_t8epa"]
 [ext_resource type="Script" uid="uid://b58pdy82skwid" path="res://systems/health_system/hurtbox_component.gd" id="4_uewl2"]
 [ext_resource type="Resource" path="res://systems/input_system/actions/jump.tres" id="4_w24id"]
@@ -13,21 +15,17 @@
 [ext_resource type="Resource" path="res://systems/input_system/actions/dash.tres" id="5_uewl2"]
 [ext_resource type="Script" uid="uid://4hcakwlm1h5y" path="res://systems/movement_system/dash_component.gd" id="5_yu5hk"]
 [ext_resource type="Resource" path="res://systems/input_system/actions/crouch.tres" id="6_ofhxi"]
-[ext_resource type="Resource" path="res://systems/input_system/actions/latch.tres" id="7_yu5hk"]
+[ext_resource type="Script" uid="uid://jit3rqs1hyh1" path="res://systems/IteractionSystem/drag_component.gd" id="7_8tqfn"]
+[ext_resource type="Resource" uid="uid://vdkh2uoucvy8" path="res://systems/input_system/actions/latch.tres" id="7_yu5hk"]
 [ext_resource type="Script" uid="uid://4xcpj0x4w4cj" path="res://systems/movement_system/stats/dash_stats.gd" id="8_yu5hk"]
 [ext_resource type="Script" uid="uid://c4c7a116tmbm4" path="res://systems/animation_system/animation_system.gd" id="9_h5g2s"]
 [ext_resource type="Script" uid="uid://7w4jww1v0oqm" path="res://systems/movement_system/physics_integration_system.gd" id="14_abcde"]
 [ext_resource type="Script" uid="uid://bln6wd364xxht" path="res://systems/movement_system/stats/movement_stats.gd" id="17_uewl2"]
 [ext_resource type="Script" uid="uid://sui2aet7dpfb" path="res://systems/movement_system/stats/jump_stats.gd" id="18_ofhxi"]
 [ext_resource type="Script" uid="uid://pjgmjy1xod72" path="res://echo/echo_stats.gd" id="19_2m0d2"]
+[ext_resource type="Resource" uid="uid://drp8a3ph6rqou" path="res://systems/input_system/actions/drag.tres" id="19_8tqfn"]
 [ext_resource type="Script" uid="uid://dpepr0ylg6wlu" path="res://systems/movement_system/state_component.gd" id="20_q6miu"]
 [ext_resource type="Texture2D" uid="uid://5bbaytwhjqlx" path="res://player/eye.png" id="22_mlfor"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yu5hk"]
-size = Vector2(24, 33)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_y617q"]
-size = Vector2(24, 34)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mlfor"]
 atlas = ExtResource("2_yu5hk")
@@ -554,6 +552,12 @@ jump_height = 4.0
 metadata/_custom_type_script = "uid://sui2aet7dpfb"
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 3
+script = ExtResource("1_8nth8")
+
+[node name="IteractionScanRayCast" type="RayCast2D" parent="."]
+rotation = -1.5707964
+collision_mask = 3072
 
 [node name="HurtboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
 collision_layer = 0
@@ -565,11 +569,11 @@ metadata/_custom_type_script = "uid://b58pdy82skwid"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
 position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_yu5hk")
+shape = ExtResource("3_stbqk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
-shape = SubResource("RectangleShape2D_y617q")
+shape = ExtResource("3_stbqk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8cy8x")
@@ -585,6 +589,7 @@ libraries = {
 }
 
 [node name="Components" type="Node" parent="."]
+script = ExtResource("7_8tqfn")
 
 [node name="HealthComponent" type="Node" parent="Components"]
 script = ExtResource("5_ofhxi")
@@ -598,7 +603,7 @@ _movement_stats = SubResource("Resource_2m0d2")
 _physics = NodePath("../../Systems/PhysicsIntegrationSystem")
 metadata/_custom_type_script = "uid://4hcakwlm1h5y"
 
-[node name="PlayerInputComponent" type="Node" parent="Components" node_paths=PackedStringArray("physics_system", "dash_component")]
+[node name="PlayerInputComponent" type="Node" parent="Components" node_paths=PackedStringArray("physics_system", "dash_component", "drag_component")]
 script = ExtResource("1_5p1j2")
 mapping_context = ExtResource("2_v4f8b")
 move_action = ExtResource("3_t8epa")
@@ -606,9 +611,18 @@ jump_action = ExtResource("4_w24id")
 dash_action = ExtResource("5_uewl2")
 crouch_action = ExtResource("6_ofhxi")
 latch_action = ExtResource("7_yu5hk")
+drag_action = ExtResource("19_8tqfn")
 physics_system = NodePath("../../Systems/PhysicsIntegrationSystem")
 dash_component = NodePath("../DashComponent")
+drag_component = NodePath("../DragComponent")
 metadata/_custom_type_script = "uid://chbr6mrhj0l4h"
+
+[node name="DragComponent" type="Node" parent="Components" node_paths=PackedStringArray("iteraction_ray_cast", "mov_state_comp")]
+script = ExtResource("7_8tqfn")
+iteraction_ray_cast = NodePath("../../IteractionScanRayCast")
+drag_impulse = 150
+mov_state_comp = NodePath("../../Systems/StateComponent")
+metadata/_custom_type_script = "uid://jit3rqs1hyh1"
 
 [node name="Systems" type="Node" parent="."]
 

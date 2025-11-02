@@ -13,8 +13,10 @@ extends Node
 @export var dash_action: GUIDEAction
 @export var crouch_action: GUIDEAction
 @export var latch_action: GUIDEAction
+@export var drag_action: GUIDEAction
 @export var physics_system: PhysicsIntegrationSystem
 @export var dash_component: DashComponent
+@export var drag_component: DragComponent
 func _ready() -> void:
 	if not mapping_context:
 		push_error("PlayerInputComponent: GUIDEMappingContext is not set!")
@@ -29,6 +31,8 @@ func _ready() -> void:
 		jump_action.triggered.connect(func(): physics_system.request_jump())
 	if dash_action && dash_component!= null:
 		dash_action.triggered.connect(func(): dash_component.request_dash())
+	if drag_action && drag_component != null:
+		drag_action.triggered.connect(func(): drag_component.drag())
 	
 	# For hold actions, we can check their state change
 	##if crouch_action:
