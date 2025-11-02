@@ -33,3 +33,4 @@ shape = SubResource("RectangleShape2D_lquwl")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Monocolor" parent="CanvasLayer" instance=ExtResource("4_1bvp3")]
+visible = false
