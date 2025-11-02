@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://bgrwxmc03jfth"]
+[gd_scene load_steps=91 format=3 uid="uid://bgrwxmc03jfth"]
 
 [ext_resource type="Texture2D" uid="uid://b3pj4qb62wavg" path="res://sprites/2D-Pixel-Art-Character-Template/Idle/Player Idle 48x48.png" id="1_2m0d2"]
 [ext_resource type="Script" uid="uid://chbr6mrhj0l4h" path="res://systems/input_system/player_input_component.gd" id="1_5p1j2"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" uid="uid://7w4jww1v0oqm" path="res://systems/movement_system/physics_integration_system.gd" id="14_abcde"]
 [ext_resource type="Script" uid="uid://bln6wd364xxht" path="res://systems/movement_system/stats/movement_stats.gd" id="17_uewl2"]
 [ext_resource type="Script" uid="uid://sui2aet7dpfb" path="res://systems/movement_system/stats/jump_stats.gd" id="18_ofhxi"]
+[ext_resource type="Script" uid="uid://pjgmjy1xod72" path="res://echo/echo_stats.gd" id="19_2m0d2"]
 [ext_resource type="Script" uid="uid://dpepr0ylg6wlu" path="res://systems/movement_system/state_component.gd" id="20_q6miu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yu5hk"]
@@ -222,7 +223,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vud74")
 }],
-"loop": true,
+"loop": false,
 "name": &"idle",
 "speed": 11.0
 }, {
@@ -364,6 +365,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [&"run"]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_22tms"]
 resource_name = "dashing"
@@ -429,6 +442,52 @@ tracks/0/keys = {
 "values": [&"jump"]
 }
 
+[sub_resource type="Animation" id="Animation_2m0d2"]
+resource_name = "new_animation"
+length = 0.53
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"run"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.2, 0.26666668, 0.33333334, 0.4, 0.46666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Systems/PhysicsIntegrationSystem")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.26666668),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"_on_run_echo"
+}, {
+"args": [],
+"method": &"_on_run_echo"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_wqfsd"]
 resource_name = "run"
 length = 0.1
@@ -452,7 +511,8 @@ _data = {
 &"falling": SubResource("Animation_uyl0s"),
 &"idle": SubResource("Animation_pcftw"),
 &"jumping": SubResource("Animation_y2u3w"),
-&"running": SubResource("Animation_wqfsd")
+&"running": SubResource("Animation_2m0d2"),
+&"test": SubResource("Animation_wqfsd")
 }
 
 [sub_resource type="Resource" id="Resource_mlfor"]
@@ -465,6 +525,23 @@ metadata/_custom_type_script = "uid://4xcpj0x4w4cj"
 [sub_resource type="Resource" id="Resource_2m0d2"]
 script = ExtResource("17_uewl2")
 metadata/_custom_type_script = "uid://bln6wd364xxht"
+
+[sub_resource type="Resource" id="Resource_stbqk"]
+resource_local_to_scene = true
+script = ExtResource("19_2m0d2")
+life_time = 0.6
+speed = 0.30000000000000004
+max_size = 0.30000000000000004
+decay_rate = 0.5
+metadata/_custom_type_script = "uid://pjgmjy1xod72"
+
+[sub_resource type="Resource" id="Resource_q6miu"]
+script = ExtResource("19_2m0d2")
+life_time = 0.6
+speed = 0.4
+max_size = 0.6
+decay_rate = 0.5
+metadata/_custom_type_script = "uid://pjgmjy1xod72"
 
 [sub_resource type="Resource" id="Resource_8nth8"]
 script = ExtResource("17_uewl2")
@@ -496,7 +573,6 @@ shape = SubResource("RectangleShape2D_y617q")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8cy8x")
 animation = &"run"
-autoplay = "idle"
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_610ub")
@@ -542,9 +618,14 @@ player_sprite = NodePath("../../AnimatedSprite2D")
 mov_state_comp = NodePath("../StateComponent")
 metadata/_custom_type_script = "uid://c4c7a116tmbm4"
 
-[node name="PhysicsIntegrationSystem" type="Node" parent="Systems" node_paths=PackedStringArray("player_character", "_state_comp")]
+[node name="PhysicsIntegrationSystem" type="Node" parent="Systems" node_paths=PackedStringArray("player_character", "echo_pointer", "_state_comp")]
 script = ExtResource("14_abcde")
 player_character = NodePath("../..")
+echo_pointer = NodePath("../../EchoPointer")
+echo_stats = Dictionary[String, ExtResource("19_2m0d2")]({
+"jump": SubResource("Resource_q6miu"),
+"run": SubResource("Resource_stbqk")
+})
 _state_comp = NodePath("../StateComponent")
 _move_stats = SubResource("Resource_8nth8")
 _jump_stats = SubResource("Resource_8tqfn")
@@ -553,3 +634,6 @@ metadata/_custom_type_script = "uid://7w4jww1v0oqm"
 [node name="StateComponent" type="Node" parent="Systems"]
 script = ExtResource("20_q6miu")
 metadata/_custom_type_script = "uid://dpepr0ylg6wlu"
+
+[node name="EchoPointer" type="Node2D" parent="."]
+position = Vector2(4, 17)
