@@ -33,7 +33,7 @@ navigation_visibility_mode = 1
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("2_0xm2m")]
 y_sort_enabled = true
-position = Vector2(55, 96)
+position = Vector2(47, 48)
 
 [node name="HitboxComponent" type="Area2D" parent="."]
 position = Vector2(1, 0)
@@ -69,3 +69,17 @@ position = Vector2(56, 24)
 
 [node name="MovableItem" parent="." instance=ExtResource("9_kek77")]
 position = Vector2(96, 89)
+
+[node name="FmodBankLoader" type="FmodBankLoader" parent="."]
+bank_paths = ["res://fmod_banks/Desktop/Master.strings.bank", "res://fmod_banks/Desktop/Master.bank"]
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="BgMusic" type="FmodEventEmitter2D" parent="Audio"]
+event_name = "event:/bg_music/level1"
+event_guid = "{b80eac12-306d-48ae-862e-a38e5f7236c3}"
+attached = false
+autoplay = true
+fmod_parameters/progress/id = 3080171880814298515
+fmod_parameters/progress = 0.0
+fmod_parameters/progress/variant_type = 3

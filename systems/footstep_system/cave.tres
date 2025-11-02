@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AudioSurfaceResource" load_steps=2 format=3 uid="uid://c7sec2qhxg6kf"]
+
+[ext_resource type="Script" uid="uid://ca5bm55jg3ds3" path="res://systems/footstep_system/audio_surface_resource.gd" id="1_jabj4"]
+
+[resource]
+script = ExtResource("1_jabj4")
+surface_name = &"cave"
+fmod_parameter_value = 1.0
+metadata/_custom_type_script = "uid://ca5bm55jg3ds3"

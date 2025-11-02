@@ -11,18 +11,18 @@ func drag() -> void:
 		if iteraction_ray_cast.global_position.distance_squared_to(iteraction_ray_cast.get_collision_point()) > 100 :
 			iteraction_ray_cast.get_collider().apply_central_impulse(iteraction_ray_cast.get_collision_normal() * drag_impulse)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if mov_state_comp == null :
 		return
 
 	# Only handle continuous parameter updates here
 	var velocity = mov_state_comp.movement_vector
-	
-	
+
+
 	# --- Flip Sprite ---
 	if abs(velocity.x) > 0.1:
 		if velocity.x > 0 :
 			iteraction_ray_cast.rotation_degrees = 270
 		else :
 			iteraction_ray_cast.rotation_degrees = 90
-	
+

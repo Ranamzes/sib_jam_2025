@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://bgrwxmc03jfth"]
+[gd_scene load_steps=115 format=3 uid="uid://bgrwxmc03jfth"]
 
 [ext_resource type="Texture2D" uid="uid://b3pj4qb62wavg" path="res://sprites/2D-Pixel-Art-Character-Template/Idle/Player Idle 48x48.png" id="1_2m0d2"]
 [ext_resource type="Script" uid="uid://chbr6mrhj0l4h" path="res://systems/input_system/player_input_component.gd" id="1_5p1j2"]
@@ -17,6 +17,7 @@
 [ext_resource type="Resource" path="res://systems/input_system/actions/crouch.tres" id="6_ofhxi"]
 [ext_resource type="Script" uid="uid://jit3rqs1hyh1" path="res://systems/IteractionSystem/drag_component.gd" id="7_8tqfn"]
 [ext_resource type="Resource" uid="uid://vdkh2uoucvy8" path="res://systems/input_system/actions/latch.tres" id="7_yu5hk"]
+[ext_resource type="Texture2D" uid="uid://yeu7spgq7rit" path="res://player/animations/walk.png" id="8_y617q"]
 [ext_resource type="Script" uid="uid://4xcpj0x4w4cj" path="res://systems/movement_system/stats/dash_stats.gd" id="8_yu5hk"]
 [ext_resource type="Script" uid="uid://boncf0le5k03j" path="res://systems/animation_system/animation_system.gd" id="9_h5g2s"]
 [ext_resource type="Script" uid="uid://7w4jww1v0oqm" path="res://systems/movement_system/physics_integration_system.gd" id="14_abcde"]
@@ -25,7 +26,9 @@
 [ext_resource type="Script" uid="uid://pjgmjy1xod72" path="res://echo/echo_stats.gd" id="19_2m0d2"]
 [ext_resource type="Resource" uid="uid://drp8a3ph6rqou" path="res://systems/input_system/actions/drag.tres" id="19_8tqfn"]
 [ext_resource type="Script" uid="uid://dpepr0ylg6wlu" path="res://systems/movement_system/state_component.gd" id="20_q6miu"]
+[ext_resource type="Script" uid="uid://81kwjwkswx8d" path="res://systems/footstep_system/footstep_component.gd" id="22_8eyfg"]
 [ext_resource type="Texture2D" uid="uid://5bbaytwhjqlx" path="res://player/eye.png" id="22_mlfor"]
+[ext_resource type="Resource" uid="uid://bvvkcrgwqqnfl" path="res://systems/footstep_system/FootstepData.tres" id="23_76mgg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mlfor"]
 atlas = ExtResource("2_yu5hk")
@@ -155,6 +158,38 @@ region = Rect2(288, 0, 48, 48)
 atlas = ExtResource("2_2m0d2")
 region = Rect2(336, 0, 48, 48)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3bl4"]
+atlas = ExtResource("8_y617q")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpul2"]
+atlas = ExtResource("8_y617q")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcftw"]
+atlas = ExtResource("8_y617q")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cayk5"]
+atlas = ExtResource("8_y617q")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqfsd"]
+atlas = ExtResource("8_y617q")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpo5q"]
+atlas = ExtResource("8_y617q")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22tms"]
+atlas = ExtResource("8_y617q")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0a0r0"]
+atlas = ExtResource("8_y617q")
+region = Rect2(896, 0, 128, 128)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_8cy8x"]
 animations = [{
 "frames": [{
@@ -277,6 +312,35 @@ animations = [{
 "loop": true,
 "name": &"run",
 "speed": 11.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u3bl4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpul2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pcftw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cayk5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqfsd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpo5q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_22tms")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0a0r0")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
 }]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u3bl4"]
@@ -293,6 +357,9 @@ animation = &"jumping"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8tqfn"]
 animation = &"running"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_y617q"]
+animation = &"walk"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_stbqk"]
 advance_mode = 2
@@ -336,6 +403,30 @@ advance_mode = 0
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wpo5q"]
 advance_mode = 0
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_y2u3w"]
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uyl0s"]
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vud74"]
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8cy8x"]
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_610ub"]
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ayguc"]
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_t7u8x"]
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lnwue"]
+advance_mode = 0
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_610ub"]
 states/Start/position = Vector2(228, 190)
 states/dashing/node = SubResource("AnimationNodeAnimation_u3bl4")
@@ -348,8 +439,10 @@ states/jumping/node = SubResource("AnimationNodeAnimation_8nth8")
 states/jumping/position = Vector2(608, 95)
 states/running/node = SubResource("AnimationNodeAnimation_8tqfn")
 states/running/position = Vector2(371, 105)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_stbqk"), "idle", "running", SubResource("AnimationNodeStateMachineTransition_y617q"), "running", "idle", SubResource("AnimationNodeStateMachineTransition_8eyfg"), "running", "falling", SubResource("AnimationNodeStateMachineTransition_76mgg"), "running", "jumping", SubResource("AnimationNodeStateMachineTransition_ddnt4"), "idle", "jumping", SubResource("AnimationNodeStateMachineTransition_a0lmo"), "jumping", "falling", SubResource("AnimationNodeStateMachineTransition_234y4"), "falling", "idle", SubResource("AnimationNodeStateMachineTransition_u8vxv"), "falling", "running", SubResource("AnimationNodeStateMachineTransition_lhjxl"), "idle", "dashing", SubResource("AnimationNodeStateMachineTransition_wpul2"), "dashing", "idle", SubResource("AnimationNodeStateMachineTransition_pcftw"), "dashing", "falling", SubResource("AnimationNodeStateMachineTransition_cayk5"), "dashing", "running", SubResource("AnimationNodeStateMachineTransition_wqfsd"), "running", "dashing", SubResource("AnimationNodeStateMachineTransition_wpo5q")]
-graph_offset = Vector2(129.03964, -27.23996)
+states/walk/node = SubResource("AnimationNodeAnimation_y617q")
+states/walk/position = Vector2(459.53964, 388.51004)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_stbqk"), "idle", "running", SubResource("AnimationNodeStateMachineTransition_y617q"), "running", "idle", SubResource("AnimationNodeStateMachineTransition_8eyfg"), "running", "falling", SubResource("AnimationNodeStateMachineTransition_76mgg"), "running", "jumping", SubResource("AnimationNodeStateMachineTransition_ddnt4"), "idle", "jumping", SubResource("AnimationNodeStateMachineTransition_a0lmo"), "jumping", "falling", SubResource("AnimationNodeStateMachineTransition_234y4"), "falling", "idle", SubResource("AnimationNodeStateMachineTransition_u8vxv"), "falling", "running", SubResource("AnimationNodeStateMachineTransition_lhjxl"), "idle", "dashing", SubResource("AnimationNodeStateMachineTransition_wpul2"), "dashing", "idle", SubResource("AnimationNodeStateMachineTransition_pcftw"), "dashing", "falling", SubResource("AnimationNodeStateMachineTransition_cayk5"), "dashing", "running", SubResource("AnimationNodeStateMachineTransition_wqfsd"), "running", "dashing", SubResource("AnimationNodeStateMachineTransition_wpo5q"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_y2u3w"), "walk", "running", SubResource("AnimationNodeStateMachineTransition_uyl0s"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_vud74"), "running", "walk", SubResource("AnimationNodeStateMachineTransition_8cy8x"), "walk", "falling", SubResource("AnimationNodeStateMachineTransition_610ub"), "falling", "walk", SubResource("AnimationNodeStateMachineTransition_ayguc"), "walk", "jumping", SubResource("AnimationNodeStateMachineTransition_t7u8x"), "jumping", "walk", SubResource("AnimationNodeStateMachineTransition_lnwue")]
+graph_offset = Vector2(-393.96036, -304.23996)
 
 [sub_resource type="Animation" id="Animation_cayk5"]
 length = 0.001
@@ -376,6 +469,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FootMarker:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(19, 59)]
 }
 
 [sub_resource type="Animation" id="Animation_22tms"]
@@ -504,6 +609,63 @@ tracks/0/keys = {
 "values": [&"run"]
 }
 
+[sub_resource type="Animation" id="Animation_y5372"]
+resource_name = "walk"
+length = 1.06
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"walk"]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 7, -0.4166667, 0, 0, 0),
+"times": PackedFloat32Array(0, 1.06)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FootMarker:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.36666667, 0.8666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(19, 59), Vector2(19, 59)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Components/FootstepComponent")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.4, 0.8666667),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"play_step"
+}, {
+"args": [],
+"method": &"play_step"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wpo5q"]
 _data = {
 &"RESET": SubResource("Animation_cayk5"),
@@ -512,7 +674,8 @@ _data = {
 &"idle": SubResource("Animation_pcftw"),
 &"jumping": SubResource("Animation_y2u3w"),
 &"running": SubResource("Animation_2m0d2"),
-&"test": SubResource("Animation_wqfsd")
+&"test": SubResource("Animation_wqfsd"),
+&"walk": SubResource("Animation_y5372")
 }
 
 [sub_resource type="Resource" id="Resource_mlfor"]
@@ -572,7 +735,7 @@ position = Vector2(0, 0.5)
 shape = ExtResource("3_stbqk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
+position = Vector2(0.795, 10.885)
 shape = ExtResource("3_stbqk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -624,6 +787,12 @@ drag_impulse = 150
 mov_state_comp = NodePath("../../Systems/StateComponent")
 metadata/_custom_type_script = "uid://jit3rqs1hyh1"
 
+[node name="FootstepComponent" type="Node" parent="Components"]
+script = ExtResource("22_8eyfg")
+footstep_data = ExtResource("23_76mgg")
+foot_marker = NodePath("../../FootMarker")
+metadata/_custom_type_script = "uid://81kwjwkswx8d"
+
 [node name="Systems" type="Node" parent="."]
 
 [node name="AnimationSystem" type="Node" parent="Systems" node_paths=PackedStringArray("animation_tree", "player_sprite", "mov_state_comp")]
@@ -631,7 +800,6 @@ script = ExtResource("9_h5g2s")
 animation_tree = NodePath("../../AnimationTree")
 player_sprite = NodePath("../../AnimatedSprite2D")
 mov_state_comp = NodePath("../StateComponent")
-metadata/_custom_type_script = "uid://c4c7a116tmbm4"
 
 [node name="PhysicsIntegrationSystem" type="Node" parent="Systems" node_paths=PackedStringArray("player_character", "echo_pointer", "_state_comp")]
 script = ExtResource("14_abcde")
@@ -662,3 +830,6 @@ texture_scale = 0.5
 position = Vector2(0, -10)
 texture = ExtResource("22_mlfor")
 texture_scale = 0.5
+
+[node name="FootMarker" type="Marker2D" parent="."]
+position = Vector2(19, 59)
