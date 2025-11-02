@@ -4,7 +4,7 @@ uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
 
 uniform vec4 colorDarkness : source_color = vec4(0.0, 0.0, 0.0, 1.0);
 uniform vec4 colorLight : source_color = vec4(1.0, 1.0, 1.0, 1.0);
-uniform float colorDivider : hint_range(0.0, 1.0) = .5;
+uniform float colorDivider : hint_range(0.0, 1.0) = .7;
 
 void fragment() {
 	vec4 pixelColor = texture(SCREEN_TEXTURE, SCREEN_UV);
