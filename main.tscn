@@ -64,10 +64,20 @@ metadata/_custom_type_script = "uid://kaq6at1y3jqw"
 visible = false
 material = SubResource("ShaderMaterial_kek77")
 
-[node name="FmodListener2D" type="FmodListener2D" parent="."]
-
 [node name="StartPosition" type="Marker2D" parent="."]
 position = Vector2(56, 24)
 
 [node name="MovableItem" parent="." instance=ExtResource("9_kek77")]
 position = Vector2(96, 89)
+
+[node name="FmodBankLoader" type="FmodBankLoader" parent="."]
+bank_paths = ["res://fmod_banks/Desktop/Master.strings.bank", "res://fmod_banks/Desktop/Master.bank"]
+
+[node name="FmodEventEmitter2D" type="FmodEventEmitter2D" parent="."]
+event_name = "event:/bg_music/level1"
+event_guid = "{b80eac12-306d-48ae-862e-a38e5f7236c3}"
+attached = false
+autoplay = true
+fmod_parameters/progress/id = 3080171880814298515
+fmod_parameters/progress = 0.0
+fmod_parameters/progress/variant_type = 3
