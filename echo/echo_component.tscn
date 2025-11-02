@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b32sa4k6nlri2"]
+
+[ext_resource type="Script" uid="uid://wlgui2vq4ykc" path="res://echo/echo_component.gd" id="1_v4fw5"]
+[ext_resource type="Texture2D" uid="uid://b4xp70onlqe0" path="res://echo/light1.png" id="2_v4fw5"]
+
+[node name="EchoComponent" type="Node2D"]
+script = ExtResource("1_v4fw5")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(2, 2)
+blend_mode = 2
+texture = ExtResource("2_v4fw5")
