@@ -526,21 +526,21 @@ metadata/_custom_type_script = "uid://4xcpj0x4w4cj"
 script = ExtResource("17_uewl2")
 metadata/_custom_type_script = "uid://bln6wd364xxht"
 
+[sub_resource type="Resource" id="Resource_q6miu"]
+script = ExtResource("19_2m0d2")
+life_time = 0.9
+speed = 1.2000000000000002
+max_size = 1.6
+decay_rate = 0.6
+metadata/_custom_type_script = "uid://pjgmjy1xod72"
+
 [sub_resource type="Resource" id="Resource_stbqk"]
 resource_local_to_scene = true
 script = ExtResource("19_2m0d2")
-life_time = 0.6
-speed = 0.30000000000000004
-max_size = 0.30000000000000004
-decay_rate = 0.5
-metadata/_custom_type_script = "uid://pjgmjy1xod72"
-
-[sub_resource type="Resource" id="Resource_q6miu"]
-script = ExtResource("19_2m0d2")
-life_time = 0.6
+life_time = 0.9
 speed = 0.4
-max_size = 0.6
-decay_rate = 0.5
+max_size = 0.4
+decay_rate = 0.6
 metadata/_custom_type_script = "uid://pjgmjy1xod72"
 
 [sub_resource type="Resource" id="Resource_8nth8"]

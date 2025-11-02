@@ -1,6 +1,7 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://mpn3hiboo4y7"]
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://mpn3hiboo4y7"]
 
 [ext_resource type="Texture2D" uid="uid://dhwlmcglmf0kw" path="res://Logo.png" id="1_rlcim"]
+[ext_resource type="Texture2D" uid="uid://762uy4hnij5y" path="res://tilesets/level_assets.png" id="2_8n1lv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8n1lv"]
 texture = ExtResource("1_rlcim")
@@ -1514,6 +1515,17 @@ texture = ExtResource("1_rlcim")
 36:37/0 = 0
 37:37/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xv5dm"]
+texture = ExtResource("2_8n1lv")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
 [resource]
 physics_layer_0/collision_layer = 15
 physics_layer_0/collision_mask = 15
@@ -1521,3 +1533,4 @@ terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_8n1lv")
+sources/1 = SubResource("TileSetAtlasSource_xv5dm")
