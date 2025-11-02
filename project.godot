@@ -21,6 +21,7 @@ config/icon="uid://dhwlmcglmf0kw"
 GUIDE="*res://addons/guide/guide.gd"
 FmodManager="*res://addons/fmod/FmodManager.gd"
 EventBus="*res://globals/event_bus.gd"
+GameController="*res://game_controller/game_controller.gd"
 
 [debug]
 

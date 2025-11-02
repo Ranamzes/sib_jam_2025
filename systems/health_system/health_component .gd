@@ -41,3 +41,4 @@ func check_death():
 	if current_health == 0:
 		died.emit()
 		owner.queue_free()
+	GameController.reload_level()
