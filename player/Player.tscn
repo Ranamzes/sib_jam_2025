@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=3 uid="uid://bgrwxmc03jfth"]
+[gd_scene load_steps=91 format=3 uid="uid://bgrwxmc03jfth"]
 
 [ext_resource type="Texture2D" uid="uid://b3pj4qb62wavg" path="res://sprites/2D-Pixel-Art-Character-Template/Idle/Player Idle 48x48.png" id="1_2m0d2"]
 [ext_resource type="Script" uid="uid://chbr6mrhj0l4h" path="res://systems/input_system/player_input_component.gd" id="1_5p1j2"]
@@ -535,6 +535,14 @@ max_size = 0.30000000000000004
 decay_rate = 0.5
 metadata/_custom_type_script = "uid://pjgmjy1xod72"
 
+[sub_resource type="Resource" id="Resource_q6miu"]
+script = ExtResource("19_2m0d2")
+life_time = 0.6
+speed = 0.4
+max_size = 0.6
+decay_rate = 0.5
+metadata/_custom_type_script = "uid://pjgmjy1xod72"
+
 [sub_resource type="Resource" id="Resource_8nth8"]
 script = ExtResource("17_uewl2")
 metadata/_custom_type_script = "uid://bln6wd364xxht"
@@ -615,6 +623,7 @@ script = ExtResource("14_abcde")
 player_character = NodePath("../..")
 echo_pointer = NodePath("../../EchoPointer")
 echo_stats = Dictionary[String, ExtResource("19_2m0d2")]({
+"jump": SubResource("Resource_q6miu"),
 "run": SubResource("Resource_stbqk")
 })
 _state_comp = NodePath("../StateComponent")
