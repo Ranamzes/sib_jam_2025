@@ -1,5 +1,6 @@
-[gd_scene load_steps=14 format=4 uid="uid://x662pd3helg5"]
+[gd_scene load_steps=16 format=3 uid="uid://x662pd3helg5"]
 
+[ext_resource type="Script" path="res://camera/camera_manager.gd" id="1_mgr"]
 [ext_resource type="PackedScene" uid="uid://bgrwxmc03jfth" path="res://player/Player.tscn" id="2_0xm2m"]
 [ext_resource type="Script" uid="uid://c0h40pfj0rlnp" path="res://systems/health_system/hitbox_component.gd" id="3_1bvp3"]
 [ext_resource type="TileSet" uid="uid://mpn3hiboo4y7" path="res://tilesets/test_tileset.tres" id="3_h2yge"]
@@ -8,8 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b32sa4k6nlri2" path="res://echo/echo_component.tscn" id="5_7mycd"]
 [ext_resource type="Shader" uid="uid://b0v710tat1koj" path="res://effects/monocolor_shader.gdshader" id="8_5vw27"]
 [ext_resource type="PackedScene" uid="uid://dlnto25jfnnie" path="res://environment/movable_item.tscn" id="9_kek77"]
-[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="10_efxa6"]
-[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="11_dg77c"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="10_host"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5vw27"]
 distance = -235.0
@@ -18,10 +18,7 @@ distance = -235.0
 shader = ExtResource("8_5vw27")
 shader_parameter/colorDarkness = Color(0, 0, 0, 1)
 shader_parameter/colorLight = Color(1, 1, 1, 1)
-shader_parameter/colorDivider = 0.1850000087875
-
-[sub_resource type="Resource" id="Resource_4c57u"]
-script = ExtResource("11_dg77c")
+shader_parameter/colorDivider = 0.185
 
 [node name="Main" type="Node"]
 
@@ -29,7 +26,7 @@ script = ExtResource("11_dg77c")
 visible = false
 color = Color(0, 0, 0, 1)
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
+[node name="TileMapLayer" type="TileMapLayer" parent="." groups=["tilemap"]]
 position = Vector2(-172, -78)
 tile_map_data = PackedByteArray("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")
 tile_set = ExtResource("3_h2yge")
@@ -82,9 +79,12 @@ fmod_parameters/progress/id = 3080171880814298515
 fmod_parameters/progress = 0.0
 fmod_parameters/progress/variant_type = 3
 
-[node name="PlayerCamera" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
-top_level = true
-script = ExtResource("10_efxa6")
-follow_mode = 4
-follow_target = NodePath("../Player")
-tween_resource = SubResource("Resource_4c57u")
+[node name="MainCamera" type="Camera2D" parent="."]
+
+[node name="PhantomCameraHost" type="Node" parent="MainCamera"]
+script = ExtResource( "10_host" )
+
+[node name="CameraManager" type="Node" parent="." node_paths=PackedStringArray("player", "tilemap")]
+script = ExtResource( "1_mgr" )
+player = NodePath("Player")
+tilemap = NodePath("TileMapLayer")

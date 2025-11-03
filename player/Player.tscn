@@ -1,4 +1,4 @@
-[gd_scene load_steps=112 format=3 uid="uid://bgrwxmc03jfth"]
+[gd_scene load_steps=115 format=3 uid="uid://bgrwxmc03jfth"]
 
 [ext_resource type="Script" uid="uid://chbr6mrhj0l4h" path="res://systems/input_system/player_input_component.gd" id="1_5p1j2"]
 [ext_resource type="Script" uid="uid://cg6pvwqc3b5mc" path="res://player/player.gd" id="1_8nth8"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://yeu7spgq7rit" path="res://player/animations/walk.png" id="8_y617q"]
 [ext_resource type="Script" uid="uid://4xcpj0x4w4cj" path="res://systems/movement_system/stats/dash_stats.gd" id="8_yu5hk"]
 [ext_resource type="Script" uid="uid://boncf0le5k03j" path="res://systems/animation_system/animation_system.gd" id="9_h5g2s"]
+[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="10_efxa6"]
 [ext_resource type="Script" uid="uid://7w4jww1v0oqm" path="res://systems/movement_system/physics_integration_system.gd" id="14_abcde"]
 [ext_resource type="Script" uid="uid://bln6wd364xxht" path="res://systems/movement_system/stats/movement_stats.gd" id="17_uewl2"]
 [ext_resource type="Script" uid="uid://sui2aet7dpfb" path="res://systems/movement_system/stats/jump_stats.gd" id="18_ofhxi"]
@@ -30,6 +31,7 @@
 [ext_resource type="Script" uid="uid://81kwjwkswx8d" path="res://systems/footstep_system/footstep_component.gd" id="22_8eyfg"]
 [ext_resource type="Texture2D" uid="uid://5bbaytwhjqlx" path="res://player/eye.png" id="22_mlfor"]
 [ext_resource type="Resource" uid="uid://bvvkcrgwqqnfl" path="res://systems/footstep_system/FootstepData.tres" id="23_76mgg"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="32_234y4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mlfor"]
 atlas = ExtResource("2_yu5hk")
@@ -768,12 +770,17 @@ metadata/_custom_type_script = "uid://pjgmjy1xod72"
 
 [sub_resource type="Resource" id="Resource_8nth8"]
 script = ExtResource("17_uewl2")
+max_speed = 160.0
+time_to_reach_max_speed = 0.46
 metadata/_custom_type_script = "uid://bln6wd364xxht"
 
 [sub_resource type="Resource" id="Resource_8tqfn"]
 script = ExtResource("18_ofhxi")
 jump_height = 4.0
 metadata/_custom_type_script = "uid://sui2aet7dpfb"
+
+[sub_resource type="Resource" id="Resource_u8vxv"]
+script = ExtResource("32_234y4")
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 3
@@ -891,3 +898,11 @@ position = Vector2(19, 59)
 
 [node name="SurfaceDetector" type="RayCast2D" parent="."]
 target_position = Vector2(0, 0)
+
+[node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
+top_level = true
+script = ExtResource("10_efxa6")
+follow_mode = 5
+follow_target = NodePath("..")
+tween_resource = SubResource("Resource_u8vxv")
+follow_damping = true
