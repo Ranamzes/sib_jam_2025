@@ -14,6 +14,7 @@ extends Node
 @export var run_action: GUIDEAction
 #@export var latch_action: GUIDEAction
 @export var drag_action: GUIDEAction
+@export var push_action: GUIDEAction
 @export var physics_system: PhysicsIntegrationSystem
 #@export var dash_component: DashComponent
 @export var drag_component: DragComponent
@@ -33,7 +34,8 @@ func _ready() -> void:
 	#	dash_action.triggered.connect(func(): dash_component.request_dash())
 	if drag_action && drag_component != null:
 		drag_action.triggered.connect(func(): drag_component.drag())
-	
+	if push_action && drag_component != null:
+		push_action.triggered.connect(func(): drag_component.push())
 	# For hold actions, we can check their state change
 	##if crouch_action:
 	if run_action:	

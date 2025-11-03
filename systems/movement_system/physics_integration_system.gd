@@ -182,7 +182,6 @@ func _on_jump_echo():
 func _on_echo(stat_name:StringName):
 	EventBus.create_echo.emit(echo_stats.get(stat_name),echo_pointer.global_position)
 func start_run():
-	print("test")
 	_state_comp.is_running = true
 	
 func end_run():
