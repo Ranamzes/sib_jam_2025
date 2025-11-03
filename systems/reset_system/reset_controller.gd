@@ -28,6 +28,7 @@ func _on_restart_timer_timeout():
 	player_instance.add_to_group(&"Player")
 	owner.add_child(player_instance)
 	player_instance.global_position = player_respawn_position
+	EventBus.player_respawned.emit(player_instance)
 
 func _on_new_respawn(new_p:Vector2):
 	player_respawn_position = new_p
