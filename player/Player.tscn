@@ -740,7 +740,7 @@ metadata/_custom_type_script = "uid://bln6wd364xxht"
 
 [sub_resource type="Resource" id="Resource_8tqfn"]
 script = ExtResource("18_ofhxi")
-jump_height = 4.0
+jump_height = 6.0
 metadata/_custom_type_script = "uid://sui2aet7dpfb"
 
 [node name="Player" type="CharacterBody2D"]
@@ -813,8 +813,6 @@ iteraction_ray_cast = NodePath("../../IteractionScanRayCast")
 drag_impulse = 150
 push_impulse = 700
 mov_state_comp = NodePath("../../Systems/StateComponent")
-drag_range = 1000
-push_range = 100
 metadata/_custom_type_script = "uid://jit3rqs1hyh1"
 
 [node name="FootstepComponent" type="Node" parent="Components"]

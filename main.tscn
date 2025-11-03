@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://cgv2eq7fgiu03" path="res://echo/echo_controller.gd" id="4_lquwl"]
 [ext_resource type="PackedScene" uid="uid://b32sa4k6nlri2" path="res://echo/echo_component.tscn" id="5_7mycd"]
 [ext_resource type="Script" uid="uid://kaq6at1y3jqw" path="res://camera/main_camera.gd" id="6_7mycd"]
-[ext_resource type="Shader" path="res://effects/monocolor_shader.gdshader" id="8_5vw27"]
+[ext_resource type="Shader" uid="uid://b0v710tat1koj" path="res://effects/monocolor_shader.gdshader" id="8_5vw27"]
 [ext_resource type="PackedScene" uid="uid://dlnto25jfnnie" path="res://environment/movable_item.tscn" id="9_kek77"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5vw27"]
@@ -17,7 +17,7 @@ distance = -810.0
 shader = ExtResource("8_5vw27")
 shader_parameter/colorDarkness = Color(0, 0, 0, 1)
 shader_parameter/colorLight = Color(1, 1, 1, 1)
-shader_parameter/colorDivider = 0.1850000087875
+shader_parameter/colorDivider = 0.23600001121
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kek77"]
 size = Vector2(124, 122)
@@ -62,7 +62,6 @@ script = ExtResource("6_7mycd")
 metadata/_custom_type_script = "uid://kaq6at1y3jqw"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Monocolor" parent="CanvasLayer" instance=ExtResource("4_1bvp3")]
 material = SubResource("ShaderMaterial_kek77")
