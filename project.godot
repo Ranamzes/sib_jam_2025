@@ -18,7 +18,7 @@ DSP/dsp_buffer_size=1024
 
 config/name="SibJam2025"
 config/tags=PackedStringArray("2d", "platformer")
-run/main_scene="res://main.tscn"
+run/main_scene="res://world.tscn"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="uid://dhwlmcglmf0kw"
 
@@ -59,8 +59,13 @@ enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addon
 environment=""
 druggable=""
 
+[physics]
+
+common/physics_interpolation/enable=true
+
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
