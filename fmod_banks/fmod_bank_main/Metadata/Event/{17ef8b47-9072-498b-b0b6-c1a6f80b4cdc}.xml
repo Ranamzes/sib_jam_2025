@@ -142,9 +142,6 @@
 		<property name="isCutoff">
 			<value>true</value>
 		</property>
-		<property name="looping">
-			<value>true</value>
-		</property>
 		<relationship name="sounds">
 			<destination>{ae502e75-7fff-4627-aba3-cfe60fdd4ca5}</destination>
 			<destination>{2d686b09-9fc8-4a20-b3ba-ceaf1cdb46c7}</destination>
@@ -162,9 +159,6 @@
 		<property name="start">
 			<value>1</value>
 		</property>
-		<property name="looping">
-			<value>true</value>
-		</property>
 		<relationship name="sounds">
 			<destination>{97ad83a4-2984-49a3-bccd-d3844fbbe23a}</destination>
 			<destination>{70c20301-9fe3-41c5-b1b5-5ce154e35fa6}</destination>
@@ -181,9 +175,6 @@
 		</property>
 		<property name="start">
 			<value>2</value>
-		</property>
-		<property name="looping">
-			<value>true</value>
 		</property>
 		<relationship name="sounds">
 			<destination>{82d9c5c1-9776-4303-a5b7-0ae79c16519d}</destination>
@@ -221,9 +212,6 @@
 		<property name="isCutoff">
 			<value>true</value>
 		</property>
-		<property name="looping">
-			<value>true</value>
-		</property>
 		<relationship name="sounds">
 			<destination>{7cee1327-03b9-4143-b5af-d45f87a583ae}</destination>
 			<destination>{950483d4-ce17-4df7-a3a4-5e26e0997bde}</destination>
@@ -241,9 +229,6 @@
 		<property name="start">
 			<value>1</value>
 		</property>
-		<property name="looping">
-			<value>true</value>
-		</property>
 		<relationship name="sounds">
 			<destination>{8be3b2c0-0c7c-43df-9736-7a802372611b}</destination>
 			<destination>{cd059980-bf6d-4077-b553-0bddd4020377}</destination>
@@ -260,9 +245,6 @@
 		</property>
 		<property name="start">
 			<value>2</value>
-		</property>
-		<property name="looping">
-			<value>true</value>
 		</property>
 		<relationship name="sounds">
 			<destination>{fff3af3c-645c-4a85-8764-3c071eff127b}</destination>

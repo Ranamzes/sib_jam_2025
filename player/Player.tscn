@@ -515,6 +515,20 @@ tracks/1/keys = {
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 6, -0.16666667, 0, 0, 0),
 "times": PackedFloat32Array(0, 1.6)
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Components/FootstepComponent")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"stop"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_y2u3w"]
 resource_name = "jumping"
@@ -599,6 +613,35 @@ tracks/3/keys = {
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 7, -0.083333336, 0, 0, 0),
 "times": PackedFloat32Array(0, 0.5)
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("FootMarker:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.32118452),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(19, 59), Vector2(19, 59)]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Components/FootstepComponent")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.32205874, 0.4590801),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [true],
+"method": &"play_step"
+}, {
+"args": [true],
+"method": &"play_step"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_wqfsd"]
 resource_name = "run"
@@ -665,10 +708,10 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0.36666667, 0.8666667),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
-"args": [],
+"args": [false],
 "method": &"play_step"
 }, {
-"args": [],
+"args": [false],
 "method": &"play_step"
 }]
 }
@@ -735,6 +778,8 @@ metadata/_custom_type_script = "uid://sui2aet7dpfb"
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 3
 script = ExtResource("1_8nth8")
+footstep_component_path = NodePath("Components/FootstepComponent")
+surface_detector_path = NodePath("SurfaceDetector")
 
 [node name="IteractionScanRayCast" type="RayCast2D" parent="."]
 rotation = -1.5707964
@@ -746,7 +791,6 @@ collision_mask = 4
 monitorable = false
 script = ExtResource("4_uewl2")
 health_component = NodePath("../Components/HealthComponent")
-metadata/_custom_type_script = "uid://b58pdy82skwid"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
 position = Vector2(0, 0.5)
@@ -774,7 +818,6 @@ script = ExtResource("7_8tqfn")
 
 [node name="HealthComponent" type="Node" parent="Components"]
 script = ExtResource("5_ofhxi")
-metadata/_custom_type_script = "uid://i5x0g3uanlah"
 
 [node name="DashComponent" type="Node" parent="Components" node_paths=PackedStringArray("_state_comp", "_physics")]
 script = ExtResource("5_yu5hk")
@@ -782,7 +825,6 @@ _state_comp = NodePath("../../Systems/StateComponent")
 _dash_stats = SubResource("Resource_mlfor")
 _movement_stats = SubResource("Resource_2m0d2")
 _physics = NodePath("../../Systems/PhysicsIntegrationSystem")
-metadata/_custom_type_script = "uid://4hcakwlm1h5y"
 
 [node name="PlayerInputComponent" type="Node" parent="Components" node_paths=PackedStringArray("physics_system", "dash_component", "drag_component")]
 script = ExtResource("1_5p1j2")
@@ -796,20 +838,17 @@ drag_action = ExtResource("19_8tqfn")
 physics_system = NodePath("../../Systems/PhysicsIntegrationSystem")
 dash_component = NodePath("../DashComponent")
 drag_component = NodePath("../DragComponent")
-metadata/_custom_type_script = "uid://chbr6mrhj0l4h"
 
 [node name="DragComponent" type="Node" parent="Components" node_paths=PackedStringArray("iteraction_ray_cast", "mov_state_comp")]
 script = ExtResource("7_8tqfn")
 iteraction_ray_cast = NodePath("../../IteractionScanRayCast")
 drag_impulse = 150
 mov_state_comp = NodePath("../../Systems/StateComponent")
-metadata/_custom_type_script = "uid://jit3rqs1hyh1"
 
 [node name="FootstepComponent" type="Node" parent="Components"]
 script = ExtResource("22_8eyfg")
 footstep_data = ExtResource("23_76mgg")
 foot_marker = NodePath("../../FootMarker")
-metadata/_custom_type_script = "uid://81kwjwkswx8d"
 
 [node name="Systems" type="Node" parent="."]
 
@@ -830,11 +869,9 @@ echo_stats = Dictionary[String, ExtResource("19_2m0d2")]({
 _state_comp = NodePath("../StateComponent")
 _move_stats = SubResource("Resource_8nth8")
 _jump_stats = SubResource("Resource_8tqfn")
-metadata/_custom_type_script = "uid://7w4jww1v0oqm"
 
 [node name="StateComponent" type="Node" parent="Systems"]
 script = ExtResource("20_q6miu")
-metadata/_custom_type_script = "uid://dpepr0ylg6wlu"
 
 [node name="EchoPointer" type="Node2D" parent="."]
 position = Vector2(4, 17)
@@ -851,3 +888,6 @@ texture_scale = 0.5
 
 [node name="FootMarker" type="Marker2D" parent="."]
 position = Vector2(19, 59)
+
+[node name="SurfaceDetector" type="RayCast2D" parent="."]
+target_position = Vector2(0, 0)
