@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://chbr6mrhj0l4h" path="res://systems/input_system/player_input_component.gd" id="1_5p1j2"]
 [ext_resource type="Script" uid="uid://cg6pvwqc3b5mc" path="res://player/player.gd" id="1_8nth8"]
 [ext_resource type="Texture2D" uid="uid://brjv4ntd8ip6e" path="res://sprites/2D-Pixel-Art-Character-Template/Jump/player new jump 48x48.png" id="1_8tqfn"]
-[ext_resource type="Texture2D" uid="uid://u1dvmpiwf15h" path="res://sprites/2D-Pixel-Art-Character-Template/Run/player run 48x48.png" id="2_2m0d2"]
 [ext_resource type="Resource" uid="uid://m6k6p2jv0yfa" path="res://systems/input_system/player_mapping_context.tres" id="2_v4f8b"]
 [ext_resource type="Texture2D" uid="uid://cu4sejywv8k7w" path="res://sprites/2D-Pixel-Art-Character-Template/Dash/dash.png" id="2_yu5hk"]
 [ext_resource type="Shape2D" uid="uid://c1mx1ld17atye" path="res://player/CapsuleShape.tres" id="3_stbqk"]
@@ -16,6 +15,7 @@
 [ext_resource type="Script" uid="uid://4hcakwlm1h5y" path="res://systems/movement_system/dash_component.gd" id="5_yu5hk"]
 [ext_resource type="Resource" path="res://systems/input_system/actions/crouch.tres" id="6_ofhxi"]
 [ext_resource type="Script" uid="uid://jit3rqs1hyh1" path="res://systems/IteractionSystem/drag_component.gd" id="7_8tqfn"]
+[ext_resource type="Texture2D" uid="uid://bq2k1keb6vqr6" path="res://player/animations/run.png" id="7_76mgg"]
 [ext_resource type="Resource" uid="uid://vdkh2uoucvy8" path="res://systems/input_system/actions/latch.tres" id="7_yu5hk"]
 [ext_resource type="Texture2D" uid="uid://yeu7spgq7rit" path="res://player/animations/walk.png" id="8_y617q"]
 [ext_resource type="Script" uid="uid://4xcpj0x4w4cj" path="res://systems/movement_system/stats/dash_stats.gd" id="8_yu5hk"]
@@ -126,37 +126,37 @@ region = Rect2(192, 0, 48, 48)
 atlas = ExtResource("1_8tqfn")
 region = Rect2(240, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_stbqk"]
-atlas = ExtResource("2_2m0d2")
-region = Rect2(0, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y617q"]
-atlas = ExtResource("2_2m0d2")
-region = Rect2(48, 0, 48, 48)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_8cy8x"]
-atlas = ExtResource("2_2m0d2")
-region = Rect2(96, 0, 48, 48)
+atlas = ExtResource("7_76mgg")
+region = Rect2(0, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_610ub"]
-atlas = ExtResource("2_2m0d2")
-region = Rect2(144, 0, 48, 48)
+atlas = ExtResource("7_76mgg")
+region = Rect2(128, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ayguc"]
-atlas = ExtResource("2_2m0d2")
-region = Rect2(192, 0, 48, 48)
+atlas = ExtResource("7_76mgg")
+region = Rect2(256, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t7u8x"]
-atlas = ExtResource("2_2m0d2")
-region = Rect2(240, 0, 48, 48)
+atlas = ExtResource("7_76mgg")
+region = Rect2(384, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lnwue"]
-atlas = ExtResource("2_2m0d2")
-region = Rect2(288, 0, 48, 48)
+atlas = ExtResource("7_76mgg")
+region = Rect2(512, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7tnb4"]
-atlas = ExtResource("2_2m0d2")
-region = Rect2(336, 0, 48, 48)
+atlas = ExtResource("7_76mgg")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y5372"]
+atlas = ExtResource("7_76mgg")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nckww"]
+atlas = ExtResource("7_76mgg")
+region = Rect2(896, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u3bl4"]
 atlas = ExtResource("8_y617q")
@@ -286,12 +286,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_stbqk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y617q")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_8cy8x")
 }, {
 "duration": 1.0,
@@ -308,6 +302,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7tnb4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y5372")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nckww")
 }],
 "loop": true,
 "name": &"run",
@@ -570,10 +570,10 @@ tracks/1/path = NodePath("AnimatedSprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.2, 0.26666668, 0.33333334, 0.4, 0.46666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7]
+"values": [0, 7]
 }
 tracks/2/type = "method"
 tracks/2/imported = false
@@ -591,6 +591,17 @@ tracks/2/keys = {
 "args": [],
 "method": &"_on_run_echo"
 }]
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 7, -0.083333336, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
 }
 
 [sub_resource type="Animation" id="Animation_wqfsd"]
@@ -655,7 +666,7 @@ tracks/3/path = NodePath("Components/FootstepComponent")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.4, 0.8666667),
+"times": PackedFloat32Array(0.36666667, 0.8666667),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
@@ -664,6 +675,17 @@ tracks/3/keys = {
 "args": [],
 "method": &"play_step"
 }]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Systems/PhysicsIntegrationSystem")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wpo5q"]
@@ -743,6 +765,7 @@ sprite_frames = SubResource("SpriteFrames_8cy8x")
 animation = &"run"
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+active = false
 tree_root = SubResource("AnimationNodeStateMachine_610ub")
 anim_player = NodePath("../AnimationPlayer")
 
