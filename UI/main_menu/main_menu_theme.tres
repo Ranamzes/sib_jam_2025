@@ -1,0 +1,5 @@
+[gd_resource type="Theme" format=3 uid="uid://xvq8ls5ngldv"]
+
+[resource]
+Button/font_sizes/font_size = 75
+CheckBox/constants/icon_max_width = 40

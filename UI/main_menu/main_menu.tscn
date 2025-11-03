@@ -1,0 +1,153 @@
+[gd_scene load_steps=3 format=3 uid="uid://cc5okob6io75o"]
+
+[ext_resource type="Script" uid="uid://bgqpu35ur7637" path="res://UI/main_menu/main_menu.gd" id="1_bxyur"]
+[ext_resource type="Theme" uid="uid://xvq8ls5ngldv" path="res://UI/main_menu/main_menu_theme.tres" id="2_osatk"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_bxyur")
+
+[node name="Title" type="Label" parent="."]
+offset_right = 1920.0
+offset_bottom = 500.0
+theme_override_font_sizes/font_size = 260
+text = "Ma Gam Jam"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="Title"]
+layout_mode = 0
+offset_top = 500.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme = ExtResource("2_osatk")
+
+[node name="MainMenu" type="VBoxContainer" parent="Title/CenterContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="StartButton" type="Button" parent="Title/CenterContainer/MainMenu"]
+layout_mode = 2
+text = "START"
+
+[node name="OptionsButton" type="Button" parent="Title/CenterContainer/MainMenu"]
+layout_mode = 2
+text = "OPTIONS"
+
+[node name="CreditsButton" type="Button" parent="Title/CenterContainer/MainMenu"]
+layout_mode = 2
+text = "CREDITS"
+
+[node name="ExitButton" type="Button" parent="Title/CenterContainer/MainMenu"]
+layout_mode = 2
+text = "EXIT
+"
+
+[node name="CreditsMenu" type="VBoxContainer" parent="Title/CenterContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Label" type="Label" parent="Title/CenterContainer/CreditsMenu"]
+custom_minimum_size = Vector2(1200, 400)
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "Game by..."
+text_overrun_behavior = 2
+
+[node name="CreditsBackButton" type="Button" parent="Title/CenterContainer/CreditsMenu"]
+custom_minimum_size = Vector2(338, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "BACK
+"
+
+[node name="OptionsMenu" type="VBoxContainer" parent="Title/CenterContainer"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="FullscrenCB" type="CheckBox" parent="Title/CenterContainer/OptionsMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 78
+text = " FULLSCREEN
+"
+alignment = 1
+icon_alignment = 1
+expand_icon = true
+
+[node name="MainVolumeHSlider" type="HSlider" parent="Title/CenterContainer/OptionsMenu"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+
+[node name="Label" type="Label" parent="Title/CenterContainer/OptionsMenu/MainVolumeHSlider"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 0
+offset_top = -32.0
+offset_right = 600.0
+offset_bottom = 109.0
+theme_override_font_sizes/font_size = 50
+text = "main volume
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MusicHSlider" type="HSlider" parent="Title/CenterContainer/OptionsMenu"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+
+[node name="Label" type="Label" parent="Title/CenterContainer/OptionsMenu/MusicHSlider"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 0
+offset_top = -32.0
+offset_right = 600.0
+offset_bottom = 37.0
+theme_override_font_sizes/font_size = 50
+text = "music"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SFXHSlider" type="HSlider" parent="Title/CenterContainer/OptionsMenu"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+
+[node name="Label" type="Label" parent="Title/CenterContainer/OptionsMenu/SFXHSlider"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 0
+offset_top = -32.0
+offset_right = 600.0
+offset_bottom = 37.0
+theme_override_font_sizes/font_size = 50
+text = "sfx"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OptionsBackButton" type="Button" parent="Title/CenterContainer/OptionsMenu"]
+custom_minimum_size = Vector2(338, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 12
+theme_override_font_sizes/font_size = 75
+text = "BACK
+"
+
+[connection signal="pressed" from="Title/CenterContainer/MainMenu/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Title/CenterContainer/MainMenu/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="Title/CenterContainer/MainMenu/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="Title/CenterContainer/MainMenu/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="Title/CenterContainer/CreditsMenu/CreditsBackButton" to="." method="_on_credits_back_button_pressed"]
+[connection signal="toggled" from="Title/CenterContainer/OptionsMenu/FullscrenCB" to="." method="_on_check_box_toggled"]
+[connection signal="value_changed" from="Title/CenterContainer/OptionsMenu/MainVolumeHSlider" to="." method="_on_main_volume_h_slider_value_changed"]
+[connection signal="value_changed" from="Title/CenterContainer/OptionsMenu/MusicHSlider" to="." method="_on_music_h_slider_value_changed"]
+[connection signal="value_changed" from="Title/CenterContainer/OptionsMenu/SFXHSlider" to="." method="_on_sfxh_slider_value_changed"]
+[connection signal="pressed" from="Title/CenterContainer/OptionsMenu/OptionsBackButton" to="." method="_on_options_back_button_pressed"]
