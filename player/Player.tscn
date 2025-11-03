@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://epy8k27iiy33" path="res://player/animations/jump.png" id="7_ddnt4"]
 [ext_resource type="Texture2D" uid="uid://yeu7spgq7rit" path="res://player/animations/walk.png" id="8_y617q"]
 [ext_resource type="Script" uid="uid://4xcpj0x4w4cj" path="res://systems/movement_system/stats/dash_stats.gd" id="8_yu5hk"]
-[ext_resource type="Script" uid="uid://boncf0le5k03j" path="res://systems/animation_system/animation_system.gd" id="9_h5g2s"]
+[ext_resource type="Script" uid="uid://c4c7a116tmbm4" path="res://systems/animation_system/animation_system.gd" id="9_h5g2s"]
 [ext_resource type="Script" uid="uid://7w4jww1v0oqm" path="res://systems/movement_system/physics_integration_system.gd" id="14_abcde"]
 [ext_resource type="Script" uid="uid://bln6wd364xxht" path="res://systems/movement_system/stats/movement_stats.gd" id="17_uewl2"]
 [ext_resource type="Script" uid="uid://sui2aet7dpfb" path="res://systems/movement_system/stats/jump_stats.gd" id="18_ofhxi"]
@@ -707,25 +707,25 @@ metadata/_custom_type_script = "uid://bln6wd364xxht"
 
 [sub_resource type="Resource" id="Resource_q6miu"]
 script = ExtResource("19_2m0d2")
-life_time = 1.2
 speed = 1.2000000000000002
-max_size = 2.0
+max_size = 5.0
 decay_rate = 0.30000000000000004
 metadata/_custom_type_script = "uid://pjgmjy1xod72"
 
 [sub_resource type="Resource" id="Resource_76mgg"]
 resource_local_to_scene = true
 script = ExtResource("19_2m0d2")
-life_time = 0.9
+life_time = 1.0
 speed = 1.5
+max_size = 4.0
 decay_rate = 0.30000000000000004
 metadata/_custom_type_script = "uid://pjgmjy1xod72"
 
 [sub_resource type="Resource" id="Resource_8eyfg"]
 script = ExtResource("19_2m0d2")
-life_time = 0.9
+life_time = 1.0
 speed = 1.5
-max_size = 2.0
+max_size = 3.0
 metadata/_custom_type_script = "uid://pjgmjy1xod72"
 
 [sub_resource type="Resource" id="Resource_y617q"]
