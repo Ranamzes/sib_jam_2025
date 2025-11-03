@@ -1,9 +1,11 @@
 extends RigidBody2D
 
+var last_position: Vector2 =  Vector2.ZERO
+var velocity: Vector2 =  Vector2.ZERO
 
-func _on_druggin_enabled_area_body_entered(_body: Node2D) -> void:
-	pass # Replace with function body.
+func _ready() -> void:
+	last_position = global_position;
 
-
-func _on_druggin_enabled_area_body_exited(_body: Node2D) -> void:
-	pass # Replace with function body.
+func _process(delta: float) -> void:
+	velocity = (global_position - last_position) / delta
+	

@@ -10,8 +10,8 @@
 [ext_resource type="Resource" path="res://systems/input_system/actions/jump.tres" id="8_4ubko"]
 [ext_resource type="Script" uid="uid://b52rqq28tuqpg" path="res://addons/guide/triggers/guide_trigger_pressed.gd" id="9_37483"]
 [ext_resource type="Resource" uid="uid://vdkh2uoucvy8" path="res://systems/input_system/actions/latch.tres" id="10_d7s88"]
-[ext_resource type="Resource" uid="uid://dgn6ti8np7v43" path="res://systems/input_system/actions/push.tres" id="13_ilgkt"]
-[ext_resource type="Resource" uid="uid://gcapkpcb8v6m" path="res://systems/input_system/actions/run.tres" id="13_pawhj"]
+[ext_resource type="Resource" path="res://systems/input_system/actions/push.tres" id="13_ilgkt"]
+[ext_resource type="Resource" path="res://systems/input_system/actions/run.tres" id="13_pawhj"]
 [ext_resource type="Resource" uid="uid://drp8a3ph6rqou" path="res://systems/input_system/actions/drag.tres" id="14_hy0qa"]
 [ext_resource type="Script" uid="uid://dsa1dnifd6w32" path="res://addons/guide/guide_mapping_context.gd" id="14_jrcvq"]
 
