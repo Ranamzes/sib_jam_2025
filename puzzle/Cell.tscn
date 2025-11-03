@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" uid="uid://bjy2nmr4ctlv7" path="res://puzzle/cell.gd" id="1_kvobb"]
 
-[node name="Cell" type="Area2D"]
+[node name="Cell" type="Area2D" groups=["cell"]]
 script = ExtResource("1_kvobb")

@@ -1,0 +1,389 @@
+In my last video, I talked about pixel
+
+snapping in upscaled pixel art games and
+
+what I did to fix it in GDAU. In this
+
+tutorial, I'm going to be showing you
+
+step by step how to set up an upscaled
+
+pixel art game and then how to implement
+
+this fix. I know you'll probably have
+
+your own pixel art game setup that you
+
+want to implement this fix in. So, I'll
+
+go pretty quickly through the upscale
+
+setup. So, we'll start by selecting a
+
+node 2D as our root node. Then, we'll
+
+add a camera 2D as a child. And then, we
+
+just have to create a pixel art game.
+
+You might already have a pixel art game
+
+that you're working off. I'm just going
+
+to set one up really quick. making a
+
+background and some floor using a tile
+
+map layer. And I'm using some assets
+
+that I made earlier. I'm also using a
+
+static body 2D to give the floor some
+
+collision so the player doesn't just
+
+fall eternally. And then I'll add the
+
+player themselves. So I'll just add a
+
+character body 2D. And then I'll add a
+
+collision shape 2D to this node to give
+
+the player some collision. And I'll set
+
+that equal to a rectangle collision.
+
+Then I'm going to give the player a
+
+sprite 2D. And I'll attach this
+
+player.png asset I have as the texture.
+
+If your assets are blurry, by the way,
+
+if your pixels are blurring, make sure
+
+you search for the texture property and
+
+set the filter to nearest. Then I'm
+
+going to fit this collision to the
+
+player. And lastly, to make it playable,
+
+I have to attach a script to the
+
+character body 2D. And if we do, GDAU
+
+will automatically populate it with some
+
+code to move around the player. So, if
+
+we give this a run now and select this
+
+as our main scene, you can see we have a
+
+game ready that we can run around in.
+
+Okay, I went quickly through that part
+
+because I'm assuming you already have a
+
+game set up. But the important thing is
+
+that we have a character that can move
+
+and we have a camera 2D. So the next
+
+thing I'm going to do is attach a script
+
+to the camera. I'm just going to call it
+
+sub pixel camera and press create. And
+
+then in the process function, we want to
+
+make the camera follow the player
+
+smoothly. So I'll do position equals
+
+position.lurp open and close soft
+
+brackets. For the first value, we'll get
+
+a reference to our player and we'll get
+
+their position. And for the second
+
+thing, we'll put delta * 3. If we play
+
+this now, you can see the camera
+
+smoothly follows the player. And now all
+
+that's left for the setup is to upscale
+
+our game. So I'm going to create a new
+
+scene and we're going to make a root 2D
+
+node and we're going to call it main.
+
+Then we'll add a child and we'll add a
+
+sub viewport container. And then as a
+
+child of that, we'll add a sub viewport.
+
+And then from our file system, we can
+
+just drag and drop our game scene and
+
+we'll drop it as a child of subviewport.
+
+And then we have some settings here to
+
+change. So in the sub viewport, if we go
+
+over to the inspector, we're going to
+
+change size. And this is going to be
+
+your native render resolution before we
+
+upscale. So I'm going to have 480 pixels
+
+by 270 pixels on screen. And if we
+
+upscale this by four, we'd get 1920x
+
+1080, which is what we need to fill the
+
+monitor. I just noticed there my game
+
+isn't actually child of subviewport. So
+
+make sure it is. And now when we press
+
+play, I want it to run our main scene
+
+instead of our game scene. So I'll go
+
+into the project settings. I'll go to
+
+run and I'll change it here. And if we
+
+play this now, you can see the game is
+
+rendering up there at 480x270. So the
+
+next step is to upscale. And that's
+
+really easy to do. We just have to click
+
+on the sub viewport container, go down
+
+in the inspector to scale and set it to
+
+four. And if we play this now, you can
+
+see it fills the screen. But you can
+
+also see that my textures are blurry. So
+
+I'm going to fix this by going to my
+
+game node. And in the inspector, I'll
+
+search for filter. And I'm going to
+
+change that property to nearest. And I'm
+
+also going to do that exact same thing
+
+for the sub viewport container node. And
+
+you can see when I play this now, our
+
+pixel art is no longer blurry, and it's
+
+being upscaled correctly. While we're
+
+here, I'll add a shader to the sub
+
+viewport container. So, I'll click on
+
+it. I'll search for material in the
+
+inspector. New shader material. Click on
+
+this shader material. Go to shader, new
+
+shader, and we'll just call this sub
+
+pixel or whatever you want. And if we
+
+open it up, this is going to be really,
+
+really simple. We're just going to
+
+create a new variable or uniform as it's
+
+called in this shader language of type
+
+veset and set it equal to a new ve 2
+
+that's just 0.0 for both values. Then,
+
+in void vertex, we want to move the
+
+screen by this offset. So we'll do
+
+vertex plus equals cam offset. And don't
+
+forget you have to put semicolons when
+
+you're in this shader language for both
+
+lines that we added. Now you can see if
+
+it works by going into shader parameters
+
+and if you adjust this x and y value,
+
+you can see we're moving the viewport.
+
+So that works perfectly. Next up, we're
+
+going to head back over to the camera
+
+script and we're going to create a new
+
+variable called actual cam pass and it's
+
+going to be of type vector 2. Then when
+
+we're setting the camera's position,
+
+let's replace position with actual cam
+
+pass. And just to make sure there's no
+
+confusion, we're going to be moving it
+
+to the player's global position instead
+
+of just their position. And now to get
+
+our offset, which is the distance
+
+between the camera's sub pixel position
+
+and the nearest pixel perfect position,
+
+we can create a new variable called cam
+
+sub pixel offset and set it equal to
+
+actual camos. minus actual camos. And
+
+now we just have to send that offset to
+
+our shader. So we're in the camera
+
+script. So our parent is the game node
+
+and then the parent of that is our
+
+viewport. And the parent of that is our
+
+sub viewport container which has the
+
+script attached. So I'm going to do it
+
+the lazy way and just say get parent.get
+
+parent.get parent. But you should really
+
+do this in a singleton because this is
+
+really bad. And then we do do material
+
+set shader parameter the name of the
+
+uniform we created in the shader which I
+
+set to cam offset. Put that in in quotes
+
+and then pass in our cam sub pixel
+
+offset. And then the last thing we have
+
+to do is set our camera's position equal
+
+to actual camos. Again, I'm using global
+
+position there to avoid any confusion.
+
+And if we press play on this now, you
+
+can see that our camera is moving
+
+smoothly. And we're only left with one
+
+slight problem. And you can kind of see
+
+that at the top especially, but all the
+
+edges and corners of the screen, you can
+
+see them kind of jittering. And that's
+
+because we're moving the viewport. And
+
+it's leaving this empty transparent
+
+space behind. So, we can fix that by
+
+going to our sub viewport and rendering
+
+two extra pixels on the X and Y, which
+
+means one at the top and bottom and one
+
+at the left and right. And then if we
+
+click on sub viewport container and go
+
+to position, set this to minus whatever
+
+you're scaling your game up by. So I'm
+
+scaling it up by four. So I'll set it to
+
+minus4 minus4. And if we press play, you
+
+can see all the edges of the screen are
+
+no longer jittering. And we have our
+
+smooth camera movement. Perfect. These
+
+files will be available for download on
+
+my Patreon, which you can access by
+
+supporting me. And I also want to thank
+
+everyone very much for supporting me on
+
+Patreon because I would not be able to
+
+make these videos without you guys.
+
+Thanks for watching. Thanks for the
+
+support. and see you in the next video.
+
+
