@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0k4as866i5wl"]
+
+[ext_resource type="TileSet" uid="uid://mpn3hiboo4y7" path="res://tilesets/test_tileset.tres" id="1_qssew"]
+
+[node name="TileMapLayer" type="TileMapLayer"]
+tile_set = ExtResource("1_qssew")
+navigation_visibility_mode = 1

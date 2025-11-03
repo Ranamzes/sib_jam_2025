@@ -1,7 +1,7 @@
 extends Node
 class_name HealthComponent
 
-signal died
+#signal died
 signal health_changed(is_damage: bool)
 
 @export var base_max_health: float = 10
@@ -39,5 +39,6 @@ func get_health_percent() -> float:
 
 func check_death():
 	if current_health == 0:
-		died.emit()
+		#died.emit()
+		EventBus.player_died.emit()
 		owner.queue_free()

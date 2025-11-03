@@ -41,4 +41,4 @@ func _process(_delta: float) -> void:
 
 	# --- Flip Sprite ---
 	if abs(velocity.x) > 0.1:
-		player_sprite.scale.x = sign(velocity.x) * abs(player_sprite.scale.x)
+		player_sprite.scale.x = sign(velocity.x) * abs(player_sprite.scale.x) 

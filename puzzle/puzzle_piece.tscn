@@ -6,3 +6,4 @@
 script = ExtResource("1_u1nm0")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

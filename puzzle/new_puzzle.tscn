@@ -1,0 +1,130 @@
+[gd_scene load_steps=8 format=3 uid="uid://xbchspnn0v2l"]
+
+[ext_resource type="Script" path="res://puzzle/new_puzzle.gd" id="1_n3nop"]
+[ext_resource type="Script" uid="uid://c8t0xb7puxuxm" path="res://puzzle/puzzle_manager.gd" id="2_dsdsc"]
+[ext_resource type="Script" uid="uid://d18ptlwq2jfw3" path="res://puzzle/puzzle_piece.gd" id="2_fvntr"]
+[ext_resource type="Texture2D" uid="uid://g4o2gow02ke4" path="res://puzzle/puzzle.png" id="3_jrbnt"]
+[ext_resource type="Script" uid="uid://bjy2nmr4ctlv7" path="res://puzzle/cell.gd" id="5_hnwa5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n3nop"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5m2sv"]
+
+[node name="NewPuzzle" type="Node2D"]
+script = ExtResource("1_n3nop")
+
+[node name="PuzzleManager" type="Node" parent="."]
+script = ExtResource("2_dsdsc")
+metadata/_custom_type_script = "uid://c8t0xb7puxuxm"
+
+[node name="Pieces" type="Node2D" parent="PuzzleManager"]
+
+[node name="PuzzlePiece1" type="Area2D" parent="PuzzleManager/Pieces" node_paths=PackedStringArray("puzzle_manager")]
+position = Vector2(145, 161)
+script = ExtResource("2_fvntr")
+index = 1
+puzzle_manager = NodePath("../..")
+
+[node name="Sprite2D" type="Sprite2D" parent="PuzzleManager/Pieces/PuzzlePiece1"]
+scale = Vector2(0.19, 0.19)
+texture = ExtResource("3_jrbnt")
+region_enabled = true
+region_rect = Rect2(35.22455, 35.942406, 119.52734, 117.47831)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleManager/Pieces/PuzzlePiece1"]
+shape = SubResource("RectangleShape2D_n3nop")
+
+[node name="PuzzlePiece2" type="Area2D" parent="PuzzleManager/Pieces" node_paths=PackedStringArray("puzzle_manager")]
+position = Vector2(199, 162)
+script = ExtResource("2_fvntr")
+index = 2
+puzzle_manager = NodePath("../..")
+
+[node name="Sprite2D" type="Sprite2D" parent="PuzzleManager/Pieces/PuzzlePiece2"]
+position = Vector2(-2, 2)
+scale = Vector2(0.19, 0.19)
+texture = ExtResource("3_jrbnt")
+region_enabled = true
+region_rect = Rect2(200.45229, 35.83259, 144.6173, 140.88525)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleManager/Pieces/PuzzlePiece2"]
+shape = SubResource("RectangleShape2D_n3nop")
+
+[node name="PuzzlePiece3" type="Area2D" parent="PuzzleManager/Pieces" node_paths=PackedStringArray("puzzle_manager")]
+position = Vector2(245, 162)
+script = ExtResource("2_fvntr")
+index = 3
+puzzle_manager = NodePath("../..")
+
+[node name="Sprite2D" type="Sprite2D" parent="PuzzleManager/Pieces/PuzzlePiece3"]
+position = Vector2(2, 0)
+scale = Vector2(0.19, 0.19)
+texture = ExtResource("3_jrbnt")
+region_enabled = true
+region_rect = Rect2(36.28002, 203.04312, 145.08383, 161.87808)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleManager/Pieces/PuzzlePiece3"]
+shape = SubResource("RectangleShape2D_n3nop")
+
+[node name="PuzzlePiece4" type="Area2D" parent="PuzzleManager/Pieces" node_paths=PackedStringArray("puzzle_manager")]
+position = Vector2(284, 129)
+script = ExtResource("2_fvntr")
+index = 4
+puzzle_manager = NodePath("../..")
+
+[node name="Sprite2D" type="Sprite2D" parent="PuzzleManager/Pieces/PuzzlePiece4"]
+position = Vector2(0, 2)
+scale = Vector2(0.19, 0.19)
+texture = ExtResource("3_jrbnt")
+region_enabled = true
+region_rect = Rect2(224.6713, 225.82904, 116.48694, 142.65802)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleManager/Pieces/PuzzlePiece4"]
+shape = SubResource("RectangleShape2D_n3nop")
+
+[node name="Cells" type="Node2D" parent="PuzzleManager"]
+
+[node name="Cell1" type="Area2D" parent="PuzzleManager/Cells" groups=["cell"]]
+position = Vector2(46, 88)
+script = ExtResource("5_hnwa5")
+index = 1
+metadata/_custom_type_script = "uid://bjy2nmr4ctlv7"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleManager/Cells/Cell1"]
+shape = SubResource("RectangleShape2D_5m2sv")
+
+[node name="Cell2" type="Area2D" parent="PuzzleManager/Cells" groups=["cell"]]
+position = Vector2(78, 88)
+script = ExtResource("5_hnwa5")
+index = 2
+metadata/_custom_type_script = "uid://bjy2nmr4ctlv7"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleManager/Cells/Cell2"]
+shape = SubResource("RectangleShape2D_5m2sv")
+
+[node name="Cell3" type="Area2D" parent="PuzzleManager/Cells" groups=["cell"]]
+position = Vector2(110, 88)
+script = ExtResource("5_hnwa5")
+index = 3
+metadata/_custom_type_script = "uid://bjy2nmr4ctlv7"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleManager/Cells/Cell3"]
+shape = SubResource("RectangleShape2D_5m2sv")
+
+[node name="Cell4" type="Area2D" parent="PuzzleManager/Cells" groups=["cell"]]
+position = Vector2(147, 88)
+script = ExtResource("5_hnwa5")
+index = 4
+metadata/_custom_type_script = "uid://bjy2nmr4ctlv7"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleManager/Cells/Cell4"]
+shape = SubResource("RectangleShape2D_5m2sv")
+
+[connection signal="input_event" from="PuzzleManager/Pieces/PuzzlePiece1" to="PuzzleManager/Pieces/PuzzlePiece1" method="_on_input_event"]
+[connection signal="mouse_entered" from="PuzzleManager/Pieces/PuzzlePiece1" to="PuzzleManager/Pieces/PuzzlePiece1" method="_on_mouse_entered"]
+[connection signal="input_event" from="PuzzleManager/Pieces/PuzzlePiece2" to="PuzzleManager/Pieces/PuzzlePiece2" method="_on_input_event"]
+[connection signal="mouse_entered" from="PuzzleManager/Pieces/PuzzlePiece2" to="PuzzleManager/Pieces/PuzzlePiece2" method="_on_mouse_entered"]
+[connection signal="input_event" from="PuzzleManager/Pieces/PuzzlePiece3" to="PuzzleManager/Pieces/PuzzlePiece3" method="_on_input_event"]
+[connection signal="mouse_entered" from="PuzzleManager/Pieces/PuzzlePiece3" to="PuzzleManager/Pieces/PuzzlePiece3" method="_on_mouse_entered"]
+[connection signal="input_event" from="PuzzleManager/Pieces/PuzzlePiece4" to="PuzzleManager/Pieces/PuzzlePiece4" method="_on_input_event"]
+[connection signal="mouse_entered" from="PuzzleManager/Pieces/PuzzlePiece4" to="PuzzleManager/Pieces/PuzzlePiece4" method="_on_mouse_entered"]

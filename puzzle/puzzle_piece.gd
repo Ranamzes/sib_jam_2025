@@ -2,9 +2,6 @@ extends Area2D
 class_name PuzzlePiece
 
 @export var index: int = -1
-@export var sprite_offset_x: float = 0
-@export var sprite_offset_y: float = 0
-@export var sprite_local_rotation_degrees: float = 0
 var cell_index: int = -1
 
 var dragging: bool = false
@@ -15,8 +12,11 @@ var drag_offset: Vector2 = Vector2.ZERO
 
 @export var puzzle_manager: PuzzleManager
 
+#func _ready() -> void:
+#	collision_shape.shape = shape
+#	sprite2d.texture = sprite_texture
+
 func _on_input_event(viewport, event, shape_idx):
-	print("input event!")
 	if puzzle_manager.game_over:
 		return
 	if puzzle_manager.dragging and dragging == false:
@@ -38,7 +38,7 @@ func _on_input_event(viewport, event, shape_idx):
 			dragging = false
 			z_index = 0
 			drop_piece()
-			puzzle_manager.check_win()
+			puzzle_manager.check_puzzle_done()
 	elif event is InputEventMouseMotion and dragging:
 		var new_pos: Vector2 = get_global_mouse_position() + drag_offset
 #		sprite2d.material.set("shader_parameter/mouse_screen_pos", new_pos)
@@ -53,6 +53,7 @@ func drop_piece() -> void:
 				cell_index = cell.index
 				cell.occupy()
 				position = cell.global_position
+				puzzle_manager.check_puzzle_done()
 				return
 
 func handle_drag_animation():

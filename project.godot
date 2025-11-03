@@ -58,6 +58,8 @@ enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addon
 
 environment=""
 druggable=""
+Player=""
+cell=""
 
 [physics]
 
@@ -68,4 +70,4 @@ common/physics_interpolation/enable=true
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+environment/defaults/default_clear_color=Color(0, 0.0019724718, 0.058017567, 1)

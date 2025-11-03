@@ -3,8 +3,14 @@ extends Node
 
 @export var iteraction_ray_cast: RayCast2D
 @export var drag_impulse: int
-
+@export var push_impulse: int
 @export var mov_state_comp: StateComponent
+
+
+func push() -> void:
+	if (iteraction_ray_cast.is_colliding() && iteraction_ray_cast.get_collider().is_in_group(GroupNames.druggable)) :
+		if iteraction_ray_cast.global_position.distance_squared_to(iteraction_ray_cast.get_collision_point()) > 100 :
+			iteraction_ray_cast.get_collider().apply_central_impulse(iteraction_ray_cast.get_collision_normal() * -push_impulse)
 
 func drag() -> void:
 	if (iteraction_ray_cast.is_colliding() && iteraction_ray_cast.get_collider().is_in_group(GroupNames.druggable)) :

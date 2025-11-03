@@ -58,9 +58,9 @@ func _physics_process(_delta: float) -> void:
 	_state_comp.movement_vector = sign(_velocity)
 
 
-func _execute_run(_delta:float):
+func _execute_move(_delta:float):
 	var target_speed: float = _move_input_vector.x *_move_stats.max_speed
-	target_speed = target_speed * _move_stats.crouch_speed_multiplier if _state_comp.is_crouching   else target_speed
+	target_speed = target_speed * _move_stats.run_multiplier if _state_comp.is_running   else target_speed
 
 	var current_velocity_x = _velocity.x
 	if _move_stats.directional_snap and _move_input_vector.x !=0 :
@@ -98,8 +98,8 @@ func _execute_actions_for_current_state(_delta:float):
 	match _state_comp.current_state:
 		_state_comp.dashing:
 			pass
-		_state_comp.walk,_state_comp.falling,_state_comp.crouching_run,_state_comp.idle,_state_comp.crouching_idle:
-			_execute_run(_delta)
+		_state_comp.walk,_state_comp.running,_state_comp.falling,_state_comp.idle:
+			_execute_move(_delta)
 
 
 func _calculate_current_state():
@@ -110,10 +110,12 @@ func _calculate_current_state():
 
 	if _state_comp.is_grounded:
 		if abs(_velocity.x) > 0.1 or abs(_move_input_vector.x) > 0.1 :
-			_state_comp.change_state(_state_comp.walk)
+			_state_comp.change_state(_state_comp.walk if !_state_comp.is_running else _state_comp.running)
 		else:
-			if _state_comp.current_state==_state_comp.walk:
-				_on_run_echo()
+		#	if _state_comp.current_state==_state_comp.running:
+		#		_on_echo(&"run")
+		#	elif _state_comp.current_state==_state_comp.walk:
+		#		_on_echo(&"walk")	
 			_state_comp.change_state(_state_comp.idle)
 
 
@@ -177,6 +179,13 @@ func _on_run_echo():
 func _on_jump_echo():
 	EventBus.create_echo.emit(echo_stats.get(&"jump"),echo_pointer.global_position)
 
+func _on_echo(stat_name:StringName):
+	EventBus.create_echo.emit(echo_stats.get(stat_name),echo_pointer.global_position)
+func start_run():
+	_state_comp.is_running = true
+	
+func end_run():
+	_state_comp.is_running = false	
 #Character controller or ai controller should change movement vector
 func change_movement_vector(_new_movement_vector:Vector2):
 	_move_input_vector = _new_movement_vector

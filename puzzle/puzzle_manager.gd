@@ -14,7 +14,7 @@ func _process(delta: float) -> void:
 			if sub_child is Cell:
 				cells.append(sub_child)
 			if sub_child is PuzzlePiece:
-				var position: Vector2 = Vector2(randi_range(-30, 30), randi_range(-30, 30))
+				var position: Vector2 = Vector2(randi_range(40, 140), randi_range(40, 140))
 				pieces.append(sub_child)
 				sub_child.position = position
 			
@@ -25,8 +25,10 @@ func find_cell(index: int):
 		if cell.index == index:
 			return cell
 
-func check_win():
+func check_puzzle_done():
 	for piece in pieces:
 		if piece.index != piece.cell_index:
 			return
+	game_over = true
 	puzzle_complete.emit()
+	print("done!")
