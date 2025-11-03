@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="GUIDEAction" load_steps=2 format=3 uid="uid://gcapkpcb8v6m"]
+
+[ext_resource type="Script" uid="uid://cluhc11vixkf1" path="res://addons/guide/guide_action.gd" id="1_lyc5n"]
+
+[resource]
+script = ExtResource("1_lyc5n")
+is_remappable = true
+display_name = "Бег"
+display_category = "Основное"

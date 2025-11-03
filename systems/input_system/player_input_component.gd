@@ -10,12 +10,12 @@ extends Node
 @export_group("Actions")
 @export var move_action: GUIDEAction
 @export var jump_action: GUIDEAction
-@export var dash_action: GUIDEAction
-@export var crouch_action: GUIDEAction
-@export var latch_action: GUIDEAction
+#@export var dash_action: GUIDEAction
+@export var run_action: GUIDEAction
+#@export var latch_action: GUIDEAction
 @export var drag_action: GUIDEAction
 @export var physics_system: PhysicsIntegrationSystem
-@export var dash_component: DashComponent
+#@export var dash_component: DashComponent
 @export var drag_component: DragComponent
 func _ready() -> void:
 	if not mapping_context:
@@ -29,15 +29,17 @@ func _ready() -> void:
 	# Connect to actions that are single events (like button presses)
 	if jump_action:
 		jump_action.triggered.connect(func(): physics_system.request_jump())
-	if dash_action && dash_component!= null:
-		dash_action.triggered.connect(func(): dash_component.request_dash())
+	#if dash_action && dash_component!= null:
+	#	dash_action.triggered.connect(func(): dash_component.request_dash())
 	if drag_action && drag_component != null:
 		drag_action.triggered.connect(func(): drag_component.drag())
 	
 	# For hold actions, we can check their state change
 	##if crouch_action:
-	#	crouch_action.started.connect(func(): _action_input_component.start_crouch())
-	#	crouch_action.completed.connect(func(): _action_input_component.stop_crouch())
+	if run_action:	
+		#run_action.triggered.connect(func():physics_system.start_run())
+		run_action.triggered.connect(func(): physics_system.start_run())
+		run_action.completed.connect(func(): physics_system.end_run())
 	#if latch_action:
 	#	latch_action.started.connect(func(): _action_input_component.toggle_latch(true))
 	#	latch_action.completed.connect(func(): _action_input_component.toggle_latch(false))

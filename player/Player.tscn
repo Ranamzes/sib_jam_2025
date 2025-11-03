@@ -1,7 +1,7 @@
-[gd_scene load_steps=112 format=3 uid="uid://bgrwxmc03jfth"]
+[gd_scene load_steps=111 format=3 uid="uid://bgrwxmc03jfth"]
 
 [ext_resource type="Script" uid="uid://chbr6mrhj0l4h" path="res://systems/input_system/player_input_component.gd" id="1_5p1j2"]
-[ext_resource type="Script" uid="uid://cg6pvwqc3b5mc" path="res://player/player.gd" id="1_8nth8"]
+[ext_resource type="Script" path="res://player/player.gd" id="1_8nth8"]
 [ext_resource type="Resource" uid="uid://m6k6p2jv0yfa" path="res://systems/input_system/player_mapping_context.tres" id="2_v4f8b"]
 [ext_resource type="Texture2D" uid="uid://cu4sejywv8k7w" path="res://sprites/2D-Pixel-Art-Character-Template/Dash/dash.png" id="2_yu5hk"]
 [ext_resource type="Shape2D" uid="uid://c1mx1ld17atye" path="res://player/CapsuleShape.tres" id="3_stbqk"]
@@ -10,14 +10,11 @@
 [ext_resource type="Resource" path="res://systems/input_system/actions/jump.tres" id="4_w24id"]
 [ext_resource type="Texture2D" uid="uid://j4vymxxvfodo" path="res://player/animations/fall.png" id="5_ddnt4"]
 [ext_resource type="Script" uid="uid://i5x0g3uanlah" path="res://systems/health_system/health_component .gd" id="5_ofhxi"]
-[ext_resource type="Resource" path="res://systems/input_system/actions/dash.tres" id="5_uewl2"]
 [ext_resource type="Script" uid="uid://4hcakwlm1h5y" path="res://systems/movement_system/dash_component.gd" id="5_yu5hk"]
 [ext_resource type="Texture2D" uid="uid://c27m7753trsp" path="res://player/animations/idle.png" id="6_ddnt4"]
-[ext_resource type="Resource" path="res://systems/input_system/actions/crouch.tres" id="6_ofhxi"]
 [ext_resource type="Script" uid="uid://jit3rqs1hyh1" path="res://systems/IteractionSystem/drag_component.gd" id="7_8tqfn"]
 [ext_resource type="Texture2D" uid="uid://bq2k1keb6vqr6" path="res://player/animations/run.png" id="7_76mgg"]
 [ext_resource type="Texture2D" uid="uid://epy8k27iiy33" path="res://player/animations/jump.png" id="7_ddnt4"]
-[ext_resource type="Resource" uid="uid://vdkh2uoucvy8" path="res://systems/input_system/actions/latch.tres" id="7_yu5hk"]
 [ext_resource type="Texture2D" uid="uid://yeu7spgq7rit" path="res://player/animations/walk.png" id="8_y617q"]
 [ext_resource type="Script" uid="uid://4xcpj0x4w4cj" path="res://systems/movement_system/stats/dash_stats.gd" id="8_yu5hk"]
 [ext_resource type="Script" uid="uid://boncf0le5k03j" path="res://systems/animation_system/animation_system.gd" id="9_h5g2s"]
@@ -25,6 +22,7 @@
 [ext_resource type="Script" uid="uid://bln6wd364xxht" path="res://systems/movement_system/stats/movement_stats.gd" id="17_uewl2"]
 [ext_resource type="Script" uid="uid://sui2aet7dpfb" path="res://systems/movement_system/stats/jump_stats.gd" id="18_ofhxi"]
 [ext_resource type="Script" uid="uid://pjgmjy1xod72" path="res://echo/echo_stats.gd" id="19_2m0d2"]
+[ext_resource type="Resource" uid="uid://gcapkpcb8v6m" path="res://systems/input_system/actions/run.tres" id="19_8eyfg"]
 [ext_resource type="Resource" uid="uid://drp8a3ph6rqou" path="res://systems/input_system/actions/drag.tres" id="19_8tqfn"]
 [ext_resource type="Script" uid="uid://dpepr0ylg6wlu" path="res://systems/movement_system/state_component.gd" id="20_q6miu"]
 [ext_resource type="Script" uid="uid://81kwjwkswx8d" path="res://systems/footstep_system/footstep_component.gd" id="22_8eyfg"]
@@ -715,7 +713,7 @@ max_size = 2.0
 decay_rate = 0.30000000000000004
 metadata/_custom_type_script = "uid://pjgmjy1xod72"
 
-[sub_resource type="Resource" id="Resource_stbqk"]
+[sub_resource type="Resource" id="Resource_76mgg"]
 resource_local_to_scene = true
 script = ExtResource("19_2m0d2")
 life_time = 0.9
@@ -723,8 +721,16 @@ speed = 1.5
 decay_rate = 0.30000000000000004
 metadata/_custom_type_script = "uid://pjgmjy1xod72"
 
-[sub_resource type="Resource" id="Resource_8nth8"]
+[sub_resource type="Resource" id="Resource_8eyfg"]
+script = ExtResource("19_2m0d2")
+life_time = 0.9
+speed = 1.5
+max_size = 2.0
+metadata/_custom_type_script = "uid://pjgmjy1xod72"
+
+[sub_resource type="Resource" id="Resource_y617q"]
 script = ExtResource("17_uewl2")
+run_multiplier = 2.5
 metadata/_custom_type_script = "uid://bln6wd364xxht"
 
 [sub_resource type="Resource" id="Resource_8tqfn"]
@@ -784,17 +790,14 @@ _movement_stats = SubResource("Resource_2m0d2")
 _physics = NodePath("../../Systems/PhysicsIntegrationSystem")
 metadata/_custom_type_script = "uid://4hcakwlm1h5y"
 
-[node name="PlayerInputComponent" type="Node" parent="Components" node_paths=PackedStringArray("physics_system", "dash_component", "drag_component")]
+[node name="PlayerInputComponent" type="Node" parent="Components" node_paths=PackedStringArray("physics_system", "drag_component")]
 script = ExtResource("1_5p1j2")
 mapping_context = ExtResource("2_v4f8b")
 move_action = ExtResource("3_t8epa")
 jump_action = ExtResource("4_w24id")
-dash_action = ExtResource("5_uewl2")
-crouch_action = ExtResource("6_ofhxi")
-latch_action = ExtResource("7_yu5hk")
+run_action = ExtResource("19_8eyfg")
 drag_action = ExtResource("19_8tqfn")
 physics_system = NodePath("../../Systems/PhysicsIntegrationSystem")
-dash_component = NodePath("../DashComponent")
 drag_component = NodePath("../DragComponent")
 metadata/_custom_type_script = "uid://chbr6mrhj0l4h"
 
@@ -825,10 +828,11 @@ player_character = NodePath("../..")
 echo_pointer = NodePath("../../EchoPointer")
 echo_stats = Dictionary[String, ExtResource("19_2m0d2")]({
 "jump": SubResource("Resource_q6miu"),
-"run": SubResource("Resource_stbqk")
+"run": SubResource("Resource_76mgg"),
+"walk": SubResource("Resource_8eyfg")
 })
 _state_comp = NodePath("../StateComponent")
-_move_stats = SubResource("Resource_8nth8")
+_move_stats = SubResource("Resource_y617q")
 _jump_stats = SubResource("Resource_8tqfn")
 metadata/_custom_type_script = "uid://7w4jww1v0oqm"
 

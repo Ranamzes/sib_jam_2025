@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="GUIDEMappingContext" load_steps=46 format=3 uid="uid://m6k6p2jv0yfa"]
+[gd_resource type="Resource" script_class="GUIDEMappingContext" load_steps=39 format=3 uid="uid://m6k6p2jv0yfa"]
 
 [ext_resource type="Script" uid="uid://cpplm41b5bt6m" path="res://addons/guide/guide_action_mapping.gd" id="1_tphwt"]
 [ext_resource type="Resource" uid="uid://dqicdbc6nfv7e" path="res://systems/input_system/actions/move.tres" id="2_njlv3"]
@@ -10,11 +10,22 @@
 [ext_resource type="Resource" path="res://systems/input_system/actions/jump.tres" id="8_4ubko"]
 [ext_resource type="Script" uid="uid://b52rqq28tuqpg" path="res://addons/guide/triggers/guide_trigger_pressed.gd" id="9_37483"]
 [ext_resource type="Resource" uid="uid://vdkh2uoucvy8" path="res://systems/input_system/actions/latch.tres" id="10_d7s88"]
-[ext_resource type="Script" uid="uid://b4cdrn4paoj3i" path="res://addons/guide/triggers/guide_trigger_down.gd" id="11_00cw1"]
-[ext_resource type="Resource" path="res://systems/input_system/actions/dash.tres" id="12_admgt"]
-[ext_resource type="Resource" path="res://systems/input_system/actions/crouch.tres" id="13_pawhj"]
+[ext_resource type="Resource" uid="uid://gcapkpcb8v6m" path="res://systems/input_system/actions/run.tres" id="13_pawhj"]
 [ext_resource type="Resource" uid="uid://drp8a3ph6rqou" path="res://systems/input_system/actions/drag.tres" id="14_hy0qa"]
 [ext_resource type="Script" uid="uid://dsa1dnifd6w32" path="res://addons/guide/guide_mapping_context.gd" id="14_jrcvq"]
+
+[sub_resource type="Resource" id="Resource_73mtp"]
+script = ExtResource("4_t8rhn")
+key = 4194325
+
+[sub_resource type="Resource" id="Resource_krjbi"]
+script = ExtResource("3_4wi1b")
+input = SubResource("Resource_73mtp")
+
+[sub_resource type="Resource" id="Resource_456bg"]
+script = ExtResource("1_tphwt")
+action = ExtResource("13_pawhj")
+input_mappings = Array[ExtResource("3_4wi1b")]([SubResource("Resource_krjbi")])
 
 [sub_resource type="Resource" id="Resource_wxij4"]
 script = ExtResource("4_t8rhn")
@@ -93,40 +104,6 @@ input_mappings = Array[ExtResource("3_4wi1b")]([SubResource("Resource_6xwks"), S
 script = ExtResource("1_tphwt")
 action = ExtResource("10_d7s88")
 
-[sub_resource type="Resource" id="Resource_8xncq"]
-script = ExtResource("4_t8rhn")
-key = 4194325
-
-[sub_resource type="Resource" id="Resource_mub7g"]
-script = ExtResource("9_37483")
-
-[sub_resource type="Resource" id="Resource_r2hkm"]
-script = ExtResource("3_4wi1b")
-input = SubResource("Resource_8xncq")
-triggers = Array[ExtResource("7_edodp")]([SubResource("Resource_mub7g")])
-
-[sub_resource type="Resource" id="Resource_d1xeg"]
-script = ExtResource("1_tphwt")
-action = ExtResource("12_admgt")
-input_mappings = Array[ExtResource("3_4wi1b")]([SubResource("Resource_r2hkm")])
-
-[sub_resource type="Resource" id="Resource_dl74m"]
-script = ExtResource("4_t8rhn")
-key = 67
-
-[sub_resource type="Resource" id="Resource_1dvpy"]
-script = ExtResource("11_00cw1")
-
-[sub_resource type="Resource" id="Resource_6nflq"]
-script = ExtResource("3_4wi1b")
-input = SubResource("Resource_dl74m")
-triggers = Array[ExtResource("7_edodp")]([SubResource("Resource_1dvpy")])
-
-[sub_resource type="Resource" id="Resource_n0xen"]
-script = ExtResource("1_tphwt")
-action = ExtResource("13_pawhj")
-input_mappings = Array[ExtResource("3_4wi1b")]([SubResource("Resource_6nflq")])
-
 [sub_resource type="Resource" id="Resource_aqutc"]
 script = ExtResource("4_t8rhn")
 key = 71
@@ -146,6 +123,6 @@ input_mappings = Array[ExtResource("3_4wi1b")]([SubResource("Resource_ciar1")])
 
 [resource]
 script = ExtResource("14_jrcvq")
-mappings = Array[ExtResource("1_tphwt")]([SubResource("Resource_fmrwf"), SubResource("Resource_qh5ro"), SubResource("Resource_wid2w"), SubResource("Resource_d1xeg"), SubResource("Resource_n0xen"), SubResource("Resource_6tepb")])
+mappings = Array[ExtResource("1_tphwt")]([SubResource("Resource_456bg"), SubResource("Resource_fmrwf"), SubResource("Resource_qh5ro"), SubResource("Resource_wid2w"), SubResource("Resource_6tepb")])
 metadata/_custom_type_script = "uid://dsa1dnifd6w32"
 metadata/_guide_action_mappings_collapsed = false
