@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://br03ps317co5c"
+path="res://.godot/imported/player run 48x48.aseprite-73299d2efca6c7cfb6a505bf54eb9e80.res"
+
+[deps]
+
+source_file="res://docs/2D-Pixel-Art-Character-Template/Run/player run 48x48.aseprite"
+dest_files=["res://.godot/imported/player run 48x48.aseprite-73299d2efca6c7cfb6a505bf54eb9e80.res"]
+
+[params]
+

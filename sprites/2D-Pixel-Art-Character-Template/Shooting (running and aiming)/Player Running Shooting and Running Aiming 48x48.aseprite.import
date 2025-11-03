@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cmpjjqo5rwtjs"
+path="res://.godot/imported/Player Running Shooting and Running Aiming 48x48.aseprite-8a3218d4ce63158a6aded63ff094b1e3.res"
+
+[deps]
+
+source_file="res://sprites/2D-Pixel-Art-Character-Template/Shooting (running and aiming)/Player Running Shooting and Running Aiming 48x48.aseprite"
+dest_files=["res://.godot/imported/Player Running Shooting and Running Aiming 48x48.aseprite-8a3218d4ce63158a6aded63ff094b1e3.res"]
+
+[params]
+

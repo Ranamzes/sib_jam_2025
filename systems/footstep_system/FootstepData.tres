@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="FootstepData" load_steps=5 format=3 uid="uid://bvvkcrgwqqnfl"]
+
+[ext_resource type="Script" uid="uid://cpcfkx3e4pwo3" path="res://systems/footstep_system/footstep_data.gd" id="1_ppdvk"]
+[ext_resource type="Script" uid="uid://ca5bm55jg3ds3" path="res://systems/footstep_system/audio_surface_resource.gd" id="2_oayok"]
+[ext_resource type="Resource" uid="uid://c2bqnjqbst4gj" path="res://systems/footstep_system/concrete.tres" id="3_iur48"]
+[ext_resource type="Resource" uid="uid://c7sec2qhxg6kf" path="res://systems/footstep_system/cave.tres" id="4_5tw4d"]
+
+[resource]
+script = ExtResource("1_ppdvk")
+fmod_event_path = "event:/player/footsteps"
+fmod_surface_parameter_name = &"terrain"
+fmod_is_running_parameter_name = &"walkrun"
+surfaces = Array[ExtResource("2_oayok")]([ExtResource("3_iur48"), ExtResource("4_5tw4d")])
+metadata/_custom_type_script = "uid://cpcfkx3e4pwo3"

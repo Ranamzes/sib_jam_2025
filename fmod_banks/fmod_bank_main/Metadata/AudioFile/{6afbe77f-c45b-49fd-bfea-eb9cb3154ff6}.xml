@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{6afbe77f-c45b-49fd-bfea-eb9cb3154ff6}">
+		<property name="assetPath">
+			<value>sounds/footsteps/stone/footsteps_stone_walk_4.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.61224489795918369</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{7adaddab-36ad-4c33-9619-a871fbbd629e}</destination>
+		</relationship>
+	</object>
+</objects>

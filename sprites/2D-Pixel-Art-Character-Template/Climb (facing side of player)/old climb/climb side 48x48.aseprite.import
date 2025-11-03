@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://b0k2k5hqv7ht4"
+path="res://.godot/imported/climb side 48x48.aseprite-bd6a516fbe382daae22617d78f6bc429.res"
+
+[deps]
+
+source_file="res://sprites/2D-Pixel-Art-Character-Template/Climb (facing side of player)/old climb/climb side 48x48.aseprite"
+dest_files=["res://.godot/imported/climb side 48x48.aseprite-bd6a516fbe382daae22617d78f6bc429.res"]
+
+[params]
+

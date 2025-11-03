@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://ble6kru0uk5bf"
+path="res://.godot/imported/Player Death 64x64.aseprite-859fe28d2350df47b74f50611fab3172.res"
+
+[deps]
+
+source_file="res://sprites/2D-Pixel-Art-Character-Template/Death/Player Death 64x64.aseprite"
+dest_files=["res://.godot/imported/Player Death 64x64.aseprite-859fe28d2350df47b74f50611fab3172.res"]
+
+[params]
+

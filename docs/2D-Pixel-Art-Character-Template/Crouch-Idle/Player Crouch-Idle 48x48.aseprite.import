@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://b2oyg5pban7h5"
+path="res://.godot/imported/Player Crouch-Idle 48x48.aseprite-bcbaba5d2e7e153d92640850d10805ac.res"
+
+[deps]
+
+source_file="res://docs/2D-Pixel-Art-Character-Template/Crouch-Idle/Player Crouch-Idle 48x48.aseprite"
+dest_files=["res://.godot/imported/Player Crouch-Idle 48x48.aseprite-bcbaba5d2e7e153d92640850d10805ac.res"]
+
+[params]
+

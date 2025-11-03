@@ -8,6 +8,12 @@
 
 config_version=5
 
+[Fmod]
+
+General/banks_path="res://fmod_banks/Desktop"
+DSP/dsp_buffer_size=1024
+"3D Settings/distance_factor"=64.0
+
 [application]
 
 config/name="SibJam2025"
@@ -20,6 +26,9 @@ config/icon="uid://dhwlmcglmf0kw"
 
 GUIDE="*res://addons/guide/guide.gd"
 FmodManager="*res://addons/fmod/FmodManager.gd"
+EventBus="*res://globals/event_bus.gd"
+GroupNames="*res://globals/group_names.gd"
+PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 
 [debug]
 
@@ -27,9 +36,10 @@ settings/gdscript/always_track_call_stacks=true
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
-window/size/mode=4
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/size/window_width_override=1920
+window/size/window_height_override=1080
 window/stretch/mode="canvas_items"
 
 [dotnet]
@@ -44,9 +54,22 @@ movie_writer/node_name_casing=0
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/fmod/plugin.cfg", "res://addons/godot_mcp/plugin.cfg", "res://addons/guide/plugin.cfg")
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/fmod/plugin.cfg", "res://addons/godot_mcp/plugin.cfg", "res://addons/guide/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
+
+[global_group]
+
+environment=""
+druggable=""
+Player=""
+cell=""
+
+[physics]
+
+common/physics_interpolation/enable=true
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0, 0.0019724718, 0.058017567, 1)

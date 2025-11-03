@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{1368e142-fe8b-4f52-85aa-06d3ba0927c0}">
+		<property name="assetPath">
+			<value>sounds/level1/woodenboxes/box_5.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>2.1875056689342403</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{7adaddab-36ad-4c33-9619-a871fbbd629e}</destination>
+		</relationship>
+	</object>
+</objects>

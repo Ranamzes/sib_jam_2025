@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4u67j2qbqx17"]
+
+[ext_resource type="Script" uid="uid://bjy2nmr4ctlv7" path="res://puzzle/cell.gd" id="1_kvobb"]
+
+[node name="Cell" type="Area2D" groups=["cell"]]
+script = ExtResource("1_kvobb")
