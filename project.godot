@@ -57,6 +57,7 @@ enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addon
 
 environment=""
 druggable=""
+Player=""
 
 [rendering]
 

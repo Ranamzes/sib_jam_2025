@@ -112,10 +112,10 @@ func _calculate_current_state():
 		if abs(_velocity.x) > 0.1 or abs(_move_input_vector.x) > 0.1 :
 			_state_comp.change_state(_state_comp.walk if !_state_comp.is_running else _state_comp.running)
 		else:
-			if _state_comp.current_state==_state_comp.running:
-				_on_echo(&"run")
-			elif _state_comp.current_state==_state_comp.walk:
-				_on_echo(&"walk")	
+		#	if _state_comp.current_state==_state_comp.running:
+		#		_on_echo(&"run")
+		#	elif _state_comp.current_state==_state_comp.walk:
+		#		_on_echo(&"walk")	
 			_state_comp.change_state(_state_comp.idle)
 
 
