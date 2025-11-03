@@ -10,7 +10,7 @@
 [ext_resource type="Shader" uid="uid://b0v710tat1koj" path="res://effects/monocolor_shader.gdshader" id="8_5vw27"]
 [ext_resource type="PackedScene" uid="uid://dlnto25jfnnie" path="res://environment/movable_item.tscn" id="9_kek77"]
 [ext_resource type="Script" uid="uid://dbxlbok57ny46" path="res://systems/reset_system/reset_controller.gd" id="10_4c57u"]
-[ext_resource type="Script" uid="uid://cgdrh4y55r7g6" path="res://systems/reset_system/respawn_area.gd" id="11_efxa6"]
+[ext_resource type="Script" path="res://systems/reset_system/respawn_area.gd" id="11_efxa6"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5vw27"]
 distance = -810.0
@@ -96,7 +96,6 @@ metadata/_custom_type_script = "uid://dbxlbok57ny46"
 [node name="RespawnArea" type="Area2D" parent="."]
 position = Vector2(1391, 429)
 script = ExtResource("11_efxa6")
-metadata/_custom_type_script = "uid://cgdrh4y55r7g6"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RespawnArea"]
 position = Vector2(3, -137)
@@ -105,7 +104,6 @@ shape = SubResource("RectangleShape2D_dg77c")
 [node name="RespawnArea2" type="Area2D" parent="."]
 position = Vector2(1, 433)
 script = ExtResource("11_efxa6")
-metadata/_custom_type_script = "uid://cgdrh4y55r7g6"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RespawnArea2"]
 position = Vector2(2, -159)
