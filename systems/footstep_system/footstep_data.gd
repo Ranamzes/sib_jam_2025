@@ -10,5 +10,9 @@ extends Resource
 ## Example: &"Surface"
 @export var fmod_surface_parameter_name: StringName
 
+## The name of the FMOD parameter that distinguishes between walking and running.
+## Example: &"is_running"
+@export var fmod_is_running_parameter_name: StringName
+
 ## A list of all possible surfaces the character can walk on.
-@export var surfaces: Array[Resource]
+@export var surfaces: Array[AudioSurfaceResource]

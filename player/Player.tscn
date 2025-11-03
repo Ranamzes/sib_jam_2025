@@ -1,7 +1,7 @@
-[gd_scene load_steps=112 format=3 uid="uid://bgrwxmc03jfth"]
+[gd_scene load_steps=115 format=3 uid="uid://bgrwxmc03jfth"]
 
 [ext_resource type="Script" uid="uid://chbr6mrhj0l4h" path="res://systems/input_system/player_input_component.gd" id="1_5p1j2"]
-[ext_resource type="Script" path="res://player/player.gd" id="1_8nth8"]
+[ext_resource type="Script" uid="uid://cg6pvwqc3b5mc" path="res://player/player.gd" id="1_8nth8"]
 [ext_resource type="Resource" uid="uid://m6k6p2jv0yfa" path="res://systems/input_system/player_mapping_context.tres" id="2_v4f8b"]
 [ext_resource type="Texture2D" uid="uid://cu4sejywv8k7w" path="res://sprites/2D-Pixel-Art-Character-Template/Dash/dash.png" id="2_yu5hk"]
 [ext_resource type="Shape2D" uid="uid://c1mx1ld17atye" path="res://player/CapsuleShape.tres" id="3_stbqk"]
@@ -18,17 +18,19 @@
 [ext_resource type="Texture2D" uid="uid://yeu7spgq7rit" path="res://player/animations/walk.png" id="8_y617q"]
 [ext_resource type="Script" uid="uid://4xcpj0x4w4cj" path="res://systems/movement_system/stats/dash_stats.gd" id="8_yu5hk"]
 [ext_resource type="Script" uid="uid://boncf0le5k03j" path="res://systems/animation_system/animation_system.gd" id="9_h5g2s"]
+[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="10_efxa6"]
 [ext_resource type="Script" uid="uid://7w4jww1v0oqm" path="res://systems/movement_system/physics_integration_system.gd" id="14_abcde"]
 [ext_resource type="Script" uid="uid://bln6wd364xxht" path="res://systems/movement_system/stats/movement_stats.gd" id="17_uewl2"]
 [ext_resource type="Script" uid="uid://sui2aet7dpfb" path="res://systems/movement_system/stats/jump_stats.gd" id="18_ofhxi"]
 [ext_resource type="Script" uid="uid://pjgmjy1xod72" path="res://echo/echo_stats.gd" id="19_2m0d2"]
-[ext_resource type="Resource" uid="uid://gcapkpcb8v6m" path="res://systems/input_system/actions/run.tres" id="19_8eyfg"]
+[ext_resource type="Resource" path="res://systems/input_system/actions/run.tres" id="19_8eyfg"]
 [ext_resource type="Resource" uid="uid://drp8a3ph6rqou" path="res://systems/input_system/actions/drag.tres" id="19_8tqfn"]
 [ext_resource type="Script" uid="uid://dpepr0ylg6wlu" path="res://systems/movement_system/state_component.gd" id="20_q6miu"]
-[ext_resource type="Resource" uid="uid://dgn6ti8np7v43" path="res://systems/input_system/actions/push.tres" id="21_76mgg"]
+[ext_resource type="Resource" path="res://systems/input_system/actions/push.tres" id="21_76mgg"]
 [ext_resource type="Script" uid="uid://81kwjwkswx8d" path="res://systems/footstep_system/footstep_component.gd" id="22_8eyfg"]
 [ext_resource type="Texture2D" uid="uid://5bbaytwhjqlx" path="res://player/eye.png" id="22_mlfor"]
 [ext_resource type="Resource" uid="uid://bvvkcrgwqqnfl" path="res://systems/footstep_system/FootstepData.tres" id="23_76mgg"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="32_234y4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mlfor"]
 atlas = ExtResource("2_yu5hk")
@@ -514,6 +516,20 @@ tracks/1/keys = {
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 6, -0.16666667, 0, 0, 0),
 "times": PackedFloat32Array(0, 1.6)
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Components/FootstepComponent")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"stop"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_y2u3w"]
 resource_name = "jumping"
@@ -598,6 +614,35 @@ tracks/3/keys = {
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 7, -0.083333336, 0, 0, 0),
 "times": PackedFloat32Array(0, 0.5)
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("FootMarker:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.32118452),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(19, 59), Vector2(19, 59)]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Components/FootstepComponent")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.32205874, 0.4590801),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [true],
+"method": &"play_step"
+}, {
+"args": [true],
+"method": &"play_step"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_wqfsd"]
 resource_name = "run"
@@ -661,13 +706,13 @@ tracks/3/path = NodePath("Components/FootstepComponent")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.3667, 0.8667),
+"times": PackedFloat32Array(0.23333333, 0.73333335),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
-"args": [],
+"args": [false],
 "method": &"play_step"
 }, {
-"args": [],
+"args": [false],
 "method": &"play_step"
 }]
 }
@@ -735,7 +780,9 @@ metadata/_custom_type_script = "uid://pjgmjy1xod72"
 
 [sub_resource type="Resource" id="Resource_y617q"]
 script = ExtResource("17_uewl2")
+max_speed = 160.0
 run_multiplier = 2.5
+time_to_reach_max_speed = 0.46
 metadata/_custom_type_script = "uid://bln6wd364xxht"
 
 [sub_resource type="Resource" id="Resource_8tqfn"]
@@ -743,9 +790,14 @@ script = ExtResource("18_ofhxi")
 jump_height = 6.0
 metadata/_custom_type_script = "uid://sui2aet7dpfb"
 
+[sub_resource type="Resource" id="Resource_u8vxv"]
+script = ExtResource("32_234y4")
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 3
 script = ExtResource("1_8nth8")
+footstep_component_path = NodePath("Components/FootstepComponent")
+surface_detector_path = NodePath("SurfaceDetector")
 
 [node name="IteractionScanRayCast" type="RayCast2D" parent="."]
 rotation = -1.5707964
@@ -757,7 +809,6 @@ collision_mask = 4
 monitorable = false
 script = ExtResource("4_uewl2")
 health_component = NodePath("../Components/HealthComponent")
-metadata/_custom_type_script = "uid://b58pdy82skwid"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
 position = Vector2(0, 0.5)
@@ -785,7 +836,6 @@ script = ExtResource("7_8tqfn")
 
 [node name="HealthComponent" type="Node" parent="Components"]
 script = ExtResource("5_ofhxi")
-metadata/_custom_type_script = "uid://i5x0g3uanlah"
 
 [node name="DashComponent" type="Node" parent="Components" node_paths=PackedStringArray("_state_comp", "_physics")]
 script = ExtResource("5_yu5hk")
@@ -793,7 +843,6 @@ _state_comp = NodePath("../../Systems/StateComponent")
 _dash_stats = SubResource("Resource_mlfor")
 _movement_stats = SubResource("Resource_2m0d2")
 _physics = NodePath("../../Systems/PhysicsIntegrationSystem")
-metadata/_custom_type_script = "uid://4hcakwlm1h5y"
 
 [node name="PlayerInputComponent" type="Node" parent="Components" node_paths=PackedStringArray("physics_system", "drag_component")]
 script = ExtResource("1_5p1j2")
@@ -805,7 +854,6 @@ drag_action = ExtResource("19_8tqfn")
 push_action = ExtResource("21_76mgg")
 physics_system = NodePath("../../Systems/PhysicsIntegrationSystem")
 drag_component = NodePath("../DragComponent")
-metadata/_custom_type_script = "uid://chbr6mrhj0l4h"
 
 [node name="DragComponent" type="Node" parent="Components" node_paths=PackedStringArray("iteraction_ray_cast", "mov_state_comp")]
 script = ExtResource("7_8tqfn")
@@ -813,13 +861,11 @@ iteraction_ray_cast = NodePath("../../IteractionScanRayCast")
 drag_impulse = 150
 push_impulse = 700
 mov_state_comp = NodePath("../../Systems/StateComponent")
-metadata/_custom_type_script = "uid://jit3rqs1hyh1"
 
 [node name="FootstepComponent" type="Node" parent="Components"]
 script = ExtResource("22_8eyfg")
 footstep_data = ExtResource("23_76mgg")
 foot_marker = NodePath("../../FootMarker")
-metadata/_custom_type_script = "uid://81kwjwkswx8d"
 
 [node name="Systems" type="Node" parent="."]
 
@@ -841,11 +887,9 @@ echo_stats = Dictionary[String, ExtResource("19_2m0d2")]({
 _state_comp = NodePath("../StateComponent")
 _move_stats = SubResource("Resource_y617q")
 _jump_stats = SubResource("Resource_8tqfn")
-metadata/_custom_type_script = "uid://7w4jww1v0oqm"
 
 [node name="StateComponent" type="Node" parent="Systems"]
 script = ExtResource("20_q6miu")
-metadata/_custom_type_script = "uid://dpepr0ylg6wlu"
 
 [node name="EchoPointer" type="Node2D" parent="."]
 position = Vector2(4, 17)
@@ -864,3 +908,18 @@ texture_scale = 1.5
 
 [node name="FootMarker" type="Marker2D" parent="."]
 position = Vector2(19, 59)
+
+[node name="SurfaceDetector" type="RayCast2D" parent="."]
+target_position = Vector2(0, 0)
+
+[node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
+top_level = true
+position = Vector2(144, 60)
+script = ExtResource("10_efxa6")
+follow_mode = 2
+follow_target = NodePath("..")
+zoom = Vector2(0.5, 0.5)
+snap_to_pixel = true
+tween_resource = SubResource("Resource_u8vxv")
+follow_offset = Vector2(144, 60)
+follow_damping = true

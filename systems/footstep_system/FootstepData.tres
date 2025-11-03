@@ -9,5 +9,6 @@
 script = ExtResource("1_ppdvk")
 fmod_event_path = "event:/player/footsteps"
 fmod_surface_parameter_name = &"terrain"
+fmod_is_running_parameter_name = &"walkrun"
 surfaces = Array[ExtResource("2_oayok")]([ExtResource("3_iur48"), ExtResource("4_5tw4d")])
 metadata/_custom_type_script = "uid://cpcfkx3e4pwo3"
