@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://x662pd3helg5"]
+[gd_scene load_steps=16 format=4 uid="uid://x662pd3helg5"]
 
 [ext_resource type="Script" uid="uid://dp1qdgcbuwjup" path="res://camera/camera_manager.gd" id="1_mgr"]
 [ext_resource type="PackedScene" uid="uid://bgrwxmc03jfth" path="res://player/Player.tscn" id="2_0xm2m"]
@@ -10,8 +10,8 @@
 [ext_resource type="Shader" uid="uid://b0v710tat1koj" path="res://effects/monocolor_shader.gdshader" id="8_5vw27"]
 [ext_resource type="PackedScene" uid="uid://dlnto25jfnnie" path="res://environment/movable_item.tscn" id="9_kek77"]
 [ext_resource type="Script" uid="uid://dbxlbok57ny46" path="res://systems/reset_system/reset_controller.gd" id="10_4c57u"]
-[ext_resource type="Script" path="res://systems/reset_system/respawn_area.gd" id="11_efxa6"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="10_host"]
+[ext_resource type="Script" uid="uid://cgdrh4y55r7g6" path="res://systems/reset_system/respawn_area.gd" id="11_efxa6"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5vw27"]
 distance = -810.0
@@ -23,11 +23,12 @@ shader_parameter/colorLight = Color(1, 1, 1, 1)
 shader_parameter/colorDivider = 0.23600001121
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dg77c"]
-size = Vector2(569, 282)
+size = Vector2(628, 284)
 
 [node name="Main" type="Node"]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." groups=["tilemap"]]
@@ -59,8 +60,10 @@ script = ExtResource("4_lquwl")
 echo_packed_scene = ExtResource("5_7mycd")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Monocolor" parent="CanvasLayer" instance=ExtResource("4_1bvp3")]
+visible = false
 material = SubResource("ShaderMaterial_kek77")
 
 [node name="StartPosition" type="Marker2D" parent="."]
@@ -85,7 +88,7 @@ fmod_parameters/progress/variant_type = 3
 
 [node name="MainCamera" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-position = Vector2(47, 48)
+position = Vector2(191, 108)
 zoom = Vector2(0.5, 0.5)
 
 [node name="PhantomCameraHost" type="Node" parent="MainCamera"]
@@ -95,3 +98,29 @@ script = ExtResource("10_host")
 
 [node name="CameraManager" type="Node" parent="."]
 script = ExtResource("1_mgr")
+
+[node name="RespawnArea" type="Area2D" parent="."]
+position = Vector2(52, 433)
+script = ExtResource("11_efxa6")
+metadata/_custom_type_script = "uid://cgdrh4y55r7g6"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RespawnArea"]
+position = Vector2(0, -139)
+shape = SubResource("RectangleShape2D_dg77c")
+
+[node name="RespawnArea2" type="Area2D" parent="."]
+position = Vector2(1760, 434)
+script = ExtResource("11_efxa6")
+metadata/_custom_type_script = "uid://cgdrh4y55r7g6"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RespawnArea2"]
+position = Vector2(1, -146)
+shape = SubResource("RectangleShape2D_dg77c")
+
+[node name="ResetController" type="Node" parent="."]
+script = ExtResource("10_4c57u")
+player_packed_scene = ExtResource("2_0xm2m")
+metadata/_custom_type_script = "uid://dbxlbok57ny46"
+
+[connection signal="body_entered" from="RespawnArea" to="RespawnArea" method="_on_body_entered"]
+[connection signal="body_entered" from="RespawnArea2" to="RespawnArea2" method="_on_body_entered"]
