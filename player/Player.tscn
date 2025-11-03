@@ -843,15 +843,17 @@ metadata/_custom_type_script = "uid://dpepr0ylg6wlu"
 [node name="EchoPointer" type="Node2D" parent="."]
 position = Vector2(4, 17)
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(3, -10)
+[node name="Eye1" type="PointLight2D" parent="."]
+position = Vector2(19, -38)
+energy = 6.0
 texture = ExtResource("22_mlfor")
-texture_scale = 0.5
+texture_scale = 1.5
 
-[node name="PointLight2D2" type="PointLight2D" parent="."]
-position = Vector2(0, -10)
+[node name="Eye2" type="PointLight2D" parent="."]
+position = Vector2(9, -39)
+energy = 6.0
 texture = ExtResource("22_mlfor")
-texture_scale = 0.5
+texture_scale = 1.5
 
 [node name="FootMarker" type="Marker2D" parent="."]
 position = Vector2(19, 59)
