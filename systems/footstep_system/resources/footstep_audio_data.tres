@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://dssyq3d20s1y"]
+
+[ext_resource type="Resource" path="res://systems/footstep_system/resources/concrete_profile.tres" id="1_5jlkc"]
+[ext_resource type="Resource" path="res://systems/footstep_system/resources/platforms_profile.tres" id="2_psgyp"]
+[ext_resource type="Resource" path="res://systems/footstep_system/resources/stone_profile.tres" id="3_70v2w"]
+[ext_resource type="Resource" path="res://systems/footstep_system/resources/wood_profile.tres" id="4_82j1j"]
+
+[resource]
+script = ExtResource("1_5jlkc")
+surface_profiles = {
+"concrete": ExtResource("1_5jlkc"),
+"platforms": ExtResource("2_psgyp"),
+"stone": ExtResource("3_70v2w"),
+"wood": ExtResource("4_82j1j")
+}
