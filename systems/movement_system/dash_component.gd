@@ -1,8 +1,7 @@
 class_name DashComponent
 extends Node
 
-
-
+@export var enabled: bool = false # Set to false by default to disable
 
 @export var _state_comp: StateComponent
 @export var _dash_stats: DashStats
@@ -14,6 +13,9 @@ var _dash_count: int = 0
 var _dash_timer: Timer
 
 func _ready() -> void:
+	if not enabled: # Guard clause for _ready
+		set_physics_process(false)
+		return
 
 	if not (_state_comp and _dash_stats and _movement_stats and _physics):
 		push_error("DashComponent: Player is missing required components."); set_physics_process(false); return
@@ -26,12 +28,14 @@ func _ready() -> void:
 	add_child(_dash_timer)
 
 func _physics_process(_delta: float) -> void:
+	if not enabled: return # Guard clause for _physics_process
 	if _state_comp.is_grounded:
 		_dash_count = _dash_stats.max_dashes
 	if _state_comp.current_state == _state_comp.dashing and _state_comp.is_on_wall:
 		_end_dash()   
 	
 func request_dash() -> void:
+	if not enabled: return # Guard clause for request_dash
 	if _dash_count <= 0 or _state_comp.current_state == _state_comp.dashing:
 		return
 
@@ -52,6 +56,7 @@ func request_dash() -> void:
 
 
 func _get_dash_direction() -> Vector2:
+	if not enabled: return Vector2.ZERO # Guard clause for _get_dash_direction
 	var input_vector = _physics.get_move_input_vector()
 
 	# Prioritize player input for dash direction
@@ -80,7 +85,7 @@ func _get_dash_direction() -> Vector2:
 	return Vector2.ZERO
 
 func _end_dash()->void:
-
+	if not enabled: return # Guard clause for _end_dash
 	_state_comp.return_state_to_previous()
 	# Reset velocity to prevent sudden stop
 	_physics.change_velocity(Vector2.ZERO)

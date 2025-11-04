@@ -13,3 +13,6 @@ signal reset_level(checkpoint_id: int)
 # Emitted by a RespawnArea when the player enters it.
 # Passes the new position and the ID of the checkpoint.
 signal new_respawn(new_pos: Vector2, checkpoint_id: int)
+
+# Сигнал для смены фоновой музыки. Передает новый аудиопоток.
+signal change_background_music(stream: AudioStream)

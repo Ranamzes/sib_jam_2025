@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5w5dr3fxcw6g"]
+
+[ext_resource type="Script" path="res://systems/music_system/music_trigger_zone.gd" id="1_w847e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2vjq"]
+size = Vector2(20, 20)
+
+[node name="MusicTriggerZone" type="Area2D"]
+script = ExtResource("1_w847e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_g2vjq")

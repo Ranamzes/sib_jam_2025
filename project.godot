@@ -29,10 +29,10 @@ config/icon="uid://dhwlmcglmf0kw"
 [autoload]
 
 GUIDE="*res://addons/guide/guide.gd"
-FmodManager="*res://addons/fmod/FmodManager.gd"
 EventBus="*res://globals/event_bus.gd"
 GroupNames="*res://globals/group_names.gd"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
+MusicManager="*res://systems/audio_system/music_manager.gd"
 
 [debug]
 
@@ -58,7 +58,7 @@ movie_writer/node_name_casing=0
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/fmod/plugin.cfg", "res://addons/godot_mcp/plugin.cfg", "res://addons/guide/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/rmsmartshape/plugin.cfg", "res://addons/jamcountdown/plugin.cfg", "res://addons/GodotAnnotate/plugin.cfg")
+enabled=PackedStringArray("res://addons/godot_mcp/plugin.cfg", "res://addons/guide/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/rmsmartshape/plugin.cfg", "res://addons/jamcountdown/plugin.cfg", "res://addons/GodotAnnotate/plugin.cfg")
 
 [global_group]
 

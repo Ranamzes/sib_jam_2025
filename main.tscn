@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://x662pd3helg5"]
+[gd_scene load_steps=44 format=4 uid="uid://x662pd3helg5"]
 
 [ext_resource type="Script" uid="uid://dp1qdgcbuwjup" path="res://camera/camera_manager.gd" id="1_mgr"]
 [ext_resource type="PackedScene" uid="uid://bgrwxmc03jfth" path="res://player/Player.tscn" id="2_0xm2m"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://2mv7x56bodcg" path="res://tilesets/basement_edge_tile.png" id="8_1u8w0"]
 [ext_resource type="Shader" uid="uid://b0v710tat1koj" path="res://effects/monocolor_shader.gdshader" id="8_5vw27"]
 [ext_resource type="Script" uid="uid://nc5bfedvnpgm" path="res://addons/rmsmartshape/materials/shape_material.gd" id="8_d13ii"]
+[ext_resource type="Script" uid="uid://bpvo6p6kufeyv" path="res://systems/music_system/music_trigger_zone.gd" id="8_lswn8"]
 [ext_resource type="PackedScene" uid="uid://dlnto25jfnnie" path="res://environment/movable_item.tscn" id="9_kek77"]
 [ext_resource type="Script" uid="uid://d0xjijisx1woh" path="res://addons/rmsmartshape/materials/edge_material.gd" id="10_0odxb"]
 [ext_resource type="Script" uid="uid://dbxlbok57ny46" path="res://systems/reset_system/reset_controller.gd" id="10_4c57u"]
@@ -34,6 +35,9 @@ shader = ExtResource("8_5vw27")
 shader_parameter/colorDarkness = Color(0, 0, 0, 1)
 shader_parameter/colorLight = Color(1, 1, 1, 1)
 shader_parameter/colorDivider = 0.23600001121
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lswn8"]
+size = Vector2(125, 249)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dg77c"]
 size = Vector2(628, 284)
@@ -173,19 +177,25 @@ echo_packed_scene = ExtResource("5_7mycd")
 visible = false
 material = SubResource("ShaderMaterial_kek77")
 
-[node name="FmodBankLoader" type="FmodBankLoader" parent="."]
-bank_paths = ["res://fmod_banks/Desktop/Master.strings.bank", "res://fmod_banks/Desktop/Master.bank"]
-
 [node name="Audio" type="Node" parent="."]
 
-[node name="BgMusic" type="FmodEventEmitter2D" parent="Audio"]
-event_name = "event:/bg_music/level1"
-event_guid = "{b80eac12-306d-48ae-862e-a38e5f7236c3}"
-attached = false
-autoplay = true
-fmod_parameters/progress/id = 3080171880814298515
-fmod_parameters/progress = 0.0
-fmod_parameters/progress/variant_type = 3
+[node name="BgMusicLevel1" type="Area2D" parent="Audio"]
+script = ExtResource("8_lswn8")
+metadata/_custom_type_script = "uid://bpvo6p6kufeyv"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Audio/BgMusicLevel1"]
+position = Vector2(4, 205)
+shape = SubResource("RectangleShape2D_lswn8")
+
+[node name="BgMusicLevel2" type="Area2D" parent="Audio"]
+position = Vector2(2696, -842)
+script = ExtResource("8_lswn8")
+metadata/_custom_type_script = "uid://bpvo6p6kufeyv"
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Audio/BgMusicLevel2"]
+position = Vector2(4, 205)
+shape = SubResource("RectangleShape2D_lswn8")
 
 [node name="MainCamera" type="Camera2D" parent="."]
 physics_interpolation_mode = 1

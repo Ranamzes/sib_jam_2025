@@ -1,127 +1,61 @@
 class_name FootstepComponent
 extends Node
 
-## The data resource containing FMOD event info and surface definitions.
-@export var footstep_data: FootstepData
+## Главный ресурс с данными о звуках шагов.
+@export var audio_data: FootstepAudioData
 
-## Path to the Node2D marking the position of the footstep sound.
-@export var foot_marker: NodePath
+## Узел, который определяет тип поверхности.
+@export var surface_detector: SurfaceDetector
 
-## This variable should be updated by an external surface detector (e.g., a RayCast script).
-## It holds the name of the surface the character is currently on.
-var current_surface_name: StringName = &"default"
+## Плеер для воспроизведения звуков.
+@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 
-@onready var _foot_marker_node: Node2D = get_node_or_null(foot_marker)
-
-var _footstep_event_instance: FmodEvent
-
-
-
-
+var current_surface_name: String = "default"
 
 func _ready() -> void:
+	if not audio_data:
+		push_warning("FootstepAudioData resource not assigned to FootstepComponent.")
 
-	# Safety check to ensure the marker is assigned in the editor.
-
-	if not _foot_marker_node:
-
-		push_warning("Foot marker not assigned in FootstepComponent.")
-
-
-
-	if is_instance_valid(footstep_data):
-
-		_footstep_event_instance = FmodServer.create_event_instance(footstep_data.fmod_event_path)
-
+	if not surface_detector:
+		push_warning("SurfaceDetector node not assigned to FootstepComponent.")
 	else:
+		# Подписываемся на изменение поверхности
+		surface_detector.surface_changed.connect(_on_surface_changed)
+		# Устанавливаем начальное значение
+		current_surface_name = surface_detector.current_surface
 
-		push_warning("FootstepData not assigned to FootstepComponent.")
-
-
-
-
-
-func _exit_tree() -> void:
-
-	if _footstep_event_instance and _footstep_event_instance.is_valid():
-
-		_footstep_event_instance.stop(FmodServer.FMOD_STUDIO_STOP_IMMEDIATE)
-
-		_footstep_event_instance.release()
+	if not audio_player:
+		push_error("AudioStreamPlayer node named 'AudioStreamPlayer' is missing as a child of FootstepComponent.")
 
 
-## Call this method to stop the footstep sound when the character stops moving.
-func stop() -> void:
-	pass
-	if _footstep_event_instance and _footstep_event_instance.is_valid():
-		_footstep_event_instance.stop(FmodServer.FMOD_STUDIO_STOP_ALLOWFADEOUT)
-
-
-
-## This function should be called from an AnimationPlayer track when a foot hits the ground.
-
-## It now accepts a boolean to differentiate between walking and running.
-
-func play_step(is_running: bool = false) -> void:
-
-	if not _foot_marker_node:
-
+## Вызывается из AnimationPlayer. action_index: 0 для ходьбы, 1 для бега.
+func play(action_index: int = 0) -> void:
+	if not audio_data or not audio_player:
 		return
 
+	# 1. Получаем профиль для текущей поверхности
+	var surface_profile: SurfaceAudioProfile = audio_data.surface_profiles.get(current_surface_name)
+	if not surface_profile:
+		# Если для этой поверхности нет профиля, используем профиль по умолчанию
+		surface_profile = audio_data.surface_profiles.get("default")
+		if not surface_profile:
+			# Если нет даже профиля по умолчанию, выходим
+			return
 
-
-	_play_step_at_position(_foot_marker_node.global_position, is_running)
-
-
-
-
-
-func _play_step_at_position(step_position: Vector2, is_running: bool) -> void:
-
-	if not _footstep_event_instance or not _footstep_event_instance.is_valid():
-
-		push_warning("Footstep event instance is not valid.")
-
+	# 2. Получаем коллекцию звуков для нужного действия (ходьба/бег)
+	var collection: AudioStreamCollection = surface_profile.get_collection_for_action(action_index)
+	if not collection:
 		return
 
+	# 3. Получаем следующий случайный звук из коллекции
+	var stream: AudioStream = collection.get_next_stream()
+	if not stream:
+		return
+
+	# 4. Воспроизводим звук
+	audio_player.stream = stream
+	audio_player.play()
 
 
-	# Find the correct surface parameter value from our data resource.
-
-	var surface_value: float = 0.0 # Default value if no surface is found
-
-	for surface_resource in footstep_data.surfaces:
-
-		if surface_resource.surface_name == current_surface_name:
-
-			surface_value = surface_resource.fmod_parameter_value
-
-			break
-
-
-
-	# Set the 2D position for panning
-
-	_footstep_event_instance.set_2d_attributes(Transform2D(0.0, step_position))
-
-
-
-	# Set the surface parameter
-
-	_footstep_event_instance.set_parameter_by_name(footstep_data.fmod_surface_parameter_name, surface_value)
-
-
-
-	# Set the is_running parameter (0.0 for walk, 1.0 for run)
-
-	var running_value: float = 1.0 if is_running else 0.0
-
-	_footstep_event_instance.set_parameter_by_name(footstep_data.fmod_is_running_parameter_name, running_value)
-
-
-
-	# Start the event. Since we are reusing the instance, we don't release it here.
-
-	# We just restart it on every step.
-
-	_footstep_event_instance.start()
+func _on_surface_changed(new_surface_name: String) -> void:
+	current_surface_name = new_surface_name

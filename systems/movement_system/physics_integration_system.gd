@@ -24,7 +24,7 @@ func _ready() -> void:
 	if not (player_character and _state_comp):
 		push_error("PhysicsIntegrationSystem: Dependencies are not set.")
 		set_physics_process(false)
-	
+
 	if not drag_component:
 		push_warning("PhysicsIntegrationSystem: DragComponent is not set. Push/Pull will not work correctly.")
 
@@ -65,7 +65,9 @@ func _physics_process(_delta: float) -> void:
 
 func _execute_move(_delta:float):
 	var target_speed: float = _move_input_vector.x *_move_stats.max_speed
-	target_speed = target_speed * _move_stats.run_multiplier if _state_comp.is_running   else target_speed
+	# Prevent running while pulling or pushing
+	var can_run: bool = _state_comp.is_running and _state_comp.current_state != _state_comp.pull and _state_comp.current_state != _state_comp.push
+	target_speed = target_speed * _move_stats.run_multiplier if can_run else target_speed
 
 	var current_velocity_x = _velocity.x
 	if _move_stats.directional_snap and _move_input_vector.x !=0 :
@@ -110,7 +112,7 @@ func _execute_actions_for_current_state(_delta:float):
 func _calculate_current_state():
 	_state_comp.is_grounded = player_character.is_on_floor()
 	_state_comp.is_on_wall = player_character.is_on_wall() and not _state_comp.is_grounded
-	
+
 	# Highest priority: Dashing state overrides everything.
 	if _state_comp.current_state == _state_comp.dashing:
 		return
@@ -118,10 +120,9 @@ func _calculate_current_state():
 	# High priority: Air state (jumping/falling) overrides ground states.
 	if not _state_comp.is_grounded:
 		# If we were dragging, we must stop.
-		if _state_comp.current_state == _state_comp.pull or _state_comp.current_state == _state_comp.push:
-			if drag_component:
-				drag_component.stop_dragging_action()
-		
+		if drag_component and drag_component.dragged_item != null: # Check if drag_component exists
+			drag_component.stop_dragging_action()
+
 		# Determine if jumping or falling.
 		if _velocity.y < 0:
 			_state_comp.change_state(_state_comp.jumping)
@@ -130,9 +131,9 @@ func _calculate_current_state():
 		return # Exit, air state is determined.
 
 	# Grounded States
-	# If we are currently dragging, let the DragComponent manage the push/pull state.
-	if _state_comp.current_state == _state_comp.pull or _state_comp.current_state == _state_comp.push:
-		return # Don't override the drag state with idle/walk.
+	# If the drag component is active, it controls the state. Do nothing here.
+	if drag_component and drag_component.dragged_item != null:
+		return
 
 	# Default ground logic for when not dragging.
 	if abs(_velocity.x) > 0.1 or abs(_move_input_vector.x) > 0.1 :
@@ -161,7 +162,7 @@ func _can_jump() -> bool:
 	# Prevent jumping while dragging
 	if(_state_comp.current_state==_state_comp.pull or _state_comp.current_state==_state_comp.push):
 		return false
-	
+
 	# Coyote time is only available for single jump configurations
 	var use_coyote = (_jump_stats.max_jumps == 1 and not _coyote_timer.is_stopped())
 	if _jump_stats.max_jumps > 1 :
@@ -199,9 +200,9 @@ func _on_echo(stat_name:StringName):
 	EventBus.create_echo.emit(echo_stats.get(stat_name),echo_pointer.global_position)
 func start_run():
 	_state_comp.is_running = true
-	
+
 func end_run():
-	_state_comp.is_running = false	
+	_state_comp.is_running = false
 #Character controller or ai controller should change movement vector
 func change_movement_vector(_new_movement_vector:Vector2):
 	_move_input_vector = _new_movement_vector
