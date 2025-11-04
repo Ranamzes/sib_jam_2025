@@ -22,8 +22,8 @@ func _ready() -> void:
 	if not mapping_context:
 		push_error("PlayerInputComponent: GUIDEMappingContext is not set!")
 		return
-	
-	
+
+
 	# Activate the controls for this player
 	GUIDE.enable_mapping_context(mapping_context)
 
@@ -38,7 +38,7 @@ func _ready() -> void:
 
 	# For hold actions, we can check their state change
 	##if crouch_action:
-	if run_action:	
+	if run_action:
 		#run_action.triggered.connect(func():physics_system.start_run())
 		run_action.triggered.connect(func(): physics_system.start_run())
 		run_action.completed.connect(func(): physics_system.end_run())
@@ -50,7 +50,7 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	if not move_action:
 		return
-	
+
 	# Continuously poll the move action for its vector
 	var current_move_vector: Vector2 = move_action.value_axis_2d
 	physics_system.change_movement_vector(current_move_vector)

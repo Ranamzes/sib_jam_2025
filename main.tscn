@@ -148,7 +148,6 @@ navigation_visibility_mode = 1
 
 [node name="Player" parent="." instance=ExtResource("2_0xm2m")]
 y_sort_enabled = true
-position = Vector2(3737, 19)
 
 [node name="HitboxComponent" type="Area2D" parent="."]
 position = Vector2(1, 0)
@@ -190,7 +189,7 @@ fmod_parameters/progress/variant_type = 3
 
 [node name="MainCamera" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-position = Vector2(3881, 79)
+position = Vector2(144, 60)
 zoom = Vector2(0.5, 0.5)
 process_callback = 0
 
@@ -282,7 +281,6 @@ position = Vector2(-20.5, 528)
 
 [node name="CheckpointSavableComponent" type="Node" parent="Items/BoulderTrap" node_paths=PackedStringArray("save_position_at_checkpoint", "reset_until_checkpoint")]
 script = ExtResource("14_1u8w0")
-reinstantiate_on_reset = true
 save_position_at_checkpoint = NodePath("../../../SpawnAreas/RespawnArea2")
 reset_until_checkpoint = NodePath("../../../SpawnAreas/RespawnArea3")
 metadata/_custom_type_script = "uid://cm385mp1h6idy"

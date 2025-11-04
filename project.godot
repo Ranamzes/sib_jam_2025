@@ -63,7 +63,6 @@ enabled=PackedStringArray("res://addons/fmod/plugin.cfg", "res://addons/godot_mc
 [global_group]
 
 environment=""
-druggable=""
 Player=""
 cell=""
 

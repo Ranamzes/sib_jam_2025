@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l4pm5"]
 size = Vector2(123, 121)
 
-[node name="MovableItem" type="RigidBody2D" groups=["druggable"]]
+[node name="MovableItem" type="RigidBody2D" groups=["draggable", "druggable"]]
 collision_layer = 1025
 script = ExtResource("1_r37qw")
 

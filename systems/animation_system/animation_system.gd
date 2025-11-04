@@ -47,4 +47,3 @@ func _process(_delta: float) -> void:
 		color_sprite.animation = contour_sprite.animation
 		color_sprite.frame = contour_sprite.frame
 		color_sprite.flip_h = contour_sprite.flip_h
- 
