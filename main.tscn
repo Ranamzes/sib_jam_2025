@@ -246,10 +246,10 @@ text = "Use \"E\" to drag the Crate"
 horizontal_alignment = 1
 
 [node name="Run" type="Label" parent="Hints"]
-offset_left = 2040.0
-offset_top = 644.0
-offset_right = 2345.0
-offset_bottom = 680.0
+offset_left = 2218.0
+offset_top = 655.0
+offset_right = 2523.0
+offset_bottom = 691.0
 theme_override_fonts/font = ExtResource("24_1u8w0")
 theme_override_font_sizes/font_size = 24
 text = "Use \"Shist\" to Run"
