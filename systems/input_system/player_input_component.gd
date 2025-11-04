@@ -33,9 +33,8 @@ func _ready() -> void:
 	#if dash_action && dash_component!= null:
 	#	dash_action.triggered.connect(func(): dash_component.request_dash())
 	if drag_action && drag_component != null:
-		drag_action.triggered.connect(func(): drag_component.drag())
-	if push_action && drag_component != null:
-		push_action.triggered.connect(func(): drag_component.push())
+		drag_action.triggered.connect(func(): drag_component.toggle_drag())
+
 	# For hold actions, we can check their state change
 	##if crouch_action:
 	if run_action:	
