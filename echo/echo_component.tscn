@@ -8,6 +8,8 @@ script = ExtResource("1_v4fw5")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 unique_name_in_owner = true
+light_mask = 4
 scale = Vector2(2, 2)
+color = Color(1, 0, 0, 1)
 blend_mode = 2
 texture = ExtResource("2_v4fw5")
