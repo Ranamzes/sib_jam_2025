@@ -210,10 +210,8 @@ script = ExtResource("4_lquwl")
 echo_packed_scene = ExtResource("5_7mycd")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Monocolor" parent="CanvasLayer" instance=ExtResource("4_1bvp3")]
-visible = false
 material = SubResource("ShaderMaterial_kek77")
 
 [node name="FmodBankLoader" type="FmodBankLoader" parent="."]
@@ -234,6 +232,7 @@ fmod_parameters/progress/variant_type = 3
 physics_interpolation_mode = 1
 position = Vector2(144, 60)
 zoom = Vector2(0.5, 0.5)
+process_callback = 0
 
 [node name="PhantomCameraHost" type="Node" parent="MainCamera"]
 process_priority = 300

@@ -1,28 +1,23 @@
 class_name AnimationSystem
 extends Node
 
-## The AnimationTree node that this system will control.
 @export var animation_tree: AnimationTree
-## The root node of the character, used for getting components.
-
-## The visual part of the player that needs to be flipped.
-@export var player_sprite: Node2D
 @export var mov_state_comp: StateComponent
 
-# A direct reference to the state machine playback for convenience.
+@export_group("Sprites")
+@export var contour_sprite: AnimatedSprite2D
+@export var eyes_sprite: AnimatedSprite2D
+@export var color_sprite: AnimatedSprite2D
+
 var _state_machine
 
 func _ready() -> void:
-	if not (animation_tree and player_sprite ):
-		push_error("AnimationSystem: Dependencies (AnimationTree, CharacterBody2D, Node2D sprite, State or Velocity) are not set.")
+	if not (animation_tree and contour_sprite and mov_state_comp):
+		push_error("AnimationSystem: Core dependencies are not set.")
 		set_process(false)
 		return
 
-	# This assumes the parameter path is "parameters/playback". 
-	# This is the default for a new AnimationNodeStateMachine.
 	_state_machine = animation_tree.get("parameters/playback")
-	
-	# Connect to the state change signal
 	mov_state_comp.state_changed.connect(_on_state_changed)
 
 func _on_state_changed(_previous_state: StringName, new_state: StringName) -> void:
@@ -30,15 +25,26 @@ func _on_state_changed(_previous_state: StringName, new_state: StringName) -> vo
 		_state_machine.travel(new_state)
 
 func _process(_delta: float) -> void:
-	# Only handle continuous parameter updates here
-	var velocity = mov_state_comp.movement_vector
+	var velocity: Vector2 = mov_state_comp.movement_vector
 	
-	# Blend positions are useful for blending between idle/run animations.
 	animation_tree.set("parameters/speed/blend_position", abs(velocity.x))
-	
-	# Vertical velocity can be used to transition between jump/fall.
 	animation_tree.set("parameters/y_velocity/blend_position", velocity.y)
 
-	# --- Flip Sprite ---
+	# --- Flip Sprites ---
 	if abs(velocity.x) > 0.1:
-		player_sprite.scale.x = sign(velocity.x) * abs(player_sprite.scale.x) 
+		var flip = velocity.x < 0
+		contour_sprite.flip_h = flip
+
+	# --- Sync Sprites ---
+	# The AnimationTree only drives the contour_sprite.
+	# We copy its state to the other sprites to keep them in sync.
+	if is_instance_valid(eyes_sprite):
+		eyes_sprite.animation = contour_sprite.animation
+		eyes_sprite.frame = contour_sprite.frame
+		eyes_sprite.flip_h = contour_sprite.flip_h
+
+	if is_instance_valid(color_sprite):
+		color_sprite.animation = contour_sprite.animation
+		color_sprite.frame = contour_sprite.frame
+		color_sprite.flip_h = contour_sprite.flip_h
+ 
