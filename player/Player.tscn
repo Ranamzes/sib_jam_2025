@@ -1060,7 +1060,8 @@ metadata/_custom_type_script = "uid://pjgmjy1xod72"
 script = ExtResource("17_uewl2")
 max_speed = 160.0
 run_multiplier = 2.5
-time_to_reach_max_speed = 0.46
+time_to_reach_max_speed = 0.29
+time_to_reach_zero_speed = 0.187
 metadata/_custom_type_script = "uid://bln6wd364xxht"
 
 [sub_resource type="Resource" id="Resource_8tqfn"]
@@ -1105,6 +1106,7 @@ animation = &"run"
 
 [node name="EyesSprite" type="AnimatedSprite2D" parent="."]
 material = ExtResource("35_eyemat")
+position = Vector2(0, 1)
 sprite_frames = ExtResource("33_abcde")
 animation = &"fall"
 
