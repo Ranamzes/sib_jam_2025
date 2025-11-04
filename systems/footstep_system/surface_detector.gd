@@ -12,9 +12,18 @@ func _physics_process(delta: float) -> void:
 		var collider = get_collider()
 		var new_surface = "default"
 
-		# Проверяем, есть ли у коллайдера метаданные о поверхности
-		if collider.has_meta("surface_type"):
-			new_surface = collider.get_meta("surface_type")
+		if collider is TileMap:
+			var collision_point = get_collision_point()
+			var local_collision_point = collider.to_local(collision_point)
+			var tile_coords = collider.local_to_map(local_collision_point)
+			var tile_data = collider.get_cell_tile_data(0, tile_coords) # Assuming layer 0 for now
+
+			if tile_data and tile_data.has_meta("surface_type"):
+				new_surface = tile_data.get_meta("surface_type")
+		else:
+			# Fallback to checking collider's metadata if not a TileMap or tile metadata not found
+			if collider.has_meta("surface_type"):
+				new_surface = collider.get_meta("surface_type")
 		
 		if new_surface != current_surface:
 			self.current_surface = new_surface

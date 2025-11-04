@@ -21,7 +21,7 @@
 [ext_resource type="Script" uid="uid://4xcpj0x4w4cj" path="res://systems/movement_system/stats/dash_stats.gd" id="8_yu5hk"]
 [ext_resource type="Script" uid="uid://boncf0le5k03j" path="res://systems/animation_system/animation_system.gd" id="9_h5g2s"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="10_efxa6"]
-[ext_resource type="Shader" path="res://effects/jitter_outline.gdshader" id="13_uyl0s"]
+[ext_resource type="Shader" uid="uid://chn1gaeet53ju" path="res://effects/jitter_outline.gdshader" id="13_uyl0s"]
 [ext_resource type="Script" uid="uid://7w4jww1v0oqm" path="res://systems/movement_system/physics_integration_system.gd" id="14_abcde"]
 [ext_resource type="Script" uid="uid://bln6wd364xxht" path="res://systems/movement_system/stats/movement_stats.gd" id="17_uewl2"]
 [ext_resource type="Script" uid="uid://sui2aet7dpfb" path="res://systems/movement_system/stats/jump_stats.gd" id="18_ofhxi"]
@@ -33,6 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://5bbaytwhjqlx" path="res://player/eye.png" id="22_mlfor"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="32_234y4"]
 [ext_resource type="SpriteFrames" uid="uid://dsws5exfkbn1t" path="res://player/animations/player_eyes_animations.tres" id="33_abcde"]
+[ext_resource type="Script" uid="uid://y0t6soti60sr" path="res://systems/footstep_system/surface_detector.gd" id="35_vud74"]
 [ext_resource type="Material" path="res://player/animations/contour_priority_material.tres" id="36_contmat"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mlfor"]
@@ -615,7 +616,7 @@ states/running/position = Vector2(286, 95.9375)
 states/walk/node = SubResource("AnimationNodeAnimation_y617q")
 states/walk/position = Vector2(452.03964, 392.26004)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_stbqk"), "idle", "running", SubResource("AnimationNodeStateMachineTransition_y617q"), "running", "idle", SubResource("AnimationNodeStateMachineTransition_8eyfg"), "running", "falling", SubResource("AnimationNodeStateMachineTransition_76mgg"), "running", "jumping", SubResource("AnimationNodeStateMachineTransition_ddnt4"), "idle", "jumping", SubResource("AnimationNodeStateMachineTransition_a0lmo"), "jumping", "falling", SubResource("AnimationNodeStateMachineTransition_234y4"), "falling", "idle", SubResource("AnimationNodeStateMachineTransition_u8vxv"), "falling", "running", SubResource("AnimationNodeStateMachineTransition_lhjxl"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_y2u3w"), "walk", "running", SubResource("AnimationNodeStateMachineTransition_uyl0s"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_vud74"), "running", "walk", SubResource("AnimationNodeStateMachineTransition_8cy8x"), "walk", "falling", SubResource("AnimationNodeStateMachineTransition_610ub"), "falling", "walk", SubResource("AnimationNodeStateMachineTransition_ayguc"), "walk", "jumping", SubResource("AnimationNodeStateMachineTransition_t7u8x"), "jumping", "walk", SubResource("AnimationNodeStateMachineTransition_lnwue"), "walk", "push", SubResource("AnimationNodeStateMachineTransition_2q4k2"), "push", "idle", SubResource("AnimationNodeStateMachineTransition_w36ex"), "idle", "push", SubResource("AnimationNodeStateMachineTransition_7wro5"), "running", "push", SubResource("AnimationNodeStateMachineTransition_22tms"), "falling", "push", SubResource("AnimationNodeStateMachineTransition_0a0r0"), "push", "jumping", SubResource("AnimationNodeStateMachineTransition_y5372"), "jumping", "push", SubResource("AnimationNodeStateMachineTransition_nckww"), "walk", "pull", SubResource("AnimationNodeStateMachineTransition_ysdtf"), "falling", "pull", SubResource("AnimationNodeStateMachineTransition_x73r6"), "pull", "idle", SubResource("AnimationNodeStateMachineTransition_16d2w"), "idle", "pull", SubResource("AnimationNodeStateMachineTransition_u8534"), "running", "pull", SubResource("AnimationNodeStateMachineTransition_mvo4i"), "pull", "jumping", SubResource("AnimationNodeStateMachineTransition_enu3q"), "jumping", "pull", SubResource("AnimationNodeStateMachineTransition_gfvao"), "idle", "dashing", SubResource("AnimationNodeStateMachineTransition_wpul2"), "dashing", "idle", SubResource("AnimationNodeStateMachineTransition_pcftw"), "dashing", "falling", SubResource("AnimationNodeStateMachineTransition_cayk5"), "dashing", "running", SubResource("AnimationNodeStateMachineTransition_wqfsd"), "running", "dashing", SubResource("AnimationNodeStateMachineTransition_wpo5q"), "pull", "push", SubResource("AnimationNodeStateMachineTransition_0hmdb"), "push", "pull", SubResource("AnimationNodeStateMachineTransition_sndmm"), "push", "running", SubResource("AnimationNodeStateMachineTransition_u3bl4"), "push", "walk", SubResource("AnimationNodeStateMachineTransition_7tnb4"), "pull", "walk", SubResource("AnimationNodeStateMachineTransition_eftk4")]
-graph_offset = Vector2(-928.9603, 360.25397)
+graph_offset = Vector2(-523.9603, 289.25397)
 
 [sub_resource type="Animation" id="Animation_cayk5"]
 length = 0.001
@@ -757,6 +758,38 @@ tracks/0/keys = {
 "handle_modes": PackedInt32Array(2, 0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 5, -0.16111112, 0, 0, 0),
 "times": PackedFloat32Array(0, 1.1)
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Components/FootstepComponent")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.96666664),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"stop"
+}, {
+"args": [false],
+"method": &"play_step"
+}, {
+"args": [false],
+"method": &"play_step"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ContourSprite:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"pull"]
 }
 
 [sub_resource type="Animation" id="Animation_ggobn"]
@@ -1102,6 +1135,8 @@ position = Vector2(19, 59)
 
 [node name="SurfaceDetector" type="RayCast2D" parent="."]
 target_position = Vector2(0, 0)
+script = ExtResource("35_vud74")
+current_surface = "concreate"
 
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
