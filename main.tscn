@@ -23,6 +23,10 @@
 [ext_resource type="Script" uid="uid://cgdrh4y55r7g6" path="res://systems/reset_system/respawn_area.gd" id="11_efxa6"]
 [ext_resource type="Script" uid="uid://d218yx0d1ilsn" path="res://addons/rmsmartshape/normal_range.gd" id="11_lswn8"]
 
+[sub_resource type="Resource" id="Resource_a6jrf"]
+script = ExtResource("4_cegan")
+position = Vector2(3999.7808, -276.11456)
+
 [sub_resource type="Resource" id="Resource_ryguw"]
 script = ExtResource("4_cegan")
 position = Vector2(3999.7808, -276.11456)
@@ -42,10 +46,6 @@ position = Vector2(3765.1648, -42.677673)
 [sub_resource type="Resource" id="Resource_lswn8"]
 script = ExtResource("4_cegan")
 position = Vector2(4036.3289, -91.015625)
-
-[sub_resource type="Resource" id="Resource_a6jrf"]
-script = ExtResource("4_cegan")
-position = Vector2(3999.7808, -276.11456)
 
 [sub_resource type="Resource" id="Resource_4k2k6"]
 script = ExtResource("5_82xsv")
@@ -172,6 +172,7 @@ size = Vector2(628, 284)
 [node name="Main" type="Node"]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." groups=["tilemap"]]
