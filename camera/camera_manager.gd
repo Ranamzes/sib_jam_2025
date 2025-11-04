@@ -16,23 +16,23 @@ func _ready() -> void:
 	var sub_viewport = get_parent().get_parent()
 	if sub_viewport is SubViewport:
 		viewport_container = sub_viewport.get_parent()
-	
+
 	# This assumes CameraManager and MainCamera are siblings under the 'Main' node.
 	camera = get_parent().get_node_or_null("MainCamera")
 
 	if not camera or not viewport_container:
 		push_error("CameraManager could not find required nodes (Camera or ViewportContainer).")
 		return
-	
+
 	EventBus.player_respawned.connect(_on_player_respawned)
-	
+
 	# Initial setup
 	initialize_camera_target(player)
 
 func _process(delta: float) -> void:
 	if not is_instance_valid(player):
 		return
-		
+
 	# --- ZOOM SNAPPING ---
 	var snapped_zoom = camera.zoom
 	snapped_zoom.x = round(camera.zoom.x * viewport_container.scale.x) / viewport_container.scale.x
@@ -42,12 +42,12 @@ func _process(delta: float) -> void:
 	# --- PIXEL PERFECT CORRECTION ---
 	if pixel_perfect:
 		var camera_pos = camera.global_position
-		
+
 		var snapped_pos = camera_pos.round() # Use round() for more stable snapping
 		var offset = camera_pos - snapped_pos
-		
+
 		camera.global_position = snapped_pos
-		
+
 		if viewport_container:
 			var base_pos = Vector2(-1, -1) * viewport_container.scale.x
 			viewport_container.position = base_pos - offset * viewport_container.scale
@@ -60,7 +60,7 @@ func _process(delta: float) -> void:
 func initialize_camera_target(target_player: Node2D) -> void:
 	if not is_instance_valid(target_player):
 		return
-		
+
 	player = target_player
 	pcam = player.get_node_or_null("PhantomCamera2D")
 	if not pcam:

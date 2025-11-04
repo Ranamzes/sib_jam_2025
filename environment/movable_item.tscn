@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dlnto25jfnnie"]
 
 [ext_resource type="Texture2D" uid="uid://c62anhvlhtyyf" path="res://environment/TX Village Props.png" id="1_jag8a"]
-[ext_resource type="Script" uid="uid://bkteuy3plw8mf" path="res://environment/movable_item.gd" id="1_r37qw"]
+[ext_resource type="Script" path="res://environment/movable_item.gd" id="1_r37qw"]
 [ext_resource type="Script" uid="uid://dvglvofpfmaxg" path="res://systems/reset_system/resetable_component.gd" id="3_l4pm5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l4pm5"]
@@ -24,3 +24,8 @@ shape = SubResource("RectangleShape2D_l4pm5")
 [node name="ResetableComponent" type="Node" parent="."]
 script = ExtResource("3_l4pm5")
 metadata/_custom_type_script = "uid://dvglvofpfmaxg"
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+process_mode = 1
+node_a = NodePath("..")
+softness = 10.0
