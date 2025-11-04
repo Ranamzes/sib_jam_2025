@@ -35,6 +35,7 @@
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="32_234y4"]
 [ext_resource type="SpriteFrames" uid="uid://dsws5exfkbn1t" path="res://player/animations/player_eyes_animations.tres" id="33_abcde"]
 [ext_resource type="Material" uid="uid://bjo454j7i7sfd" path="res://player/animations/eyes_material.tres" id="35_eyemat"]
+[ext_resource type="Material" path="res://player/animations/contour_priority_material.tres" id="36_contmat"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mlfor"]
 atlas = ExtResource("2_yu5hk")
@@ -1007,6 +1008,8 @@ position = Vector2(0.795, 10.885)
 shape = ExtResource("3_stbqk")
 
 [node name="ContourSprite" type="AnimatedSprite2D" parent="."]
+material = ExtResource("36_contmat")
+light_mask = 12
 sprite_frames = SubResource("SpriteFrames_8cy8x")
 animation = &"run"
 
