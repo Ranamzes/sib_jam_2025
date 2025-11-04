@@ -10,7 +10,7 @@ func _ready() -> void:
 		EventBus.reset_level.connect(_on_reset_level)
 
 
-func _on_reset_level():
+func _on_reset_level(_checkpoint_id: int):
 	if(owner is Node):
 		(owner as Node).global_position = default_global_position 
 		(owner as Node).get_parent()
