@@ -138,7 +138,6 @@ metadata/_custom_type_script = "uid://nc5bfedvnpgm"
 [node name="Main" type="Node"]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." groups=["tilemap"]]
