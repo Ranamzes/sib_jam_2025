@@ -138,6 +138,7 @@ metadata/_custom_type_script = "uid://nc5bfedvnpgm"
 [node name="Main" type="Node"]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." groups=["tilemap"]]
@@ -156,6 +157,56 @@ offset_bottom = 793.0
 theme_override_fonts/font = ExtResource("24_1u8w0")
 theme_override_font_sizes/font_size = 24
 text = "Use ⬆ or \"Space\" to Jump"
+horizontal_alignment = 1
+
+[node name="End" type="Label" parent="Hints"]
+offset_left = 7497.0
+offset_top = 216.0
+offset_right = 7788.0
+offset_bottom = 252.0
+theme_override_fonts/font = ExtResource("24_1u8w0")
+theme_override_font_sizes/font_size = 24
+text = "The End!"
+horizontal_alignment = 1
+
+[node name="End2" type="Label" parent="Hints"]
+offset_left = 7669.0
+offset_top = 345.0
+offset_right = 7960.0
+offset_bottom = 381.0
+theme_override_fonts/font = ExtResource("24_1u8w0")
+theme_override_font_sizes/font_size = 24
+text = "The End!"
+horizontal_alignment = 1
+
+[node name="End3" type="Label" parent="Hints"]
+offset_left = 7866.0
+offset_top = 489.0
+offset_right = 8157.0
+offset_bottom = 525.0
+theme_override_fonts/font = ExtResource("24_1u8w0")
+theme_override_font_sizes/font_size = 24
+text = "The End!"
+horizontal_alignment = 1
+
+[node name="End4" type="Label" parent="Hints"]
+offset_left = 8178.0
+offset_top = 517.0
+offset_right = 8469.0
+offset_bottom = 553.0
+theme_override_fonts/font = ExtResource("24_1u8w0")
+theme_override_font_sizes/font_size = 24
+text = "The End!"
+horizontal_alignment = 1
+
+[node name="End5" type="Label" parent="Hints"]
+offset_left = 8382.0
+offset_top = 408.0
+offset_right = 8673.0
+offset_bottom = 444.0
+theme_override_fonts/font = ExtResource("24_1u8w0")
+theme_override_font_sizes/font_size = 24
+text = "The End!"
 horizontal_alignment = 1
 
 [node name="Pull" type="Label" parent="Hints"]
@@ -201,7 +252,7 @@ text = "Use ⬅ ⮕ or \"A\" and \"D\"
 to move"
 horizontal_alignment = 1
 
-[node name="Move2" type="Label" parent="Hints"]
+[node name="Love" type="Label" parent="Hints"]
 offset_left = -2248.0
 offset_top = 638.0
 offset_right = -1788.0
