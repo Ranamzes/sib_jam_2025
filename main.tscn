@@ -29,9 +29,9 @@
 [ext_resource type="AudioStream" uid="uid://chmak1jv0vn68" path="res://Audio/level2/level2_bg_main.ogg" id="12_jq2sk"]
 [ext_resource type="PackedScene" uid="uid://cyo4ecq3c5vhi" path="res://environment/boulder_trap.tscn" id="12_trap"]
 [ext_resource type="Script" uid="uid://cm385mp1h6idy" path="res://systems/reset_system/checkpoint_savable_component.gd" id="14_1u8w0"]
-[ext_resource type="Shader" path="res://effects/glitch.gdshader" id="14_kq58d"]
+[ext_resource type="Shader" uid="uid://fhjoh4gmt01h" path="res://effects/glitch.gdshader" id="14_kq58d"]
 [ext_resource type="Texture2D" uid="uid://3p4hsau4m17b" path="res://tilesets/glitch.png" id="15_seu75"]
-[ext_resource type="Script" path="res://exit.gd" id="16_htxhm"]
+[ext_resource type="Script" uid="uid://b4liefv5ld37h" path="res://exit.gd" id="16_htxhm"]
 [ext_resource type="FontFile" uid="uid://d47d30frxoaw" path="res://fonts/Kenney Pixel Square.ttf" id="24_1u8w0"]
 [ext_resource type="Script" uid="uid://bfseyqvsy2wvb" path="res://addons/GodotAnnotate/src/canvas/annotate_canvas.gd" id="25_lswn8"]
 
@@ -219,7 +219,6 @@ metadata/_custom_type_script = "uid://nc5bfedvnpgm"
 [node name="Main" type="Node"]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." groups=["tilemap"]]
