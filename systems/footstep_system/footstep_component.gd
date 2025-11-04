@@ -8,7 +8,7 @@ extends Node
 @export var surface_detector: SurfaceDetector
 
 ## Плеер для воспроизведения звуков.
-@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var audio_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var current_surface_name: String = "default"
 
@@ -29,7 +29,7 @@ func _ready() -> void:
 
 
 ## Вызывается из AnimationPlayer. action_index: 0 для ходьбы, 1 для бега.
-func play(action_index: int = 0) -> void:
+func play_step(action_index: int = 0) -> void:
 	if not audio_data or not audio_player:
 		return
 
@@ -59,3 +59,7 @@ func play(action_index: int = 0) -> void:
 
 func _on_surface_changed(new_surface_name: String) -> void:
 	current_surface_name = new_surface_name
+
+func stop() -> void:
+	if audio_player:
+		audio_player.stop()

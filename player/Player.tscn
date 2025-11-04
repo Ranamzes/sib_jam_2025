@@ -31,10 +31,11 @@
 [ext_resource type="Resource" uid="uid://dgn6ti8np7v43" path="res://systems/input_system/actions/push.tres" id="21_76mgg"]
 [ext_resource type="Script" uid="uid://81kwjwkswx8d" path="res://systems/footstep_system/footstep_component.gd" id="22_8eyfg"]
 [ext_resource type="Texture2D" uid="uid://5bbaytwhjqlx" path="res://player/eye.png" id="22_mlfor"]
-[ext_resource type="Script" uid="uid://jrqtp1ddxoev" path="res://systems/footstep_system/footstep_audio_data.gd" id="28_uyl0s"]
+[ext_resource type="Resource" uid="uid://c6kgpk0554p4l" path="res://systems/footstep_system/resources/footstep_audio_data.tres" id="28_vud74"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="32_234y4"]
 [ext_resource type="SpriteFrames" uid="uid://dsws5exfkbn1t" path="res://player/animations/player_eyes_animations.tres" id="33_abcde"]
 [ext_resource type="Material" uid="uid://bjo454j7i7sfd" path="res://player/animations/eyes_material.tres" id="35_eyemat"]
+[ext_resource type="Script" uid="uid://y0t6soti60sr" path="res://systems/footstep_system/surface_detector.gd" id="35_vud74"]
 [ext_resource type="Material" path="res://player/animations/contour_priority_material.tres" id="36_contmat"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mlfor"]
@@ -610,7 +611,7 @@ states/running/position = Vector2(286, 95.9375)
 states/walk/node = SubResource("AnimationNodeAnimation_y617q")
 states/walk/position = Vector2(452.03964, 392.26004)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_stbqk"), "idle", "running", SubResource("AnimationNodeStateMachineTransition_y617q"), "running", "idle", SubResource("AnimationNodeStateMachineTransition_8eyfg"), "running", "falling", SubResource("AnimationNodeStateMachineTransition_76mgg"), "running", "jumping", SubResource("AnimationNodeStateMachineTransition_ddnt4"), "idle", "jumping", SubResource("AnimationNodeStateMachineTransition_a0lmo"), "jumping", "falling", SubResource("AnimationNodeStateMachineTransition_234y4"), "falling", "idle", SubResource("AnimationNodeStateMachineTransition_u8vxv"), "falling", "running", SubResource("AnimationNodeStateMachineTransition_lhjxl"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_y2u3w"), "walk", "running", SubResource("AnimationNodeStateMachineTransition_uyl0s"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_vud74"), "running", "walk", SubResource("AnimationNodeStateMachineTransition_8cy8x"), "walk", "falling", SubResource("AnimationNodeStateMachineTransition_610ub"), "falling", "walk", SubResource("AnimationNodeStateMachineTransition_ayguc"), "walk", "jumping", SubResource("AnimationNodeStateMachineTransition_t7u8x"), "jumping", "walk", SubResource("AnimationNodeStateMachineTransition_lnwue"), "walk", "push", SubResource("AnimationNodeStateMachineTransition_2q4k2"), "push", "idle", SubResource("AnimationNodeStateMachineTransition_w36ex"), "idle", "push", SubResource("AnimationNodeStateMachineTransition_7wro5"), "running", "push", SubResource("AnimationNodeStateMachineTransition_22tms"), "falling", "push", SubResource("AnimationNodeStateMachineTransition_0a0r0"), "push", "jumping", SubResource("AnimationNodeStateMachineTransition_y5372"), "jumping", "push", SubResource("AnimationNodeStateMachineTransition_nckww"), "walk", "pull", SubResource("AnimationNodeStateMachineTransition_ysdtf"), "falling", "pull", SubResource("AnimationNodeStateMachineTransition_x73r6"), "pull", "idle", SubResource("AnimationNodeStateMachineTransition_16d2w"), "idle", "pull", SubResource("AnimationNodeStateMachineTransition_u8534"), "running", "pull", SubResource("AnimationNodeStateMachineTransition_mvo4i"), "pull", "jumping", SubResource("AnimationNodeStateMachineTransition_enu3q"), "jumping", "pull", SubResource("AnimationNodeStateMachineTransition_gfvao"), "idle", "dashing", SubResource("AnimationNodeStateMachineTransition_wpul2"), "dashing", "idle", SubResource("AnimationNodeStateMachineTransition_pcftw"), "dashing", "falling", SubResource("AnimationNodeStateMachineTransition_cayk5"), "dashing", "running", SubResource("AnimationNodeStateMachineTransition_wqfsd"), "running", "dashing", SubResource("AnimationNodeStateMachineTransition_wpo5q"), "pull", "push", SubResource("AnimationNodeStateMachineTransition_0hmdb"), "push", "pull", SubResource("AnimationNodeStateMachineTransition_sndmm"), "push", "running", SubResource("AnimationNodeStateMachineTransition_u3bl4"), "push", "walk", SubResource("AnimationNodeStateMachineTransition_7tnb4"), "pull", "walk", SubResource("AnimationNodeStateMachineTransition_eftk4")]
-graph_offset = Vector2(-928.9603, 360.25397)
+graph_offset = Vector2(-523.9603, 289.25397)
 
 [sub_resource type="Animation" id="Animation_cayk5"]
 length = 0.001
@@ -800,6 +801,18 @@ tracks/1/keys = {
 "args": [false],
 "method": &"play_step"
 }]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ContourSprite:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"pull"]
 }
 
 [sub_resource type="Animation" id="Animation_ggobn"]
@@ -1036,10 +1049,6 @@ metadata/_custom_type_script = "uid://4xcpj0x4w4cj"
 script = ExtResource("17_uewl2")
 metadata/_custom_type_script = "uid://bln6wd364xxht"
 
-[sub_resource type="Resource" id="Resource_vud74"]
-script = ExtResource("28_uyl0s")
-metadata/_custom_type_script = "uid://jrqtp1ddxoev"
-
 [sub_resource type="Resource" id="Resource_q6miu"]
 script = ExtResource("19_2m0d2")
 life_time = 1.2
@@ -1159,9 +1168,10 @@ mov_state_comp = NodePath("../../Systems/StateComponent")
 physics_system = NodePath("../../Systems/PhysicsIntegrationSystem")
 pull_lerp_speed = 45.0
 
-[node name="FootstepComponent" type="Node" parent="Components"]
+[node name="FootstepComponent" type="Node" parent="Components" node_paths=PackedStringArray("surface_detector")]
 script = ExtResource("22_8eyfg")
-audio_data = SubResource("Resource_vud74")
+audio_data = ExtResource("28_vud74")
+surface_detector = NodePath("../../SurfaceDetector")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Components/FootstepComponent"]
 
@@ -1212,6 +1222,8 @@ position = Vector2(19, 59)
 
 [node name="SurfaceDetector" type="RayCast2D" parent="."]
 target_position = Vector2(0, 0)
+script = ExtResource("35_vud74")
+current_surface = "concreate"
 
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
