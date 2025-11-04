@@ -1,22 +1,24 @@
 [gd_scene load_steps=4 format=3 uid="uid://c7w7g5g5g5g5"]
 
 [ext_resource type="PackedScene" uid="uid://x662pd3helg5" path="res://main.tscn" id="1_abcde"]
-[ext_resource type="Shader" path="res://effects/pixel_perfect_camera.gdshader" id="2_abcde"]
+[ext_resource type="Shader" uid="uid://cg4ossirsjah3" path="res://effects/pixel_perfect_camera.gdshader" id="2_abcde"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_12345"]
 shader = ExtResource("2_abcde")
-shader_parameter/cam_offset = Vector2(0, 0)
 
 [node name="World" type="Node2D"]
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 material = SubResource("ShaderMaterial_12345")
-texture_filter = 0
-position = Vector2(-4, -4)
+offset_left = -4.0
+offset_top = -4.0
+offset_right = -4.0
+offset_bottom = -4.0
 scale = Vector2(4, 4)
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 handle_input_locally = false
 size = Vector2i(482, 272)
+render_target_update_mode = 4
 
 [node name="Main" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_abcde")]

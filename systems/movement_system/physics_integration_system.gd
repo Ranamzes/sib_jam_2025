@@ -1,5 +1,6 @@
-class_name PhysicsIntegrationSystem
 extends Node
+class_name PhysicsIntegrationSystem
+
 
 @export var player_character: CharacterBody2D
 @export var echo_pointer:Node2D
@@ -109,14 +110,15 @@ func _calculate_current_state():
 		return
 
 	if _state_comp.is_grounded:
-		if abs(_velocity.x) > 0.1 or abs(_move_input_vector.x) > 0.1 :
-			_state_comp.change_state(_state_comp.walk if !_state_comp.is_running else _state_comp.running)
-		else:
+		if(_state_comp.current_state!=_state_comp.pull and _state_comp.current_state!=_state_comp.push ):
+			if abs(_velocity.x) > 0.1 or abs(_move_input_vector.x) > 0.1 :
+				_state_comp.change_state(_state_comp.walk if !_state_comp.is_running else _state_comp.running)
+			else:
 		#	if _state_comp.current_state==_state_comp.running:
 		#		_on_echo(&"run")
 		#	elif _state_comp.current_state==_state_comp.walk:
 		#		_on_echo(&"walk")	
-			_state_comp.change_state(_state_comp.idle)
+				_state_comp.change_state(_state_comp.idle)
 
 
 	else: # In the air
@@ -147,6 +149,8 @@ func _apply_gravity():
 
 func _can_jump() -> bool:
 	# Coyote time is only available for single jump configurations
+	if(_state_comp.current_state==_state_comp.pull or _state_comp.current_state==_state_comp.push):
+		return false
 	var use_coyote = (_jump_stats.max_jumps == 1 and not _coyote_timer.is_stopped())
 	if _jump_stats.max_jumps > 1 :
 		print(_jump_count)
