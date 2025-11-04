@@ -1,4 +1,4 @@
-[gd_scene load_steps=160 format=3 uid="uid://bgrwxmc03jfth"]
+[gd_scene load_steps=157 format=3 uid="uid://bgrwxmc03jfth"]
 
 [ext_resource type="Script" uid="uid://chbr6mrhj0l4h" path="res://systems/input_system/player_input_component.gd" id="1_5p1j2"]
 [ext_resource type="Script" uid="uid://cg6pvwqc3b5mc" path="res://player/player.gd" id="1_8nth8"]
@@ -30,9 +30,7 @@
 [ext_resource type="Resource" uid="uid://drp8a3ph6rqou" path="res://systems/input_system/actions/drag.tres" id="19_8tqfn"]
 [ext_resource type="Script" uid="uid://dpepr0ylg6wlu" path="res://systems/movement_system/state_component.gd" id="20_q6miu"]
 [ext_resource type="Resource" uid="uid://dgn6ti8np7v43" path="res://systems/input_system/actions/push.tres" id="21_76mgg"]
-[ext_resource type="Script" uid="uid://81kwjwkswx8d" path="res://systems/footstep_system/footstep_component.gd" id="22_8eyfg"]
 [ext_resource type="Texture2D" uid="uid://5bbaytwhjqlx" path="res://player/eye.png" id="22_mlfor"]
-[ext_resource type="Script" path="res://systems/footstep_system/footstep_audio_data.gd" id="28_uyl0s"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="32_234y4"]
 [ext_resource type="SpriteFrames" uid="uid://dsws5exfkbn1t" path="res://player/animations/player_eyes_animations.tres" id="33_abcde"]
 [ext_resource type="Material" path="res://player/animations/contour_priority_material.tres" id="36_contmat"]
@@ -717,20 +715,6 @@ tracks/1/keys = {
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 6, -0.16666667, 0, 0, 0),
 "times": PackedFloat32Array(0, 1.6)
 }
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Components/FootstepComponent")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"stop"
-}]
-}
 
 [sub_resource type="Animation" id="Animation_y2u3w"]
 resource_name = "jumping"
@@ -758,20 +742,6 @@ tracks/1/keys = {
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 5, -0.07777778, 0, 0, 0),
 "times": PackedFloat32Array(0, 0.5)
 }
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Components/FootstepComponent")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"stop"
-}]
-}
 
 [sub_resource type="Animation" id="Animation_u8vxv"]
 resource_name = "pull"
@@ -788,81 +758,41 @@ tracks/0/keys = {
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 5, -0.16111112, 0, 0, 0),
 "times": PackedFloat32Array(0, 1.1)
 }
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Components/FootstepComponent")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.26666668, 0.96666664),
-"transitions": PackedFloat32Array(1, 1, 1),
-"values": [{
-"args": [],
-"method": &"stop"
-}, {
-"args": [false],
-"method": &"play_step"
-}, {
-"args": [false],
-"method": &"play_step"
-}]
-}
 
 [sub_resource type="Animation" id="Animation_ggobn"]
 resource_name = "push"
 length = 1.3
 loop_mode = 1
-tracks/0/type = "method"
+tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Components/FootstepComponent")
+tracks/0/path = NodePath("ContourSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"values": [{
-"args": [],
-"method": &"stop"
-}, {
-"args": [false],
-"method": &"play_step"
-}, {
-"args": [false],
-"method": &"play_step"
-}]
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ContourSprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 8, -0.22777778, 0, 0, 0),
 "times": PackedFloat32Array(0, 1.3)
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("ContourSprite:animation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ContourSprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"push"]
 }
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Systems/StateComponent")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Systems/StateComponent")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(),
 "transitions": PackedFloat32Array(),
 "values": []
@@ -924,26 +854,6 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(19, 59), Vector2(19, 59)]
 }
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Components/FootstepComponent")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.4590801),
-"transitions": PackedFloat32Array(1, 1, 1),
-"values": [{
-"args": [],
-"method": &"stop"
-}, {
-"args": [true],
-"method": &"play_step"
-}, {
-"args": [true],
-"method": &"play_step"
-}]
-}
 
 [sub_resource type="Animation" id="Animation_y5372"]
 resource_name = "walk"
@@ -987,27 +897,10 @@ tracks/2/keys = {
 tracks/3/type = "method"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Components/FootstepComponent")
+tracks/3/path = NodePath("Systems/PhysicsIntegrationSystem")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.23333333, 0.73333335),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [false],
-"method": &"play_step"
-}, {
-"args": [false],
-"method": &"play_step"
-}]
-}
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Systems/PhysicsIntegrationSystem")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0.36666667, 0.8667),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
@@ -1042,10 +935,6 @@ metadata/_custom_type_script = "uid://4xcpj0x4w4cj"
 [sub_resource type="Resource" id="Resource_2m0d2"]
 script = ExtResource("17_uewl2")
 metadata/_custom_type_script = "uid://bln6wd364xxht"
-
-[sub_resource type="Resource" id="Resource_vud74"]
-script = ExtResource("28_uyl0s")
-metadata/_custom_type_script = "uid://jrqtp1ddxoev"
 
 [sub_resource type="Resource" id="Resource_q6miu"]
 script = ExtResource("19_2m0d2")
@@ -1087,7 +976,6 @@ script = ExtResource("32_234y4")
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
 script = ExtResource("1_8nth8")
-footstep_component_path = NodePath("Components/FootstepComponent")
 surface_detector_path = NodePath("SurfaceDetector")
 
 [node name="IteractionScanRayCast" type="RayCast2D" parent="."]
@@ -1166,12 +1054,6 @@ iteraction_ray_cast_path = NodePath("../../IteractionScanRayCast")
 mov_state_comp = NodePath("../../Systems/StateComponent")
 physics_system = NodePath("../../Systems/PhysicsIntegrationSystem")
 pull_lerp_speed = 45.0
-
-[node name="FootstepComponent" type="Node" parent="Components"]
-script = ExtResource("22_8eyfg")
-audio_data = SubResource("Resource_vud74")
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Components/FootstepComponent"]
 
 [node name="Systems" type="Node" parent="."]
 

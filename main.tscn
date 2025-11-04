@@ -1,5 +1,6 @@
-[gd_scene load_steps=60 format=4 uid="uid://x662pd3helg5"]
+[gd_scene load_steps=62 format=4 uid="uid://x662pd3helg5"]
 
+[ext_resource type="Script" uid="uid://wcmkdc5t052o" path="res://main.gd" id="1_0rl1p"]
 [ext_resource type="Script" uid="uid://dp1qdgcbuwjup" path="res://camera/camera_manager.gd" id="1_mgr"]
 [ext_resource type="PackedScene" uid="uid://bgrwxmc03jfth" path="res://player/Player.tscn" id="2_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://dxesssu1htfn6" path="res://tilesets/decor_atlas.png" id="2_a6jrf"]
@@ -34,6 +35,7 @@
 [ext_resource type="Script" uid="uid://b4liefv5ld37h" path="res://exit.gd" id="16_htxhm"]
 [ext_resource type="FontFile" uid="uid://d47d30frxoaw" path="res://fonts/Kenney Pixel Square.ttf" id="24_1u8w0"]
 [ext_resource type="Script" uid="uid://bfseyqvsy2wvb" path="res://addons/GodotAnnotate/src/canvas/annotate_canvas.gd" id="25_lswn8"]
+[ext_resource type="AudioStream" uid="uid://djlqgms6fjxp7" path="res://DD3wIrLB51tkkg.mp3" id="36_ok6jj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xuqvo"]
 texture = ExtResource("2_a6jrf")
@@ -217,6 +219,7 @@ fill_textures = Array[Texture2D]([ExtResource("7_ryguw")])
 metadata/_custom_type_script = "uid://nc5bfedvnpgm"
 
 [node name="Main" type="Node"]
+script = ExtResource("1_0rl1p")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0, 0, 0, 1)
@@ -592,6 +595,9 @@ stroke_variables = {
 }
 }
 metadata/_custom_type_script = "uid://bfseyqvsy2wvb"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("36_ok6jj")
 
 [connection signal="body_entered" from="SpawnAreas/RespawnAreaStart" to="SpawnAreas/RespawnAreaStart" method="_on_body_entered"]
 [connection signal="body_entered" from="SpawnAreas/RespawnArea1" to="SpawnAreas/RespawnArea1" method="_on_body_entered"]
