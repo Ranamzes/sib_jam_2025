@@ -1,4 +1,4 @@
-[gd_scene load_steps=154 format=3 uid="uid://bgrwxmc03jfth"]
+[gd_scene load_steps=157 format=3 uid="uid://bgrwxmc03jfth"]
 
 [ext_resource type="Script" uid="uid://chbr6mrhj0l4h" path="res://systems/input_system/player_input_component.gd" id="1_5p1j2"]
 [ext_resource type="Script" uid="uid://cg6pvwqc3b5mc" path="res://player/player.gd" id="1_8nth8"]
@@ -859,20 +859,6 @@ tracks/3/keys = {
 "method": &"return_state_to_previous"
 }]
 }
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Components/DragComponent")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.36666667),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"execute_push"
-}]
-}
 
 [sub_resource type="Animation" id="Animation_2m0d2"]
 resource_name = "new_animation"
@@ -1085,8 +1071,8 @@ metadata/_custom_type_script = "uid://sui2aet7dpfb"
 [sub_resource type="Resource" id="Resource_u8vxv"]
 script = ExtResource("32_234y4")
 
-[node name="Player" type="CharacterBody2D"]
-collision_layer = 3
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+collision_layer = 2
 script = ExtResource("1_8nth8")
 footstep_component_path = NodePath("Components/FootstepComponent")
 surface_detector_path = NodePath("SurfaceDetector")
@@ -1096,7 +1082,7 @@ rotation = -1.5707964
 collision_mask = 3072
 
 [node name="HurtboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
-collision_layer = 0
+collision_layer = 16
 collision_mask = 4
 monitorable = false
 script = ExtResource("4_uewl2")
@@ -1111,8 +1097,8 @@ position = Vector2(0.795, 10.885)
 shape = ExtResource("3_stbqk")
 
 [node name="ContourSprite" type="AnimatedSprite2D" parent="."]
-material = ExtResource("36_contmat")
 light_mask = 12
+material = ExtResource("36_contmat")
 sprite_frames = SubResource("SpriteFrames_8cy8x")
 animation = &"run"
 
@@ -1162,8 +1148,6 @@ drag_component = NodePath("../DragComponent")
 [node name="DragComponent" type="Node" parent="Components" node_paths=PackedStringArray("iteraction_ray_cast", "mov_state_comp")]
 script = ExtResource("7_8tqfn")
 iteraction_ray_cast = NodePath("../../IteractionScanRayCast")
-drag_impulse = 150
-push_impulse = 700
 mov_state_comp = NodePath("../../Systems/StateComponent")
 
 [node name="FootstepComponent" type="Node" parent="Components"]
