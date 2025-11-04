@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://xbchspnn0v2l"]
 
-[ext_resource type="Script" uid="uid://darosxaocldvo" path="res://puzzle/new_puzzle.gd" id="1_n3nop"]
+[ext_resource type="Script" path="res://puzzle/new_puzzle.gd" id="1_n3nop"]
 [ext_resource type="Script" uid="uid://c8t0xb7puxuxm" path="res://puzzle/PuzzleElements/puzzle_manager.gd" id="2_dsdsc"]
 [ext_resource type="Script" uid="uid://d18ptlwq2jfw3" path="res://puzzle/PuzzleElements/puzzle_piece.gd" id="2_fvntr"]
 [ext_resource type="Texture2D" uid="uid://ymloc7qcudr5" path="res://puzzle/imgaes/фрагмент 4 (2).png" id="4_gdbvh"]
