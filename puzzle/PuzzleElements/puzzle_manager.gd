@@ -14,9 +14,9 @@ func _process(delta: float) -> void:
 			if sub_child is Cell:
 				cells.append(sub_child)
 			if sub_child is PuzzlePiece:
-				var position: Vector2 = Vector2(randi_range(40, 140), randi_range(40, 140))
+				var position: Vector2 = Vector2(randi_range(200, 1000), randi_range(100, 500))
 				pieces.append(sub_child)
-				sub_child.position = position
+				sub_child.global_position = position
 			
 		set_process(false)
 
