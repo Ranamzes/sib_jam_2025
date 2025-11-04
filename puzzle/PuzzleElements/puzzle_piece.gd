@@ -59,3 +59,10 @@ func drop_piece() -> void:
 func handle_drag_animation():
 #	sprite2d.material.set("shader_parameter/shadow_offset", Vector2(10, -10))
 	pass
+func _on_mouse_exited() -> void:
+	if dragging && puzzle_manager.dragging:
+		puzzle_manager.dragging = false
+		dragging = false
+		z_index = 0
+		drop_piece()
+		puzzle_manager.check_puzzle_done()

@@ -69,22 +69,28 @@ func _save_state() -> void:
 
 ## Resets the parent node to its last saved state.
 func reset() -> void:
+	print("DEBUG: reset() called for '", _parent_node.name, "'")
 	if not is_instance_valid(_parent_node):
 		# The node was likely freed, which is expected if it was part of a re-instantiated scene.
 		# The controller will create a new one. We don't need to do anything.
-		print("Parent node is invalid, skipping reset. A new instance should be created.")
+		print("DEBUG: Parent node '", _parent_node.name, "' is invalid, skipping reset.")
 		return
 
+	print("DEBUG: reinstantiate_on_reset is: ", reinstantiate_on_reset)
 	if reinstantiate_on_reset:
 		_reinstantiate_scene()
 	else:
 		_restore_state()
 
 func _restore_state() -> void:
-	print("Resetting '" + _parent_node.name + "' to position: " + str(saved_position))
+	print("DEBUG: _restore_state() called for '", _parent_node.name, "'")
+	print("DEBUG: Resetting '", _parent_node.name, "' to position: ", saved_position)
 	_parent_node.global_position = saved_position
 
 	for child in _parent_node.get_children():
+		if child is RigidBody2D:
+			push_warning("CheckpointSavableComponent on '%s' is using 'restore state' mode, but has a RigidBody2D child ('%s'). This may not work as expected. Consider setting 'reinstantiate_on_reset' to true." % [_parent_node.name, child.name])
+
 		if not child is Node2D or not _saved_children_state.has(child):
 			continue
 			
@@ -92,9 +98,12 @@ func _restore_state() -> void:
 		child.transform = state["transform"]
 		child.visible = state["visible"]
 		
-	print("Finished resetting state for '" + _parent_node.name + "'.")
+	print("DEBUG: Finished resetting state for '", _parent_node.name, "'.")
 
 func _reinstantiate_scene() -> void:
+	print("DEBUG: _reinstantiate_scene() called for '", _parent_node.name, "'")
+	print("DEBUG: Original scene path is: '", _original_scene_path, "'")
+
 	if _original_scene_path.is_empty():
 		push_error("Cannot re-instantiate '" + _parent_node.name + "': Original scene path is empty.")
 		return
@@ -104,7 +113,7 @@ func _reinstantiate_scene() -> void:
 		push_error("Failed to load packed scene from '" + _original_scene_path + "'")
 		return
 
-	print("Re-instantiating '" + _parent_node.name + "' from scene: " + _original_scene_path)
+	print("DEBUG: Re-instantiating '", _parent_node.name, "' from scene: ", _original_scene_path)
 	
 	var new_instance: Node2D = packed_scene.instantiate() as Node2D
 	var original_parent = _parent_node.get_parent()
@@ -112,12 +121,16 @@ func _reinstantiate_scene() -> void:
 	if not original_parent:
 		push_error("Cannot re-instantiate '"+_parent_node.name+"': Original parent is null.")
 		return
+	
+	print("DEBUG: Original parent is: '", original_parent.name, "'")
+	print("DEBUG: Setting new instance position to: ", saved_position)
 
 	# Set position and add to scene tree
 	new_instance.global_position = saved_position
 	original_parent.add_child(new_instance)
 	
+	print("DEBUG: Calling queue_free() on old instance of '", _parent_node.name, "'")
 	# The old node must be removed
 	_parent_node.queue_free()
 	
-	print("Successfully re-instantiated '" + new_instance.name + "'.")
+	print("DEBUG: Successfully re-instantiated '", new_instance.name, "'.")

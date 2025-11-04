@@ -31,9 +31,10 @@ func _process(_delta: float) -> void:
 	animation_tree.set("parameters/y_velocity/blend_position", velocity.y)
 
 	# --- Flip Sprites ---
-	if abs(velocity.x) > 0.1:
-		var flip = velocity.x < 0
-		contour_sprite.flip_h = flip
+	if mov_state_comp.current_state != mov_state_comp.pull and mov_state_comp.current_state != mov_state_comp.push:
+		if abs(velocity.x) > 0.1:
+			var flip = velocity.x < 0
+			contour_sprite.flip_h = flip
 
 	# --- Sync Sprites ---
 	# The AnimationTree only drives the contour_sprite.
@@ -47,4 +48,3 @@ func _process(_delta: float) -> void:
 		color_sprite.animation = contour_sprite.animation
 		color_sprite.frame = contour_sprite.frame
 		color_sprite.flip_h = contour_sprite.flip_h
- 
