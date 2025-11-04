@@ -216,6 +216,7 @@ metadata/_custom_type_script = "uid://nc5bfedvnpgm"
 [node name="Main" type="Node"]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." groups=["tilemap"]]
@@ -479,7 +480,10 @@ scale = Vector2(0.9999999, 1)
 shape = SubResource("RectangleShape2D_b1qrp")
 
 [node name="MovableItem" parent="Items" instance=ExtResource("9_kek77")]
-position = Vector2(1287, 760)
+position = Vector2(1493, 761)
+
+[node name="MovableItem3" parent="Items" instance=ExtResource("9_kek77")]
+position = Vector2(1356, 763)
 
 [node name="MovableItem2" parent="Items" instance=ExtResource("9_kek77")]
 position = Vector2(-407, 764)
