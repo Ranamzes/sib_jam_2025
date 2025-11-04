@@ -63,7 +63,22 @@ cell=""
 
 [physics]
 
+common/physics_interpolation=true
 common/physics_interpolation/enable=true
+
+[layer_names]
+
+2d_physics/layer_1="world"
+2d_physics/layer_2="player"
+2d_physics/layer_3="enemy"
+2d_physics/layer_4="hitbox"
+2d_physics/layer_5="hurtbox"
+2d_physics/layer_6="movable"
+2d_physics/layer_7="latch"
+2d_rendering/layer_1="world"
+2d_rendering/layer_2="player_elements"
+2d_rendering/layer_3="echo_light"
+2d_rendering/layer_4="reveal_light"
 
 [rendering]
 

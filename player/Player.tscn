@@ -696,6 +696,42 @@ tracks/2/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_u8vxv"]
+resource_name = "pull"
+length = 1.4
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(2, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 5, -0.16111112, 0, 0, 0),
+"times": PackedFloat32Array(0, 1.4)
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Components/FootstepComponent")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.96666664),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"stop"
+}, {
+"args": [false],
+"method": &"play_step"
+}, {
+"args": [false],
+"method": &"play_step"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_ggobn"]
 resource_name = "push"
 length = 1.4
@@ -880,42 +916,6 @@ tracks/4/keys = {
 }, {
 "args": [&"walk"],
 "method": &"_on_echo"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_u8vxv"]
-resource_name = "pull"
-length = 1.4
-loop_mode = 1
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(2, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 5, -0.16111112, 0, 0, 0),
-"times": PackedFloat32Array(0, 1.4)
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Components/FootstepComponent")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.96666664),
-"transitions": PackedFloat32Array(1, 1, 1),
-"values": [{
-"args": [],
-"method": &"stop"
-}, {
-"args": [false],
-"method": &"play_step"
-}, {
-"args": [false],
-"method": &"play_step"
 }]
 }
 
