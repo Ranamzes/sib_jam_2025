@@ -21,6 +21,7 @@
 [ext_resource type="Script" uid="uid://4xcpj0x4w4cj" path="res://systems/movement_system/stats/dash_stats.gd" id="8_yu5hk"]
 [ext_resource type="Script" uid="uid://boncf0le5k03j" path="res://systems/animation_system/animation_system.gd" id="9_h5g2s"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="10_efxa6"]
+[ext_resource type="Shader" path="res://effects/jitter_outline.gdshader" id="13_uyl0s"]
 [ext_resource type="Script" uid="uid://7w4jww1v0oqm" path="res://systems/movement_system/physics_integration_system.gd" id="14_abcde"]
 [ext_resource type="Script" uid="uid://bln6wd364xxht" path="res://systems/movement_system/stats/movement_stats.gd" id="17_uewl2"]
 [ext_resource type="Script" uid="uid://sui2aet7dpfb" path="res://systems/movement_system/stats/jump_stats.gd" id="18_ofhxi"]
@@ -33,7 +34,6 @@
 [ext_resource type="Texture2D" uid="uid://5bbaytwhjqlx" path="res://player/eye.png" id="22_mlfor"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="32_234y4"]
 [ext_resource type="SpriteFrames" uid="uid://dsws5exfkbn1t" path="res://player/animations/player_eyes_animations.tres" id="33_abcde"]
-[ext_resource type="Material" uid="uid://bjo454j7i7sfd" path="res://player/animations/eyes_material.tres" id="35_eyemat"]
 [ext_resource type="Material" path="res://player/animations/contour_priority_material.tres" id="36_contmat"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mlfor"]
@@ -442,6 +442,13 @@ animations = [{
 "name": &"walk",
 "speed": 5.0
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vud74"]
+shader = ExtResource("13_uyl0s")
+shader_parameter/shaking = false
+shader_parameter/amplitude = 1.0
+shader_parameter/noise_scale = 20.0
+shader_parameter/noise_speed = 20.0
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u3bl4"]
 animation = &"dashing"
@@ -1062,8 +1069,9 @@ metadata/_custom_type_script = "uid://pjgmjy1xod72"
 [sub_resource type="Resource" id="Resource_y617q"]
 script = ExtResource("17_uewl2")
 max_speed = 160.0
-run_multiplier = 2.5
-time_to_reach_max_speed = 0.46
+run_multiplier = 2.456
+time_to_reach_max_speed = 0.237
+time_to_reach_zero_speed = 0.187
 metadata/_custom_type_script = "uid://bln6wd364xxht"
 
 [sub_resource type="Resource" id="Resource_8tqfn"]
@@ -1108,7 +1116,8 @@ sprite_frames = SubResource("SpriteFrames_8cy8x")
 animation = &"run"
 
 [node name="EyesSprite" type="AnimatedSprite2D" parent="."]
-material = ExtResource("35_eyemat")
+material = SubResource("ShaderMaterial_vud74")
+position = Vector2(0, 1)
 sprite_frames = ExtResource("33_abcde")
 animation = &"fall"
 
