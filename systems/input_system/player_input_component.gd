@@ -1,5 +1,5 @@
-class_name PlayerInputComponent
 extends Node
+class_name PlayerInputComponent
 
 
 
