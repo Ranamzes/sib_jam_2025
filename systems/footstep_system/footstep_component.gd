@@ -52,6 +52,7 @@ func _exit_tree() -> void:
 
 ## Call this method to stop the footstep sound when the character stops moving.
 func stop() -> void:
+	pass
 	if _footstep_event_instance and _footstep_event_instance.is_valid():
 		_footstep_event_instance.stop(FmodServer.FMOD_STUDIO_STOP_ALLOWFADEOUT)
 
