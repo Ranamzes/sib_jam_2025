@@ -254,6 +254,7 @@ metadata/_custom_type_script = "uid://dbxlbok57ny46"
 
 [node name="RespawnAreaStart" type="Area2D" parent="SpawnAreas"]
 position = Vector2(16, 205)
+collision_mask = 2
 script = ExtResource("11_efxa6")
 metadata/_custom_type_script = "uid://cgdrh4y55r7g6"
 
@@ -263,6 +264,7 @@ shape = SubResource("RectangleShape2D_dg77c")
 
 [node name="RespawnArea1" type="Area2D" parent="SpawnAreas"]
 position = Vector2(2991, 739)
+collision_mask = 2
 script = ExtResource("11_efxa6")
 metadata/_custom_type_script = "uid://cgdrh4y55r7g6"
 
