@@ -10,7 +10,6 @@ var default_global_position: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
 	default_global_position = global_position
-	EventBus.reset_level.connect(_on_reset_level)
 
 	# Apply exported physics properties to the native RigidBody2D properties
 	mass = initial_mass
@@ -21,7 +20,7 @@ func _ready() -> void:
 	physics_material.friction = initial_friction
 	physics_material_override = physics_material
 
-func _on_reset_level() -> void:
+func _on_reset_level(active_checkpoint_id: int) -> void:
 	global_position = default_global_position
 	# NOTE: Using integer value for mode due to a persistent parser error with the enum constant.
 	# 0 = MODE_RIGID

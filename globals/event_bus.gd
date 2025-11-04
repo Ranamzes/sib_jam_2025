@@ -6,6 +6,10 @@ signal create_echo(echo_stats:EchoStats,position:Vector2)
 signal player_died()
 signal player_respawned(player: CharacterBody2D)
 
-signal  reset_level()
+# Emitted when the level needs to be reset (e.g., on player death).
+# Passes the ID of the checkpoint that was active when the reset was triggered.
+signal reset_level(checkpoint_id: int)
 
-signal new_respawn(new_pos:Vector2)
+# Emitted by a RespawnArea when the player enters it.
+# Passes the new position and the ID of the checkpoint.
+signal new_respawn(new_pos: Vector2, checkpoint_id: int)

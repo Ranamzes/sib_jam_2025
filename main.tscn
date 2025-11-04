@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://x662pd3helg5"]
+[gd_scene load_steps=42 format=4 uid="uid://x662pd3helg5"]
 
 [ext_resource type="Script" uid="uid://dp1qdgcbuwjup" path="res://camera/camera_manager.gd" id="1_mgr"]
 [ext_resource type="PackedScene" uid="uid://bgrwxmc03jfth" path="res://player/Player.tscn" id="2_0xm2m"]
@@ -23,6 +23,8 @@
 [ext_resource type="Script" uid="uid://cgdrh4y55r7g6" path="res://systems/reset_system/respawn_area.gd" id="11_efxa6"]
 [ext_resource type="Script" uid="uid://d218yx0d1ilsn" path="res://addons/rmsmartshape/normal_range.gd" id="11_lswn8"]
 [ext_resource type="PackedScene" uid="uid://cyo4ecq3c5vhi" path="res://environment/boulder_trap.tscn" id="12_trap"]
+[ext_resource type="Script" uid="uid://cm385mp1h6idy" path="res://systems/reset_system/checkpoint_savable_component.gd" id="14_1u8w0"]
+[ext_resource type="Script" uid="uid://bfseyqvsy2wvb" path="res://addons/GodotAnnotate/src/canvas/annotate_canvas.gd" id="25_lswn8"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5vw27"]
 distance = -1036.0
@@ -146,7 +148,7 @@ navigation_visibility_mode = 1
 
 [node name="Player" parent="." instance=ExtResource("2_0xm2m")]
 y_sort_enabled = true
-position = Vector2(17, -241)
+position = Vector2(3737, 19)
 
 [node name="HitboxComponent" type="Area2D" parent="."]
 position = Vector2(1, 0)
@@ -188,7 +190,7 @@ fmod_parameters/progress/variant_type = 3
 
 [node name="MainCamera" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-position = Vector2(144, 60)
+position = Vector2(3881, 79)
 zoom = Vector2(0.5, 0.5)
 process_callback = 0
 
@@ -222,6 +224,7 @@ shape = SubResource("RectangleShape2D_dg77c")
 position = Vector2(2991, 739)
 collision_mask = 2
 script = ExtResource("11_efxa6")
+checkpoint_id = 1
 metadata/_custom_type_script = "uid://cgdrh4y55r7g6"
 metadata/_edit_group_ = true
 
@@ -230,12 +233,26 @@ position = Vector2(12, -133)
 shape = SubResource("RectangleShape2D_dg77c")
 
 [node name="RespawnArea2" type="Area2D" parent="SpawnAreas"]
-position = Vector2(3086, -539)
+position = Vector2(2953, 110)
+collision_mask = 2
 script = ExtResource("11_efxa6")
+checkpoint_id = 2
 metadata/_custom_type_script = "uid://cgdrh4y55r7g6"
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnAreas/RespawnArea2"]
+position = Vector2(12, -133)
+shape = SubResource("RectangleShape2D_dg77c")
+
+[node name="RespawnArea3" type="Area2D" parent="SpawnAreas"]
+position = Vector2(3078, -539)
+collision_mask = 2
+script = ExtResource("11_efxa6")
+checkpoint_id = 3
+metadata/_custom_type_script = "uid://cgdrh4y55r7g6"
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnAreas/RespawnArea3"]
 position = Vector2(12, -133)
 shape = SubResource("RectangleShape2D_dg77c")
 
@@ -263,6 +280,13 @@ position = Vector2(-10, -17)
 [node name="CollisionShape2D" parent="Items/BoulderTrap/PlayerTrigger" index="0"]
 position = Vector2(-20.5, 528)
 
+[node name="CheckpointSavableComponent" type="Node" parent="Items/BoulderTrap" node_paths=PackedStringArray("save_position_at_checkpoint", "reset_until_checkpoint")]
+script = ExtResource("14_1u8w0")
+reinstantiate_on_reset = true
+save_position_at_checkpoint = NodePath("../../../SpawnAreas/RespawnArea2")
+reset_until_checkpoint = NodePath("../../../SpawnAreas/RespawnArea3")
+metadata/_custom_type_script = "uid://cm385mp1h6idy"
+
 [node name="Heart" type="StaticBody2D" parent="."]
 collision_mask = 0
 
@@ -279,8 +303,29 @@ collision_polygon_node_path = NodePath("../CollisionPolygon2D")
 visible = false
 polygon = PackedVector2Array(-807.6996, 872.3252, -783.6549, 883.37994, -765.82794, 901.9346, -755.4729, 924.68274, -751.0985, 949.199, -750.98975, 975.61926, -759.8917, 1030.9961, -801.3532, 1154.1924, -824.1634, 1200.5521, -835.7719, 1219.3163, -848.1445, 1235.1282, -862.3545, 1248.2119, -879.0718, 1257.7627, -897.79517, 1262.4866, -916.9342, 1262.0723, -935.52454, 1257.5259, -954.2975, 1249.6904, -992.4684, 1227.0562, -1093.9913, 1152.3702, -1160.11, 1092.6222, -1182.5063, 1063.2289, -1197.1315, 1034.9971, -1204.2382, 1006.95026, -1203.0685, 979.6317, -1193.5065, 955.01416, -1177.2202, 935.0408, -1156.4564, 920.073, -1132.6465, 909.4965, -1106.5065, 902.69836, -1078.4983, 899.3294, -1049.0524, 899.2456, -1017.8965, 902.50195, -969.4846, 915.35706, -899.49164, 882.83, -865.29065, 872.96985, -835.1631, 869.2884)
 
+[node name="AnnotateCanvas" type="Node2D" parent="."]
+script = ExtResource("25_lswn8")
+brush_size = 2.0
+brush_color = Color(1, 1, 1, 1)
+strokes = Array[PackedScene]([])
+stroke_variables = {
+"Capsule": {
+"Fill": true
+},
+"Freehand": {},
+"Polygon": {
+"Closed": false,
+"Fill": false
+},
+"Rectangle": {
+"Fill": true
+}
+}
+metadata/_custom_type_script = "uid://bfseyqvsy2wvb"
+
 [connection signal="body_entered" from="SpawnAreas/RespawnAreaStart" to="SpawnAreas/RespawnAreaStart" method="_on_body_entered"]
 [connection signal="body_entered" from="SpawnAreas/RespawnArea1" to="SpawnAreas/RespawnArea1" method="_on_body_entered"]
 [connection signal="body_entered" from="SpawnAreas/RespawnArea2" to="SpawnAreas/RespawnArea2" method="_on_body_entered"]
+[connection signal="body_entered" from="SpawnAreas/RespawnArea3" to="SpawnAreas/RespawnArea3" method="_on_body_entered"]
 
 [editable path="Items/BoulderTrap"]
