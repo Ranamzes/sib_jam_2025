@@ -836,7 +836,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("AnimatedSprite2D:animation")
+tracks/2/path = NodePath("ContourSprite:animation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1079,7 +1079,8 @@ footstep_component_path = NodePath("Components/FootstepComponent")
 surface_detector_path = NodePath("SurfaceDetector")
 
 [node name="IteractionScanRayCast" type="RayCast2D" parent="."]
-rotation = -1.5707964
+unique_name_in_owner = true
+target_position = Vector2(50, 0)
 collision_mask = 3072
 
 [node name="HurtboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
@@ -1147,9 +1148,8 @@ push_action = ExtResource("21_76mgg")
 physics_system = NodePath("../../Systems/PhysicsIntegrationSystem")
 drag_component = NodePath("../DragComponent")
 
-[node name="DragComponent" type="Node" parent="Components" node_paths=PackedStringArray("iteraction_ray_cast", "mov_state_comp")]
+[node name="DragComponent" type="Node" parent="Components" node_paths=PackedStringArray("mov_state_comp")]
 script = ExtResource("7_8tqfn")
-iteraction_ray_cast = NodePath("../../IteractionScanRayCast")
 mov_state_comp = NodePath("../../Systems/StateComponent")
 
 [node name="FootstepComponent" type="Node" parent="Components"]

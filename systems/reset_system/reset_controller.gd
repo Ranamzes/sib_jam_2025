@@ -31,4 +31,5 @@ func _on_restart_timer_timeout():
 	EventBus.player_respawned.emit(player_instance)
 
 func _on_new_respawn(new_p:Vector2):
+	print("ResetController received new respawn position: ", new_p)
 	player_respawn_position = new_p
