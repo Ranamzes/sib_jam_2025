@@ -219,6 +219,7 @@ metadata/_custom_type_script = "uid://nc5bfedvnpgm"
 [node name="Main" type="Node"]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." groups=["tilemap"]]
@@ -241,7 +242,7 @@ offset_right = 742.0
 offset_bottom = 793.0
 theme_override_fonts/font = ExtResource("24_1u8w0")
 theme_override_font_sizes/font_size = 24
-text = "Use ⬆ or \"Space\" to Jump"
+text = "Use Up arrow or \"Space\" to Jump"
 horizontal_alignment = 1
 
 [node name="End" type="Label" parent="Hints"]
@@ -333,7 +334,7 @@ offset_right = 214.0
 offset_bottom = 644.0
 theme_override_fonts/font = ExtResource("24_1u8w0")
 theme_override_font_sizes/font_size = 24
-text = "Use ⬅ ⮕ or \"A\" and \"D\"
+text = "Use Arrows or \"A\" and \"D\"
 to move"
 horizontal_alignment = 1
 
