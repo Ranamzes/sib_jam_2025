@@ -32,7 +32,8 @@ GUIDE="*res://addons/guide/guide.gd"
 EventBus="*res://globals/event_bus.gd"
 GroupNames="*res://globals/group_names.gd"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
-MusicManager="*res://systems/audio_system/music_manager.gd"
+MusicManager="res://systems/audio_system/music_manager.gd"
+AudioPlayer="*res://audio_player.tscn"
 
 [debug]
 
