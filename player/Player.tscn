@@ -1066,8 +1066,8 @@ metadata/_custom_type_script = "uid://pjgmjy1xod72"
 [sub_resource type="Resource" id="Resource_y617q"]
 script = ExtResource("17_uewl2")
 max_speed = 160.0
-run_multiplier = 2.5
-time_to_reach_max_speed = 0.29
+run_multiplier = 2.456
+time_to_reach_max_speed = 0.237
 time_to_reach_zero_speed = 0.187
 metadata/_custom_type_script = "uid://bln6wd364xxht"
 
