@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dei67jlo2rk3y"]
+
+[ext_resource type="Texture2D" uid="uid://c34w6qy6dvg1p" path="res://puzzle/imgaes/Final.png" id="1_6nb7b"]
+
+[node name="FinalScene" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(662, 350)
+scale = Vector2(2.075, 1.9777777)
+texture = ExtResource("1_6nb7b")
