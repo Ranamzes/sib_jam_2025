@@ -124,9 +124,13 @@ texture = ExtResource("6_5m2sv")
 
 [connection signal="input_event" from="PuzzleManager/Pieces/PuzzlePiece1" to="PuzzleManager/Pieces/PuzzlePiece1" method="_on_input_event"]
 [connection signal="mouse_entered" from="PuzzleManager/Pieces/PuzzlePiece1" to="PuzzleManager/Pieces/PuzzlePiece1" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PuzzleManager/Pieces/PuzzlePiece1" to="PuzzleManager/Pieces/PuzzlePiece1" method="_on_mouse_exited"]
 [connection signal="input_event" from="PuzzleManager/Pieces/PuzzlePiece2" to="PuzzleManager/Pieces/PuzzlePiece2" method="_on_input_event"]
 [connection signal="mouse_entered" from="PuzzleManager/Pieces/PuzzlePiece2" to="PuzzleManager/Pieces/PuzzlePiece2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PuzzleManager/Pieces/PuzzlePiece2" to="PuzzleManager/Pieces/PuzzlePiece2" method="_on_mouse_exited"]
 [connection signal="input_event" from="PuzzleManager/Pieces/PuzzlePiece3" to="PuzzleManager/Pieces/PuzzlePiece3" method="_on_input_event"]
 [connection signal="mouse_entered" from="PuzzleManager/Pieces/PuzzlePiece3" to="PuzzleManager/Pieces/PuzzlePiece3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PuzzleManager/Pieces/PuzzlePiece3" to="PuzzleManager/Pieces/PuzzlePiece3" method="_on_mouse_exited"]
 [connection signal="input_event" from="PuzzleManager/Pieces/PuzzlePiece4" to="PuzzleManager/Pieces/PuzzlePiece4" method="_on_input_event"]
 [connection signal="mouse_entered" from="PuzzleManager/Pieces/PuzzlePiece4" to="PuzzleManager/Pieces/PuzzlePiece4" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PuzzleManager/Pieces/PuzzlePiece4" to="PuzzleManager/Pieces/PuzzlePiece4" method="_on_mouse_exited"]
