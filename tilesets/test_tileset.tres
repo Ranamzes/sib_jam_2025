@@ -1,6 +1,7 @@
-[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://mpn3hiboo4y7"]
+[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://mpn3hiboo4y7"]
 
 [ext_resource type="Texture2D" uid="uid://doxwuqqvbtyxe" path="res://tilesets/CaveTileset.png" id="1_8n1lv"]
+[ext_resource type="Texture2D" uid="uid://dxesssu1htfn6" path="res://tilesets/decor_atlas.png" id="2_xv5dm"]
 [ext_resource type="Texture2D" uid="uid://hn02fosg5ww4" path="res://tilesets/level_tiles.png" id="3_xv5dm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xv5dm"]
@@ -384,6 +385,23 @@ texture_region_size = Vector2i(64, 64)
 11:3/0/terrains_peering_bit/left_side = 1
 11:3/0/terrains_peering_bit/top_left_corner = 1
 11:3/0/terrains_peering_bit/top_side = 1
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ri6w4"]
+texture = ExtResource("2_xv5dm")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rlcim"]
 texture = ExtResource("3_xv5dm")
@@ -777,3 +795,4 @@ terrain_set_0/terrain_1/name = "Cave"
 terrain_set_0/terrain_1/color = Color(1, 0.4392157, 0.2509804, 1)
 sources/3 = SubResource("TileSetAtlasSource_rlcim")
 sources/0 = SubResource("TileSetAtlasSource_xv5dm")
+sources/1 = SubResource("TileSetAtlasSource_ri6w4")
