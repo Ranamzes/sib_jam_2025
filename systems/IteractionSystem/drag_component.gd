@@ -46,34 +46,7 @@ func _physics_process(delta: float) -> void:
 
 	dragged_item.global_position = dragged_item.global_position.lerp(target_position, 1.0 - exp(-delta * current_lerp_speed))
 
-	# --- State and Visuals Update (Push/Pull) ---
-	if physics_system:
-		# Make the player face the box
-		var should_face_right = player.global_position.x < dragged_item.global_position.x
-		contour_sprite.flip_h = not should_face_right
 
-		var input_direction_x: float = physics_system.get_move_input_vector().x
-		if abs(input_direction_x) < 0.1:
-			# Not moving, just holding. Can be considered 'pull' animation.
-			mov_state_comp.change_state(mov_state_comp.pull)
-			return
-
-		# Determine if player is to the left or right of the box
-		var player_is_left_of_box = player.global_position.x < dragged_item.global_position.x
-
-		# Determine push or pull based on relative position and input
-		var is_pushing: bool
-		if player_is_left_of_box:
-			# Player is on the left. Pushing means moving right (positive input).
-			is_pushing = input_direction_x > 0
-		else:
-			# Player is on the right. Pushing means moving left (negative input).
-			is_pushing = input_direction_x < 0
-
-		if is_pushing:
-			mov_state_comp.change_state(mov_state_comp.push)
-		else:
-			mov_state_comp.change_state(mov_state_comp.pull)
 
 
 func start_dragging_action() -> void:

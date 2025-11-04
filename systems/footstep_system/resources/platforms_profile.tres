@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_path="res://systems/footstep_system/surface_audio_profile.gd" load_steps=3 format=3 uid="uid://dssyq3d20s1y"]
+
+[ext_resource type="Resource" path="res://systems/footstep_system/resources/platforms_walk_collection.tres" id="1_5jlkc"]
+[ext_resource type="Resource" path="res://systems/footstep_system/resources/platforms_run_collection.tres" id="2_psgyp"]
+
+[resource]
+script = ExtResource("1_5jlkc")
+walk_collection = ExtResource("1_5jlkc")
+run_collection = ExtResource("2_psgyp")

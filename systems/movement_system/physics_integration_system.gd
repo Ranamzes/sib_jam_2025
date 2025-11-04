@@ -64,10 +64,13 @@ func _physics_process(_delta: float) -> void:
 
 
 func _execute_move(_delta:float):
-	var target_speed: float = _move_input_vector.x *_move_stats.max_speed
-	# Prevent running while pulling or pushing
-	var can_run: bool = _state_comp.is_running and _state_comp.current_state != _state_comp.pull and _state_comp.current_state != _state_comp.push
-	target_speed = target_speed * _move_stats.run_multiplier if can_run else target_speed
+	var target_speed: float = _move_input_vector.x * _move_stats.max_speed
+	
+	if (_state_comp.current_state == _state_comp.pull or _state_comp.current_state == _state_comp.push):
+		target_speed = clamp(target_speed, -_move_stats.max_speed, _move_stats.max_speed)
+	else:
+		var can_run: bool = _state_comp.is_running
+		target_speed = target_speed * _move_stats.run_multiplier if can_run else target_speed
 
 	var current_velocity_x = _velocity.x
 	if _move_stats.directional_snap and _move_input_vector.x !=0 :
@@ -133,6 +136,29 @@ func _calculate_current_state():
 	# Grounded States
 	# If the drag component is active, it controls the state. Do nothing here.
 	if drag_component and drag_component.dragged_item != null:
+		var input_direction_x: float = get_move_input_vector().x
+		
+		# Make the player face the box
+		var player_sprite = player_character.get_node_or_null("ContourSprite")
+		if is_instance_valid(player_sprite):
+			var should_face_right = player_character.global_position.x < drag_component.dragged_item.global_position.x
+			player_sprite.flip_h = not should_face_right
+
+		if abs(input_direction_x) < 0.1:
+			_state_comp.change_state(_state_comp.pull)
+			return
+
+		var player_is_left_of_box = player_character.global_position.x < drag_component.dragged_item.global_position.x
+		var is_pushing: bool
+		if player_is_left_of_box:
+			is_pushing = input_direction_x > 0
+		else:
+			is_pushing = input_direction_x < 0
+
+		if is_pushing:
+			_state_comp.change_state(_state_comp.push)
+		else:
+			_state_comp.change_state(_state_comp.pull)
 		return
 
 	# Default ground logic for when not dragging.

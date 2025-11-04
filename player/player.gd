@@ -20,7 +20,7 @@ func _ready() -> void:
 		push_error("Player: SurfaceDetector RayCast2D node not assigned or found at path: %s" % surface_detector_path)
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	_update_surface_detection()
 
 
@@ -32,10 +32,10 @@ func _update_surface_detection() -> void:
 	# Check if the raycast is colliding with something.
 	if surface_detector.is_colliding():
 		var collider: Object = surface_detector.get_collider()
-		
+
 		# We need to find a surface name. We'll check the collider's groups.
 		var detected_surface: StringName = &"default" # Fallback surface
-		
+
 		# We iterate through the groups of the collider to find a match
 		# with the surfaces defined in our FootstepData.
 		if collider and footstep_component.footstep_data:
@@ -43,7 +43,7 @@ func _update_surface_detection() -> void:
 				if collider.is_in_group(surface_resource.surface_name):
 					detected_surface = surface_resource.surface_name
 					break # Found a match, no need to check further.
-		
+
 		# Update the component with the detected surface.
 		footstep_component.current_surface_name = detected_surface
 	else:
