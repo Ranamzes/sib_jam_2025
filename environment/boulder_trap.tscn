@@ -1,32 +1,45 @@
-[gd_scene load_steps=7 format=3 uid="uid://b5w5d8yvj3v3w"]
+[gd_scene load_steps=8 format=3 uid="uid://cyo4ecq3c5vhi"]
 
 [ext_resource type="Script" uid="uid://coqry4l06rvjj" path="res://environment/boulder_trap.gd" id="1_0jwhf"]
 [ext_resource type="Script" uid="uid://b2ysxy8w74clt" path="res://environment/boulder.gd" id="2_s0jxw"]
 [ext_resource type="Texture2D" uid="uid://coikm5yexsybi" path="res://environment/BallStone.png" id="3_1bvp3"]
+[ext_resource type="Script" uid="uid://c0h40pfj0rlnp" path="res://systems/health_system/hitbox_component.gd" id="4_3df4x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1"]
-radius = 32.0
+radius = 81.055534
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
-size = Vector2(100, 20)
+size = Vector2(170, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3"]
-size = Vector2(100, 200)
+size = Vector2(181, 200)
 
-[node name="BoulderTrap" type="Node2D"]
+[node name="BoulderTrap" type="Node2D" node_paths=PackedStringArray("boulder")]
 script = ExtResource("1_0jwhf")
 holder_collision_shape_path = NodePath("BoulderHolder/CollisionShape2D")
+boulder = NodePath("Boulder")
 
 [node name="Boulder" type="RigidBody2D" parent="."]
-position = Vector2(0, -50)
+position = Vector2(-1, -56)
 collision_layer = 4
 collision_mask = 9
 script = ExtResource("2_s0jxw")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boulder"]
+shape = SubResource("CircleShape2D_1")
 
 [node name="Sprite2D" type="Sprite2D" parent="Boulder"]
 texture = ExtResource("3_1bvp3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Boulder"]
+[node name="HitboxComponent" type="Area2D" parent="Boulder"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("4_3df4x")
+damage = 100
+metadata/_custom_type_script = "uid://c0h40pfj0rlnp"
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Boulder/HitboxComponent"]
 shape = SubResource("CircleShape2D_1")
 
 [node name="BoulderHolder" type="StaticBody2D" parent="."]

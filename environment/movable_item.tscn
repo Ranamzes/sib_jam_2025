@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dlnto25jfnnie"]
 
-[ext_resource type="Texture2D" uid="uid://c62anhvlhtyyf" path="res://environment/TX Village Props.png" id="1_jag8a"]
-[ext_resource type="Script" path="res://environment/movable_item.gd" id="1_r37qw"]
+[ext_resource type="Script" uid="uid://bkteuy3plw8mf" path="res://environment/movable_item.gd" id="1_r37qw"]
+[ext_resource type="Texture2D" uid="uid://d1ugvaqc34k70" path="res://levels/level1/box1.png" id="2_l4pm5"]
 [ext_resource type="Script" uid="uid://dvglvofpfmaxg" path="res://systems/reset_system/resetable_component.gd" id="3_l4pm5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l4pm5"]
@@ -12,10 +12,11 @@ collision_layer = 1025
 script = ExtResource("1_r37qw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(2.765, 2.765)
-texture = ExtResource("1_jag8a")
+position = Vector2(0.65874684, 0.65874684)
+scale = Vector2(1.4717379, 1.4717379)
+texture = ExtResource("2_l4pm5")
 region_enabled = true
-region_rect = Rect2(42.01558, 18.913784, 44.604965, 44.784824)
+region_rect = Rect2(0, 0, 82, 82)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0.5)

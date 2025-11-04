@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var holder_collision_shape_path: NodePath
+@export var boulder: RigidBody2D
 
 var _holder_collision_shape: CollisionShape2D
 
@@ -13,11 +14,9 @@ func _ready() -> void:
 
 
 func _on_player_trigger_body_entered(body: Node):
-	print("area work")
 	if body.is_in_group("Player"):
-		print("player group")
 		if _holder_collision_shape:
-			print("нашли шейп")
-			_holder_collision_shape.queue_free()
+			_holder_collision_shape.get_parent().queue_free()
+			boulder.sleeping = false
 		else:
 			push_error("BoulderTrap: Cannot disable holder, collision shape is not assigned.")
