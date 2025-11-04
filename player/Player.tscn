@@ -1,4 +1,4 @@
-[gd_scene load_steps=134 format=3 uid="uid://bgrwxmc03jfth"]
+[gd_scene load_steps=136 format=3 uid="uid://bgrwxmc03jfth"]
 
 [ext_resource type="Script" uid="uid://chbr6mrhj0l4h" path="res://systems/input_system/player_input_component.gd" id="1_5p1j2"]
 [ext_resource type="Script" uid="uid://cg6pvwqc3b5mc" path="res://player/player.gd" id="1_8nth8"]
@@ -33,6 +33,8 @@
 [ext_resource type="Texture2D" uid="uid://5bbaytwhjqlx" path="res://player/eye.png" id="22_mlfor"]
 [ext_resource type="Resource" uid="uid://bvvkcrgwqqnfl" path="res://systems/footstep_system/FootstepData.tres" id="23_76mgg"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="32_234y4"]
+[ext_resource type="SpriteFrames" uid="uid://dsws5exfkbn1t" path="res://player/animations/player_eyes_animations.tres" id="33_abcde"]
+[ext_resource type="Material" uid="uid://bjo454j7i7sfd" path="res://player/animations/eyes_material.tres" id="35_eyemat"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mlfor"]
 atlas = ExtResource("2_yu5hk")
@@ -547,7 +549,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/path = NodePath("ContourSprite:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -559,7 +561,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/path = NodePath("ContourSprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -587,7 +589,7 @@ length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/path = NodePath("ContourSprite:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -603,7 +605,7 @@ length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/path = NodePath("ContourSprite:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -620,7 +622,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/path = NodePath("ContourSprite:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -632,7 +634,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/path = NodePath("ContourSprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -661,7 +663,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/path = NodePath("ContourSprite:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -673,7 +675,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/path = NodePath("ContourSprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -703,7 +705,7 @@ loop_mode = 1
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/path = NodePath("ContourSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -759,7 +761,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/path = NodePath("ContourSprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -775,7 +777,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/path = NodePath("ContourSprite:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -804,7 +806,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("AnimatedSprite2D:frame")
+tracks/2/path = NodePath("ContourSprite:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -852,7 +854,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/path = NodePath("ContourSprite:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -864,7 +866,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/path = NodePath("ContourSprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1004,9 +1006,19 @@ shape = ExtResource("3_stbqk")
 position = Vector2(0.795, 10.885)
 shape = ExtResource("3_stbqk")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="ContourSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8cy8x")
 animation = &"run"
+
+[node name="EyesSprite" type="AnimatedSprite2D" parent="."]
+material = ExtResource("35_eyemat")
+sprite_frames = ExtResource("33_abcde")
+animation = &"fall"
+
+[node name="ColorSprite" type="AnimatedSprite2D" parent="."]
+z_index = -1
+sprite_frames = SubResource("SpriteFrames_8cy8x")
+animation = &"dash"
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_610ub")
@@ -1055,11 +1067,13 @@ foot_marker = NodePath("../../FootMarker")
 
 [node name="Systems" type="Node" parent="."]
 
-[node name="AnimationSystem" type="Node" parent="Systems" node_paths=PackedStringArray("animation_tree", "player_sprite", "mov_state_comp")]
+[node name="AnimationSystem" type="Node" parent="Systems" node_paths=PackedStringArray("animation_tree", "mov_state_comp", "contour_sprite", "eyes_sprite", "color_sprite")]
 script = ExtResource("9_h5g2s")
 animation_tree = NodePath("../../AnimationTree")
-player_sprite = NodePath("../../AnimatedSprite2D")
 mov_state_comp = NodePath("../StateComponent")
+contour_sprite = NodePath("../../ContourSprite")
+eyes_sprite = NodePath("../../EyesSprite")
+color_sprite = NodePath("../../ColorSprite")
 
 [node name="PhysicsIntegrationSystem" type="Node" parent="Systems" node_paths=PackedStringArray("player_character", "echo_pointer", "_state_comp")]
 script = ExtResource("14_abcde")
