@@ -34,7 +34,7 @@ func play_step(action_index: int = 0) -> void:
 		return
 
 	# 1. Получаем профиль для текущей поверхности
-	var surface_profile: SurfaceAudioProfile = audio_data.surface_profiles.get(current_surface_name)
+	var surface_profile: FootstepSurfaceProfile = audio_data.surface_profiles.get(current_surface_name)
 	if not surface_profile:
 		# Если для этой поверхности нет профиля, используем профиль по умолчанию
 		surface_profile = audio_data.surface_profiles.get("default")
@@ -43,7 +43,7 @@ func play_step(action_index: int = 0) -> void:
 			return
 
 	# 2. Получаем коллекцию звуков для нужного действия (ходьба/бег)
-	var collection: AudioStreamCollection = surface_profile.get_collection_for_action(action_index)
+	var collection: FootstepStreamCollection = surface_profile.get_collection_for_action(action_index)
 	if not collection:
 		return
 

@@ -3,7 +3,7 @@ extends Node
 
 @export var iteraction_ray_cast_path: NodePath
 @export var mov_state_comp: StateComponent
-@export var physics_system: PhysicsIntegrationSystem # Added for input vector
+var physics_system: PhysicsIntegrationSystem # No longer exported, will be fetched dynamically
 @export var drag_offset: Vector2 = Vector2(80, 0)
 @export var pull_lerp_speed: float = 15.0 # Separate lerp speed for pull
 @export var push_lerp_speed: float = 15.0 # Separate lerp speed for push
@@ -15,6 +15,13 @@ extends Node
 var dragged_item: MovableItem = null
 
 func _ready() -> void:
+	call_deferred("_check_physics_system")
+
+func _check_physics_system() -> void:
+	var player_node = get_owner()
+	if player_node:
+		physics_system = player_node.get_node_or_null("Systems/PhysicsIntegrationSystem")
+
 	if not physics_system:
 		push_error("DragComponent: PhysicsIntegrationSystem is not set!")
 
@@ -35,7 +42,7 @@ func _physics_process(delta: float) -> void:
 	var target_x_offset = drag_offset.x
 	if contour_sprite.flip_h:
 		target_x_offset = -drag_offset.x
-	
+
 	var target_position = player.global_position + Vector2(target_x_offset, drag_offset.y)
 
 	var current_lerp_speed: float
@@ -72,6 +79,6 @@ func stop_dragging_action() -> void:
 	var release_velocity = Vector2.ZERO
 	dragged_item.stop_drag(release_velocity)
 	dragged_item = null
-	
+
 	# Revert to a neutral state, PhysicsIntegrationSystem will then determine the correct state (idle/walk)
 	mov_state_comp.change_state(mov_state_comp.idle)

@@ -219,6 +219,7 @@ metadata/_custom_type_script = "uid://nc5bfedvnpgm"
 [node name="Main" type="Node"]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." groups=["tilemap"]]
@@ -228,7 +229,7 @@ tile_set = ExtResource("3_h2yge")
 navigation_visibility_mode = 1
 metadata/surface_type = "concrete"
 
-[node name="TileMapLayer2" type="TileMapLayer" parent="."]
+[node name="TileDecorLayer" type="TileMapLayer" parent="."]
 position = Vector2(0, -8)
 tile_map_data = PackedByteArray("AAAXAAwAAAAAAAAAAAAOAAwAAAAAAAAAAAAMAAwAAAABAAAAAAAIAA4AAAABAAAAAAAFAA4AAAAAAAAAAAD3/wwAAAAAAAAAAAD1/wwAAAACAAAAAAAAAAwAAAADAAAAAAAMAAAAAAACAAAAAAAGAAAAAAACAAAAAAAnAAAAAAACAAAAAAAmAAAAAAABAAAAAAAiAP7/AAABAAAAAAAnAPr/AAACAAAAAAApAPj/AAACAAAAAAAtAPf/AAADAAAAAAA/AP7/AAADAAAAAAA3AP3/AAADAAAAAABGAP7/AAAAAAAAAAA9AAIAAAAAAAAAAAArAAsAAAAAAAAAAAAyAAsAAAADAAAAAAAxAAIAAAADAAAAAAArAAEAAAADAAAAAAAyAPz/AAADAAAAAABPAP7/AAADAAAAAABLAP7/AAABAAAAAABDAP7/AAAAAAEAAABBAAoAAAAAAAEAAAAtAAsAAAAAAAEAAAAnAA4AAAAAAAEAAAAmAA4AAAAAAAEAAAAkAAwAAAAAAAEAAAAZAAgAAAAAAAEAAAAEAA4AAAAAAAEAAAADAA0AAAAAAAEAAAD0/wwAAAAAAAEAAAD8/wwAAAABAAEAAAARAAwAAAABAAEAAAALAAwAAAABAAEAAAAbAAsAAAABAAEAAAAZAAsAAAACAAEAAAAeAAsAAAACAAEAAAAaAAgAAAACAAEAAAAlAA0AAAACAAEAAAAoAA4AAAACAAEAAAAhAAsAAAACAAEAAAANAAwAAAACAAEAAAAHAA4AAAACAAEAAAABAAwAAAACAAEAAAD+/wwAAAACAAEAAAA7AAsAAAACAAEAAAA+AAsAAAACAAEAAABHAAgAAAACAAEAAABEAAkAAAABAAEAAABJAAYAAAABAAEAAABMAAYAAAAAAAAAAABFAAMAAAABAAEAAABDAAIAAAACAAEAAAA4AAEAAAACAAEAAAA6AAEAAAAAAAEAAABBAAIAAAAAAAEAAABXAP//AAAAAAEAAABaAP7/AAAAAAEAAABUAP7/AAAAAAEAAABVAP7/AAABAAEAAABTAP7/AAABAAEAAAA=")
 tile_set = SubResource("TileSet_qsp4k")
@@ -379,6 +380,8 @@ material = SubResource("ShaderMaterial_kek77")
 [node name="Audio" type="Node" parent="."]
 
 [node name="BgMusicLevel1" type="Area2D" parent="Audio"]
+collision_layer = 65
+collision_mask = 2
 script = ExtResource("8_lswn8")
 music_stream = ExtResource("11_htxhm")
 metadata/_custom_type_script = "uid://bpvo6p6kufeyv"
@@ -389,6 +392,7 @@ shape = SubResource("RectangleShape2D_lswn8")
 
 [node name="BgMusicLevel3" type="Area2D" parent="Audio"]
 position = Vector2(5776, -415)
+collision_mask = 2
 script = ExtResource("8_lswn8")
 music_stream = ExtResource("12_4k2k6")
 metadata/_custom_type_script = "uid://bpvo6p6kufeyv"
@@ -400,6 +404,7 @@ shape = SubResource("RectangleShape2D_lswn8")
 
 [node name="BgMusicLevel2" type="Area2D" parent="Audio"]
 position = Vector2(3865, 418)
+collision_mask = 2
 script = ExtResource("8_lswn8")
 music_stream = ExtResource("12_jq2sk")
 metadata/_custom_type_script = "uid://bpvo6p6kufeyv"
@@ -593,10 +598,6 @@ stroke_variables = {
 }
 }
 metadata/_custom_type_script = "uid://bfseyqvsy2wvb"
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("11_htxhm")
-autoplay = true
 
 [connection signal="body_entered" from="SpawnAreas/RespawnAreaStart" to="SpawnAreas/RespawnAreaStart" method="_on_body_entered"]
 [connection signal="body_entered" from="SpawnAreas/RespawnArea1" to="SpawnAreas/RespawnArea1" method="_on_body_entered"]

@@ -1096,8 +1096,6 @@ script = ExtResource("32_234y4")
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
 script = ExtResource("1_8nth8")
-footstep_component_path = NodePath("Components/FootstepComponent")
-surface_detector_path = NodePath("SurfaceDetector")
 
 [node name="IteractionScanRayCast" type="RayCast2D" parent="."]
 unique_name_in_owner = true
@@ -1169,11 +1167,10 @@ push_action = ExtResource("21_76mgg")
 physics_system = NodePath("../../Systems/PhysicsIntegrationSystem")
 drag_component = NodePath("../DragComponent")
 
-[node name="DragComponent" type="Node" parent="Components" node_paths=PackedStringArray("mov_state_comp", "physics_system")]
+[node name="DragComponent" type="Node" parent="Components" node_paths=PackedStringArray("mov_state_comp")]
 script = ExtResource("7_8tqfn")
 iteraction_ray_cast_path = NodePath("../../IteractionScanRayCast")
 mov_state_comp = NodePath("../../Systems/StateComponent")
-physics_system = NodePath("../../Systems/PhysicsIntegrationSystem")
 pull_lerp_speed = 45.0
 
 [node name="FootstepComponent" type="Node" parent="Components" node_paths=PackedStringArray("surface_detector")]

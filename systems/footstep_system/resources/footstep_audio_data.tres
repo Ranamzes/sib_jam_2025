@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="FootstepAudioData" load_steps=6 format=3 uid="uid://c6kgpk0554p4l"]
+[gd_resource type="Resource" script_class="FootstepAudioData" load_steps=7 format=3 uid="uid://c6kgpk0554p4l"]
 
 [ext_resource type="Script" uid="uid://jrqtp1ddxoev" path="res://systems/footstep_system/footstep_audio_data.gd" id="1_script"]
 [ext_resource type="Resource" path="res://systems/footstep_system/resources/concrete_profile.tres" id="2_concrete"]
 [ext_resource type="Resource" path="res://systems/footstep_system/resources/platforms_profile.tres" id="3_platforms"]
 [ext_resource type="Resource" path="res://systems/footstep_system/resources/stone_profile.tres" id="4_stone"]
 [ext_resource type="Resource" path="res://systems/footstep_system/resources/wood_profile.tres" id="5_wood"]
+[ext_resource type="Resource" path="res://systems/footstep_system/resources/default_profile.tres" id="6_default"]
 
 [resource]
 script = ExtResource("1_script")
@@ -12,5 +13,6 @@ surface_profiles = {
 "concrete": ExtResource("2_concrete"),
 "platforms": ExtResource("3_platforms"),
 "stone": ExtResource("4_stone"),
-"wood": ExtResource("5_wood")
+"wood": ExtResource("5_wood"),
+"default": ExtResource("6_default")
 }

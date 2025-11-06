@@ -9,7 +9,7 @@ func _ready() -> void:
 
 
 func _on_body_entered(body: Node) -> void:
-	if body.is_in_group(&"player"):
+	if body.is_in_group("player"):
 		if music_stream:
-			print("Player entered music trigger zone. Emitting signal to change music.")
+			print("MusicTriggerZone: Player entered. Emitting change_background_music signal.")
 			get_node("/root/EventBus").emit_signal(&"change_background_music", music_stream)

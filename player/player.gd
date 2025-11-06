@@ -1,23 +1,24 @@
 extends CharacterBody2D
 
 # --- Dependencies ---
-# Please assign the required nodes in the Inspector.
-@export var footstep_component_path: NodePath
-@export var surface_detector_path: NodePath
-
+# These will be fetched dynamically.
 var footstep_component: FootstepComponent
 var surface_detector: RayCast2D
 
 
 func _ready() -> void:
-	# Get the nodes from the assigned paths.
-	footstep_component = get_node_or_null(footstep_component_path)
-	surface_detector = get_node_or_null(surface_detector_path)
+	call_deferred("_init_dependencies")
+
+func _init_dependencies() -> void:
+	var player_node = get_owner()
+	if player_node:
+		footstep_component = get_node_or_null("Components/FootstepComponent")
+		surface_detector = get_node_or_null("SurfaceDetector")
 
 	if not footstep_component:
-		push_error("Player: FootstepComponent node not assigned or found at path: %s" % footstep_component_path)
+		push_error("Player: FootstepComponent node not found at path: Components/FootstepComponent")
 	if not surface_detector:
-		push_error("Player: SurfaceDetector RayCast2D node not assigned or found at path: %s" % surface_detector_path)
+		push_error("Player: SurfaceDetector RayCast2D node not found at path: SurfaceDetector")
 
 
 func _physics_process(_delta: float) -> void:
