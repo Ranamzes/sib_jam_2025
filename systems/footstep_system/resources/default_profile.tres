@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="FootstepSurfaceProfile" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="SurfaceAudioProfile" load_steps=3 format=3 uid="uid://dssyq3d20s1y"]
 
-[ext_resource type="Script" path="res://systems/footstep_system/resources/footstep_surface_profile.gd" id="1_script"]
-[ext_resource type="Resource" path="res://systems/footstep_system/resources/default_walk_collection.tres" id="2_walk_collection"]
-[ext_resource type="Resource" path="res://systems/footstep_system/resources/default_run_collection.tres" id="3_run_collection"]
+[ext_resource type="Script" path="res://systems/footstep_system/surface_audio_profile.gd" id="1_script"]
+[ext_resource type="Resource" uid="uid://dssyq3d20s1x" path="res://systems/footstep_system/resources/default_walk_collection.tres" id="2_walk_collection"]
+[ext_resource type="Resource" uid="uid://dssyq3d20s1z" path="res://systems/footstep_system/resources/default_run_collection.tres" id="3_run_collection"]
 
 [resource]
 script = ExtResource("1_script")

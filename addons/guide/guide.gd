@@ -2,7 +2,11 @@ extends Node
 
 const GUIDESet = preload("guide_set.gd")
 const GUIDEReset = preload("guide_reset.gd")
+const GUIDERemappingConfig = preload("remapping/guide_remapping_config.gd")
+const GUIDEActionMapping = preload("guide_action_mapping.gd")
+const GUIDEMappingContext = preload("guide_mapping_context.gd")
 const GUIDEInputTracker = preload("guide_input_tracker.gd")
+const GUIDEInputState = preload("inputs/guide_input_state.gd")
 
 ## This is emitted whenever input mappings change (either due to mapping
 ## contexts being enabled/disabled or remapping configs being re-applied or

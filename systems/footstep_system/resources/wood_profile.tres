@@ -1,9 +1,10 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dssyq3d20s1y"]
+[gd_resource type="Resource" script_class="SurfaceAudioProfile" load_steps=3 format=3 uid="uid://dssyq3d20s1q"]
 
-[ext_resource type="Resource" path="res://systems/footstep_system/resources/wood_walk_collection.tres" id="1_5jlkc"]
-[ext_resource type="Resource" path="res://systems/footstep_system/resources/wood_run_collection.tres" id="2_psgyp"]
+[ext_resource type="Script" path="res://systems/footstep_system/surface_audio_profile.gd" id="1_script"]
+[ext_resource type="Resource" uid="uid://dssyq3d20s1o" path="res://systems/footstep_system/resources/wood_walk_collection.tres" id="2_walk_collection"]
+[ext_resource type="Resource" uid="uid://dssyq3d20s1p" path="res://systems/footstep_system/resources/wood_run_collection.tres" id="3_run_collection"]
 
 [resource]
-script = ExtResource("1_5jlkc")
-walk_collection = ExtResource("1_5jlkc")
-run_collection = ExtResource("2_psgyp")
+script = ExtResource("1_script")
+walk_collection = ExtResource("2_walk_collection")
+run_collection = ExtResource("3_run_collection")

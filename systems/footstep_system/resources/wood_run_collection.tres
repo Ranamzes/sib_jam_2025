@@ -1,13 +1,13 @@
-[gd_resource type="Resource" load_steps=8 format=3 uid="uid://dssyq3d20s1y"]
+[gd_resource type="Resource" script_class="AudioStreamCollection" load_steps=8 format=3 uid="uid://dssyq3d20s1p"]
 
-[ext_resource type="AudioStream" path="res://Audio/footsteps/wood/footsteps_wood_run_1.ogg" id="1_5jlkc"]
-[ext_resource type="AudioStream" path="res://Audio/footsteps/wood/footsteps_wood_run_2.ogg" id="2_psgyp"]
-[ext_resource type="AudioStream" path="res://Audio/footsteps/wood/footsteps_wood_run_3.ogg" id="3_70v2w"]
-[ext_resource type="AudioStream" path="res://Audio/footsteps/wood/footsteps_wood_run_4.ogg" id="4_82j1j"]
-[ext_resource type="AudioStream" path="res://Audio/footsteps/wood/footsteps_wood_run_5.ogg" id="5_yv20g"]
-[ext_resource type="AudioStream" path="res://Audio/footsteps/wood/footsteps_wood_run_6.ogg" id="6_j6wac"]
-[ext_resource type="AudioStream" path="res://Audio/footsteps/wood/footsteps_wood_run_7.ogg" id="7_gce5h"]
+[ext_resource type="Script" path="res://systems/footstep_system/audio_stream_collection.gd" id="1_script"]
+[ext_resource type="AudioStream" path="res://Audio/footsteps/wood/footsteps_wood_run_1.ogg" id="2_stream1"]
+[ext_resource type="AudioStream" path="res://Audio/footsteps/wood/footsteps_wood_run_2.ogg" id="3_stream2"]
+[ext_resource type="AudioStream" path="res://Audio/footsteps/wood/footsteps_wood_run_3.ogg" id="4_stream3"]
+[ext_resource type="AudioStream" path="res://Audio/footsteps/wood/footsteps_wood_run_4.ogg" id="5_stream4"]
+[ext_resource type="AudioStream" path="res://Audio/footsteps/wood/footsteps_wood_run_5.ogg" id="6_stream5"]
+[ext_resource type="AudioStream" path="res://Audio/footsteps/wood/footsteps_wood_run_6.ogg" id="7_stream6"]
 
 [resource]
-script = ExtResource("1_5jlkc")
-audio_streams = [ExtResource("1_5jlkc"), ExtResource("2_psgyp"), ExtResource("3_70v2w"), ExtResource("4_82j1j"), ExtResource("5_yv20g"), ExtResource("6_j6wac"), ExtResource("7_gce5h")]
+script = ExtResource("1_script")
+streams = [ExtResource("2_stream1"), ExtResource("3_stream2"), ExtResource("4_stream3"), ExtResource("5_stream4"), ExtResource("6_stream5"), ExtResource("7_stream6")]

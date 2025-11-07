@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=53 format=3 uid="uid://dsws5exfkbn1t"]
+[gd_resource type="SpriteFrames" load_steps=53 format=3 uid="uid://dsws5exfkbn1u"]
 
 [ext_resource type="Texture2D" uid="uid://j4vymxxvfodo" path="res://player/animations/fall.png" id="1_ty5sl"]
 [ext_resource type="Texture2D" uid="uid://c27m7753trsp" path="res://player/animations/idle.png" id="2_b3go7"]

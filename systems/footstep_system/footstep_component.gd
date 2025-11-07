@@ -56,13 +56,13 @@ func play_step(action_index: int = 0) -> void:
 	if not audio_data or not audio_player or not foot_marker:
 		return
 
-	var surface_profile: FootstepSurfaceProfile = audio_data.surface_profiles.get(current_surface_name)
+	var surface_profile: SurfaceAudioProfile = audio_data.surface_profiles.get(current_surface_name)
 	if not surface_profile:
 		surface_profile = audio_data.surface_profiles.get("default")
 		if not surface_profile:
 			return
 
-	var collection: FootstepStreamCollection = surface_profile.get_collection_for_action(action_index)
+	var collection: AudioStreamCollection = surface_profile.get_collection_for_action(action_index)
 	if not collection:
 		return
 

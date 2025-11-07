@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://b58pdy82skwid" path="res://systems/health_system/hurtbox_component.gd" id="4_uewl2"]
 [ext_resource type="Resource" path="res://systems/input_system/actions/jump.tres" id="4_w24id"]
 [ext_resource type="Texture2D" uid="uid://j4vymxxvfodo" path="res://player/animations/fall.png" id="5_ddnt4"]
-[ext_resource type="Script" uid="uid://i5x0g3uanlah" path="res://systems/health_system/health_component .gd" id="5_ofhxi"]
+[ext_resource type="Script" uid="uid://i5x0g3uanlah" path="res://systems/health_system/health_component.gd" id="5_ofhxi"]
 [ext_resource type="Script" uid="uid://4hcakwlm1h5y" path="res://systems/movement_system/dash_component.gd" id="5_yu5hk"]
 [ext_resource type="Texture2D" uid="uid://c27m7753trsp" path="res://player/animations/idle.png" id="6_ddnt4"]
 [ext_resource type="Script" uid="uid://jit3rqs1hyh1" path="res://systems/IteractionSystem/drag_component.gd" id="7_8tqfn"]
@@ -1179,7 +1179,6 @@ audio_data = ExtResource("28_vud74")
 [node name="SurfaceDetector" type="RayCast2D" parent="Components/FootstepComponent"]
 target_position = Vector2(0, 0)
 script = ExtResource("35_vud74")
-current_surface = "concreate"
 
 [node name="FootMarker" type="Marker2D" parent="Components/FootstepComponent"]
 position = Vector2(19, 59)

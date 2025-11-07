@@ -13,12 +13,12 @@ func _init_dependencies() -> void:
 	var player_node = get_owner()
 	if player_node:
 		footstep_component = get_node_or_null("Components/FootstepComponent")
-		surface_detector = get_node_or_null("SurfaceDetector")
+		surface_detector = get_node_or_null("Components/FootstepComponent/SurfaceDetector")
 
 	if not footstep_component:
 		push_error("Player: FootstepComponent node not found at path: Components/FootstepComponent")
 	if not surface_detector:
-		push_error("Player: SurfaceDetector RayCast2D node not found at path: SurfaceDetector")
+		push_error("Player: SurfaceDetector RayCast2D node not found at path: Components/FootstepComponent/SurfaceDetector")
 
 
 func _physics_process(_delta: float) -> void:
