@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=4 uid="uid://dsf3w561yokdc"]
 
-[ext_resource type="Script" uid="uid://crsn7npjs3knv" path="res://addons/jamcountdown/countdown.gd" id="1_n7ugf"]
+[ext_resource type="Script" path="res://addons/jamcountdown/countdown.gd" id="1_n7ugf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_62q5s"]
 bg_color = Color(0.6, 0.6, 0.6, 0)

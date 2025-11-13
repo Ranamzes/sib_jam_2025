@@ -1,11 +1,9 @@
-[gd_resource type="AudioBusLayout" format=3 uid="uid://dugttsvq72tjs"]
+[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://dugttsvq72tjs"]
 
 [sub_resource type="AudioEffectPanner" id="AudioEffectPanner_abcde"]
 resource_name = "Panner"
-pan = 0.0
 
 [resource]
-bus/0/volume_db = 0.0
 bus/1/name = &"Music"
 bus/1/solo = false
 bus/1/mute = false

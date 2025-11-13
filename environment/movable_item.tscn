@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dlnto25jfnnie"]
+[gd_scene load_steps=7 format=3 uid="uid://dlnto25jfnnie"]
 
 [ext_resource type="Script" uid="uid://bkteuy3plw8mf" path="res://environment/movable_item.gd" id="1_r37qw"]
 [ext_resource type="Texture2D" uid="uid://d1ugvaqc34k70" path="res://levels/level1/box1.png" id="2_l4pm5"]
 [ext_resource type="Script" uid="uid://dvglvofpfmaxg" path="res://systems/reset_system/resetable_component.gd" id="3_l4pm5"]
+[ext_resource type="Script" uid="uid://ci6ypt3ukmddg" path="res://environment/components/movement_audio_component.gd" id="4_abcde"]
+[ext_resource type="Resource" uid="uid://dcu5mf41m82se" path="res://Audio/level1/woodenboxes/wooden_box_sounds.tres" id="5_fghij"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l4pm5"]
 size = Vector2(123, 121)
@@ -25,6 +27,12 @@ shape = SubResource("RectangleShape2D_l4pm5")
 [node name="ResetableComponent" type="Node" parent="."]
 script = ExtResource("3_l4pm5")
 metadata/_custom_type_script = "uid://dvglvofpfmaxg"
+
+[node name="MovementAudioComponent" type="Node" parent="."]
+script = ExtResource("4_abcde")
+sound_collection = ExtResource("5_fghij")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="MovementAudioComponent"]
 
 [node name="PinJoint2D" type="PinJoint2D" parent="."]
 process_mode = 1

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SurfaceAudioProfile" load_steps=3 format=3 uid="uid://dssyq3d20s1y"]
+[gd_resource type="Resource" script_class="SurfaceAudioProfile" load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://systems/footstep_system/surface_audio_profile.gd" id="1_script"]
 [ext_resource type="Resource" uid="uid://dssyq3d20s1x" path="res://systems/footstep_system/resources/concrete_walk_collection.tres" id="2_walk_collection"]

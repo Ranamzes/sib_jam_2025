@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SoundCollectionResource" load_steps=6 format=3 uid="uid://dcu5mf41m82se"]
+
+[ext_resource type="Script" uid="uid://dplxgykosl7qa" path="res://systems/audio_system/resources/sound_collection_resource.gd" id="1_abcde"]
+[ext_resource type="AudioStream" uid="uid://d0wjasx5qdqce" path="res://Audio/level1/woodenboxes/box_1.ogg" id="2_1ylje"]
+[ext_resource type="AudioStream" uid="uid://dokck7lciybh" path="res://Audio/level1/woodenboxes/box_2.ogg" id="3_geke1"]
+[ext_resource type="AudioStream" uid="uid://duvg2dw0ybj5f" path="res://Audio/level1/woodenboxes/box_3.ogg" id="4_xq060"]
+[ext_resource type="AudioStream" uid="uid://b8ct8e3smrk71" path="res://Audio/level1/woodenboxes/box_5.ogg" id="5_lvxlw"]
+
+[resource]
+script = ExtResource("1_abcde")
+sounds = Array[AudioStream]([ExtResource("2_1ylje"), ExtResource("3_geke1"), ExtResource("4_xq060"), ExtResource("5_lvxlw")])
