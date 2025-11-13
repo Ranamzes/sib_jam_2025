@@ -1174,7 +1174,8 @@ pull_lerp_speed = 45.0
 script = ExtResource("37_footstep")
 audio_data = ExtResource("28_vud74")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Components/FootstepComponent"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Components/FootstepComponent"]
+bus = &"Footstep_Pan"
 
 [node name="SurfaceDetector" type="RayCast2D" parent="Components/FootstepComponent"]
 target_position = Vector2(0, 0)

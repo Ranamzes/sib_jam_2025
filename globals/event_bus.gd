@@ -14,5 +14,5 @@ signal reset_level(checkpoint_id: int)
 # Passes the new position and the ID of the checkpoint.
 signal new_respawn(new_pos: Vector2, checkpoint_id: int)
 
-# Сигнал для смены фоновой музыки. Передает новый аудиопоток.
-signal change_background_music(stream: AudioStream)
+# Сигнал для смены фоновой музыки. Передает новый аудиопоток и длительность кроссфейда.
+signal change_background_music(stream: AudioStream, fade_duration: float)

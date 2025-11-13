@@ -1,4 +1,5 @@
 extends Node
 
-var environment: String = "environment"
-var druggable: String = "druggable"
+const ENVIRONMENT: String = "environment"
+const DRUGGABLE: String = "druggable"
+const PLAYER: String = "Player"

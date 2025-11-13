@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://x662pd3helg5"]
+[gd_scene load_steps=37 format=4 uid="uid://x662pd3helg5"]
 
 [ext_resource type="Script" uid="uid://wcmkdc5t052o" path="res://main.gd" id="1_0rl1p"]
 [ext_resource type="Script" uid="uid://dp1qdgcbuwjup" path="res://camera/camera_manager.gd" id="1_mgr"]
@@ -10,7 +10,6 @@
 [ext_resource type="Script" uid="uid://cgv2eq7fgiu03" path="res://echo/echo_controller.gd" id="4_lquwl"]
 [ext_resource type="PackedScene" uid="uid://b32sa4k6nlri2" path="res://echo/echo_component.tscn" id="5_7mycd"]
 [ext_resource type="Shader" uid="uid://b0v710tat1koj" path="res://effects/monocolor_shader.gdshader" id="8_5vw27"]
-[ext_resource type="Script" uid="uid://bpvo6p6kufeyv" path="res://systems/music_system/music_trigger_zone.gd" id="8_lswn8"]
 [ext_resource type="PackedScene" uid="uid://dlnto25jfnnie" path="res://environment/movable_item.tscn" id="9_kek77"]
 [ext_resource type="Script" uid="uid://dbxlbok57ny46" path="res://systems/reset_system/reset_controller.gd" id="10_4c57u"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="10_host"]
@@ -25,6 +24,7 @@
 [ext_resource type="Script" uid="uid://b4liefv5ld37h" path="res://exit.gd" id="16_htxhm"]
 [ext_resource type="FontFile" uid="uid://d47d30frxoaw" path="res://fonts/Kenney Pixel Square.ttf" id="24_1u8w0"]
 [ext_resource type="Script" uid="uid://bfseyqvsy2wvb" path="res://addons/GodotAnnotate/src/canvas/annotate_canvas.gd" id="25_lswn8"]
+[ext_resource type="PackedScene" uid="uid://c6w8e5g4f3h2g" path="res://systems/music_system/music_trigger_zone/music_trigger_zone.tscn" id="26_trgr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xuqvo"]
 texture = ExtResource("2_a6jrf")
@@ -55,9 +55,6 @@ shader = ExtResource("8_5vw27")
 shader_parameter/colorDarkness = Color(0, 0, 0, 1)
 shader_parameter/colorLight = Color(1, 1, 1, 1)
 shader_parameter/colorDivider = 0.23600001121
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lswn8"]
-size = Vector2(125, 249)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dg77c"]
 size = Vector2(628, 284)
@@ -275,40 +272,20 @@ material = SubResource("ShaderMaterial_kek77")
 
 [node name="Audio" type="Node" parent="."]
 
-[node name="BgMusicLevel1" type="Area2D" parent="Audio"]
-collision_layer = 65
-collision_mask = 2
-script = ExtResource("8_lswn8")
+[node name="MusicTriggerZone" parent="Audio" instance=ExtResource("26_trgr")]
+position = Vector2(15, 173)
 music_stream = ExtResource("11_htxhm")
-metadata/_custom_type_script = "uid://bpvo6p6kufeyv"
+fade_duration = 1.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Audio/BgMusicLevel1"]
-position = Vector2(4, 205)
-shape = SubResource("RectangleShape2D_lswn8")
-
-[node name="BgMusicLevel3" type="Area2D" parent="Audio"]
-position = Vector2(5776, -415)
-collision_mask = 2
-script = ExtResource("8_lswn8")
-music_stream = ExtResource("12_4k2k6")
-metadata/_custom_type_script = "uid://bpvo6p6kufeyv"
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Audio/BgMusicLevel3"]
-position = Vector2(4, 205)
-shape = SubResource("RectangleShape2D_lswn8")
-
-[node name="BgMusicLevel2" type="Area2D" parent="Audio"]
-position = Vector2(3865, 418)
-collision_mask = 2
-script = ExtResource("8_lswn8")
+[node name="MusicTriggerZone2" parent="Audio" instance=ExtResource("26_trgr")]
+position = Vector2(3956, 663)
 music_stream = ExtResource("12_jq2sk")
-metadata/_custom_type_script = "uid://bpvo6p6kufeyv"
-metadata/_edit_group_ = true
+fade_duration = 3.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Audio/BgMusicLevel2"]
-position = Vector2(4, 205)
-shape = SubResource("RectangleShape2D_lswn8")
+[node name="MusicTriggerZone3" parent="Audio" instance=ExtResource("26_trgr")]
+position = Vector2(5602, -175)
+music_stream = ExtResource("12_4k2k6")
+fade_duration = 3.0
 
 [node name="MainCamera" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
