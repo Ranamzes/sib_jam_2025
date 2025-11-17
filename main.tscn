@@ -289,7 +289,6 @@ fade_duration = 3.0
 
 [node name="MainCamera" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-position = Vector2(144, 60)
 zoom = Vector2(0.5, 0.5)
 process_callback = 0
 
