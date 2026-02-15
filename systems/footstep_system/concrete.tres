@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="AudioSurfaceResource" load_steps=2 format=3 uid="uid://c2bqnjqbst4gj"]
-
-[ext_resource type="Script" uid="uid://ca5bm55jg3ds3" path="res://systems/footstep_system/audio_surface_resource.gd" id="1_1omox"]
-
-[resource]
-script = ExtResource("1_1omox")
-surface_name = &"concrete"
-metadata/_custom_type_script = "uid://ca5bm55jg3ds3"
