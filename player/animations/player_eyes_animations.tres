@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=53 format=3 uid="uid://dsws5exfkbn1t"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://dsws5exfkbn1t"]
 
 [ext_resource type="Texture2D" uid="uid://b83vybi8dq865" path="res://player/animations/fall_eyes.png" id="1_5htcd"]
 [ext_resource type="Texture2D" uid="uid://bcs5s761fl5ag" path="res://player/animations/idle_eyes.png" id="2_0pjwe"]

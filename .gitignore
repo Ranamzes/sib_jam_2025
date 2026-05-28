@@ -16,6 +16,6 @@ plan.md
 .idea
 *.tmp
 addons/fmod/libs/windows/~libGodotFmod.windows.editor.x86_64.dll
-
+.agent/
 # Snyk Security Extension - AI Rules (auto-generated)
 .cursor\rules\snyk_rules.mdc

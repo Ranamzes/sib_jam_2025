@@ -1,4 +1,4 @@
-[gd_scene load_steps=160 format=3 uid="uid://bgrwxmc03jfth"]
+[gd_scene format=3 uid="uid://bgrwxmc03jfth"]
 
 [ext_resource type="Script" uid="uid://chbr6mrhj0l4h" path="res://systems/input_system/player_input_component.gd" id="1_5p1j2"]
 [ext_resource type="Script" uid="uid://cg6pvwqc3b5mc" path="res://player/player.gd" id="1_8nth8"]
@@ -1090,70 +1090,68 @@ metadata/_custom_type_script = "uid://sui2aet7dpfb"
 [sub_resource type="Resource" id="Resource_u8vxv"]
 script = ExtResource("32_234y4")
 
-[node name="Player" type="CharacterBody2D" groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=2375788 groups=["Player"]]
 collision_layer = 2
 script = ExtResource("1_8nth8")
 
-[node name="IteractionScanRayCast" type="RayCast2D" parent="."]
+[node name="IteractionScanRayCast" type="RayCast2D" parent="." unique_id=663744447]
 unique_name_in_owner = true
 position = Vector2(0, -13.515)
 target_position = Vector2(50, 0)
 collision_mask = 3072
 
-[node name="HurtboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+[node name="HurtboxComponent" type="Area2D" parent="." unique_id=432440110 node_paths=PackedStringArray("health_component")]
 collision_layer = 16
 collision_mask = 4
 monitorable = false
 script = ExtResource("4_uewl2")
 health_component = NodePath("../Components/HealthComponent")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=948484432]
 position = Vector2(0, 0.5)
 shape = ExtResource("3_stbqk")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2008104809]
 position = Vector2(0.795, 10.885)
 shape = ExtResource("3_stbqk")
 
-[node name="ContourSprite" type="AnimatedSprite2D" parent="."]
+[node name="ContourSprite" type="AnimatedSprite2D" parent="." unique_id=1429123028]
 light_mask = 12
 material = ExtResource("36_contmat")
 sprite_frames = SubResource("SpriteFrames_8cy8x")
 animation = &"idle"
 
-[node name="EyesSprite" type="AnimatedSprite2D" parent="."]
+[node name="EyesSprite" type="AnimatedSprite2D" parent="." unique_id=2003843680]
 material = SubResource("ShaderMaterial_uyl0s")
 sprite_frames = ExtResource("33_abcde")
 animation = &"fall"
 
-[node name="ColorSprite" type="AnimatedSprite2D" parent="."]
+[node name="ColorSprite" type="AnimatedSprite2D" parent="." unique_id=715420227]
 z_index = -1
 sprite_frames = SubResource("SpriteFrames_8cy8x")
 animation = &"jump"
 
-[node name="AnimationTree" type="AnimationTree" parent="."]
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=729153895]
 tree_root = SubResource("AnimationNodeStateMachine_610ub")
 anim_player = NodePath("../AnimationPlayer")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_wpo5q")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=87784494]
+libraries/ = SubResource("AnimationLibrary_wpo5q")
 
-[node name="Components" type="Node" parent="."]
+[node name="Components" type="Node" parent="." unique_id=1473773122]
 script = ExtResource("7_8tqfn")
 
-[node name="HealthComponent" type="Node" parent="Components"]
+[node name="HealthComponent" type="Node" parent="Components" unique_id=237228614]
 script = ExtResource("5_ofhxi")
 
-[node name="DashComponent" type="Node" parent="Components" node_paths=PackedStringArray("_state_comp", "_physics")]
+[node name="DashComponent" type="Node" parent="Components" unique_id=98437857 node_paths=PackedStringArray("_state_comp", "_physics")]
 script = ExtResource("5_yu5hk")
 _state_comp = NodePath("../../Systems/StateComponent")
 _dash_stats = SubResource("Resource_mlfor")
 _movement_stats = SubResource("Resource_2m0d2")
 _physics = NodePath("../../Systems/PhysicsIntegrationSystem")
 
-[node name="PlayerInputComponent" type="Node" parent="Components" node_paths=PackedStringArray("physics_system", "drag_component")]
+[node name="PlayerInputComponent" type="Node" parent="Components" unique_id=509159641 node_paths=PackedStringArray("physics_system", "drag_component")]
 script = ExtResource("1_5p1j2")
 mapping_context = ExtResource("2_v4f8b")
 move_action = ExtResource("3_t8epa")
@@ -1164,29 +1162,29 @@ push_action = ExtResource("21_76mgg")
 physics_system = NodePath("../../Systems/PhysicsIntegrationSystem")
 drag_component = NodePath("../DragComponent")
 
-[node name="DragComponent" type="Node" parent="Components" node_paths=PackedStringArray("mov_state_comp")]
+[node name="DragComponent" type="Node" parent="Components" unique_id=762136583 node_paths=PackedStringArray("mov_state_comp")]
 script = ExtResource("7_8tqfn")
 iteraction_ray_cast_path = NodePath("../../IteractionScanRayCast")
 mov_state_comp = NodePath("../../Systems/StateComponent")
 pull_lerp_speed = 45.0
 
-[node name="FootstepComponent" type="Node" parent="Components"]
+[node name="FootstepComponent" type="Node" parent="Components" unique_id=359926099]
 script = ExtResource("37_footstep")
 audio_data = ExtResource("28_vud74")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Components/FootstepComponent"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Components/FootstepComponent" unique_id=1993717990]
 
-[node name="SurfaceDetector" type="RayCast2D" parent="Components/FootstepComponent"]
+[node name="SurfaceDetector" type="RayCast2D" parent="Components/FootstepComponent" unique_id=1274509926]
 position = Vector2(0, 49)
 target_position = Vector2(0, 0)
 script = ExtResource("35_vud74")
 
-[node name="FootMarker" type="Marker2D" parent="Components/FootstepComponent"]
+[node name="FootMarker" type="Marker2D" parent="Components/FootstepComponent" unique_id=596504217]
 position = Vector2(19, 59)
 
-[node name="Systems" type="Node" parent="."]
+[node name="Systems" type="Node" parent="." unique_id=1650964075]
 
-[node name="AnimationSystem" type="Node" parent="Systems" node_paths=PackedStringArray("animation_tree", "mov_state_comp", "contour_sprite", "eyes_sprite", "color_sprite")]
+[node name="AnimationSystem" type="Node" parent="Systems" unique_id=1213432656 node_paths=PackedStringArray("animation_tree", "mov_state_comp", "contour_sprite", "eyes_sprite", "color_sprite")]
 script = ExtResource("9_h5g2s")
 animation_tree = NodePath("../../AnimationTree")
 mov_state_comp = NodePath("../StateComponent")
@@ -1194,7 +1192,7 @@ contour_sprite = NodePath("../../ContourSprite")
 eyes_sprite = NodePath("../../EyesSprite")
 color_sprite = NodePath("../../ColorSprite")
 
-[node name="PhysicsIntegrationSystem" type="Node" parent="Systems" node_paths=PackedStringArray("player_character", "drag_component", "echo_pointer", "_state_comp")]
+[node name="PhysicsIntegrationSystem" type="Node" parent="Systems" unique_id=669743371 node_paths=PackedStringArray("player_character", "drag_component", "echo_pointer", "_state_comp")]
 script = ExtResource("14_abcde")
 player_character = NodePath("../..")
 drag_component = NodePath("../../Components/DragComponent")
@@ -1208,25 +1206,25 @@ _state_comp = NodePath("../StateComponent")
 _move_stats = SubResource("Resource_y617q")
 _jump_stats = SubResource("Resource_8tqfn")
 
-[node name="StateComponent" type="Node" parent="Systems"]
+[node name="StateComponent" type="Node" parent="Systems" unique_id=325604300]
 script = ExtResource("20_q6miu")
 
-[node name="EchoPointer" type="Node2D" parent="."]
+[node name="EchoPointer" type="Node2D" parent="." unique_id=163392263]
 position = Vector2(4, 17)
 
-[node name="Eye1" type="PointLight2D" parent="."]
+[node name="Eye1" type="PointLight2D" parent="." unique_id=1993915610]
 position = Vector2(19, -38)
 energy = 6.0
 texture = ExtResource("22_mlfor")
 texture_scale = 1.5
 
-[node name="Eye2" type="PointLight2D" parent="."]
+[node name="Eye2" type="PointLight2D" parent="." unique_id=1831914645]
 position = Vector2(9, -39)
 energy = 6.0
 texture = ExtResource("22_mlfor")
 texture_scale = 1.5
 
-[node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
+[node name="PhantomCamera2D" type="Node2D" parent="." unique_id=1529297002 node_paths=PackedStringArray("follow_target")]
 top_level = true
 position = Vector2(144, 60)
 script = ExtResource("10_efxa6")
