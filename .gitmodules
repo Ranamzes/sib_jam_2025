@@ -1,3 +1,0 @@
-[submodule "systems/footstep_system"]
-	path = systems/footstep_system
-	url = https://github.com/godot-shared-modules/footstep_system.git

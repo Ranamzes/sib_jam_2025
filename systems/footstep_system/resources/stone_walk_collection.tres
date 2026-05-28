@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AudioStreamCollection" load_steps=8 format=3 uid="uid://dssyq3d20s1r"]
+
+[ext_resource type="Script" uid="uid://bqi7ckec40qs0" path="res://systems/footstep_system/audio_stream_collection.gd" id="1_script"]
+[ext_resource type="AudioStream" uid="uid://piqk7m1kf7hl" path="res://Audio/footsteps/stone/footsteps_stone_walk_1.ogg" id="2_stream1"]
+[ext_resource type="AudioStream" uid="uid://cphcnc1cye0i7" path="res://Audio/footsteps/stone/footsteps_stone_walk_2.ogg" id="3_stream2"]
+[ext_resource type="AudioStream" uid="uid://jywt5g1730h" path="res://Audio/footsteps/stone/footsteps_stone_walk_3.ogg" id="4_stream3"]
+[ext_resource type="AudioStream" uid="uid://df0ifji5mgtr3" path="res://Audio/footsteps/stone/footsteps_stone_walk_4.ogg" id="5_stream4"]
+[ext_resource type="AudioStream" uid="uid://bi3f26gige8fg" path="res://Audio/footsteps/stone/footsteps_stone_walk_5.ogg" id="6_stream5"]
+[ext_resource type="AudioStream" uid="uid://b5mak36x4wyou" path="res://Audio/footsteps/stone/footsteps_stone_walk_6.ogg" id="7_stream6"]
+
+[resource]
+script = ExtResource("1_script")
+streams = [ExtResource("2_stream1"), ExtResource("3_stream2"), ExtResource("4_stream3"), ExtResource("5_stream4"), ExtResource("6_stream5"), ExtResource("7_stream6")]
